@@ -1,0 +1,17 @@
+ <%= render 'comments/form' %>
+ <% @comments.each do |comment| %>
+	<p> <%= comment.content %> </p>
+
+	<% if current_user == comment.user %>
+		<%= link_to "Delete", [comment.wad, comment], method: :delete %>
+		<%= link_to "Edit", edit_wad_comment_path(comment.wad, comment) %>
+	<% from_reply_form ||= nil %>
+		<% unless from_reply_form %>
+		  <% if comment.leaf? %>
+    <small class="text-muted">There are no replies yet - be the first one to reply!</small>
+    	  <% end %>
+	  	<p><%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %></p>
+		<% end %>
+	<% end %> 
+
+<% end %>

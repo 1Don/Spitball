@@ -1,0 +1,21 @@
+<h1> Get Spitballing! </h1>
+
+    <%= form_for @wad, :html => { :multipart => true } do |f| %>
+      <%= f.label :category, "Please select the relevant category." %>
+      <%= f.select :category, ['', 'Music', 'Tech', 'Art'], class: 'dropDown-control' %>
+
+      <%= f.label :problem_statement, "What does your idea do? Where's the inspiration?" %>
+      <%= f.text_field :problem_statement, class: 'form-control' %>
+
+      <%= f.label :short_form, "Tell me a little something about it:" %>
+      <%= f.text_field :short_form, class: 'form-control' %>
+
+      <%= f.label :long_form, "Now really think it out:" %>
+      <%= f.text_area :long_form, class: 'form-control' %>
+
+      <%= f.label :photo, "Any images?" %>
+      <%= f.file_field :photo, class: "form-control" %>
+
+      <%= f.submit "Submit Wad", class: "btn-primary" %>
+  
+    <% end %>

@@ -1,0 +1,6 @@
+<%= form_for([@wad, @wad.comments.create]) do |f| %>
+	<%= f.hidden_field :parent_id %>
+	<%= f.text_area :content %>
+	<%= f.submit %>
+
+<% end %>
