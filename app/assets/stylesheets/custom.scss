@@ -14,9 +14,20 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 .center{
-    margin: auto;
-    width: 50%;
-    height: 50%;
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  top: 50%;
+  margin-top: - 250px;
+  left: 50%;
+  margin-left: - 250px;
+  position: fixed;
+}
+
+.centerFlex {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 section {
@@ -43,9 +54,9 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   text-align: center;
-  font-color: 'white';
+  font-color: #fff;
 }
 
 h2 {
@@ -76,10 +87,9 @@ p {
  /*   margin-bottom: 45px; */
     margin-right: 10px;
     height: 20px;
-  /*  border-bottom: 1px solid rgba(0,0,0,.1); */
-    
-   
+  /*  border-bottom: 1px solid rgba(0,0,0,.1); */   
 }
+
 
 /* footer */
 
@@ -103,6 +113,7 @@ footer {
     li {
       float: left;
       margin-left: 15px;
+      color: black;
     }
   }
 }
