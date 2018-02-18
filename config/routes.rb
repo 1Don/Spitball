@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   get    '/industries', to: 'industries#index'
   get    '/music',    to:  'industries#music'
   get    '/tech',     to:  'industries#tech'
+  resources :users
+  
   
 end
