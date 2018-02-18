@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   get 'users/new'
 
   root   'static_pages#home'
@@ -13,6 +15,9 @@ Rails.application.routes.draw do
   get    '/industries', to: 'industries#index'
   get    '/music',    to:  'industries#music'
   get    '/tech',     to:  'industries#tech'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   resources :users
   
   
