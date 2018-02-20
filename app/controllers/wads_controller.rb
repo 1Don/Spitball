@@ -7,6 +7,9 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
 	def show
 		@wad = Wad.find(params[:id])
+		@comments = Comment.where(wad_id: @wad).order("created_at DESC")
+		@comment = Comment.find_by(params[:id])
+		@replies = @wad.comments.hash_tree
 	end
 
 	def new
