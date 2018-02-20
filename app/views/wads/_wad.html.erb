@@ -1,0 +1,10 @@
+<li id="wad-<%= wad.id %>">
+<%-# <%= link_to gravatar_for(wad.user, size: 50), wad.user -%> 
+ <%-# <span class="user"><%= link_to wad.user.name, wad.user -%>
+  <span class="problem_state"><%= wad.problem_state %></span>
+  <span class="short_form"><%= wad.short_form %></span>
+  <span class="long_form"><%= wad.long_form %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(wad.created_at) %> ago.
+  </span>
+</li>
