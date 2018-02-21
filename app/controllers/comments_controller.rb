@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
-	before_action :find_wad, only: [:create, :new, :edit, :update, :destroy, :find_comment, :upvote]
+	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment, :upvote]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
 
 	def create
-		@wad = Wad.find_by(params[:wad_id])
+
 		if params[:comment][:parent_id].to_i > 0
 		    parent = Comment.find_by_id(params[:comment].delete(:parent_id))
 		    @comment = parent.children.build(comment_params)
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 			@comment.user_id = current_user.id
 	 	if @comment.save
 		    flash[:success] = 'Your comment was successfully added!'
-		    redirect_to wad_comments_path (@wad)
+		    redirect_to wad_comments_path (@comment.wad)
 	  	else
 	  		@error = @comment.errors.full_messages
 	    	render 'new'
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 	end
 
 	def index
-		@wad = Wad.find(params[:wad_id])
+
 		@comments = @wad.comments.all
 		@comment = @wad.comments.where(params[:id])
 		@replies = @comments.hash_tree
@@ -62,16 +62,8 @@ class CommentsController < ApplicationController
 
 private
 
-	def find_wad
-		@wad = Wad.find_by(params[:id])
-	end
-
-	def find_comment
-		@comment = @wad.comments.find_by(params[:id])
-	end
-
 	def comment_params
-		params.require(:comment).permit(:content, :wad_id, :user_id)
+		params.require(:comment).permit(:content, :wad_id, :user_id, :parent_id)
 	end
 
 
@@ -82,4 +74,5 @@ private
 
 		end
 	end
+
 end

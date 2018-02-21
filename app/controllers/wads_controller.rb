@@ -6,17 +6,13 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	end
 
 	def show
-		@wad = Wad.find(params[:id])
-		@comments = Comment.where(wad_id: @wad).order("created_at DESC")
-		@comment = Comment.find_by(params[:id])
-		@replies = @wad.comments.hash_tree
+		redirect_to wad_comments_path(@wad)
 	end
 
 	def new
 		@wad = Wad.new
-		end
+	end
 	
-
 	def create
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save	
@@ -51,10 +47,5 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 		params.require(:wad).permit(:problem_state, :short_form, :long_form, :category)
 	end	
 
-	def find_wad
-		@wad = Wad.where(params[:id])
-	end
-
 
 end
-
