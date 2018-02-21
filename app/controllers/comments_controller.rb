@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment, :upvote]
+	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
 
@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
 	end
 
 	def index
-
 		@comments = @wad.comments.all
 		@comment = @wad.comments.where(params[:id])
 		@replies = @comments.hash_tree
@@ -53,11 +52,16 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@wad = Wad.find(params[:wad_id])
-		@comment = Comment.find(params[:id])
 		@comment.destroy
 		redirect_to @wad
 	end
+
+	def upvote 
+		@comment = Comment.find(params[:wad_id])
+		@wad = @comment.wad
+		@comment.upvote_by current_user
+		redirect_to wad_path(@wad)
+	end 
 
 
 private

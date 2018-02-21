@@ -7,5 +7,9 @@
 		<%= wad.short_form %>
 		</ul>
 	<% end %>
+	<%= button_to like_wad_path(wad), method: :put do %>
+		  Upvote
+		  <%= wad.get_upvotes.size %>
+		<% end %>
 <% end %>
 <%= will_paginate @wads %>

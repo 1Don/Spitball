@@ -40,6 +40,12 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 		redirect_to root_path
 	end
 
+	def upvote 
+	  @wad = Wad.find(params[:id])
+	  @wad.upvote_by current_user
+	  redirect_to @wad
+	end  
+
 
 	private
 
