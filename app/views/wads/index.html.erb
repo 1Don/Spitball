@@ -1,9 +1,9 @@
 <h1> Wads </h1>
 
 <% @wads.each do |wad| %>
-	<%= link_to wad_comments_path(wad) do %>
 		<ul class="wad">
-		<%= wad.category %>
+	<%= wad.category %>: 
+	<%= link_to wad_comments_path(wad) do %>
 		<%= wad.short_form %>
 		</ul>
 	<% end %>

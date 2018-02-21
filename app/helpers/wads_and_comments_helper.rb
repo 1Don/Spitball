@@ -14,4 +14,9 @@ module WadsAndCommentsHelper
 		@wad = Wad.find(params[:wad_id])
 		@comment = @wad.comments.find(params[:id])
 	end
+#Finds the user for linking to their profile
+	def find_wad_owner
+		find_comments_wad
+		@owner = @wad.user
+	end
 end
