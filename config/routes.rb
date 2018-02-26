@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users
-  resources :wads
-  
-  
+  resources :users 
+  resources :wads do
+    member do
+        put "like", to: "wads#upvote"
+    end
+      resources :comments do 
+        put "like", to: "comments#upvote"
+      end   
+    end
 end

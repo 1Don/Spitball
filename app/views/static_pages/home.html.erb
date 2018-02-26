@@ -2,6 +2,11 @@
 <div class = "center">
   <h1>Can your idea change the world?</h1><br>
   <h1> Prove it. </h1>
+  <% if !logged_in? %>
   <%= link_to "Signup Now", signup_path, class: "btn btn-lg btn-primary" %>
+  <% else logged_in? %>
+  <%= link_to "Create a Wad", new_wad_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Other Wads", wads_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>
 </body>

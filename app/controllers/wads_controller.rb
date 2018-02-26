@@ -6,14 +6,13 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	end
 
 	def show
-		@wad = Wad.find(params[:id])
+		redirect_to wad_comments_path(@wad)
 	end
 
 	def new
 		@wad = Wad.new
-		end
+	end
 	
-
 	def create
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save	
@@ -41,6 +40,12 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 		redirect_to root_path
 	end
 
+	def upvote 
+	  @wad = Wad.find(params[:id])
+	  @wad.upvote_by current_user
+	  redirect_to @wad
+	end  
+
 
 	private
 
@@ -48,10 +53,5 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 		params.require(:wad).permit(:problem_state, :short_form, :long_form, :category)
 	end	
 
-	def find_wad
-		@wad = Wad.where(params[:id])
-	end
-
 
 end
-
