@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+#  before_action :find_users_wad
 
   def index
     @users = User.paginate(page: params[:page])
@@ -45,7 +46,18 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
+
+# User profile navigation
+  def profile_comments
+    show
+  end
   
+  def profile_wads
+  end
+
+  def profile_mail
+  end
+
   private
 
     def user_params

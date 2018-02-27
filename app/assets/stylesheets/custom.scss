@@ -276,13 +276,37 @@ list-style: none;
     display: inline-block;
     font-size: 16px;
     font-color: #FFFFFF;
-
 }
+
 .btn-txt {
   font-color: #FFFFFF;
 }
 
+/* User Profile */
 
+.profile-info {
+  float: right;
+  font-size: 15px;
+}
+.profile-display-wads {
+  border-style: solid;
+}
+.profile-nav-links {
+  font-size: 30px;
+  list-style-type: none;
+}
+.profile-info {
+  font-size: 15px;
+}
+.profile-bio {
+  float: right;
+}
+.profile-nav {
+  float: left;
+}
+.user-comments-like-btn {
+  float: right;
+}
 
 
 
