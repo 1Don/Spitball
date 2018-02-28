@@ -1,18 +1,7 @@
 <%= render "wads/sidebar" %>
 <div class = "flex-rectangle">
-Posted by <%= link_to user_path(@owner) do %>
-		<%= @wad.user.name %><br>
-		  <% end %>
-Wad: <%= @wad.short_form %><br>
-Idea: <%= @wad.long_form %><br>
-Problem: <%= @wad.problem_state %><br>
-<%= link_to like_wad_path(@wad), method: :put do %>
-		 Upvote
-		 <%= @wad.get_upvotes.size %>
-<% end %>
+	<%= render 'wads/wad' %>
 </div>
-
-
-<%= comments_tree_for @replies %>
- <%= render 'comments/form' %>
+	<%= comments_tree_for @replies %>
+	<%= render 'comments/form' %>
 

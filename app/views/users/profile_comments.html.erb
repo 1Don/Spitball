@@ -1,0 +1,23 @@
+<%= render 'users/user_profile_header' %>
+<body>
+<div class="profile-info">
+	<h1 class="users-wads"> <%= @user.name %>'s Comments </h1>
+	<p><% @user.comments.each do |c| %></p>
+	<!-- Have to verify if these link to the appropriate pages -->
+			<%= link_to wad_comments_path(c) do %>
+				<p class="profile-display-wads">
+				<%= c.content %><br>
+			<% end %>
+					<p class="user-comments-like-btn">
+					<%= link_to wad_comment_like_path(c, c.id), method: :put do %>
+						Likes: <% end %>
+						<%= c.get_upvotes.size %>
+						<% end %>
+					</p>
+				</p>
+</div>
+	<div class="profile-nav-bar">
+		Navigation Bar<br>
+		<%= render 'users/profile_navbar' %>
+	</div>
+</body>

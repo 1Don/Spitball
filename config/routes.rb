@@ -25,6 +25,12 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+#Defining routes for user profile navigation
+
+  get    '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments
+  get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
+
+
   resources :users 
   resources :wads do
     member do
