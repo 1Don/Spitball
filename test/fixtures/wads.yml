@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  short_form: MyText
+  long_form: MyText
+  category: MyText
+  problem_state: MyText
+
+two:
+  user: two
+  short_form: MyText
+  long_form: MyText
+  category: MyText
+  problem_state: MyText

@@ -1,0 +1,22 @@
+<div class= "page">
+<h1> Wads </h1>
+
+<%= render "wads/sidebar" %>
+
+<% @wads.each do |wad| %>
+<% if wad.category = "manufacturing" %>
+	<%= link_to wad_comments_path(wad) do %>
+		<ul class="wad">
+			<%= wad.category %>: 
+			<%= wad.short_form %>
+		</ul>
+	<% end %>
+	<%= button_to like_wad_path(wad), method: :put do %>
+		 Upvote
+		 <%= wad.get_upvotes.size %>
+	<% end %>
+<% end %>
+<%= will_paginate @wads %>
+<% end %>
+</div>
+</div>

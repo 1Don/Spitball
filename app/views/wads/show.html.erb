@@ -1,0 +1,10 @@
+<div class = "flex-rectangle">
+Posted by <%= @wad.user.name %><br>
+Wad: <%= @wad.short_form %><br>
+Idea: <%= @wad.long_form %><br>
+Problem: <%= @wad.problem_state %><br>
+</div>
+
+<%= comments_tree_for @replies %>
+<%= render 'comments/form' %>
+

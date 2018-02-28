@@ -1,0 +1,17 @@
+<h1> Post a Wad now! </h1>
+
+    <%= form_for @wad do |f| %>
+
+      <%= f.label :short_form, "Short Form" %>
+      <%= f.text_field :short_form, class: 'form-control' %>
+
+      <%= f.label :long_form, "Long Form" %>
+      <%= f.text_field :long_form, class: 'form-control' %>
+
+      <%= f.label :problem_state, "Problem" %>
+      <%= f.text_field :problem_state, class: 'form-control' %>
+
+      <%= f.select :category, options_for_select(["Art", "B2B Saas", "Finance", "Hardware", "Small Business", "Consumer Tech", "Other"]) %>
+
+      <%= f.submit "Submit Wad", class: "btn btn-primary" %>
+    <% end %>
