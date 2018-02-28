@@ -323,6 +323,7 @@ input {
 }
 .profile-info {
   font-size: 15px;
+
 }
 .profile-bio {
   float: right;
@@ -333,7 +334,10 @@ input {
 .user-comments-like-btn {
   float: right;
 }
-
+.user-profile {
+  position: absolute;
+  overflow: auto;
+}
 
 
 
