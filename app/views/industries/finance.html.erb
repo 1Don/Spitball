@@ -1,9 +1,10 @@
 <div class= "page">
 <h1> Wads </h1>
 
-<%= render "sidebar" %>
+<%= render "wads/sidebar" %>
 
 <% @wads.each do |wad| %>
+<% if wad.category = "finance" %>
 	<%= link_to wad_comments_path(wad) do %>
 		<ul class="wad">
 			<%= wad.category %>: 
@@ -16,5 +17,6 @@
 	<% end %>
 <% end %>
 <%= will_paginate @wads %>
+<% end %>
 </div>
 </div>

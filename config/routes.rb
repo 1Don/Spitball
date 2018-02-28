@@ -13,8 +13,15 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get    '/industries', to: 'industries#index'
-  get    '/music',    to:  'industries#music'
-  get    '/tech',     to:  'industries#tech'
+  get    '/art',    to:  'industries#art'
+  get    '/b2bsaas',     to:  'industries#b2bsaas'
+  get    '/finance',     to:  'industries#finance'
+  get    '/manufacturing',     to:  'industries#manufacturing'
+  get    '/smallbusiness',     to:  'industries#smallbusiness'
+  get    '/consumertech',     to:  'industries#consumertech'
+  get    '/other',     to:  'industries#other'
+
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

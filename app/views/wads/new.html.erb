@@ -11,8 +11,7 @@
       <%= f.label :problem_state, "Problem" %>
       <%= f.text_field :problem_state, class: 'form-control' %>
 
-      <%= f.label :category, "Category" %>
-      <%= f.text_field :category, class: 'form-control' %>
+      <%= f.select :category, options_for_select(["Art", "B2B Saas", "Finance", "Hardware", "Small Business", "Consumer Tech", "Other"]) %>
 
       <%= f.submit "Submit Wad", class: "btn btn-primary" %>
     <% end %>
