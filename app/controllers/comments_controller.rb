@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
 	before_action :find_wad_owner, only: [:index]
 
 	def create
-
 		if params[:comment][:parent_id].to_i > 0
 		    parent = Comment.find_by_id(params[:comment].delete(:parent_id))
 		    @comment = parent.children.build(comment_params)
