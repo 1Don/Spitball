@@ -32,7 +32,11 @@ class DiscussionsController < ApplicationController
 			@discussion.user_id = current_user.id
 	 	if @discussion.save
 		    flash[:success] = 'Your thread was successfully added!'
+<<<<<<< HEAD
 		    redirect_to discussion_path (@discussion)
+=======
+		    redirect_to discussion_path (@discussion.parent)
+>>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
 	  	else
 	  		@error = @comment.errors.full_messages
 	    	render 'new'
@@ -47,7 +51,12 @@ class DiscussionsController < ApplicationController
 
 	def show
 		@discussion = Discussion.find(params[:id])
+<<<<<<< HEAD
 		@replies = @discussion.hash_tree
+=======
+		@discussions = @discussion.children.all
+		@replies = @discussions.hash_tree
+>>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
 	end
 
 
