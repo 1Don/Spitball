@@ -20,16 +20,23 @@ Rails.application.routes.draw do
   get    '/smallbusiness',     to:  'industries#smallbusiness'
   get    '/consumertech',     to:  'industries#consumertech'
   get    '/other',     to:  'industries#other'
+  get    '/forum',    to:   'discussions#index'
 
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-#Defining routes for user profile navigation
 
+
+#Defining routes for user profile navigation
   get    '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments
   get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
 
+  resources :discussions do
+    member do
+      put "like", to: "discussions#upvote"
+    end
+  end
 
   resources :users 
   resources :wads do
@@ -39,5 +46,5 @@ Rails.application.routes.draw do
       resources :comments do 
         put "like", to: "comments#upvote"
       end   
-    end
+  end
 end

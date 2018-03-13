@@ -1,0 +1,8 @@
+<div class = "flex-rectangle">
+<ul class="wad">
+	<%= @discussion.content %>
+</ul>
+</div>
+
+<%= discussions_tree_for @replies %>
+<%= render 'discussions/reply' %>
