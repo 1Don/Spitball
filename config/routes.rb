@@ -46,5 +46,5 @@ Rails.application.routes.draw do
       resources :comments do 
         put "like", to: "comments#upvote"
       end   
-    end
+  end
 end
