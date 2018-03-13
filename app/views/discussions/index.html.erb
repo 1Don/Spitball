@@ -4,22 +4,14 @@
 <%= render "wads/sidebar" %>
 
 <% @discussions.each do |discussion| %>
-<<<<<<< HEAD
 	<%= link_to discussion_path(discussion) do %>
 		<ul class="wad">
 			<%= discussion.content %>
-=======
 	<% unless discussion.parent_id != nil %>
 	<%= link_to discussion_path(discussion) do %>
 		<ul class="wad">
 
 			<%= discussion.content %>
-
-<<<<<<< HEAD
->>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
-=======
->>>>>>> forum-tweaks
->>>>>>> forum
 		</ul>
 	<% end %>
 	<%= button_to like_discussion_path(discussion), method: :put do %>
@@ -27,14 +19,7 @@
 		 <%= discussion.get_upvotes.size %>
 	<% end %>
 <% end %>
-<<<<<<< HEAD
-=======
 <% end %>
-<<<<<<< HEAD
->>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
-=======
->>>>>>> forum-tweaks
->>>>>>> forum
 <%= will_paginate @discussions %>
 </div>
 </div>

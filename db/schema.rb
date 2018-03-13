@@ -43,14 +43,7 @@ ActiveRecord::Schema.define(version: 20180308192547) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
-<<<<<<< HEAD
-=======
     t.index ["user_id", "created_at"], name: "index_discussions_on_user_id_and_created_at"
-<<<<<<< HEAD
->>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
-=======
->>>>>>> forum-tweaks
->>>>>>> forum
     t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
