@@ -36,7 +36,11 @@ class DiscussionsController < ApplicationController
 		    redirect_to discussion_path (@discussion)
 =======
 		    redirect_to discussion_path (@discussion.parent)
+<<<<<<< HEAD
 >>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
+=======
+>>>>>>> forum-tweaks
+>>>>>>> forum
 	  	else
 	  		@error = @comment.errors.full_messages
 	    	render 'new'
@@ -56,7 +60,11 @@ class DiscussionsController < ApplicationController
 =======
 		@discussions = @discussion.children.all
 		@replies = @discussions.hash_tree
+<<<<<<< HEAD
 >>>>>>> bd9ffc3797c58417ac0ba03838420129cec64ecd
+=======
+>>>>>>> forum-tweaks
+>>>>>>> forum
 	end
 
 
