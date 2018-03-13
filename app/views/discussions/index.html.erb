@@ -4,12 +4,18 @@
 <%= render "wads/sidebar" %>
 
 <% @discussions.each do |discussion| %>
+<<<<<<< HEAD
 	<% unless discussion.parent_id != nil %>
 	<%= link_to discussion_path(discussion) do %>
 		<ul class="wad">
 
 			<%= discussion.content %>
 
+=======
+	<%= link_to discussion_path(discussion) do %>
+		<ul class="wad">
+			<%= discussion.content %>
+>>>>>>> 1c40530fde632e99bb81579daba400e7982c2167
 		</ul>
 	<% end %>
 	<%= button_to like_discussion_path(discussion), method: :put do %>
@@ -17,7 +23,10 @@
 		 <%= discussion.get_upvotes.size %>
 	<% end %>
 <% end %>
+<<<<<<< HEAD
 <% end %>
+=======
+>>>>>>> 1c40530fde632e99bb81579daba400e7982c2167
 <%= will_paginate @discussions %>
 </div>
 </div>
