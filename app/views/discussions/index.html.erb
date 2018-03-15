@@ -5,17 +5,26 @@
 
 <% @discussions.each do |discussion| %>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<%= link_to discussion_path(discussion) do %>
 		<ul class="wad">
 			<%= discussion.content %>
 =======
+=======
+	<%= link_to discussion_path(discussion) do %>
+		<ul class="wad">
+			<%= discussion.content %>
+>>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
 	<% unless discussion.parent_id != nil %>
 	<%= link_to discussion_path(discussion) do %>
 		<ul class="wad">
 
 			<%= discussion.content %>
+<<<<<<< HEAD
 
 >>>>>>> forum-tweaks
+=======
+>>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
 		</ul>
 	<% end %>
 	<%= button_to like_discussion_path(discussion), method: :put do %>
@@ -24,9 +33,13 @@
 	<% end %>
 <% end %>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <% end %>
 >>>>>>> forum-tweaks
+=======
+<% end %>
+>>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
 <%= will_paginate @discussions %>
 </div>
 </div>
