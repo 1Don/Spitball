@@ -7,12 +7,18 @@
 	<%= link_to discussion_path(discussion) do %>
 		<ul class="wad">
 			<%= discussion.content %>
+	<% unless discussion.parent_id != nil %>
+	<%= link_to discussion_path(discussion) do %>
+		<ul class="wad">
+
+			<%= discussion.content %>
 		</ul>
 	<% end %>
 	<%= button_to like_discussion_path(discussion), method: :put do %>
 		 Upvote
 		 <%= discussion.get_upvotes.size %>
 	<% end %>
+<% end %>
 <% end %>
 <%= will_paginate @discussions %>
 </div>
