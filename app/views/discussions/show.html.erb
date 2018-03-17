@@ -1,13 +1,12 @@
 <div class = "flex-rectangle">
-<ul class="wad">
+	<ul class="wad">
 
-		<%= @discussion.content %>
-		<%= button_to like_discussion_path(@discussion), method: :put do %>
-			 Upvote
-			 <%= @discussion.get_upvotes.size %>
-		<% end %>
-
-</ul>
+			<%= @discussion.content %>
+			<%= button_to like_discussion_path(@discussion), method: :put do %>
+				 Upvote
+				 <%= @discussion.get_upvotes.size %>
+			<% end %>
+	</ul>
 </div>
 
 <%= discussions_tree_for @replies %>
