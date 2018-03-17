@@ -1,6 +1,5 @@
 <%= discussion.content %>
-
 	<%= link_to like_discussion_path(discussion, discussion.id), method: :put do %>
 		  Upvote:
 		<% end %>
-	<%= discussion.get_upvotes.size %>
+	<%= discussion.get_upvotes.size %><br>

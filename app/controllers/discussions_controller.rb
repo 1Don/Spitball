@@ -32,7 +32,7 @@ class DiscussionsController < ApplicationController
 			@discussion.user_id = current_user.id
 	 	if @discussion.save
 		    flash[:success] = 'Your thread was successfully added!'
-		    if @discussion.parent_id = nil
+		    if @discussion.parent_id == nil
 		    	redirect_to discussion_path (@discussion)
 			else 
 				redirect_to discussion_path (@discussion.parent)
