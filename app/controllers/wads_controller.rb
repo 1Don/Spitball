@@ -36,8 +36,12 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	end
 
 	def destroy
-		@wad.destroy
-		redirect_to root_path
+		if current_user == @wad.user
+			@wad.destroy
+			redirect_to wads_path
+		else
+			flash[:error] = "YOU CANNOT DELETE OTHERS' WADS"
+		end
 	end
 
 	def upvote 

@@ -1,10 +1,19 @@
 Posted by <%= link_to user_path(@owner) do %>
-		<%= @wad.user.name %><br>
+				<%= @wad.user.name %><br>
 		  <% end %>
 Wad: <%= @wad.short_form %><br>
 Idea: <%= @wad.long_form %><br>
 Problem: <%= @wad.problem_state %><br>
-<%= link_to like_wad_path(@wad), method: :put do %>
-		 Upvote
-		 <%= @wad.get_upvotes.size %>
-<% end %>
+	<%= link_to like_wad_path(@wad), method: :put do %>
+			 Upvote
+			 <%= @wad.get_upvotes.size %>
+	<% end %>
+	<% if current_user.id == @wad.user.id %>
+		<%= link_to wad_path(@wad), method: :delete do %>
+			Delete
+		<% end %>
+	<% else %>
+		report
+	<% end %>
+
+
