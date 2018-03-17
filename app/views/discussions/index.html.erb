@@ -1,32 +1,27 @@
 <h1> Collabarate, Learn, Build </h1>
-<h2> Share your questions and thoughts with like-minded entrepreneurs </h2>
+<h2> Share your questions and thoughts with like-minded entrepreneurs
+	<ul class="forum-new-btn">
+		<%= button_to new_discussion_path, method: :get do %>
+			Join the Convo
+		<% end %>
+	</ul>
+</h2>
 
 <%= render "wads/sidebar" %>
 
 <% @discussions.each do |discussion| %>
-<<<<<<< HEAD
+
 	<% unless discussion.parent_id != nil %>
-	<%= link_to discussion_path(discussion) do %>
-		<ul class="wad">
+			<ul class="wad">
+				<%= discussion.content %>
+			</ul>
 
-			<%= discussion.content %>
-
-=======
-	<%= link_to discussion_path(discussion) do %>
-		<ul class="wad">
-			<%= discussion.content %>
->>>>>>> 1c40530fde632e99bb81579daba400e7982c2167
-		</ul>
-	<% end %>
-	<%= button_to like_discussion_path(discussion), method: :put do %>
-		 Upvote
-		 <%= discussion.get_upvotes.size %>
+		<%= button_to like_discussion_path(discussion), method: :put do %>
+			 Upvote
+			 <%= discussion.get_upvotes.size %>
+		<% end %>
 	<% end %>
 <% end %>
-<<<<<<< HEAD
-<% end %>
-=======
->>>>>>> 1c40530fde632e99bb81579daba400e7982c2167
+
 <%= will_paginate @discussions %>
-</div>
-</div>
+
