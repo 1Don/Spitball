@@ -2,10 +2,10 @@
 
 one:
   content: MyText
-  user: one
-  wad: one
+  wad_id: 1
+  user_id: 1
 
 two:
   content: MyText
-  user: two
-  wad: two
+  wad_id: 1
+  user_id: 1

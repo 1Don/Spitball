@@ -1,21 +1,17 @@
-<h1> Get Spitballing! </h1>
+<h1> Post a Wad now! </h1>
 
-    <%= form_for @wad, :html => { :multipart => true } do |f| %>
-      <%= f.label :category, "Please select the relevant category." %>
-      <%= f.select :category, ['', 'Music', 'Tech', 'Art'], class: 'dropDown-control' %>
+    <%= form_for @wad do |f| %>
 
-      <%= f.label :problem_statement, "What does your idea do? Where's the inspiration?" %>
-      <%= f.text_field :problem_statement, class: 'form-control' %>
-
-      <%= f.label :short_form, "Tell me a little something about it:" %>
+      <%= f.label :short_form, "Short Form" %>
       <%= f.text_field :short_form, class: 'form-control' %>
 
-      <%= f.label :long_form, "Now really think it out:" %>
-      <%= f.text_area :long_form, class: 'form-control' %>
+      <%= f.label :long_form, "Long Form" %>
+      <%= f.text_field :long_form, class: 'form-control' %>
 
-      <%= f.label :photo, "Any images?" %>
-      <%= f.file_field :photo, class: "form-control" %>
+      <%= f.label :problem_state, "Problem" %>
+      <%= f.text_field :problem_state, class: 'form-control' %>
 
-      <%= f.submit "Submit Wad", class: "btn-primary" %>
-  
+      <%= f.select :category, options_for_select(["Art", "B2B Saas", "Finance", "Hardware", "Small Business", "Consumer Tech", "Other"]) %>
+
+      <%= f.submit "Submit Wad", class: "btn btn-primary" %>
     <% end %>

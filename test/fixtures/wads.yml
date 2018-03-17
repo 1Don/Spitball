@@ -2,14 +2,14 @@
 
 one:
   user: one
-  category: MyString
-  problem_statement: MyString
-  short_form: MyString
+  short_form: MyText
   long_form: MyText
+  category: MyText
+  problem_state: MyText
 
 two:
   user: two
-  category: MyString
-  problem_statement: MyString
-  short_form: MyString
+  short_form: MyText
   long_form: MyText
+  category: MyText
+  problem_state: MyText

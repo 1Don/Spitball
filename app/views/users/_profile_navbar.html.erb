@@ -1,0 +1,8 @@
+<div class="profile-nav">
+	<ul class="profile-nav-links">
+		<!-- replace with appropriate ruby -->
+		<li class="profile-nav-links"><%= link_to "Wads", user_path(@user) %>: <%= @user.wads.count %></li>
+		<li class="profile-nav-links"><%= link_to "Comments",profile_comments_path %>: <%= @user.comments.count %></li>
+		<li class="profile-nav-links"><%= link_to "Mail",profile_mail_path %></li>
+	</ul>
+</div>

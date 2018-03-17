@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :user
+  acts_as_votable
+  acts_as_tree order: 'created_at DESC', dependent: :destroy
   belongs_to :wad
-  validates :content, presence: true
+  belongs_to :user
 end

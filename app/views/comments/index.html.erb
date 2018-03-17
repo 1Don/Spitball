@@ -1,34 +1,7 @@
+<%= render "wads/sidebar" %>
 <div class = "flex-rectangle">
-
-	Posted by <%= @wad.user.name %><br>
-	Wad: <%= @wad.short_form %><br>
-	Idea: <%= @wad.long_form %><br>
-	Problem: <%= @wad.problem_statement %><br>
-
+	<%= render 'wads/wad' %>
 </div>
-<div>
-<%= form_for([@wad, @wad.comments.create]) do |f| %>
+	<%= comments_tree_for @replies %>
+	<%= render 'comments/form' %>
 
-	<%= f.text_area :content %>
-	<%= f.submit %>
-
-<% end %>
-
- <% @comments.each do |comment| %>
-	<p> <%= comment.content %> </p>
-
-	<% if current_user == comment.user %>
-		<%= link_to "Delete", [comment.wad, comment], method: :delete %>
-		<%= link_to "Edit", edit_wad_comment_path(comment.wad, comment) %>
-	<% from_reply_form ||= nil %>
-		<% unless from_reply_form %>
-		  <% if comment.leaf? %>
-    <small class="text-muted">There are no replies yet - be the first one to reply!</small>
-    	  <% end %>
-	  	<p><%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %></p>
-		<% end %>
-	<% end %> 
-
-<% end %>
-
-</div>

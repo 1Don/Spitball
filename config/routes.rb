@@ -1,24 +1,50 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
-  get '/help',  to: 'static_pages#help'
-  get '/about',  to: 'static_pages#about'
-  get '/contact',  to: 'static_pages#contact'
   get 'sessions/new'
-  get 'static_pages/home'
-  get 'static_pages/about'
-  get 'static_pages/contact'
+
   get 'users/new'
-  get '/signup', to: 'users#new'
+
+  root   'static_pages#home'
+  get    '/help',    to: 'static_pages#help'
+  get    '/about',   to: 'static_pages#about'
+  get    '/contact', to: 'static_pages#contact'
+  get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users
+  get    '/industries', to: 'industries#index'
+  get    '/art',    to:  'industries#art'
+  get    '/b2bsaas',     to:  'industries#b2bsaas'
+  get    '/finance',     to:  'industries#finance'
+  get    '/manufacturing',     to:  'industries#manufacturing'
+  get    '/smallbusiness',     to:  'industries#smallbusiness'
+  get    '/consumertech',     to:  'industries#consumertech'
+  get    '/other',     to:  'industries#other'
+  get    '/forum',    to:   'discussions#index'
+
+
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
+
+#Defining routes for user profile navigation
+  get    '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments
+  get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
+
+  resources :discussions do
+    member do
+      put "like", to: "discussions#upvote"
+    end
+  end
+
+  resources :users 
   resources :wads do
-  	member do
-  		put 'like', to: 'wads#upvote'
-  	end
-  	resources :comments
-  		put 'like', to: 'comments#upvote'
+    member do
+        put "like", to: "wads#upvote"
+    end
+      resources :comments do 
+        put "like", to: "comments#upvote"
+      end   
   end
 end

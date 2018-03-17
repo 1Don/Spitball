@@ -1,5 +1,27 @@
-<h1><%= @user.name %></h1>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
+<%= render 'users/user_profile_header' %>
+<body class="user-profile">
+<div class="profile-info">
+	<h1 class="users-wads"> <%= @user.name %>'s Wads </h1>
+	<p><% @user.wads.each do |w| %></p>
+				<p class="profile-display-wads">
+				<%= w.category %>:<br>
+			<%= link_to wad_comments_path(w) do %>
+				<%= w.long_form %>
+			<% end %>
+						<div class="user-comments-like-btn">
+							<%= link_to wad_comments_path(w) do %>
+								Comment
+							<% end %>
+							<%= link_to like_wad_path(w), method: :put do %>
+								Likes: 	<%= w.get_upvotes.size %>
+							<% end %>
+						</div>
+	
+				</p>
+		    <% end %>		
+</div>
+	<div class="profile-nav-bar">
+		Navigation Bar<br>
+		<%= render 'users/profile_navbar' %>
+	</div>
+</body>
