@@ -1,46 +1,31 @@
 <h1> Collabarate, Learn, Build </h1>
-<h2> Share your questions and thoughts with like-minded entrepreneurs </h2>
+<h2> Share your questions and thoughts with like-minded entrepreneurs
+	<ul class="forum-new-btn">
+		<%= button_to new_discussion_path, method: :get do %>
+			Join the Convo
+		<% end %>
+	</ul>
+
+
+</h2>
 
 <%= render "wads/sidebar" %>
 
 <% @discussions.each do |discussion| %>
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<%= link_to discussion_path(discussion) do %>
-		<ul class="wad">
-			<%= discussion.content %>
-=======
-=======
-	<%= link_to discussion_path(discussion) do %>
-		<ul class="wad">
-			<%= discussion.content %>
->>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
 	<% unless discussion.parent_id != nil %>
-	<%= link_to discussion_path(discussion) do %>
-		<ul class="wad">
 
-			<%= discussion.content %>
-<<<<<<< HEAD
+		<%= link_to discussion_path(discussion) do %>
+			<ul class="wad">
 
->>>>>>> forum-tweaks
-=======
->>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
-		</ul>
-	<% end %>
-	<%= button_to like_discussion_path(discussion), method: :put do %>
-		 Upvote
-		 <%= discussion.get_upvotes.size %>
+				<%= discussion.content %>
+			</ul>
+		<% end %>
+	
+		<%= button_to like_discussion_path(discussion), method: :put do %>
+			 Upvote
+			 <%= discussion.get_upvotes.size %>
+		<% end %>
 	<% end %>
 <% end %>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<% end %>
->>>>>>> forum-tweaks
-=======
-<% end %>
->>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
 <%= will_paginate @discussions %>
-</div>
-</div>
-<% end %>
+

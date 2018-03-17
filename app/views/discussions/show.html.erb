@@ -1,13 +1,12 @@
 <div class = "flex-rectangle">
 <ul class="wad">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 		<%= @discussion.content %>
-=======
-	<%= @discussion.content %>
->>>>>>> forum-tweaks
-=======
->>>>>>> 723ae7c272a909cd01529f02eae66609c776876f
+		<%= button_to like_discussion_path(@discussion), method: :put do %>
+			 Upvote
+			 <%= @discussion.get_upvotes.size %>
+		<% end %>
+
 </ul>
 </div>
 
