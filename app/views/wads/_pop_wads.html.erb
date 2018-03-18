@@ -1,0 +1,15 @@
+<% @wads.each do |wad| %>
+	<%# Have to define arithmetically what "pop" is %>
+	<% if wad.get_upvotes.size ==1 %>
+	<%= link_to wad_comments_path(wad) do %>
+		<ul class="wad">
+			<%= image_tag wad.image.url(:thumb) %>
+			<%= wad.short_form %>
+		</ul>
+	<% end %>
+	<% end %>
+	<%= button_to like_wad_path(wad), method: :put do %>
+		 Upvote
+		 <%= wad.get_upvotes.size %>
+	<% end %>
+<% end %>

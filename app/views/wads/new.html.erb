@@ -1,6 +1,6 @@
 <h1> Post a Wad now! </h1>
 
-    <%= form_for @wad do |f| %>
+    <%= form_for @wad, html: { multipart: true } do |f| %>
 
       <%= f.label :short_form, "Short Form" %>
       <%= f.text_field :short_form, class: 'form-control' %>
@@ -12,6 +12,8 @@
       <%= f.text_field :problem_state, class: 'form-control' %>
 
       <%= f.select :category, options_for_select(["Art", "B2B Saas", "Finance", "Hardware", "Small Business", "Consumer Tech", "Other"]) %>
+
+      <%= f.file_field :image %>
 
       <%= f.submit "Submit Wad", class: "btn btn-primary" %>
     <% end %>
