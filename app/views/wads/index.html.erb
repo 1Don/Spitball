@@ -2,7 +2,6 @@
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
 <div class= "page">
-<h1> Wads </h1>
 <h2>
 	<%= button_to new_wad_path, method: :get do %>
 		<%= image_tag("new_wad_btn.png") %>
@@ -25,7 +24,6 @@
 	<div class="wad-index">
 		<%= render "all_wads" %>
 	</div>
-
 </p>
 
 <%= will_paginate @wads %>

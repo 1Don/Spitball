@@ -8,8 +8,19 @@
 		</ul>
 	<% end %>
 	<% end %>
-	<%= button_to like_wad_path(wad), method: :put do %>
-		 Upvote
-		 <%= wad.get_upvotes.size %>
-	<% end %>
+	<ul>
+		<li class="wad-icons">
+			<%= button_to like_wad_path(wad), method: :put do %>
+				 Upvote
+				 <%= wad.get_upvotes.size %>
+			<% end %>
+		</li>
+		<% if current_user == wad.user %>
+			<li class="wad-icons">
+				<%= link_to wad_path(wad), method: :delete do %>
+					Delete
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
 <% end %>

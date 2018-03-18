@@ -50,6 +50,9 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	  redirect_to @wad
 	end  
 
+	def report
+
+	end
 
 	private
 
