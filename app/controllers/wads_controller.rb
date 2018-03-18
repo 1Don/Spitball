@@ -54,7 +54,7 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	private
 
 	def wad_params
-		params.require(:wad).permit(:problem_state, :short_form, :long_form, :category)
+		params.require(:wad).permit(:problem_state, :short_form, :long_form, :category, :image)
 	end	
 
 
