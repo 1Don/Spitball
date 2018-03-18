@@ -8,12 +8,10 @@ Problem: <%= @wad.problem_state %><br>
 			 Upvote
 			 <%= @wad.get_upvotes.size %>
 	<% end %>
-	<% if current_user.id == @wad.user.id %>
+	<% if current_user == @wad.user %>
 		<%= link_to wad_path(@wad), method: :delete do %>
 			Delete
 		<% end %>
-	<% else %>
-		report
 	<% end %>
 
 
