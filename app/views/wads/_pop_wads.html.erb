@@ -4,6 +4,7 @@
 	<%= link_to wad_comments_path(wad) do %>
 		<ul class="wad">
 			<%= image_tag wad.image.url(:thumb) %>
+			<%= wad.problem_state %>
 			<%= wad.short_form %>
 		</ul>
 	<% end %>
