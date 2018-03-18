@@ -51,7 +51,6 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	end  
 
 	def report
-
 	end
 
 	private
