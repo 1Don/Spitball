@@ -1,0 +1,22 @@
+<% @discussions.each do |discussion| %>
+	<% unless discussion.parent_id != nil %>
+			<ul class="discussion">
+				<li class='discussion-font-name'>
+					<%= discussion.user.name %> says,<br>
+				</li>
+				<li class='discussion-font-content'>
+					<%= discussion.content %>. 
+					<%= link_to discussion_path(discussion) do %>
+						continue?
+					<% end %>
+				</li>
+				<li class="discussion-icons">
+					<%= button_to like_discussion_path(discussion), method: :put do %>
+						 Upvote
+					<%= discussion.get_upvotes.size %>
+				</li>
+			</ul>
+
+		<% end %>
+	<% end %>
+<% end %>
