@@ -1,17 +1,20 @@
-<h1> Post a Wad now! </h1>
+<h1> Post a Wad now! </h1><br>
 
-    <%= form_for @wad do |f| %>
-
-      <%= f.label :short_form, "Short Form" %>
-      <%= f.text_field :short_form, class: 'form-control' %>
-
-      <%= f.label :long_form, "Long Form" %>
-      <%= f.text_field :long_form, class: 'form-control' %>
-
-      <%= f.label :problem_state, "Problem" %>
-      <%= f.text_field :problem_state, class: 'form-control' %>
+    <%= form_for @wad, html: { multipart: true } do |f| %>
 
       <%= f.select :category, options_for_select(["Art", "B2B Saas", "Finance", "Hardware", "Small Business", "Consumer Tech", "Other"]) %>
+
+      <%= f.label :problem_state, "What are you trying to solve?" %>
+      <%= f.text_field :problem_state, class: 'form-control' %>
+
+      <%= f.label :short_form, "Describe your solution in about 10 words" %>
+      <%= f.text_field :short_form, class: 'form-control' %>
+
+      <%= f.label :long_form, "Now really think it out (max. 500 words)" %>
+      <%= f.text_field :long_form, class: 'form-control' %>
+      
+      <%= f.label :image, "Any images?" %>
+      <%= f.file_field :image %>
 
       <%= f.submit "Submit Wad", class: "btn btn-primary" %>
     <% end %>

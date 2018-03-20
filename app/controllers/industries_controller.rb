@@ -1,5 +1,8 @@
 class IndustriesController < ApplicationController
 before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
+def index
+	redirect_to wads_path
+end
 
 def art
 	@wads = Wad.where("category like ?", "%art%").paginate(page: params[:page], per_page: 20)
