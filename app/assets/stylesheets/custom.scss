@@ -243,7 +243,7 @@ input {
 /* wads and comments*/
 .flex-rectangle{
   margin-top:100px;
-    width: 1000px;
+    width: 800px;
      height: 100px;
     background: #EAEAEA;
     li {
@@ -336,13 +336,41 @@ input {
 }
 
 /* Discussion Index */
-
+.discussion-show-page-content {
+  float: right;
+  width: 750px;
+}
 .forum-new-btn {
   align: middle;
 }
+.discussion-feed {
+    height: 100%; /* 100% Full-height */
+    width: 10%;
+    position: fixed; /* Stay in place */
+    top: 50px; /* Stay at the top */
+    left: 0;
+    padding-top: 60px;
+    padding-left: 25px;
 
+}
 .discussion-font-name {
   font-family: 'Shrikhand', cursive;
+}
+.discussion-show {
+    list-style: none;
+    width: 400px;
+    height: 100px;
+    background: #EAEAEA;
+    list-style: none;
+    margin: 0;
+    border-bottom: solid;
+    ul li:after {
+    display: block;
+    height: 1px;
+    width: 40%;
+    border-style: solid;
+    background: #f00;  
+}
 }
 .discussion {
     list-style: none;
@@ -403,7 +431,11 @@ input {
   float: middle;
   align: left;
 }
+ /* sitewide styling */
 
+ .reply-form {
+  width: 800px;
+ }
 
 
 

@@ -1,14 +1,52 @@
-<div class = "flex-rectangle">
-	<ul class="wad">
+<div class="discussion-feed">
+<%# Needs to be replace with partial. I want to make a feed that contains top discussions going on%>
+	<% @all_discussions.each do |discussion| %>
+	<% unless discussion.parent_id != nil %>
+			<ul class="discussion-show">
+				<li class='discussion-font-name'>
+					<%= discussion.user.name %> says,<br>
+				</li>
+				<li class='discussion-font-content'>
+					<%= discussion.content %>. 
+					<%= link_to discussion_path(discussion) do %>
+						continue?
+					<% end %>
+				</li>
+				<li class="discussion-icons">
+					<%= button_to like_discussion_path(discussion), method: :put do %>
+						 Upvote
+					<%= discussion.get_upvotes.size %>
+				</li>
+				<li class="discussion-icons">
+					<button>
+						<%= link_to discussion_path(discussion) do %>
+							Comment
+						<% end %>
+					</button>
+				</li>
+			</ul>
 
-			<%= @discussion.content %>
-			<%= button_to like_discussion_path(@discussion), method: :put do %>
-				 Upvote
-				 <%= @discussion.get_upvotes.size %>
-			<% end %>
-	</ul>
-		
+		<% end %>
+	<% end %>
+<% end %>
+
 </div>
 
-<%= discussions_tree_for @replies %><br>
-<%= render 'discussions/reply' %>
+<div class="discussion-show-page-content">
+	<div class = "flex-rectangle">
+		<ul class="discussion">
+			<li>
+				<%= @discussion.content %>
+			</li>
+			<li class="discussion-icons">
+				<%= button_to like_discussion_path(@discussion), method: :put do %>
+					 Upvote
+					 <%= @discussion.get_upvotes.size %>
+				<% end %>
+			</li>
+		</ul>
+			
+	</div>
+	<%= discussions_tree_for @replies %>
+	<%= render 'discussions/reply' %>
+</div>
