@@ -1,27 +1,36 @@
 <%= render 'users/user_profile_header' %>
-<body class="user-profile">
-<div class="profile-info">
-	<h1 class="users-wads"> <%= @user.name %>'s Wads </h1>
-	<p><% @user.wads.each do |w| %></p>
-				<p class="profile-display-wads">
-				<%= w.category %>:<br>
-			<%= link_to wad_comments_path(w) do %>
-				<%= w.long_form %>
-			<% end %>
-						<div class="user-comments-like-btn">
-							<%= link_to wad_comments_path(w) do %>
-								Comment
-							<% end %>
-							<%= link_to like_wad_path(w), method: :put do %>
-								Likes: 	<%= w.get_upvotes.size %>
-							<% end %>
-						</div>
-	
-				</p>
-		    <% end %>		
+<div>
+	<%= render "discussions/sidebar" %>
 </div>
-	<div class="profile-nav-bar">
-		Navigation Bar<br>
-		<%= render 'users/profile_navbar' %>
-	</div>
-</body>
+
+<div class="profile-feed">
+	<p class="wad-index-font">
+<%= @user.name %>'s Wads
+	<div class="wad-index">
+<% @user.wads.each do |wad| %>
+	<%= link_to wad_comments_path(wad) do %>
+		<ul class="wad">
+			<li class="wad-content">
+				<%= image_tag wad.image.url(:thumb) %>
+				<%= wad.problem_state %><br>
+				<%= wad.short_form %>
+			</li>
+			<li class="wad-icons">
+					<%= button_to like_wad_path(wad), method: :put do %>
+						 Upvote
+						 <%= wad.get_upvotes.size %>
+					<% end %>
+			</li>
+			<li class="wad-icons">
+				<% if current_user == wad.user %>
+					<%= link_to wad_path(wad), method: :delete do %>
+						Delete
+					<% end %>
+				<% end %>
+			</li>
+		</ul>
+	<% end %>
+<% end %>
+</div>
+</p>
+</div>

@@ -164,7 +164,17 @@ footer {
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
-
+.sidenav-1 {
+    height: 100%; /* 100% Full-height */
+    width: 10%;
+  
+    top: 50px; /* Stay at the top */
+    left: 0;
+    background-color: #fff; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
 /* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -232,7 +242,14 @@ input {
   margin-left: 0;
 }
 /* Users index */
+.primary_sign_up {
+  width: 500px;
+}
 
+.secondary_sign_up {
+  float: right;
+  align: top;
+}
 .users {
   list-style: none;
   margin: 0;
@@ -242,7 +259,6 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
-
 /* wads and comments*/
 .flex-rectangle{
   margin-top:100px;
@@ -312,12 +328,35 @@ input {
 }
 
 /* User Profile */
-
+.profile-feed {
+    padding-top: 60px;
+    padding-left: 25px;
+    float: right;
+}
+.profile-wads {
+    list-style: none;
+    width: 800px;
+    height: 100px;
+    background: #EAEAEA;
+    list-style: none;
+    margin: 0;
+    border-bottom: solid;
+    ul li:after {
+    display: block;
+    height: 1px;
+    width: 40%;
+    border-style: solid;
+    background: #f00;
+}
+}
+.profile-icons {
+  float: right;
+}
 .profile-info {
   float: right;
   font-size: 15px;
 }
-.profile-display-wads {
+.profile-content {
   border-style: solid;
 }
 .profile-nav-links {
@@ -354,7 +393,6 @@ input {
     left: 0;
     padding-top: 60px;
     padding-left: 25px;
-
 }
 .discussion-font-name {
   font-family: 'Shrikhand', cursive;
@@ -456,7 +494,18 @@ input {
   width: 800px;
  }
 
+.wad-form {
+  width: 500px;
+}
 
+
+.wad-tips {
+  float: right;
+  width: 400px;
+  padding-right: 575px;
+}
+.tips-description {
+  float: right;
 }
 
 
