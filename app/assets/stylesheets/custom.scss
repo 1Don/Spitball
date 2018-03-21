@@ -81,7 +81,11 @@ p {
   height: 50%;
   padding-top: 9px;
 }
+<<<<<<< HEAD
 .nav-font {
+=======
+.navbar-font {
+>>>>>>> bcaa7cbc4916ccb71738fcdc0f354a221e6bb6ba
   font-family: 'Raleway', sans-serif;
 }
 .navbar-custom{
@@ -245,7 +249,7 @@ input {
 /* wads and comments*/
 .flex-rectangle{
   margin-top:100px;
-    width: 1000px;
+    width: 800px;
      height: 100px;
     background: #EAEAEA;
     li {
@@ -257,17 +261,17 @@ input {
 
 .wad {
     list-style: none;
-    border-bottom: 1px solid rgba(0,0,0,.1);
     width: 800px;
     height: 100px;
     background: #EAEAEA;
     list-style: none;
     margin: 0;
+    border-bottom: solid;
     ul li:after {
     display: block;
     height: 1px;
     width: 40%;
-    border-style: solid;
+
     background: #f00;
 }
 
@@ -338,26 +342,98 @@ input {
 }
 
 /* Discussion Index */
-
+.discussion-show-page-content {
+  float: right;
+  width: 750px;
+}
 .forum-new-btn {
   align: middle;
 }
+.discussion-feed {
+    height: 100%; /* 100% Full-height */
+    width: 10%;
+    position: fixed; /* Stay in place */
+    top: 50px; /* Stay at the top */
+    left: 0;
+    padding-top: 60px;
+    padding-left: 25px;
+
+}
+.discussion-font-name {
+  font-family: 'Shrikhand', cursive;
+}
+.discussion-show {
+    list-style: none;
+    width: 400px;
+    height: 100px;
+    background: #EAEAEA;
+    list-style: none;
+    margin: 0;
+    border-bottom: solid;
+    ul li:after {
+    display: block;
+    height: 1px;
+    width: 40%;
+    border-style: solid;
+    background: #f00;  
+}
+}
+.discussion {
+    list-style: none;
+    width: 800px;
+    height: 100px;
+    background: #EAEAEA;
+    list-style: none;
+    margin: 0;
+    border-bottom: solid;
+    ul li:after {
+    display: block;
+    height: 1px;
+    width: 40%;
+    border-style: solid;
+    background: #f00;
+
+}
+}
+.discussions-index-font {
+  font-family: 'Shrikhand', cursive;
+}
+.discussions-index {
+  border-stlye: solid;
+}
+.discussion-icons {
+  float: right;
+}
+.discussion-font-content {
+  font-size: 10px;
+  font-family: 'Shrikhand', cursive;
+ /* font-family: 'Bree Serif', serif; */
+}
+
+/* JS classes */
+
+.hide-content {
+  background: transparent url('../img/page-background.jpg') no-repeat top center fixed;  
+  background-size: cover;
+  }
 
 /* Wads Index */
 .wad-index {
   border-style: solid;
+  width: 806px;
 }
-
 .wad-index-font {
   border-style: solid;
   font-family: 'Josefin Sans', sans-serif;
   border-width: 1px;
+  width: 806px;
 }
 
 .wad-icons {
   float: right;
   list-style-type: none;
 }
+<<<<<<< HEAD
 .wad-form {
   width: 600px;
 }
@@ -372,6 +448,17 @@ input {
 
 .tips-font {
   font-size: 30px;
+=======
+.wad-content {
+  float: middle;
+  align: left;
+}
+ /* sitewide styling */
+
+ .reply-form {
+  width: 800px;
+ }
+>>>>>>> bcaa7cbc4916ccb71738fcdc0f354a221e6bb6ba
 
 }
 

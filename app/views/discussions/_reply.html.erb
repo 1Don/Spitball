@@ -1,8 +1,9 @@
-<%= form_for @discussion.children.build do |f| %>
-<%= f.hidden_field :parent_id %>
-<%= f.text_area :content %>
+<div class="reply-form">
+	<%= form_for @discussion.children.build do |f| %>
+	<%= f.hidden_field :parent_id %>
+	<%= f.text_area :content %>
 
-<%= f.submit "Add to the discussion" %>
+	<%= f.submit "Add to the discussion" %>
 
-
-<% end %>
+	<% end %>
+</div>
