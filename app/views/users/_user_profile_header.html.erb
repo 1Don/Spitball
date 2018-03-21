@@ -9,7 +9,7 @@
 <br>
       <h1>
       	<div class="profile-info">
-	        <%= gravatar_for @user %>
+	        <%= image_tag @user.photo.url(:thumb) %>
 	        <%= @user.name %>,
 	        <%= @user.email %>
           Entreprenuer
