@@ -81,7 +81,9 @@ p {
   height: 50%;
   padding-top: 9px;
 }
-
+.nav-font {
+  font-family: 'Raleway', sans-serif;
+}
 .navbar-custom{
     top:0;
     height: 50px;
@@ -356,12 +358,22 @@ input {
   float: right;
   list-style-type: none;
 }
+.wad-form {
+  width: 600px;
+}
+.wad-tips {
+  float: right;
+  align: top;
+}
 
+.tips-video {
+  width: 500px;
+}
 
+.tips-font {
+  font-size: 30px;
 
-
-
-
+}
 
 
 
