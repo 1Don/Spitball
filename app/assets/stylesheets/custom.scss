@@ -271,7 +271,17 @@ input {
    margin: 0 0 3px 0;
     }
     }
-
+.flex-rectangle-1 {
+  margin-top:100px;
+    width: 600px;
+     height: 100px;
+    background: #EAEAEA;
+    li {
+    overflow: auto;
+    padding: 10px 0;
+   margin: 0 0 3px 0;
+    }
+    }
 .wad {
     list-style: none;
     width: 800px;
@@ -483,7 +493,7 @@ input {
 
 .tips-font {
   font-size: 30px;
-
+}
 .wad-content {
   float: middle;
   align: left;
@@ -497,8 +507,9 @@ input {
 .wad-form {
   width: 500px;
 }
-
-
+.wad-image {
+  float: right;
+}
 .wad-tips {
   float: right;
   width: 400px;
@@ -507,6 +518,24 @@ input {
 .tips-description {
   float: right;
 }
+.wad-comments {
+  padding-top: 100px;
+  padding-right: 100px;
+  float: right;
+  width: 400px;
+}
+.wad-comment-form {
+  width: 600px;
+}
+.comment-display {
+  list-style: none;
+  border-bottom: solid;
+}
+.comment-icons {
+  font-size: 10px;
+  float: right;
+}
+
 
 
 

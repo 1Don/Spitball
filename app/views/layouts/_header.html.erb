@@ -10,6 +10,7 @@
         </li>
         <% if logged_in? %>
 
+          <li class="navbar-font"><%= link_to "Forum", discussions_path %></li>
           <li class="navbar-font"><%= link_to "Creators", users_path %></li>
           <li class="dropdown">
             <a href="#" class="navbar-font" data-toggle="dropdown">

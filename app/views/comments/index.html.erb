@@ -1,7 +1,12 @@
-<%= render "wads/sidebar" %>
-<div class = "flex-rectangle">
-	<%= render 'wads/wad' %>
-</div>
+<div class="wad-comments">
 	<%= comments_tree_for @replies %>
-<%= render 'comments/form' %>
-
+</div>
+<div class="flex-rectangle-1">
+	<%= render 'wads/wad' %>
+</div><br>
+<div class="wad-comment-form">
+	<%= render 'comments/form' %>
+</div>
+<div>
+	Other Related Projects
+</div>

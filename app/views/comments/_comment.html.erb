@@ -1,10 +1,14 @@
-<p> <%= comment.content %> </p>
-<%= link_to wad_comment_like_path(comment, comment.id), method: :put do %>
-	  Upvote:
-	<% end %>
-	  <%= comment.get_upvotes.size %>
-	<% if current_user == comment.user %>
-		<%= link_to "Delete", [comment.wad , comment], method: :delete %>
-		<%= link_to "Edit", edit_wad_comment_path(comment.wad, comment) %>
-	<% end %>
-<%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %>
+<ul class="comment-display"> 
+	<%= comment.content %> 
+		<% if current_user == comment.user %>
+		<li class="comment-icons">
+			<%= link_to "Delete", [comment.wad , comment], method: :delete %>
+		</li>
+		<li class="comment-icons">
+			<%= link_to "Edit", edit_wad_comment_path(comment.wad, comment) %>
+		</li>
+		<% end %>
+		<li class="comment-icons">
+			<%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %>
+		</li>
+</ul>
