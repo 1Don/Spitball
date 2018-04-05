@@ -13,6 +13,6 @@ class Wad < ApplicationRecord
 
 #Search Functionality
   def self.search(search)
-    where("category LIKE ? OR problem_state LIKE ? OR short_form LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+    where("short_form LIKE ?", "%#{search}%") 
   end
 end
