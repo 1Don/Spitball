@@ -2,6 +2,13 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
   <div class="container">
     <%= link_to image_tag("logoblack.png"), root_path, id: "logo" %>
+    <div>
+      <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+        <%= submit_tag "Search", :name => nil %>
+      <% end %>
+    </div>
+
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to wads_path do %>

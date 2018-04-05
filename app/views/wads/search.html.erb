@@ -1,0 +1,10 @@
+<% if @recipes.blank? %>
+  <h4>There are no recipes containing the term <%= params[:search] %>.</h4>
+<% end %>
+<ul>
+	<li>
+		<%= @wads.each do | w | %>
+			<%= w.short_form %>
+		<% end %>
+	</li>
+</ul>
