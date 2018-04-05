@@ -30,7 +30,6 @@ Rails.application.routes.draw do
       put "like", to: "discussions#upvote"
     end
   end
-
   get    '/forum',    to:   'discussions#index'
 
 
@@ -39,7 +38,8 @@ Rails.application.routes.draw do
     get    '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments
     get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
 
-
+#Defining routes for search navigation
+    get    '/search', to: 'wads#search'
 
   resources :users 
   resources :wads do

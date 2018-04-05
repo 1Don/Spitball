@@ -4,7 +4,15 @@
     <%= link_to image_tag("logo2black.png"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li ><%= link_to wads_path do %>
+      <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+        <li class="search-bar-div">
+              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+        </li>
+        <li class="search-bar-div">
+              <%= submit_tag "Search", :name => nil %>
+        </li>
+      <% end %>
+        <li><%= link_to wads_path do %>
                 <%=image_tag("wad_icon.png") %>
             <% end %>
         </li>
