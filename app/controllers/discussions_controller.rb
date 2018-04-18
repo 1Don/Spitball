@@ -15,6 +15,8 @@ class DiscussionsController < ApplicationController
 	end
 
 	def destroy
+		unless current_user != nil
+		end
 	end
 
 	def update
@@ -60,10 +62,12 @@ class DiscussionsController < ApplicationController
 	end
 
 	def show
-		@all_discussions = Discussion.all
-		@discussion = Discussion.find(params[:id])
-		@discussions = @discussion.children.all
-		@replies = @discussions.hash_tree
+		unless current_user != nil
+			@all_discussions = Discussion.all
+			@discussion = Discussion.find(params[:id])
+			@discussions = @discussion.children.all
+			@replies = @discussions.hash_tree
+		end
 	end
 
 
