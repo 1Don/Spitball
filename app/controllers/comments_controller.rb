@@ -25,14 +25,19 @@ class CommentsController < ApplicationController
 	end
 
 	def index
-		@comments = @wad.comments.all
-		@comment = @wad.comments.where(params[:id])
-		@replies = @comments.hash_tree
+		unless current_user != nil
+			@comments = @wad.comments.all
+			@comment = @wad.comments.where(params[:id])
+			@replies = @comments.hash_tree
+		end
 	end
 
 
 	def new
-		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
+		unless current_user != nil
+			@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
+		end
+		redirect_to root_path
 	end
 
 	def show
@@ -41,27 +46,39 @@ class CommentsController < ApplicationController
 
 
 	def edit
-		@comment = Comment.find(params[:id])
+		unless current_user != nil
+			@comment = Comment.find(params[:id])
+		end
+		redirect_to root_path
 	end
 
 	def update
-		if @comment.update(params[:comment].permit(:content, :id))
-			redirect_to wad_path(@wad)
-		else
-			render 'edit'
+		unless current_user == @comment.user
+			if @comment.update(params[:comment].permit(:content, :id))
+				redirect_to wad_path(@wad)
+			else
+				render 'edit'
+			end
 		end
+		redirect_to wad_path(@wad)
 	end
 
 	def destroy
-		@comment.destroy
+		unless current_user == @comment.user
+			@comment.destroy
+			redirect_to @wad
+		end
 		redirect_to @wad
 	end
 
 	def upvote
-		@comment = Comment.find(params[:wad_id])
-		@wad = @comment.wad
-		@comment.upvote_by current_user
-		redirect_to wad_path(@wad)
+		unless current_user != nil
+			@comment = Comment.find(params[:wad_id])
+			@wad = @comment.wad
+			@comment.upvote_by current_user
+			redirect_to wad_path(@wad)
+		end
+		redirect_to @wad
 	end
 
 
@@ -76,7 +93,6 @@ private
 		unless current_user.id == @comment.user_id
 			flash[:notice] = "Action Restricted"
 			redirect_to @wad
-
 		end
 	end
 
