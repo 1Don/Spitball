@@ -1,8 +1,11 @@
 class WadsController < ApplicationController
 before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
-	def index
-		@wads = Wad.all.paginate(page: params[:page], per_page: 20)
+	def index 
+		unless current_user != nil
+		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
+		 end 
+			redirect_to root_path
 	end
 
 	def show
@@ -24,30 +27,39 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	end
 
 	def edit
+		unless current_user != nil
+		end
+		redirect_to root_path
 	end
 
 	def update
-		if @wad.update
-			redirect_to @wad
-		else
-			flash[]
-			render 'edit'
+		unless current_user != nil
+			if @wad.update
+				redirect_to @wad
+			else
+				flash[]
+				render 'edit'
+			end
 		end
 	end
 
 	def destroy
-		if current_user == @wad.user
-			@wad.destroy
-			redirect_to wads_path
-		else
-			flash[:error] = "YOU CANNOT DELETE OTHERS' WADS"
+		unless current_user != nil
+			if current_user == @wad.user
+				@wad.destroy
+				redirect_to wads_path
+			else
+				flash[:error] = "YOU CANNOT DELETE OTHERS' WADS"
+			end
 		end
 	end
 
 	def upvote 
-	  @wad = Wad.find(params[:id])
-	  @wad.upvote_by current_user
-	  redirect_to @wad
+		unless current_user != nil
+		  @wad = Wad.find(params[:id])
+		  @wad.upvote_by current_user
+		  redirect_to @wad
+		 end
 	end  
 
 	def report
