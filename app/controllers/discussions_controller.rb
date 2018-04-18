@@ -1,11 +1,17 @@
 class DiscussionsController < ApplicationController
 
 	def index
-		@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
+		unless current_user != nil
+			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
+		end
+		redirect_to root_path
 	end
 
 	def new 
-		@discussion = Discussion.new
+		unless current_user != nil
+			@discussion = Discussion.new
+		end
+		redirect_to root_path
 	end
 
 	def destroy
