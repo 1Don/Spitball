@@ -1,10 +1,11 @@
 class DiscussionsController < ApplicationController
+	layout 'wad', only: [:index]
 
 	def index
 		@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
 	end
 
-	def new 
+	def new
 		@discussion = Discussion.new
 	end
 
@@ -36,7 +37,7 @@ class DiscussionsController < ApplicationController
 		    if @discussion.parent_id == nil
 
 		    	redirect_to discussion_path (@discussion)
-			else 
+			else
 				redirect_to discussion_path (@discussion.parent)
 			end
 
@@ -65,7 +66,7 @@ private
 
 	def discussion_params
 		params.require(:discussion).permit(:content)
-	end	
+	end
 
 
 end

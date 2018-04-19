@@ -1,0 +1,20 @@
+<div class="card mb-3">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-3">
+				<%= image_tag @wad.image.url(:medium), class: 'img-fluid' %>
+			</div>
+
+			<div class="col-6">
+				<h5><%= @wad.problem_state %></h5>
+				<%= @wad.long_form %><br>
+			</div>
+
+			<%= render 'wads/actions', wad: @wad %>
+		</div>
+	</div>
+
+	<div class="card-body text-right">
+		<%= link_to @wad.user.name, user_path(@owner) %>
+	</div>
+</div>

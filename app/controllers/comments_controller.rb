@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	layout 'wad', only: [:index]
 	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
@@ -33,7 +34,7 @@ class CommentsController < ApplicationController
 	def new
 		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 	end
-		
+
 	def show
 		@comment = @comments.find_by(params[:id])
 	end
@@ -56,12 +57,12 @@ class CommentsController < ApplicationController
 		redirect_to @wad
 	end
 
-	def upvote 
+	def upvote
 		@comment = Comment.find(params[:wad_id])
 		@wad = @comment.wad
 		@comment.upvote_by current_user
 		redirect_to wad_path(@wad)
-	end 
+	end
 
 
 private

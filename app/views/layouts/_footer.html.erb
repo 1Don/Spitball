@@ -1,14 +1,11 @@
-<footer class="footer">
-  <small>
-    Spitball 2018
-  </small>
-  <nav>
-    <ul>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <%= link_to "Spitball #{Date.today.year}", root_url, class: 'navbar-brand' %>
 
-      <li class="navbar-font"><%= link_to "About",   about_path %></li>
-      <li class="navbar-font"><%= link_to "Help", help_path %></li>
-      <li class="navbar-font"><%= link_to "Contact", contact_path %></li>
-
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right ml-auto">
+      <li class="navbar-item"><%= link_to "About",   about_path, class: 'nav-link' %></li>
+      <li class="navbar-item"><%= link_to "Help", help_path, class: 'nav-link' %></li>
+      <li class="navbar-item"><%= link_to "Contact", contact_path, class: 'nav-link' %></li>
     </ul>
-  </nav>
-</footer>
+  </div>
+</nav>

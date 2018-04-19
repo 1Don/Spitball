@@ -1,8 +1,14 @@
-<h1> Start a discussion thread! </h1>
-<br><br>
+<div class="row">
+  <div class="col-6 mx-auto">
+    <h1> Start a discussion thread! </h1>
 
-<%= form_for @discussion do |f| %>
-<%= f.text_area :content %>
-<%= f.submit %>
+    <%= form_for @discussion do |f| %>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
 
-<% end %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
