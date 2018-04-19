@@ -51,11 +51,11 @@ class WadsController < ApplicationController
 	end
 
 #Voting Functionality
-	def upvote
+	def upvote 
 		unless current_user != nil
-		  @wad = Wad.find(params[:id])
-		  @wad.upvote_by current_user
-		  redirect_to @wad
+			@wad = Wad.find(params[:id])
+			@wad.upvote_by current_user
+			redirect_to @wad
 		 end
 	end
 	def report
