@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	layout 'wad', only: [:index]
 	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
 		end
 		redirect_to root_path
 	end
-		
+
 	def show
 		@comment = @comments.find_by(params[:id])
 	end
@@ -78,7 +79,8 @@ class CommentsController < ApplicationController
 			redirect_to wad_path(@wad)
 		end
 		redirect_to @wad
-	end 
+
+	end
 
 
 private

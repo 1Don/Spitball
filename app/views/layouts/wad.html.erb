@@ -1,0 +1,11 @@
+<% content_for :sub_layout do %>
+  <div class="row mt-4">
+  	<div class="col-3">
+  		<%= render "wads/sidebar" %>
+  	</div>
+
+    <%= yield %>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

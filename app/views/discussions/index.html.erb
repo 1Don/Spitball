@@ -1,18 +1,15 @@
-<h1> Collaborate, Learn, Build </h1>
-<h2> Share your questions and thoughts with like-minded entrepreneurs
-	<ul class="forum-new-btn">
-		<%= button_to new_discussion_path, method: :get do %>
-			Join the Convo
-		<% end %>
-	</ul>
-</h2>
-<%# Move to appropriate folder %>
-<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
-<%= render "wads/sidebar" %>
-<p class="discussions-index-font">
-	<div class="discussions-index">
-		<%= render 'discussions/all_discussions' %>
+<div class="col-9">
+	<h1> Collaborate, Learn, Build </h1>
+	<h2> Share your questions and thoughts with like-minded entrepreneurs</h2>
+
+	<%= link_to 'Join the Convo', new_discussion_path, class: 'btn btn-primary' %>
+
+
+	<div class="card">
+		<div class="list-group">
+			<%= render 'discussions/all_discussions' %>
+		</div>
 	</div>
-</p>
-<%= will_paginate @discussions %>
+
+	<%= will_paginate @discussions %>
+</div>

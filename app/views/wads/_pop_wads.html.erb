@@ -1,36 +1,6 @@
 <% @wads.each do |wad| %>
 	<%# Have to define arithmetically what "pop" is %>
 	<% if wad.get_upvotes.size ==1 %>
-		<ul class="wad">
-			<li class="wad-content">
-				<%= image_tag wad.image.url(:thumb) %>
-				<%= wad.problem_state %>: <br>
-				<%= wad.short_form %>
-			</li>
-
-			<li class="wad-icons">
-				<%= button_to like_wad_path(wad), method: :put do %>
-					 Upvote
-					 <%= wad.get_upvotes.size %>
-				<% end %>
-			</li>
-
-			<li class="wad-icons">
-			<% if current_user == wad.user %>
-				<%= button_to wad_path(wad), method: :delete do %>
-					Delete
-				<% end %>
-			<% end %>
-			</li>
-
-			<li class="wad-icons">
-				<button>
-					<%= link_to wad_comments_path(wad) do %>
-						Comment
-					<% end %>
-				</button>
-			</li>
-
-		</ul>
+		<%= render wad %>
 	<% end %>
 <% end %>

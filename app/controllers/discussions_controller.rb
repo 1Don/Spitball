@@ -1,14 +1,24 @@
 class DiscussionsController < ApplicationController
+	layout 'wad', only: [:index]
 
 	def index
-		@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
+		unless current_user != nil
+			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
+		end
+		redirect_to root_path
 	end
 
-	def new 
-		@discussion = Discussion.new
+
+	def new
+		unless current_user != nil
+			@discussion = Discussion.new
+		end
+		redirect_to root_path
 	end
 
 	def destroy
+		unless current_user != nil
+		end
 	end
 
 	def update
@@ -36,7 +46,7 @@ class DiscussionsController < ApplicationController
 		    if @discussion.parent_id == nil
 
 		    	redirect_to discussion_path (@discussion)
-			else 
+			else
 				redirect_to discussion_path (@discussion.parent)
 			end
 
@@ -54,10 +64,12 @@ class DiscussionsController < ApplicationController
 	end
 
 	def show
-		@all_discussions = Discussion.all
-		@discussion = Discussion.find(params[:id])
-		@discussions = @discussion.children.all
-		@replies = @discussions.hash_tree
+		unless current_user != nil
+			@all_discussions = Discussion.all
+			@discussion = Discussion.find(params[:id])
+			@discussions = @discussion.children.all
+			@replies = @discussions.hash_tree
+		end
 	end
 
 
@@ -65,7 +77,7 @@ private
 
 	def discussion_params
 		params.require(:discussion).permit(:content)
-	end	
+	end
 
 
 end
