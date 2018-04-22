@@ -8,6 +8,7 @@ class DiscussionsController < ApplicationController
 		redirect_to root_path
 	end
 
+
 	def new
 		unless current_user != nil
 			@discussion = Discussion.new

@@ -71,7 +71,7 @@ class CommentsController < ApplicationController
 		redirect_to @wad
 	end
 
-	def upvote
+	def upvote 
 		unless current_user != nil
 			@comment = Comment.find(params[:wad_id])
 			@wad = @comment.wad
@@ -79,6 +79,7 @@ class CommentsController < ApplicationController
 			redirect_to wad_path(@wad)
 		end
 		redirect_to @wad
+
 	end
 
 

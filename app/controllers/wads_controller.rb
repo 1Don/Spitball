@@ -3,12 +3,13 @@ class WadsController < ApplicationController
 
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
+
 	def index
 		unless current_user != nil
 		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
 		 end
 		 redirect_to root_path
-	end
+  end
 	def show
 		redirect_to wad_comments_path(@wad)
 	end
@@ -58,6 +59,7 @@ class WadsController < ApplicationController
 			redirect_to @wad
 		 end
 	end
+
 	def report
 	end
 
