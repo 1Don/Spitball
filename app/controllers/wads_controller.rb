@@ -1,13 +1,15 @@
 class WadsController < ApplicationController
-before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
+	layout 'wad', only: [:index]
+
+	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
 
-	def index 
+	def index
 		unless current_user != nil
 		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
-		 end 
-			redirect_to root_path
-	end
+		 end
+		 redirect_to root_path
+  end
 	def show
 		redirect_to wad_comments_path(@wad)
 	end
@@ -16,7 +18,7 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	end
 	def create
 		@wad = current_user.wads.build(wad_params)
-		if @wad.save	
+		if @wad.save
 			redirect_to @wad
 		else
 			flash[:error] = 'Error try again'
@@ -52,11 +54,12 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 #Voting Functionality
 	def upvote 
 		unless current_user != nil
-		  @wad = Wad.find(params[:id])
-		  @wad.upvote_by current_user
-		  redirect_to @wad
+			@wad = Wad.find(params[:id])
+			@wad.upvote_by current_user
+			redirect_to @wad
 		 end
-	end  
+	end
+
 	def report
 	end
 
@@ -76,7 +79,7 @@ before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
 	def wad_params
 		params.require(:wad).permit(:problem_state, :short_form, :long_form, :category, :image)
-	end	
+	end
 
 
 end

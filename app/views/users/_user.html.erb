@@ -1,8 +1,18 @@
-<li>
-  <%= image_tag user.photo.url(:thumb) %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+<div class="list-group">
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag user.photo.url(:thumb), class: 'img-fluid' %>
+    </div>
+
+    <div class="col-9">
+      <p><%= link_to user.name, user %></p>
+
+      <p class="text-right">
+        <% if current_user.admin? && !current_user?(user) %>
+          | <%= link_to "delete", user, method: :delete,
+                                        data: { confirm: "You sure?" } %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="col-3 flex-column justify-content-end">
+  <div class="text-center">
+    <h3><%= wad.get_upvotes.size %></h3>
+    <%= link_to 'Upvote', like_wad_path(wad), method: :put %>
+  </div>
+
+  <div class="text-center">
+    <% if current_user == wad.user %>
+      <%= link_to 'Delete', wad_path(wad), method: :delete%>
+    <% end %>
+  </div>
+</div>

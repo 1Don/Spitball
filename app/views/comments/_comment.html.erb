@@ -1,14 +1,14 @@
-<ul class="comment-display"> 
-	<%= comment.content %> 
+<div class="row">
+	<div class="col-12">
+		<h5><%= image_tag comment.user.photo(:thumb) %> <%= comment.user.name %></h5>
+		<p><%= comment.content %></p>
+	</div>
+
+	<div class="col-12 text-right">
+		<%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %>
 		<% if current_user == comment.user %>
-		<li class="comment-icons">
-			<%= link_to "Delete", [comment.wad , comment], method: :delete %>
-		</li>
-		<li class="comment-icons">
 			<%= link_to "Edit", edit_wad_comment_path(comment.wad, comment) %>
-		</li>
+			<%= link_to "Delete", [comment.wad , comment], method: :delete %>
 		<% end %>
-		<li class="comment-icons">
-			<%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %>
-		</li>
-</ul>
+	</div>
+</div>

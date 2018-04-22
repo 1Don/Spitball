@@ -1,0 +1,15 @@
+.static_pages.home {
+  #header {
+    background-color: transparent;
+
+    .nav-item,
+    .nav-item .nav-link {
+      color: white;
+    }
+  }
+}
+
+#header {
+  z-index: 1;
+  background-color: #d2e2ea;
+}

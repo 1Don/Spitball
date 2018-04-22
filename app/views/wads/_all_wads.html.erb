@@ -1,24 +1,3 @@
 <% @wads.each do |wad| %>
-	<%= link_to wad_comments_path(wad) do %>
-		<ul class="wad">
-			<li class="wad-content">
-				<%= image_tag wad.image.url(:thumb) %>
-				<%= wad.problem_state %><br>
-				<%= wad.short_form %>
-			</li>
-			<li class="wad-icons">
-					<%= button_to like_wad_path(wad), method: :put do %>
-						 Upvote
-						 <%= wad.get_upvotes.size %>
-					<% end %>
-			</li>
-			<li class="wad-icons">
-				<% if current_user == wad.user %>
-					<%= link_to wad_path(wad), method: :delete do %>
-						Delete
-					<% end %>
-				<% end %>
-			</li>
-		</ul>
-	<% end %>
+	<%= render wad %>
 <% end %>
