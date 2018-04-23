@@ -2,7 +2,7 @@ class DiscussionsController < ApplicationController
 	layout 'wad', only: [:index]
 
 	def index
-		unless current_user != nil
+		if current_user != nil
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
 		end
 		redirect_to root_path
@@ -10,14 +10,14 @@ class DiscussionsController < ApplicationController
 
 
 	def new
-		unless current_user != nil
+		if current_user != nil
 			@discussion = Discussion.new
 		end
 		redirect_to root_path
 	end
 
 	def destroy
-		unless current_user != nil
+		if current_user != nil
 		end
 	end
 
@@ -64,7 +64,7 @@ class DiscussionsController < ApplicationController
 	end
 
 	def show
-		unless current_user != nil
+		if current_user != nil
 			@all_discussions = Discussion.all
 			@discussion = Discussion.find(params[:id])
 			@discussions = @discussion.children.all

@@ -25,16 +25,14 @@ class CommentsController < ApplicationController
 	end
 
 	def index
-		unless current_user != nil
 			@comments = @wad.comments.all
 			@comment = @wad.comments.where(params[:id])
 			@replies = @comments.hash_tree
-		end
 	end
 
 
 	def new
-		unless current_user != nil
+		if current_user != nil
 			@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 		end
 		redirect_to root_path
@@ -46,7 +44,7 @@ class CommentsController < ApplicationController
 
 
 	def edit
-		unless current_user != nil
+		if current_user != nil
 			@comment = Comment.find(params[:id])
 		end
 		redirect_to root_path

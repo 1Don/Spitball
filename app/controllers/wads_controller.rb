@@ -5,11 +5,13 @@ class WadsController < ApplicationController
 
 
 	def index
-		unless current_user != nil
+		if current_user != nil
 		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
+		 else
+		 	redirect_to root_path
 		 end
-		 redirect_to root_path
   end
+
 	def show
 		redirect_to wad_comments_path(@wad)
 	end
@@ -26,12 +28,12 @@ class WadsController < ApplicationController
 		end
 	end
 	def edit
-		unless current_user != nil
+		if current_user != nil
 		end
 		redirect_to root_path
 	end
 	def update
-		unless current_user != nil
+		if current_user != nil
 			if @wad.update
 				redirect_to @wad
 			else
@@ -41,7 +43,7 @@ class WadsController < ApplicationController
 		end
 	end
 	def destroy
-		unless current_user != nil
+		if current_user != nil
 			if current_user == @wad.user
 				@wad.destroy
 				redirect_to wads_path
@@ -53,11 +55,13 @@ class WadsController < ApplicationController
 
 #Voting Functionality
 	def upvote 
-		unless current_user != nil
+		if current_user != nil
 			@wad = Wad.find(params[:id])
 			@wad.upvote_by current_user
 			redirect_to @wad
 		 end
+		else
+			redirect_to root_path
 	end
 
 	def report
