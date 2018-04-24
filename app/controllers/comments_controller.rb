@@ -7,27 +7,26 @@ class CommentsController < ApplicationController
 
 	def create
 		if params[:comment][:parent_id].to_i > 0
-		    parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-		    @comment = parent.children.build(comment_params)
-		    wad_id = parent.id
+	    parent = Comment.find_by_id(params[:comment].delete(:parent_id))
+	    @comment = parent.children.build(comment_params)
+	    wad_id = parent.id
 
-	  	else
-	    	@comment = @wad.comments.build(comment_params)
-	  	end
-			@comment.user_id = current_user.id
-	 	if @comment.save
-		    flash[:success] = 'Your comment was successfully added!'
-		    redirect_to wad_comments_path (@comment.wad)
-	  	else
-	  		@error = @comment.errors.full_messages
-	    	render 'new'
-	    end
+  	else
+    	@comment = @wad.comments.build(comment_params)
+  	end
+
+		@comment.user_id = current_user.id
+
+	 	unless @comment.save
+  		@error = @comment.errors.full_messages
+    	render 'new'
+    end
 	end
 
 	def index
-			@comments = @wad.comments.all
-			@comment = @wad.comments.where(params[:id])
-			@replies = @comments.hash_tree
+		@comments = @wad.comments.all
+		@comment = @wad.comments.where(params[:id])
+		@replies = @comments.hash_tree
 	end
 
 
@@ -69,7 +68,7 @@ class CommentsController < ApplicationController
 		redirect_to @wad
 	end
 
-	def upvote 
+	def upvote
 		unless current_user != nil
 			@comment = Comment.find(params[:wad_id])
 			@wad = @comment.wad

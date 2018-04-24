@@ -7,17 +7,17 @@
 
 	<div class="card">
 		<div class="card-header">
-		  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline' } do |f| %>
+		  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline' }, remote: true do |f| %>
 		    <%= f.hidden_field :wad_id %>
 
 		    <%= f.label :content, class: 'sr-only' %>
 		    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?' %>
 
-		    <%= f.submit 'Comment', class: 'btn btn-primary' %>
+		    <%= f.submit 'Comment', class: 'btn btn-primary', disable_with: 'Sending' %>
 		  <% end %>
 		</div>
 
-		<div class="list-group list-group-flush">
+		<div class="list-group list-group-flush" data-comments>
 			<%= comments_tree_for @replies %>
 		</div>
 	</div>
