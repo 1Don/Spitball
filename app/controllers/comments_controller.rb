@@ -31,10 +31,7 @@ class CommentsController < ApplicationController
 
 
 	def new
-		if current_user != nil
 			@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
-		end
-		redirect_to root_path
 	end
 
 	def show
@@ -57,7 +54,6 @@ class CommentsController < ApplicationController
 				render 'edit'
 			end
 		end
-		redirect_to wad_path(@wad)
 	end
 
 	def destroy
