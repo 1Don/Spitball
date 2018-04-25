@@ -5,11 +5,7 @@ class WadsController < ApplicationController
 
 
 	def index
-		if current_user != nil
 		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
-		 else
-		 	redirect_to root_path
-		 end
   end
 
 	def show
@@ -27,41 +23,34 @@ class WadsController < ApplicationController
 			render 'new'
 		end
 	end
+
 	def edit
-		if current_user != nil
-		end
-		redirect_to root_path
 	end
+
 	def update
-		if current_user != nil
 			if @wad.update
 				redirect_to @wad
 			else
 				flash[]
 				render 'edit'
 			end
-		end
 	end
-	def destroy
-		if current_user != nil
+
+	def destroy	
 			if current_user == @wad.user
 				@wad.destroy
 				redirect_to wads_path
 			else
 				flash[:error] = "YOU CANNOT DELETE OTHERS' WADS"
 			end
-		end
 	end
 
 #Voting Functionality
 	def upvote 
-		if current_user != nil
 			@wad = Wad.find(params[:id])
 			@wad.upvote_by current_user
 			redirect_to @wad
 		 end
-		else
-			redirect_to root_path
 	end
 
 	def report
