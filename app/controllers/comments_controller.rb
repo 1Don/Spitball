@@ -58,7 +58,6 @@ class CommentsController < ApplicationController
 				render 'edit'
 			end
 		end
-		redirect_to wad_path(@wad)
 	end
 
 	def destroy
