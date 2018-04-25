@@ -6,14 +6,16 @@ class WadsController < ApplicationController
 
 	def index
 		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
-  end
+    end
 
 	def show
 		redirect_to wad_comments_path(@wad)
 	end
+
 	def new
 		@wad = Wad.new
 	end
+
 	def create
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save
@@ -23,6 +25,7 @@ class WadsController < ApplicationController
 			render 'new'
 		end
 	end
+
 
 	def edit
 	end
@@ -50,7 +53,6 @@ class WadsController < ApplicationController
 			@wad = Wad.find(params[:id])
 			@wad.upvote_by current_user
 			redirect_to @wad
-		 end
 	end
 
 	def report
