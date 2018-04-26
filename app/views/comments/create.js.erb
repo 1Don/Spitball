@@ -1,0 +1,9 @@
+$('[data-comments]').html("<%= j comments_tree_for(@comment.wad.comments.hash_tree) %>")
+$.rails.enableFormElements($('form'))
+$('form').find('input[type="text"]').val('')
+
+$('[data-comments]').find('.comment:first-child').addClass('glow')
+
+window.setTimeout(function() {
+  $('[data-comments]').find('.comment:first-child').removeClass('glow')
+}, 2000)

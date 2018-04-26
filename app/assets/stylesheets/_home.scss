@@ -5,6 +5,10 @@
   // background-image: asset-url('13.jpg');
   margin-top: -72px;
   position: relative;
+
+  &.no-offset {
+    margin-top: 0;
+  }
 }
 
 .welcome-slider {

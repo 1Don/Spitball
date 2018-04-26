@@ -5,14 +5,11 @@
 
   <div class="col-12">
     <ul class="list-group">
-      <a class="list-group-item list-group-item-action" href="/wads">All Wads</a>
-      <a class="list-group-item list-group-item-action" href="/art">Art</a>
-      <a class="list-group-item list-group-item-action" href="/b2bsaas">B2B Saas</a>
-      <a class="list-group-item list-group-item-action" href="/finance">Finance</a>
-      <a class="list-group-item list-group-item-action" href="/manufacturing">Manufacturing</a>
-      <a class="list-group-item list-group-item-action" href="/smallbusiness">Small Business</a>
-      <a class="list-group-item list-group-item-action" href="/consumertech">Consumer Tech</a>
-      <a class="list-group-item list-group-item-action" href="/other">Other</a>
+      <% sidebar_elements.each do |element| %>
+        <a class="list-group-item list-group-item-action" href="<%= element[:link] %>">
+          <%= element[:name] %>
+        </a>
+      <% end %>
     </ul>
   </div>
 </div>

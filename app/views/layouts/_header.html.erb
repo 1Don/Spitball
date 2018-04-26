@@ -22,6 +22,12 @@
           <%= link_to "Creators", users_path, class: 'nav-link' %>
         </li>
 
+        <% sidebar_elements.each do |element| %>
+          <li class="d-md-none nav-item">
+            <%= link_to element[:name], element[:link], class: 'nav-link' %>
+          </li>
+        <% end %>
+
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
             Account

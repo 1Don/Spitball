@@ -1,0 +1,8 @@
+.wad-link {
+  color: $body-color;
+
+  @include hover-focus {
+    text-decoration: none;
+    color: $body-color;
+  }
+}

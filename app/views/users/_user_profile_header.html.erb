@@ -1,17 +1,15 @@
 <div class="row">
   <div class="col-12 mb-3">
     <div class="jumbotron">
-      <h1 class="display-4">
+      <h5 class="display-5">
         <%= image_tag @user.photo.url(:thumb) %> <%= @user.name %>, <%= @user.email %>
-      </h1>
+      </h5>
 
-      <h1 class="display-5">
-        Entreprenuer
-      </h1>
+      Entreprenuer
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="d-none d-md-flex col-12">
     Juice Meter: <%= render 'users/progressbar' %>
   </div>
 </div>

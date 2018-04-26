@@ -1,3 +1,11 @@
 .comment > .comment {
   padding-left: 20px;
 }
+
+.comment {
+  transition: all 0.5s linear;
+}
+
+.glow {
+	box-shadow: 0px 0px 12px $success;
+}

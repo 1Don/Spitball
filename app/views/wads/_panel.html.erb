@@ -5,7 +5,7 @@
 				<%= image_tag @wad.image.url(:medium), class: 'img-fluid' %>
 			</div>
 
-			<div class="col-6">
+			<div class="col-9 col-md-6">
 				<h5><%= @wad.problem_state %></h5>
 				<%= @wad.long_form %><br>
 			</div>
@@ -14,7 +14,7 @@
 		</div>
 	</div>
 
-	<div class="card-body text-right">
+	<div class="card-body text-md-right text-left">
 		<%= link_to @wad.user.name, user_path(@owner) %>
 	</div>
 </div>

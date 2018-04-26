@@ -7,3 +7,11 @@ $(window).scroll ->
   else
     $('.header').removeClass 'hide-content'
   return
+
+$(document).on('hide.bs.collapse', '#header', ->
+  $('.welcome').removeClass('no-offset')
+)
+
+$(document).on('show.bs.collapse', '#header', ->
+  $('.welcome').addClass('no-offset')
+)
