@@ -3,16 +3,41 @@
     <%= form_for @user, html: { multipart: true } do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
+       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :user_name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :twitter %>
+        <%= f.password_field :twitter, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :linkedin %>
+        <%= f.password_field :linkedin, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :github %>
+        <%= f.password_field :github, class: 'form-control' %>
+      </div>
+     
       <div class="form-group">
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>

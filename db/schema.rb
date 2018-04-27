@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422064619) do
+ActiveRecord::Schema.define(version: 20180427005557) do
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180422064619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
+    t.index ["user_id", "created_at"], name: "index_discussions_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
@@ -60,6 +61,12 @@ ActiveRecord::Schema.define(version: 20180422064619) do
     t.datetime "photo_updated_at"
     t.string "occupation"
     t.string "location"
+    t.string "twitter"
+    t.string "linkedin"
+    t.string "github"
+    t.string "first_name"
+    t.string "lastname_string"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
