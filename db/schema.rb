@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427005557) do
+ActiveRecord::Schema.define(version: 20180427035921) do
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -84,20 +84,7 @@ ActiveRecord::Schema.define(version: 20180427005557) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-  create_table "wads", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "short_form"
-    t.text "long_form"
-    t.text "category"
-    t.text "problem_state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.index ["category"], name: "index_wads_on_category"
-    t.index ["user_id"], name: "index_wads_on_user_id"
-  end
+# Could not dump table "wads" because of following StandardError
+#   Unknown type '' for column 'tags'
 
 end
