@@ -2,10 +2,36 @@
   <div class="col-12 mb-3">
     <div class="jumbotron">
       <h5 class="display-5">
-        <%= image_tag @user.photo.url(:thumb) %> <%= @user.name %>, <%= @user.email %>
+        <div class="row">
+
+          <div class="col-2">
+            <%= image_tag @user.photo.url(:thumb) %>
+          </div>
+          <div class="col-6">
+            <p>
+              <%= @user.first_name %> <%= @user.last_name %> - Entreprenuer
+            </p>
+            <p class="small">
+              @<%= @user.name %> &lt;<%= @user.email %>&gt;
+            </p>
+          </div>
+          <div class="col-4">
+            <% if @user.location.present? %>
+              Location: <%= @user.location %> <br>
+            <% end %>
+            <% if @user.twitter.present? %>
+              Twitter: <%= @user.twitter %> <br>
+            <% end %>
+            <% if @user.linkedin.present? %>
+              Linkedin: <%= @user.linkedin %> <br>
+            <% end %>
+            <% if @user.github.present? %>
+              Github: <%= @user.github %>
+            <% end %>
+          </div>
+        </div>
       </h5>
 
-      Entreprenuer
     </div>
   </div>
 
