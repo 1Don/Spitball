@@ -10,17 +10,15 @@ class CommentsController < ApplicationController
 	    parent = Comment.find_by_id(params[:comment].delete(:parent_id))
 	    @comment = parent.children.build(comment_params)
 	    wad_id = parent.id
-
   	else
     	@comment = @wad.comments.build(comment_params)
   	end
-
 		@comment.user_id = current_user.id
-
 	 	unless @comment.save
   		@error = @comment.errors.full_messages
     	render 'new'
     end
+    redirect_to @wad
 	end
 
 	def index
