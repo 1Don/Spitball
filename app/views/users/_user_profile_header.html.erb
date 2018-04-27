@@ -17,16 +17,16 @@
           </div>
           <div class="col-4">
             <% if @user.location.present? %>
-              Location: <%= @user.location %> <br>
+              <%= fa_icon("map-marker th", text: @user.location) %> <br>
             <% end %>
             <% if @user.twitter.present? %>
-              Twitter: <%= @user.twitter %> <br>
+              <%= link_to fa_icon("twitter", text: username_from_url(@user.twitter)), @user.twitter %> <br>
             <% end %>
             <% if @user.linkedin.present? %>
-              Linkedin: <%= @user.linkedin %> <br>
+              <%= link_to fa_icon("linkedin", text: username_from_url(@user.linkedin)), @user.linkedin %> <br>
             <% end %>
             <% if @user.github.present? %>
-              Github: <%= @user.github %>
+              <%= link_to fa_icon("github", text: username_from_url(@user.github)), @user.github %>
             <% end %>
           </div>
         </div>
