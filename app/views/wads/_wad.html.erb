@@ -1,4 +1,4 @@
-<div class="list-group-item">
+<div class="list-group-item wad-list-group-item">
   <div class="row">
     <%= link_to wad_comments_path(wad), class: 'col-3 justify-content-center align-items-center' do %>
       <%= image_tag wad.image.url(:thumb), class: 'img-fluid' %>
@@ -8,7 +8,7 @@
       <div class="col-md-6 col-9">
         <h5><%= wad.problem_state %></h5>
         <p><%= wad.short_form %></p>
-        <p class="text-right">
+        <p class="text-right wad-comment">
           <%= link_to 'Comment', wad_comments_path(wad) %>
         </p>
       </div>
