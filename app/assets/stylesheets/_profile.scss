@@ -9,3 +9,10 @@
 .text-60 {
   font-size: 60%;
 }
+
+.text-profile {
+  @include media-breakpoint-down(sm) {
+    font-size: 60%;
+  }
+
+}
