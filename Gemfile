@@ -20,6 +20,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'closure_tree'
 gem 'paperclip', '~> 6.0'
+gem 'font-awesome-rails', '~> 4.7.0.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
