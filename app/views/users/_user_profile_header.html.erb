@@ -1,15 +1,68 @@
 <div class="row">
   <div class="col-12 mb-3">
-    <div class="jumbotron">
-      <h5 class="display-5">
-        <%= image_tag @user.photo.url(:thumb) %> <%= @user.name %>, <%= @user.email %>
+    <div class="jumbotron p-3">
+      <h5 class="display-5 text-profile">
+        <div class="row mb-3">
+
+          <div class="col-md-2 col-4 text-center">
+            <%= image_tag @user.photo.url(:thumb), class: "img-fluid" %>
+            <p class="text-center"><%= number_with_delimiter 12345 %></p>
+          </div>
+          <div class="col-md-5 col-8">
+            <p>
+              <%= @user.first_name %> <%= @user.last_name %> - Entreprenuer
+            </p>
+            <p class="small">
+              @<%= @user.name %> &lt;<%= @user.email %>&gt;
+            </p>
+            <div class="text-right d-block d-sm-none">
+              <% if @user.twitter.present? %>
+                <%= link_to fa_icon("twitter"), @user.twitter, class: "profile-link" %>
+              <% end %>
+              <% if @user.linkedin.present? %>
+                <%= link_to fa_icon("linkedin"), @user.linkedin, class: "profile-link" %>
+              <% end %>
+              <% if @user.github.present? %>
+                <%= link_to fa_icon("github"), @user.github, class: "profile-link" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-12 d-none d-sm-block">
+            <ul class="nav mb-4">
+              <li class="nav-item">
+                <a class="nav-link text-center text-60"><%= number_with_delimiter @user.comments.count %><br>Responses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center text-60"><%= number_with_delimiter @user.wads.count %><br>Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center text-60">4<br>Questions</a>
+              </li>
+            </ul>
+            <% if @user.location.present? %>
+              <%= fa_icon("map-marker th", text: @user.location) %> <br>
+            <% end %>
+            <% if @user.twitter.present? %>
+              <%= link_to fa_icon("twitter", text: username_from_url(@user.twitter)), @user.twitter, class: "profile-link" %> <br>
+            <% end %>
+            <% if @user.linkedin.present? %>
+              <%= link_to fa_icon("linkedin", text: username_from_url(@user.linkedin)), @user.linkedin, class: "profile-link" %> <br>
+            <% end %>
+            <% if @user.github.present? %>
+              <%= link_to fa_icon("github", text: username_from_url(@user.github)), @user.github, class: "profile-link" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row d-none d-sm-block">
+          <div class="col-12">
+            <h6>Categories of interest</h6>
+            <div class="badge badge-secondary">Consumer Tech</div>
+            <div class="badge badge-secondary">Small Business</div>
+            <div class="badge badge-secondary">B2b Saas</div>
+          </div>
+        </div>
       </h5>
 
-      Entreprenuer
     </div>
-  </div>
-
-  <div class="d-none d-md-flex col-12">
-    Juice Meter: <%= render 'users/progressbar' %>
   </div>
 </div>
