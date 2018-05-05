@@ -1,10 +1,11 @@
 .profile-link {
   color: black;
+   @include hover-focus {
   &:hover {
     color: black;
     text-decoration: underline;
   }
-}
+}}
 
 .text-60 {
   font-size: 60%;
