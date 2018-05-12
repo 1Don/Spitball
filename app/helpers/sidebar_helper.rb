@@ -1,10 +1,12 @@
 module SidebarHelper
   def sidebar_elements
     [
+
       {
         link: "/wads",
-        name: "All Wads"
+        name: "Home"
       },
+
       {
         link: "/art",
         name: "Art"
