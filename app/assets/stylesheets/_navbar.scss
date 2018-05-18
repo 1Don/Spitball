@@ -9,6 +9,18 @@
   }
 }
 
+.static_pages.landing {
+  #header {
+    background-color: transparent;
+
+    .nav-item,
+    .nav-item .nav-link {
+      color: $body-color;
+    }
+  }
+}
+
+
 #header {
   z-index: 1;
   background-color: #d2e2ea;

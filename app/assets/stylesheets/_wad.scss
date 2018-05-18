@@ -13,4 +13,11 @@
 
 .wad-list-group-item {
   padding-bottom: 0px;
+  position: relative;
+}
+
+/* wad actions on index */
+.pull-right {
+  position: absolute;
+  float: right !important;
 }

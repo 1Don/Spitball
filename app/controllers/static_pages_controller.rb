@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+layout "_landing", only: [:landing]
+
   def home
   end
 
@@ -6,5 +8,8 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+  end
+
+  def landing
   end
 end
