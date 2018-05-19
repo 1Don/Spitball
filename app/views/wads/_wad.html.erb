@@ -1,17 +1,30 @@
 <div class="list-group-item wad-list-group-item">
   <div class="row">
-    <%= link_to wad_comments_path(wad), class: 'col-3 justify-content-center align-items-center' do %>
-      <%= image_tag wad.image.url(:thumb), class: 'img-fluid' %>
-    <% end %>
+        <%= link_to wad_comments_path(wad), class: 'col-3 justify-content-center align-items-center' do %>
+        <%= image_tag wad.image.url(:thumb), class: 'img-fluid' %>
 
-    <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
-      <div class="col-md-6 col-9">
-        <h5><%= wad.problem_state %></h5>
-        <p><%= wad.short_form %></p>
+        <% end %>
+
+        <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
+            <div class="col-md-8 col-9">
+                <h5><%= wad.problem_state %></h5>
+                <p><%= wad.short_form %></p>
+            </div>
+           <% end %>
+           <div class="trash">
+            <% if current_user == wad.user %>
+              <%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete%>
+            <% end %>
+          </div>
+   </div>
        
-      </div>
-    <% end %>
+     <div class="col-md-12 flex-column justify-content-end text-right">
+                    <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link" %> &nbsp;
+                    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
+                    <%= wad.get_upvotes.size %>
+        </div>              
+              
+          
 
-    <%= render 'wads/actions', wad: wad %>
-  </div>
+
 </div>
