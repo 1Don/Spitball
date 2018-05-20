@@ -1,13 +1,23 @@
 <div class="col-9">
   <div class="row">
     <div class="col-12">
-      <h2>Wads</h2>
+      
 
+    <div class="col-10 mb-4">
       <div class="card">
+        <div class="card-header d-none d-md-flex">
+          Popular <%= @wads.first.category %> Wads
+        </div>
+
         <div class="list-group list-group-flush">
           <%= render @wads %>
         </div>
+
+        <div class="card-footer text-center d-none">
+          See all
+        </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

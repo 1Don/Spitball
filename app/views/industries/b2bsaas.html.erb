@@ -3,20 +3,18 @@
 
 <%= render "wads/sidebar" %>
 
-<% @wads.each do |wad| %>
-<% if wad.category = "B2B Saas" %>
-	<%= link_to wad_comments_path(wad) do %>
-		<ul class="wad">
-			<%= wad.category %>: 
-			<%= wad.short_form %>
-		</ul>
-	<% end %>
-	<%= button_to like_wad_path(wad), method: :put do %>
-		 Upvote
-		 <%= wad.get_upvotes.size %>
-	<% end %>
-<% end %>
-<%= will_paginate @wads %>
-<% end %>
-</div>
-</div>
+		<div class="col-10 mb-4 d-none d-md-block">
+			<div class="card">
+				<div class="card-header">
+					All Wads
+				</div>
+
+				<div class="list-group list-group-flush">
+					<%= render "all_wads" %>
+				</div>
+
+				<div class="card-footer text-center d-none">
+					See all
+				</div>
+			</div>
+		</div>

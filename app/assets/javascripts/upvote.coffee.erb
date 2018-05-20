@@ -1,0 +1,10 @@
+$(document).ready ->
+	$("#upvote-count").click ->
+		if $("#test-larry").val() == "true"
+			$("#upvote-counter").html("Already Voted!")
+		else
+			counter = parseInt($("#upvote-counter").text())
+			$("#upvote-counter").html("Thanks for voting!")
+$(document).ready ->
+	$("#toggle-button").click ->
+		$("#hidden-form").hide()
