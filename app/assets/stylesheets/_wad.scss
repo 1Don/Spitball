@@ -22,3 +22,24 @@
   position: absolute;
   float: right !important;
 }
+
+/* wad short form and problem on index */
+.wadinfo{
+    width:400px;
+}
+
+/* wad index actions */
+
+  .trash{
+    position: absolute; 
+    top: 5px;
+    right:15px; 
+    padding-top: 0;
+  }
+
+
+  .actions{
+    position: absolute; 
+    bottom: 5px;
+    right:15px; 
+  }

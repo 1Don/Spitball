@@ -6,7 +6,7 @@
         <% end %>
 
         <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
-            <div class="col-md-8 col-9">
+            <div class="wadinfo">
                 <h5><%= wad.problem_state %></h5>
                 <p><%= wad.short_form %></p>
             </div>
@@ -18,7 +18,7 @@
           </div>
    </div>
        
-     <div class="col-md-12 flex-column justify-content-end text-right">
+     <div class="actions">
                     <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link" %> &nbsp;
                     <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
                     <%= wad.get_upvotes.size %>
