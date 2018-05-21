@@ -7,8 +7,8 @@
 
         <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
             <div class="wadinfo">
-                <h5><%= wad.problem_state %></h5>
-                <p><%= wad.short_form %></p>
+                <h6 class><%= wad.problem_state %></h6>
+                <p class="small"><%= wad.short_form %></p>
             </div>
            <% end %>
            <div class="trash">
@@ -24,7 +24,4 @@
                     <%= wad.get_upvotes.size %>
         </div>              
               
-          
-
-
 </div>
