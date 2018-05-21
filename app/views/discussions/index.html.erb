@@ -5,11 +5,18 @@
 	<%= link_to 'Join the Convo', new_discussion_path, class: 'btn btn-primary' %>
 
 
-	<div class="card">
-		<div class="list-group">
-			<%= render 'discussions/all_discussions' %>
+		<div class="col-10 mb-4">
+			<div class="card">
+
+				<div class="list-group list-group-flush">
+					<%= render "all_discussions" %>
+				</div>
+
+				<div class="card-footer text-center d-none">
+					See all
+				</div>
+			</div>
 		</div>
-	</div>
 
 	<%= will_paginate @discussions %>
 </div>

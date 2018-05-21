@@ -1,22 +1,21 @@
 <div class="list-group-item">
   <div class="row">
     <div class="col-9">
-      <h5><%= discussion.user.name %> says,<br></h5>
+      <h5><%= @discussion.user.name %> says,<br></h5>
       <p>
-				<%= discussion.content %>.
+				<%= @discussion.content %>.
 			</p>
       <p class="text-right">
-        <%= link_to 'continue?', discussion_path(discussion) %>
       </p>
     </div>
 
 		<div class="col-3 text-center">
 			<div>
-				<h3><%= discussion.get_upvotes.size %></h3>
-				<%= link_to 'Upvote', like_discussion_path(discussion), method: :put %>
+				<h3><%= @discussion.get_upvotes.size %></h3>
+				<%= link_to 'Upvote', like_discussion_path(@discussion), method: :put %>
 			</div>
 			<div>
-				<%= link_to 'Comment', discussion_path(discussion) %>
+				<%= link_to 'Comment', discussion_path(@discussion) %>
 			</div>
 		</div>
   </div>

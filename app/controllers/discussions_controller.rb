@@ -56,10 +56,10 @@ class DiscussionsController < ApplicationController
 	end
 
 	def show
-			@all_discussions = Discussion.all
-			@discussion = Discussion.find(params[:id])
-			@discussions = @discussion.children.all
-			@replies = @discussions.hash_tree
+		@all_discussions = Discussion.all
+		@discussion = Discussion.find(params[:id])
+		@discussions = @discussion.children.all
+		@replies = @discussions.hash_tree
 	end
 
 
