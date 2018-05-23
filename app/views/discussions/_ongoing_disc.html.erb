@@ -1,0 +1,5 @@
+<% @discussions.each do |discussion| %>
+	<% if discussion.parent_id.nil? && discussion.resolved == false %>
+			<%= render discussion %>
+	<% end %>
+<% end %>
