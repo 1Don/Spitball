@@ -1,15 +1,11 @@
 <div class="col-9">
-	<h1> Collaborate, Learn, Build </h1>
-	<h2> Share your questions and thoughts with like-minded entrepreneurs</h2>
-
-	<%= link_to 'Join the Convo', new_discussion_path, class: 'btn btn-primary' %>
-
+	<h1 class="text-center"> Spread the Knowledge </h1>
 
 		<div class="col-10 mb-4">
 			<div class="card">
-
+				<h2>Unanswered Questions</h2>
 				<div class="list-group list-group-flush">
-					<%= render "all_discussions" %>
+					<%= render "ongoing_disc" %>
 				</div>
 
 				<div class="card-footer text-center d-none">
@@ -18,5 +14,16 @@
 			</div>
 		</div>
 
-	<%= will_paginate @discussions %>
+		<div class="col-10 mb-4">
+			<div class="card">
+				<h2>Ongoing Discussions</h2>
+				<div class="list-group list-group-flush">
+					<%= render "resolved_disc" %>
+				</div>
+
+				<div class="card-footer text-center d-none">
+					See all
+				</div>
+			</div>
+		</div>
 </div>
