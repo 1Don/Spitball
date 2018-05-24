@@ -1,17 +1,10 @@
 <div class="card mb-3">
-	<div class="card-body">
 		<div class="row">
-			<div class="col-9 col-md-6">
-				<%= @discussion.user.name %> says,
-				<%= @discussion.content %><br>
+			<div class="col-12 col-md-12">
+				<%= render 'discussions/panel' %>
 			</div>
 		</div>
-	</div>
-
-	<div class="card-body text-md-right text-left">
-	
-	</div>
 </div>
 	<%= render 'discussions/reply' %>
 	<%= discussions_tree_for @replies %>
-</div>
+

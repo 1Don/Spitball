@@ -1,9 +1,10 @@
-<div class="reply-form">
-	<%= form_for @discussion.children.build do |f| %>
-	<%= f.hidden_field :parent_id %>
-	<%= f.text_area :content %>
+<div class="card-header">
+  <%= form_for [@discussion.children.build], html: { class: 'form-inline' }, remote: true do |f| %>
+    <%= f.hidden_field :parent_id %>
 
-	<%= f.submit "Add to the discussion" %>
+    <%= f.label :content, class: 'sr-only' %>
+    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'Have any suggestions?' %>
 
-	<% end %>
+    <%= f.submit 'Answer', class: 'btn btn-primary', disable_with: 'Sending' %>
+  <% end %>
 </div>

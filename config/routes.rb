@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :discussions do
     member do
       put "like", to: "discussions#upvote"
+      patch :solved
     end
   end
   get    '/forum',    to:   'discussions#index'

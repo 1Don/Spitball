@@ -5,7 +5,12 @@ class DiscussionsController < ApplicationController
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
 	end
 
-
+	def show
+			@all_discussions = Discussion.all
+			@discussion = Discussion.find(params[:id])
+			@discussions = @discussion.children.all
+			@replies = @discussions.hash_tree
+	end
 	def new
 			@discussion = Discussion.new
 	end
@@ -55,13 +60,10 @@ class DiscussionsController < ApplicationController
 	  	redirect_to @discussion
 	end
 
-	def show
-			@all_discussions = Discussion.all
-			@discussion = Discussion.find(params[:id])
-			@discussions = @discussion.children.all
-			@replies = @discussions.hash_tree
+	def solved
+		@discussion = Discussion.find(params[:id])
+		@discussion.toggle!(:resolved)
 	end
-
 
 private
 

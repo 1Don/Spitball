@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-3">
+       <%= image_tag @discussion.user.photo.url(:thumb), class: "img-fluid" %>
+       		<%= link_to user_path(@discussion.user) do %>
+			<%= @discussion.user.name %> 
+		<% end %>asks,<br>
+		<% if @discussion.user == current_user  %>
+		<span id="resolution-check"> <%= link_to "#{ @discussion.resolved ? 'These answers do not help!' : 'These answers do help!' } ", solved_discussion_path, method: :patch, remote: true %>
+		</span>
+		<% end %>
+	</div>	
+
+	<div class="col-9">
+		<%= @discussion.content %>
+	</div>
+</div>
+
