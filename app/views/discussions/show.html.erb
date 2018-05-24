@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="discussion-feed">
 <%=# <%= render "discussion" need to fix this partial%> 
 
@@ -19,4 +20,15 @@
 			<%= discussions_tree_for @replies %>
 		</div>
 	</div>
+=======
+<div class="card mb-3">
+		<div class="row">
+			<div class="col-12 col-md-12">
+				<%= render 'discussions/panel' %>
+			</div>
+		</div>
+</div>
+	<%= render 'discussions/reply' %>
+	<%= discussions_tree_for @replies %>
+>>>>>>> forum
 
