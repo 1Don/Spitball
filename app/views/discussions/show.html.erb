@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-<div class="discussion-feed">
-<%=# <%= render "discussion" need to fix this partial%> 
-
-</div>
-
-	<div class="card mb-4">
-		<div class="card-header">
-		  <%= form_for @discussion.children.build, html: { class: 'form-inline' }, remote: true do |f| %>
-		    <%= f.hidden_field :parent_id %>
-
-		    <%= f.label :content, class: 'sr-only' %>
-		    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?' %>
-
-		    <%= f.submit 'Comment', class: 'btn btn-primary', disable_with: 'Sending' %>
-		  <% end %>
-		</div>
-
-		<div class="list-group list-group-flush" data-comments>
-			<%= discussions_tree_for @replies %>
-		</div>
-	</div>
-=======
 <div class="card mb-3">
 		<div class="row">
 			<div class="col-12 col-md-12">
@@ -30,5 +7,4 @@
 </div>
 	<%= render 'discussions/reply' %>
 	<%= discussions_tree_for @replies %>
->>>>>>> forum
 

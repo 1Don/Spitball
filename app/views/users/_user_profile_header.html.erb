@@ -10,10 +10,14 @@
           </div>
           <div class="col-md-5 col-8">
             <p>
-              <%= @user.first_name %> <%= @user.last_name %> - <%= @user.occupation %>
+              <%= @user.first_name %> <%= @user.last_name %>,  <%= @user.occupation %> 
+                <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
             <p class="small">
-              @<%= @user.name %> &lt;<%= @user.email %>&gt;
+              <% if @user.location.present? %>
+                <%= fa_icon("map-marker th", text: @user.location) %> <br>
+              <% end %>              
+            <%# &lt;<%= @user.email &gt; %>
             </p>
             <div class="text-right d-block d-sm-none">
               <% if @user.twitter.present? %>
@@ -39,9 +43,6 @@
                 <a class="nav-link text-center text-60">4<br>Questions</a>
               </li>
             </ul>
-            <% if @user.location.present? %>
-              <%= fa_icon("map-marker th", text: @user.location) %> <br>
-            <% end %>
             <% if @user.twitter.present? %>
               <%= link_to fa_icon("twitter", text: username_from_url(@user.twitter)), @user.twitter, class: "profile-link" %> <br>
             <% end %>
@@ -55,10 +56,10 @@
         </div>
         <div class="row d-none d-sm-block">
           <div class="col-12">
-            <h6>Categories of interest</h6>
-            <div class="badge badge-secondary">Consumer Tech</div>
-            <div class="badge badge-secondary">Small Business</div>
-            <div class="badge badge-secondary">B2b Saas</div>
+            <h6><%= @user.name %>'s interests:</h6>
+            <div class="badge badge-secondary"><%= @interest_1 %></div>
+            <div class="badge badge-secondary"><%= @interest_2 %></div>
+            <div class="badge badge-secondary"><%= @interest_3 %></div>
           </div>
         </div>
       </h5>

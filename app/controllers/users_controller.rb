@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    k = @user.interests[0].split(", ")
+    @interest_1 = k[0]
+    @interest_2 = k[1]
+    @interest_3 = k[2]
   end
 
   def new
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :first_name, :last_name, :github, :occupation,
-        :twitter, :linkedin, :password_confirmation, :photo)
+        :twitter, :linkedin, :password_confirmation, :photo, {:interests => []}, :location)
     end
 
     # Before filters

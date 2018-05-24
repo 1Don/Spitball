@@ -24,6 +24,11 @@
       </div>
 
        <div class="form-group">
+        <%= f.label :interests, 'Please list your interest (seperate using comma & space => "B2B Saas, Consumer Tech").' %>
+        <%= f.text_field :interests, multiple: true, class: 'form-control' %>
+      </div>
+
+       <div class="form-group">
         <%= f.label :occupation %>
         <%= f.text_field :occupation, class: 'form-control' %>
       </div>
@@ -35,17 +40,17 @@
 
        <div class="form-group">
         <%= f.label :twitter %>
-        <%= f.password_field :twitter, class: 'form-control' %>
+        <%= f.text_field :twitter, class: 'form-control' %>
       </div>
 
        <div class="form-group">
         <%= f.label :linkedin %>
-        <%= f.password_field :linkedin, class: 'form-control' %>
+        <%= f.text_field :linkedin, class: 'form-control' %>
       </div>
 
        <div class="form-group">
         <%= f.label :github %>
-        <%= f.password_field :github, class: 'form-control' %>
+        <%= f.text_field :github, class: 'form-control' %>
       </div>
      
       <div class="form-group">
