@@ -1,21 +1,17 @@
 <div class="row">
-  <div class="col-6 mx-auto">
-    <div class="row">
+  <div class="col-7 mx-auto">
+    <div class="row card">
       <div class="col-12">
-        <h1> What's on your mind?</h1><br>
+        <h1 class="text-center"> What's your idea?</h1><br>
       </div>
 
       <div class="d-none d-md-flex col-9 mx-auto">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LT-WH4kW-RQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
 
-        <p class="tips-description">Serial entrepreneur Jim Marggraf, CEO and Founder, Eyefluence, on problem solving.</p>
       </div>
 
       <div class="col-12">
         <%= form_for @wad, html: { multipart: true } do |f| %>
-          <div class="form-group">
+          <div class="form-group col-5" style="display:inline-block;">
             <%= f.label :category %>
             <%= f.select :category,
                         options_for_select(
@@ -32,28 +28,27 @@
                         {},
                         class: 'form-control' %>
           </div>
-
-          <div class="form-group">
-            <%= f.label :problem_state, "What are you trying to solve?" %>
+          <div class="col-7" style="float:right;">  
+              <%= f.label :tags, "Tags" %>
+              <%= f.text_field :tags, placeholder: "seperate using ', '", multiple: true, class: 'form-control'   %> 
+          </div>
+          <div class="form-group" style="padding-left: 15px; padding-right: 15px;">
+            <%= f.label :problem_state, "Problem Statement" %>
             <%= f.text_field :problem_state, class: 'form-control' %>
           </div>
 
-          <div class="form-group">
-            <%= f.label :short_form, "Describe your solution in about 10 words" %>
-            <%= f.text_field :short_form, class: 'form-control' %>
+          <div class="form-group" style="padding-left: 15px; padding-right: 15px;">
+            <%= f.label :long_form, "The Pitch" %>
+            <%= f.text_area :long_form, class: 'form-control', style: "resize: none;", :rows => 8 %>
           </div>
 
-          <div class="form-group">
-            <%= f.label :long_form, "Now really think it out (max. 500 words)" %>
-            <%= f.text_area :long_form, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :image, "Any images?" %>
+          <div class="form-group" style="padding-left: 15px; display:inline-block;">
+            <%= f.label :image, "Images" %>
             <%= f.file_field :image, class: 'form-control-file' %>
           </div>
-
-          <%= f.submit "Submit Wad", class: "btn btn-primary" %>
+          <div style="float; right; display:inline-block;">
+            <%= f.submit "Submit Wad", class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
     </div>
