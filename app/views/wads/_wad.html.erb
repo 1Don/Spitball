@@ -13,14 +13,14 @@
            <% end %>
            <div class="trash">
             <% if current_user == wad.user %>
-              <%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete%>
+              <%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete, remote: true%>
             <% end %>
           </div>
    </div>
        
      <div class="actions">
                     <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link" %> &nbsp;
-                    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
+                    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %>
                     <%= wad.get_upvotes.size %>
         </div>              
               
