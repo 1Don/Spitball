@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-	layout 'wad', only: [:index]
+	layout 'wad', only: [:index, :show]
 
 	def index
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)

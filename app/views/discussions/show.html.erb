@@ -1,10 +1,26 @@
-<div class="card mb-3">
-		<div class="row">
-			<div class="col-12 col-md-12">
-				<%= render 'discussions/panel' %>
-			</div>
-		</div>
-</div>
-	<%= render 'discussions/reply' %>
-	<%= discussions_tree_for @replies %>
+<div class="col-12 col-md-6">
+	<%= render 'discussions/panel' %>
+		<% if @discussion.user == current_user  %>
+				<div id="resolution-check"> <%= link_to "#{ @discussion.resolved ? 'Question not answered' : 'My question was' } ", solved_discussion_path, method: :patch, remote: true %>
+				</div>
+			<% end %>
 
+	<div class="h5">
+		Discussion
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-header">
+			<%= form_for [@discussion.children.build], html: { class: 'form-inline' }, remote: true do |f| %>
+			<%= f.hidden_field :parent_id %>
+			<%= f.label :content, class: 'sr-only' %>
+			<%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'Have any suggestions?' %>
+			<%= f.submit 'Answer', class: 'btn btn-primary', disable_with: 'Sending' %>
+		  <% end %>
+		</div>
+
+		<div class="list-group list-group-flush">
+			<%= discussions_tree_for @replies %>
+		</div>
+	</div>
+</div>
