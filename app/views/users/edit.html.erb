@@ -1,8 +1,11 @@
 <% provide(:title, "Edit user") %>
-<div class="row">
-  <div class="col-12 text-center">
-    <h1>Update your profile</h1>
-  </div>
-</div>
+<%= render 'shared/error_messages' %>
+<div class="row mt-5">
+	<div class="col-8 border-right">
+		<%= render 'primary_sign_up' %>
+	</div>
 
-<%= render 'primary_sign_up' %>
+	<div class="col-4">
+		<%= render 'secondary_sign_up' %>
+	</div>
+</div>
