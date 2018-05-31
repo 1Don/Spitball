@@ -1,5 +1,5 @@
 class Wad < ApplicationRecord
-  has_attached_file :image, styles: { medium: "250x250>", thumb: "50x50#"}
+  has_attached_file :image, styles: { large: "500x500>", medium: "250x250>", thumb: "50x50#"}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   acts_as_votable
   belongs_to :user
