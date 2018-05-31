@@ -9,10 +9,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    k = @user.interests[0].split(", ")
-    @interest_1 = k[0]
-    @interest_2 = k[1]
-    @interest_3 = k[2]
+    if @user.interests[0] != nil
+      k = @user.interests[0].split(", ")
+      @interest_1 = k[0]
+      @interest_2 = k[1]
+      @interest_3 = k[2]
+    else
+      @interest_1 = @interest_2 = @interest_3 = "Please Add Some Interests!"
+    end
   end
 
   def new
