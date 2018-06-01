@@ -8,7 +8,6 @@ class Wad < ApplicationRecord
   validates :user_id, presence: true
   validates :category, presence: true
   validates :long_form, presence: true, length: { maximum: 10000 }
-  validates :short_form, presence: true, length: { maximum: 1400 }
   validates :problem_state, presence: true, length: { maximum: 500 }
 
 #Search Functionality
