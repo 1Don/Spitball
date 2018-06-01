@@ -28,11 +28,8 @@
         <% end %>
       </div>
 
-      <div class="col-4">
+      <div class="actions">
         <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link pr-1" %> &nbsp;
-      </div>
-
-      <div class=col-4>
         <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %>
         <%= wad.get_upvotes.size %>
       </div>
