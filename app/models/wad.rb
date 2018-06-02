@@ -4,14 +4,13 @@ class Wad < ApplicationRecord
   acts_as_votable
   belongs_to :user
   has_many :comments, dependent: :destroy
-  default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :category, presence: true
   validates :long_form, presence: true, length: { maximum: 300 }
   validates :problem_state, presence: true, length: { maximum: 75 }
 
 #Search Functionality
-  def self.search(search)
-    where("short_form LIKE ?", "%#{search}%") 
-  end
+ # def self.search(search)
+  #  where("short_form LIKE ?", "%#{search}%") 
+ # end
 end
