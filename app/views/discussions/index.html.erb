@@ -1,16 +1,15 @@
 <div class="col-9">
 	<div class="col-12 d-flex align-items-center mb-3">
-	<span style="padding-right:10px" class="h2"> Spread the Knowledge </span>
+	<span class="h2"> Spread the Knowledge </span>
 	<%= link_to fa_icon("edit"), new_discussion_path, class: "profile-link fa-2x"  %>
 </div>
 
-		<div class="col-10 mb-4">
+		<div class="col-12 mb-4">
 			<div class="card">
 				<div class="card-header">
 				<h4>Unanswered Questions</h4>
 			</div>
 				<div class="list-group list-group-flush">
-
 					<%= render "unanswered_disc" %>
 				</div>
 
@@ -20,7 +19,7 @@
 			</div>
 		</div>
 
-		<div class="col-10 mb-4">
+		<div class="col-12 mb-4">
 			<div class="card">
 				<div class="card-header">
 				<h4>Ongoing Discussions</h4>

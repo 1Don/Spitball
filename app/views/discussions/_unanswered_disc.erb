@@ -3,24 +3,24 @@
 		<div class="list-group-item">
 		  <div class="row">
 
-		  	
-        <%= link_to discussion_path(discussion), class: 'profile-link' do %>
-		    <div class="discussioninfo">
-		     <div class="wadinfo">
-                <h6 class><%= discussion.content  %></h6>
-             
-            </div>
-		    </div>
-		    <% end %>
-			 <div class="actions">
-					<div>
+		  	 <div class="discussioninfo col-10">
+	       		 <%= link_to discussion_path(discussion), class: 'profile-link' do %>
+				     <div class="wadinfo">
+		                <h6 class="small"><%= discussion.content  %></h6>
+		            </div>
+			 	<% end %>
+			 </div>
+
+			 <div class="actions col-2">
+					<div class="">
 						<% if discussion.resolved == false %>
 						<%= link_to 'Answer', discussion_path(discussion), class: 'profile-link' %>
 						<% else %>
 						<%= link_to 'Contribute', discussion_path(discussion), class: 'profile-link' %>
 						<% end %>
 					</div>
-				</div>
+			 </div>
+
 		  </div>
 		</div>
 	<% end %>
