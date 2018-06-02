@@ -7,8 +7,8 @@ class Wad < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :category, presence: true
-  validates :long_form, presence: true, length: { maximum: 10000 }
-  validates :problem_state, presence: true, length: { maximum: 500 }
+  validates :long_form, presence: true, length: { maximum: 300 }
+  validates :problem_state, presence: true, length: { maximum: 75 }
 
 #Search Functionality
   def self.search(search)
