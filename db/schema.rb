@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180602151313) do
+ActiveRecord::Schema.define(version: 20180603201353) do
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180602151313) do
     t.datetime "updated_at", null: false
     t.integer "parent_id"
     t.boolean "resolved", default: false
+    t.string "tags"
     t.index ["user_id", "created_at"], name: "index_discussions_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_discussions_on_user_id"
   end
@@ -65,7 +66,27 @@ ActiveRecord::Schema.define(version: 20180602151313) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-# Could not dump table "wads" because of following StandardError
-#   Unknown type '' for column 'tags'
+  create_table "wads", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "long_form"
+    t.text "category"
+    t.text "problem_state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
+    t.string "tags"
+    t.index ["category"], name: "index_wads_on_category"
+    t.index ["user_id"], name: "index_wads_on_user_id"
+  end
 
 end

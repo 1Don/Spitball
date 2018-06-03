@@ -66,6 +66,7 @@ class DiscussionsController < ApplicationController
 		@discussion.toggle!(:resolved)
 	end
 
+
 private
 
 	def discussion_params

@@ -64,6 +64,8 @@ class WadsController < ApplicationController
 		@wads = Wad.all
 		if params[:search]
 			@wads = Wad.search(params[:search]).order("created_at DESC")
+			@discussions = Discussion.all
+			@discussion = Discussion.find_by(params[:id])
 		else
 			@wads = Wad.all.order("created_at DESC")
 		end
@@ -74,7 +76,7 @@ class WadsController < ApplicationController
 	private
 
 	def wad_params
-		params.require(:wad).permit(:problem_state, :short_form, :long_form, :category, :image)
+		params.require(:wad).permit(:problem_state, :long_form, :category, :image, :tags)
 	end
 
 

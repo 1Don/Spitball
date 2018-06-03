@@ -10,7 +10,7 @@ class Wad < ApplicationRecord
   validates :problem_state, presence: true, length: { maximum: 75 }
 
 #Search Functionality
- # def self.search(search)
-  #  where("short_form LIKE ?", "%#{search}%") 
- # end
+ def self.search(search)
+    where("problem_state LIKE ? OR long_form LIKE ? OR tags LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+ end
 end
