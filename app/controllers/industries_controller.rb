@@ -6,7 +6,7 @@ def index
 	redirect_to wads_path
 end
 
-def tech
+def consumertech
 	@wads = Wad.where("category like ?", "%Consumer tech%").paginate(page: params[:page], per_page: 20)
 	render 'industries'
 end
