@@ -3,37 +3,39 @@ module SidebarHelper
     [
 
       {
-        link: "/wads",
-        name: "Home"
+        link: "/b2b",
+        name: "B2B Tech"
       },
 
       {
-        link: "/art",
-        name: "Art"
-      },
-      {
-        link: "/b2bsaas",
-        name: "B2B Saas"
-      },
-      {
-        link: "/finance",
-        name: "Finance"
-      },
-      {
-        link: "/manufacturing",
-        name: "Manufacturing"
-      },
-      {
-        link: "/smallbusiness",
-        name: "Small Business"
-      },
-      {
-        link: "/consumertech",
+        link: "/tech",
         name: "Consumer Tech"
       },
+
       {
-        link: "/other",
-        name: "Other"
+        link: "/media",
+        name: "Media and Entertainment"
+      },
+      
+      {
+        link: "/social",
+        name: "Social Entrepreneurship"
+      },
+      {
+        link: "/local",
+        name: "Location Specific"
+      },
+      {
+        link: "/events",
+        name: "Events"
+      },
+      {
+        link: "/product",
+        name: "Consumer Products"
+      },
+      {
+        link: "/innovate",
+        name: "Avant-garde"
       }
     ]
   end

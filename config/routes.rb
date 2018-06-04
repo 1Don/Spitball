@@ -16,13 +16,14 @@ Rails.application.routes.draw do
 
 #Defining routes for industry navigation
   get '/industries', to: 'industries#index'
-  get    '/art',    to:  'industries#art'
-  get    '/b2bsaas',     to:  'industries#b2bsaas'
-  get    '/finance',     to:  'industries#finance'
-  get    '/manufacturing',     to:  'industries#manufacturing'
-  get    '/smallbusiness',     to:  'industries#smallbusiness'
-  get    '/consumertech',     to:  'industries#consumertech'
-  get    '/other',     to:  'industries#other'
+  get    '/tech',    to:  'industries#consumertech'
+  get    '/b2b',     to:  'industries#b2b'
+  get    '/product',     to:  'industries#product'
+  get    '/social',     to:  'industries#social'
+  get    '/local',     to:  'industries#local'
+  get    '/events',     to:  'industries#events'
+  get    '/innovate',     to:  'industries#innovate'
+  get    '/media',     to:  'industries#media'
 
 
 #Defining routes for discussion/forum navigation
