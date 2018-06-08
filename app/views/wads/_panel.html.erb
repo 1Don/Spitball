@@ -17,7 +17,7 @@
 	<div class="card-body row">
 
 		<div class="col-4 text-left">
-			@<%= link_to @wad.user.name, user_path(@owner) %>
+		@<%= link_to @wad.user.name, user_path(@owner), class: "profile-link" %> 
 		</div>
 		
 		<%= render 'wads/actions', wad: @wad %>

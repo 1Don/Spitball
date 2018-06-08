@@ -20,10 +20,8 @@ class WadsController < ApplicationController
 	def create
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save
-			current_user.points = current_user.points + 5
-			current_user.points.update
-			redirect_to @wad
-
+			current_user.points == current_user.points + 5
+			redirect_to @wad	
 		else
 			flash[:error] = 'Error try again'
 			render 'new'
