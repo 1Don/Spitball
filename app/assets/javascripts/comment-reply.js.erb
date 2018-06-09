@@ -1,0 +1,47 @@
+/*
+function changeParams(id) {
+	var wad_id;
+	var home_url;
+	var a = document.getElementById('wad');
+	wad_id = a.getAttribute('data-wad');
+	home_url = "http://localhost:3000/wads/" + wad_id +"/comments";	
+
+	curr_url = window.document.location.href;
+	if (curr_url != home_url) {
+		window.history.pushState(null, null, home_url);
+	} else {
+		window.history.pushState(null, null, curr_url + "/new?parent_id=" + id);
+	}
+}
+*/
+
+// Will Need to be changed when deployed
+function changeForm(form_id) {
+	var replyForm = document.getElementById('cmt-rply-form-' + form_id);
+	if (replyForm.style.display == "block") {
+		replyForm.style.display = "none";
+	} else {
+		replyForm.style.display = "block";
+	}
+}
+
+//Gives each parent_id hidden field its ID
+function setVal(id) {
+	/*
+	var field = document.getElementsByClassName('hid-field');
+	var loop_comp = field.length - 1;
+	var i;
+	for (i=0; i < loop_comp; i++ ) {
+		field[i].setAttribute('data-id', 'hid-field' + id);
+	};
+	*/
+	$('.hid-field').attr('value', id);
+
+};
+
+
+//Runs all setters
+function execReply(id){
+	setVal(id);
+	changeForm(id);
+}

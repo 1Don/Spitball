@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603201353) do
+ActiveRecord::Schema.define(version: 20180608011715) do
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20180603201353) do
   end
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type 'array' for column 'interests'
+#   Unknown type '' for column 'interests'
 
   create_table "votes", force: :cascade do |t|
     t.string "votable_type"

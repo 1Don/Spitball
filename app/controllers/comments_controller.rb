@@ -22,14 +22,19 @@ class CommentsController < ApplicationController
 	end
 
 	def index
+		@wad = Wad.find(params[:wad_id])
 		@comments = @wad.comments.all
-		@comment = @wad.comments.where(params[:id])
+		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 		@replies = @comments.hash_tree
+		@rb_arr = []
+		@comments.each do |c|
+			@rb_arr.push(c.id)
+		end 
 	end
 
 
 	def new
-			@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
+		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 	end
 
 	def show
