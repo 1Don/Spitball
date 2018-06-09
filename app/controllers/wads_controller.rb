@@ -6,7 +6,7 @@ class WadsController < ApplicationController
 
 	def index
 		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
-		 	@rankedwads=Wad.order(cached_votes_total: :desc)
+		 	@rankedwads = Wad.order(cached_votes_total: :desc)
     end
 
 	def show
@@ -20,8 +20,8 @@ class WadsController < ApplicationController
 	def create
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save
-			current_user.points == current_user.points + 5
-			redirect_to @wad	
+    		current_user.update_attributes(points: current_user.points + 50)
+   			 redirect_to @wad    
 		else
 			flash[:error] = 'Error try again'
 			render 'new'
@@ -44,17 +44,21 @@ class WadsController < ApplicationController
 	def destroy	
 			if current_user == @wad.user
 				@wad.destroy
+				current_user.update_attributes(points: current_user.points - 50)
 				redirect_to wads_path
 			else
 				flash[:error] = "YOU CANNOT DELETE OTHERS' WADS"
 			end
 	end
 
-#Voting Functionality
+
 	def upvote 
 			@wad = Wad.find(params[:id])
 			@wad.upvote_by current_user
+			current_user.update_attributes(points: current_user.points + 5)  
+			@wad.user.update_attributes(points: @wad.user.points + 15)  
 			redirect_to @wad
+			
 	end
 
 	def report

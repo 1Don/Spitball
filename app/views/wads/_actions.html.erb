@@ -2,7 +2,7 @@
 
 	<div class="col-12 text-right">
 		<% if current_user == wad.user %>
-	      <%= link_to fa_icon("trash", class: "profile-link"), method: :delete%>
+	      <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%>
 	    <% end %>
 	    
 	    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
