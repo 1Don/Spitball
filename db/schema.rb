@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180610163121) do
+ActiveRecord::Schema.define(version: 20180610193709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180610163121) do
 
   create_table "discussions", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
@@ -67,16 +67,17 @@ ActiveRecord::Schema.define(version: 20180610163121) do
     t.string "occupation"
     t.string "location"
     t.string "twitter"
-    t.string "github"
     t.string "linkedin"
+    t.string "github"
     t.string "first_name"
+    t.string "lastname_string"
     t.string "last_name"
     t.integer "points", default: 0
     t.string "interests"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", id: :serial, force: :cascade do |t|
     t.string "votable_type"
     t.integer "votable_id"
     t.string "voter_type"
@@ -91,8 +92,7 @@ ActiveRecord::Schema.define(version: 20180610163121) do
   end
 
   create_table "wads", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "short_form"
+    t.bigint "user_id"
     t.text "long_form"
     t.text "category"
     t.text "problem_state"
@@ -114,4 +114,6 @@ ActiveRecord::Schema.define(version: 20180610163121) do
     t.index ["user_id"], name: "index_wads_on_user_id"
   end
 
+  add_foreign_key "discussions", "users"
+  add_foreign_key "wads", "users"
 end
