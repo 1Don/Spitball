@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603201353) do
+ActiveRecord::Schema.define(version: 20180610155846) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -49,8 +52,29 @@ ActiveRecord::Schema.define(version: 20180603201353) do
     t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'array' for column 'interests'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.boolean "admin", default: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string "occupation"
+    t.string "location"
+    t.string "twitter"
+    t.string "github"
+    t.string "linkedin"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "interests"
+    t.integer "points", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
 
   create_table "votes", force: :cascade do |t|
     t.string "votable_type"
@@ -66,7 +90,28 @@ ActiveRecord::Schema.define(version: 20180603201353) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-# Could not dump table "wads" because of following StandardError
-#   Unknown type '' for column 'tags'
+  create_table "wads", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "short_form"
+    t.text "long_form"
+    t.text "category"
+    t.text "problem_state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
+    t.string "tags"
+    t.index ["category"], name: "index_wads_on_category"
+    t.index ["user_id"], name: "index_wads_on_user_id"
+  end
 
 end
