@@ -15,13 +15,23 @@ function changeParams(id) {
 }
 */
 
-// Will Need to be changed when deployed
-function changeForm(form_id) {
-	var replyForm = document.getElementById('cmt-rply-form-' + form_id);
+//Toggles form on and off
+function toggleForm(id) {
+	var replyForm = document.getElementById('cmt-rply-form-' + id);
 	if (replyForm.style.display == "block") {
 		replyForm.style.display = "none";
 	} else {
 		replyForm.style.display = "block";
+	}
+}
+
+//Toggles reply tree on and off
+function toggleReply(id) {
+	var reply = document.getElementById('reply-' + id);
+	if (reply.style.display == "block") {
+		reply.style.display = "none";
+	} else {
+		reply.style.display = "block";
 	}
 }
 
@@ -43,5 +53,5 @@ function setVal(id) {
 //Runs all setters
 function execReply(id){
 	setVal(id);
-	changeForm(id);
+	toggleForm(id);
 }

@@ -1,11 +1,8 @@
 <div class="row">
-	<div class="col-3 border-right">
-		<div>
-			<%= image_tag comment.user.photo(:thumb) %>
+	<div class="col-2 border-right">
+		<div class="text-center">
+			<%= image_tag comment.user.photo(:thumb), class: "w-50" %>
 		</div>
-		<div>
-			@<%= comment.user.name %>
-		</div>		
 	</div>
 
 	<div class="col-9 small">
@@ -18,7 +15,8 @@
 			</div>
 
 			<div class="col-8">
-				<span id="btn-<%= comment.id %>" data-id="<%= comment.id %>" onclick='execReply("<%= comment.id %>");'><%= fa_icon('comment') %></span>
+				<span class="profile-link" onclick='toggleReply("<%= comment.id %>");'><%= fa_icon('bullhorn') %></span>
+				<span onclick='execReply("<%= comment.id %>");'><%= fa_icon('comment') %></span>
 				<% if current_user == comment.user %>
 					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
 				<% end %>
@@ -26,6 +24,9 @@
 		</div>
 	</div>
 </div>
-<div id="cmt-rply-form-<%= comment.id %>" class="cmt-rply-form">
+<div id="cmt-rply-form-<%= comment.id %>" class="reply-hide">
 	<%= render 'form' %>
+</div>
+<div id="reply-<%= comment.id %>" class="reply-hide">
+	<%= comments_tree_for comment.children.hash_tree %>
 </div>
