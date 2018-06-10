@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
   		@error = @comment.errors.full_messages
     	render 'new'
     end
+    current_user.update_attributes(points: current_user.points + 20)
     redirect_to @wad
 	end
 
@@ -45,21 +46,19 @@ class CommentsController < ApplicationController
 	end
 
 	def update
-		unless current_user == @comment.user
-			if @comment.update(params[:comment].permit(:content, :id))
-				redirect_to wad_path(@wad)
-			else
-				render 'edit'
-			end
+		if @comment.update(params[:comment].permit(:content, :id))
+			redirect_to wad_path(@wad)
+		else
+			render 'edit'
 		end
 	end
 
 	def destroy
-		unless current_user == @comment.user
+		if current_user == @comment.user
 			@comment.destroy
+			current_user.update_attributes(points: current_user.points - 20)
 			redirect_to @wad
 		end
-		redirect_to @wad
 	end
 
 	def upvote

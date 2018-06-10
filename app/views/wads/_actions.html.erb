@@ -1,13 +1,11 @@
-<div class="col-md-3 col-12 flex-column justify-content-end text-md-center text-right">
-  <div class="pull-right ">
-    <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link" %>
-    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
-     <span class="nowrap"> <%= wad.get_upvotes.size %> </span>
-  </div>
+<div class="col-md-8 col-12 row text-center">
 
-  <div>
-    <% if current_user == wad.user %>
-      <%= link_to fa_icon("trash", class: "profile-link"), method: :delete%>
-    <% end %>
-  </div>
+	<div class="col-12 text-right">
+		<% if current_user == wad.user %>
+	      <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%>
+	    <% end %>
+	    
+	    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
+	     <span class="nowrap"> <%= wad.get_upvotes.size %> </span>
+    </div>
 </div>

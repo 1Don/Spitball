@@ -1,14 +1,28 @@
 <div class="row">
-	<div class="col-12">
-		<h5><%= image_tag comment.user.photo(:thumb) %> <%= comment.user.name %></h5>
-		<p><%= comment.content %></p>
+	<div class="col-3 border-right">
+		<div>
+			<%= image_tag comment.user.photo(:thumb) %>
+		</div>
+		<div>
+			@<%= comment.user.name %>
+		</div>		
 	</div>
 
-	<div class="col-12 text-right">
-		<%= link_to "Reply", new_wad_comment_path(@wad, :parent_id => comment.id) %>
-		<% if current_user == comment.user %>
-			<%= link_to "Edit", edit_wad_comment_path(comment.wad, comment) %>
-			<%= link_to "Delete", [comment.wad , comment], method: :delete %>
-		<% end %>
+	<div class="col-9 small">
+		<div class="col-12">
+			<%= comment.content %>
+		</div>
+		<div class="col-12 text-right row mt-4">
+
+			<div class="col-4">
+			</div>
+
+			<div class="col-8">
+				<%= link_to fa_icon("comment", class: "profile-link"), new_wad_comment_path(@wad, :parent_id => comment.id) %>
+				<% if current_user == comment.user %>
+					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>

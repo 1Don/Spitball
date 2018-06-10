@@ -9,10 +9,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    k = @user.interests[0].split(", ")
-    @interest_1 = k[0]
-    @interest_2 = k[1]
-    @interest_3 = k[2]
+    if @user.interests[0] != nil
+      k = @user.interests[0].split(", ")
+      @interest_1 = k[0]
+      @interest_2 = k[1]
+      @interest_3 = k[2]
+    else
+      @interest_1 = @interest_2 = @interest_3 = "Please Add Some Interests!"
+    end
   end
 
   def new
@@ -23,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to Our Beta!"
       redirect_to @user
     else
       render 'new'

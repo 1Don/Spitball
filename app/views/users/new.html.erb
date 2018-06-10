@@ -1,8 +1,5 @@
 <% provide(:title, 'Sign up') %>
-<div class="row">
-  <div class="col-12 text-center">
-    <h1>Sign up</h1>
-  </div>
+<%= render 'shared/error_messages' %>
+<div class="col-12">
+	<%= render 'sign_up' %>
 </div>
-
-<%= render "users/primary_sign_up" %>

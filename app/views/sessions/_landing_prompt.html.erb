@@ -1,0 +1,36 @@
+<div class="card col-6">
+	<div class="row col-12">
+		<div class="border-right col-7 mt-2">
+		    <%= form_for(:session, url: login_path) do |f| %>
+		    <h5 class="text-center"> Login </h5>
+		    <div>
+		      <%= f.email_field :email, placeholder: "Email", class: 'form-control form-control-sm' %>
+		    </div>
+
+		    <div class="mt-2">
+		      <%= f.password_field :password, placeholder: "Password", class: 'form-control form-control-sm' %>
+		    </div>
+
+		    <div class="text-center mt-1">
+		      <%= f.label :remember_me, class: "checkbox inline" do %>
+		        <%= f.check_box :remember_me %>
+		        <span>Remember me on this computer</span>
+		      <% end %>
+		    </div>
+
+		     <div class="text-center"> 
+		     	<%= f.submit "Log in", class: "btn btn-primary mb-2" %>
+		     </div>
+
+		    <% end %>
+		</div>
+
+		<div class="col-3 ml-5 mr-0 text-center">
+			<h5 class="mt-2">Signup Today! </h5>
+			<div class="col-12 mt-5 float-right">			
+				<%= button_to "Signup", new_user_path, class: "btn btn-primary", method: :get %>
+ 			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<% @discussions.each do |discussion| %>
+	<% if discussion.parent_id.nil? && discussion.resolved == true %>
+		<div class="list-group-item">
+		  <div class="row">
+
+		  	<%= link_to discussion_path(discussion), class: 'profile-link' do %>
+		  	 <div class="col-xs-12 col-md-9 mb-4">
+		                <h6 class="small"><%= discussion.content  %></h6>          
+		            </div> 	
+			 </div>
+			 <% end %>
+
+			 <div class="actions">
+						<% if discussion.resolved == false %>
+						<%= link_to 'Answer', discussion_path(discussion), class: 'profile-link' %>
+						<% else %>
+						<%= link_to 'Contribute', discussion_path(discussion), class: 'profile-link' %>
+						<% end %>
+			 </div>
+
+		  </div>
+		</div>
+	<% end %>
+<% end %>
+

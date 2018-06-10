@@ -1,27 +1,39 @@
 <div class="list-group-item wad-list-group-item">
-  <div class="row">
-        <%= link_to wad_comments_path(wad), class: 'col-3 justify-content-center align-items-center' do %>
-        <%= image_tag wad.image.url(:thumb), class: 'img-fluid' %>
+  <div class="row col-12 mb-5">
 
-        <% end %>
-
-        <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
-            <div class="wadinfo">
-                <h6 class><%= wad.problem_state %></h6>
-                <p class="small"><%= wad.short_form %></p>
-            </div>
-           <% end %>
-           <div class="trash">
-            <% if current_user == wad.user %>
-              <%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete%>
+    <div class="col-3 mt-2 text-center">
+        <%= link_to wad_comments_path(wad) do %>
+            <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
+              <%= image_tag "spitball_b.png", class: 'img-fluid h-75 border border-dark rounded' %>
+            <% else %>
+              <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
             <% end %>
-          </div>
+        <% end %>
+     </div>
+
+     <div class="wadinfo col-9 mt-1">
+        <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
+            <h6 class><%= wad.problem_state %></h6>
+            <p class="small"><%= wad.long_form %></p>
+        <% end %>
+     </div>
+
    </div>
        
-     <div class="actions">
-                    <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link" %> &nbsp;
-                    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
-                    <%= wad.get_upvotes.size %>
-        </div>              
-              
+   <div class="actions row col-12 text-center">
+
+      <div class="float-right col-4">
+        <% if current_user == wad.user %>
+          <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link pr-1" %> &nbsp;
+        <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %>
+        <%= wad.get_upvotes.size %>
+      </div>
+    
+
+   </div>                        
 </div>

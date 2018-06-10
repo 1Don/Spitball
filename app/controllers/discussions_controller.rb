@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-	layout 'wad', only: [:index]
+	layout 'wad', only: [:index, :show]
 
 	def index
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
@@ -38,6 +38,7 @@ class DiscussionsController < ApplicationController
 	  	end
 			@discussion.user_id = current_user.id
 	 	if @discussion.save
+	 		current_user.update_attributes(points: current_user.points + 50)
 		    flash[:success] = 'Your thread was successfully added!'
 
 		    if @discussion.parent_id == nil
@@ -57,6 +58,8 @@ class DiscussionsController < ApplicationController
 	def upvote
 		@discussion = Discussion.find(params[:id])
 	  	@discussion.upvote_by current_user
+	  	current_user.update_attributes(points: current_user.points + 5)
+	  	@discussion.user.update_attributes(points: @discussion.user.points + 15)  
 	  	redirect_to @discussion
 	end
 
@@ -65,6 +68,7 @@ class DiscussionsController < ApplicationController
 		@discussion = Discussion.find(params[:id])
 		@discussion.toggle!(:resolved)
 	end
+
 
 private
 

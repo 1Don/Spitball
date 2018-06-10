@@ -4,13 +4,13 @@
       <h5 class="display-5 text-profile">
         <div class="row mb-3">
 
-          <div class="col-md-2 col-4 text-center">
-            <%= image_tag @user.photo.url(:thumb), class: "img-fluid" %>
-            <p class="text-center"><%= number_with_delimiter 12345 %></p>
+          <div class="col-md-3 col-4 text-center">
+            <%= image_tag @user.photo.url(:medium), class: "img-fluid border rounded-circle" %>
+            <p class="text-center"><%= @user.points %></p>
           </div>
           <div class="col-md-5 col-8">
             <p>
-              <%= @user.first_name %> <%= @user.last_name %>,  <%= @user.occupation %> 
+              <%= @user.first_name %> <%= @user.last_name %> -  <%= @user.occupation %><br>
                 <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
             <p class="small">
@@ -21,7 +21,7 @@
             </p>
             <div class="text-right d-block d-sm-none">
               <% if @user.twitter.present? %>
-                <%= link_to fa_icon("twitter"), @user.twitter, class: "profile-link" %>
+                <%= link_to fa_icon("twitter"), "http://www.twitter.com/#{@user.twitter}", class: "profile-link" %>
               <% end %>
               <% if @user.linkedin.present? %>
                 <%= link_to fa_icon("linkedin"), @user.linkedin, class: "profile-link" %>
@@ -31,26 +31,15 @@
               <% end %>
             </div>
           </div>
-          <div class="col-md-5 col-sm-12 d-none d-sm-block">
-            <ul class="nav mb-4">
-              <li class="nav-item">
-                <a class="nav-link text-center text-60"><%= number_with_delimiter @user.comments.count %><br>Responses</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-center text-60"><%= number_with_delimiter @user.wads.count %><br>Projects</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-center text-60">4<br>Questions</a>
-              </li>
-            </ul>
+          <div class="col-md-5 col-sm-12 d-none d-sm-block float-right social-link">
             <% if @user.twitter.present? %>
-              <%= link_to fa_icon("twitter", text: username_from_url(@user.twitter)), @user.twitter, class: "profile-link" %> <br>
+              <%= link_to fa_icon("twitter"), "http://www.twitter.com/#{@user.twitter}", class: "profile-link" %> <br>
             <% end %>
             <% if @user.linkedin.present? %>
-              <%= link_to fa_icon("linkedin", text: username_from_url(@user.linkedin)), @user.linkedin, class: "profile-link" %> <br>
+              <%= link_to fa_icon("linkedin"), @user.linkedin, class: "profile-link" %> <br>
             <% end %>
             <% if @user.github.present? %>
-              <%= link_to fa_icon("github", text: username_from_url(@user.github)), @user.github, class: "profile-link" %>
+              <%= link_to fa_icon("github"), @user.github, class: "profile-link" %>
             <% end %>
           </div>
         </div>

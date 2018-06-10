@@ -1,0 +1,12 @@
+.discussion-link {
+  color: $body-color;
+
+  @include hover-focus {
+    text-decoration: none;
+    color: $body-color;
+  }
+}
+
+.discussioninfo{
+    width:400px;
+}

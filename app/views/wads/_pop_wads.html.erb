@@ -1,6 +1,3 @@
-<% @wads.each do |wad| %>
-	<%# Have to define arithmetically what "pop" is %>
-	<% if wad.get_upvotes.size ==1 %>
+<% @rankedwads.each do |wad| %>
 		<%= render wad %>
-	<% end %>
 <% end %>
