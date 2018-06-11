@@ -15,7 +15,7 @@ function changeParams(id) {
 }
 */
 
-//Toggles form on and off
+/* Toggles form on and off
 function toggleForm(id) {
 	var replyForm = document.getElementById('cmt-rply-form-' + id);
 	if (replyForm.style.display == "block") {
@@ -24,14 +24,18 @@ function toggleForm(id) {
 		replyForm.style.display = "block";
 	}
 }
+*/
 
 //Toggles reply tree on and off
 function toggleReply(id) {
 	var reply = document.getElementById('reply-' + id);
-	if (reply.style.display == "block") {
+	var show = document.getElementById('show-' + id);
+	if (reply.style.display == "block" && show.style.display == "none") {
 		reply.style.display = "none";
+		show.style.display = "block";
 	} else {
 		reply.style.display = "block";
+		show.style.display = "none";
 	}
 }
 
@@ -53,5 +57,5 @@ function setVal(id) {
 //Runs all setters
 function execReply(id){
 	setVal(id);
-	toggleForm(id);
+	toggleReply(id);
 }

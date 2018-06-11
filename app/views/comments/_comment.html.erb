@@ -1,32 +1,43 @@
 <div class="row">
-	<div class="col-2 border-right">
-		<div class="text-center">
-			<%= image_tag comment.user.photo(:thumb), class: "w-50" %>
-		</div>
+	<div class="col-2 border-right text-center">
+		<%= image_tag comment.user.photo(:thumb), class: "w-75" %>
 	</div>
 
-	<div class="col-9 small">
+	<div class="col-7 small">
 		<div class="col-12">
 			<%= comment.content %>
 		</div>
-		<div class="col-12 text-right row mt-4">
+	</div>
+	<div class="col-3">
+		<% if current_user == comment.user %>
+			<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+		<% end %>
+	</div>	
+</div>
 
-			<div class="col-4" id='wad' data-wad="<%= @wad.id %>">
+
+<div class="row col-12 mt-4">	
+	<div class="profile-link col-2" onclick='execReply("<%= comment.id %>")'>
+		<%= fa_icon('bullhorn 2x', class: "2x") %>	
+	</div>	
+
+	<div id="show-<%= comment.id %>" class="small col-10 repl-show">
+		<= CLICK TO VIEW/CREATE COMMENT(S)
+	</div>
+
+	<div id="reply-<%= comment.id %>" class="col-10 reply-hide">
+			<%= render 'form' %>
+			<% comment.children.each do |c| %>
+		<div class="small col-12 row border">
+			<div class="col-5">
+				<%= c.user.name %>:
 			</div>
 
-			<div class="col-8">
-				<span class="profile-link" onclick='toggleReply("<%= comment.id %>");'><%= fa_icon('bullhorn') %></span>
-				<span onclick='execReply("<%= comment.id %>");'><%= fa_icon('comment') %></span>
-				<% if current_user == comment.user %>
-					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
-				<% end %>
+			<div class="col-7">
+				<%= c.content %>
 			</div>
 		</div>
+			<% end %>
 	</div>
 </div>
-<div id="cmt-rply-form-<%= comment.id %>" class="reply-hide">
-	<%= render 'form' %>
-</div>
-<div id="reply-<%= comment.id %>" class="reply-hide">
-	<%= comments_tree_for comment.children.hash_tree %>
-</div>
+
