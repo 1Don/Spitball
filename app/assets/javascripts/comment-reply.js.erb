@@ -15,15 +15,33 @@ function changeParams(id) {
 }
 */
 
-// Will Need to be changed when deployed
-function changeForm(form_id) {
-	var replyForm = document.getElementById('cmt-rply-form-' + form_id);
+/* Toggles form on and off
+function toggleForm(id) {
+	var replyForm = document.getElementById('cmt-rply-form-' + id);
+>>>>>>> comments
 	if (replyForm.style.display == "block") {
 		replyForm.style.display = "none";
 	} else {
 		replyForm.style.display = "block";
 	}
 }
+<<<<<<< HEAD
+=======
+*/
+
+//Toggles reply tree on and off
+function toggleReply(id) {
+	var reply = document.getElementById('reply-' + id);
+	var show = document.getElementById('show-' + id);
+	if (reply.style.display == "block" && show.style.display == "none") {
+		reply.style.display = "none";
+		show.style.display = "block";
+	} else {
+		reply.style.display = "block";
+		show.style.display = "none";
+	}
+}
+
 
 //Gives each parent_id hidden field its ID
 function setVal(id) {
@@ -43,5 +61,9 @@ function setVal(id) {
 //Runs all setters
 function execReply(id){
 	setVal(id);
+<<<<<<< HEAD
 	changeForm(id);
+=======
+	toggleReply(id);
+>>>>>>> comments
 }

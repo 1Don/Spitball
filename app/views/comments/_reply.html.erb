@@ -1,7 +1,21 @@
-<%= form_for([@wad, @comment]) do |f| %>
-<%= f.hidden_field :parent_id %>
-<%= f.hidden_field :wad_id %>
-<%= f.text_area :content %>
-<%= f.submit %>
-
-<% end %>
+<div id="reply-<%= comment.id %>" class="reply-hide">
+	<% comment.children.each do |comment| %>
+	<div class="pl-5 row small">
+		<div class="col-4">
+			@<%= comment.user.name %>
+		</div>
+		<div class="col-6">
+			<%= comment.content %>	
+		</div>
+		<div class="2">
+			<span class="profile-link" onclick='toggleReply("<%= comment.id %>");'><%= fa_icon('bullhorn') %></span>
+			<span onclick='execReply("<%= comment.id %>");'><%= fa_icon('comment') %></span>
+			<% if current_user == comment.user %>
+				<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+			<% end %>			
+		</div>
+	</div>
+	<div id="cmt-rply-form-<%= comment.id %>" class="reply-hide">
+		<%= render 'form' %>
+	</div>
+		<% end %>
