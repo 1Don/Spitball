@@ -1,0 +1,48 @@
+<div class="row">	
+	<div class="col-12 col-md-12 mt-3">
+		<%= render 'wads/panel' %>
+
+		<div class="card mb-4">
+			<div class="card-header">
+			  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline' }, remote: true do |f| %>
+			    <%= f.hidden_field :wad_id %>
+
+			    <%= f.label :content, class: 'sr-only' %>
+			    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?' %>
+
+			    <%= f.submit 'Comment', class: 'btn btn-primary', disable_with: 'Sending' %>
+			  <% end %>
+			</div>
+
+			<div class="list-group list-group-flush">
+				<%= comments_tree_for @replies %>
+			</div>
+		</div>
+	</div>
+
+	</div>
+</div>
+	<div class="row">
+		<div class="col-12 mb-4">
+			<div class="card">
+				<div class="card-header">
+					Replies
+				</div>
+
+				<div class="list-group list-group-flush">
+					<% @comment.children.map do |comment| %>
+						<div class="row">
+							<div class="col-3 border-right text-center">
+								<%= image_tag comment.user.photo(:thumb), class: "w-75" %>
+							</div>
+
+							<div class="col-7 small">
+								<div class="col-12">
+									<%= comment.content %>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>

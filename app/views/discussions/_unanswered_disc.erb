@@ -10,6 +10,12 @@
 			 </div>
 			 <% end %>
 
+			  <div class="float-right col-4">			   	
+			        <% if current_user == discussion.user %>
+			          <%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%>
+			        <% end %>
+		      </div>
+
 			 <div class="actions">
 						<% if discussion.resolved == false %>
 						<%= link_to 'Answer', discussion_path(discussion), class: 'profile-link' %>

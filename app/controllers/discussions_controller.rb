@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-	layout 'wad', only: [:index, :show]
+	layout 'discussion', only: [:index]
 
 	def index
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
@@ -16,6 +16,12 @@ class DiscussionsController < ApplicationController
 	end
 
 	def destroy
+		@discussion = Discussion.find(params[:id])
+		if current_user == @discussion.user
+				@discussion.destroy
+				current_user.update_attributes(points: current_user.points - 50)
+				redirect_to discussions_path
+			end
 	end
 
 	def update
