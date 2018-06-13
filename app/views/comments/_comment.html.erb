@@ -1,28 +1,44 @@
 <div class="row">
-	<div class="col-3 border-right">
-		<div>
-			<%= image_tag comment.user.photo(:thumb) %>
-		</div>
-		<div>
-			@<%= comment.user.name %>
-		</div>		
+	<div class="col-2 border-right text-center">
+		<%= image_tag comment.user.photo(:thumb), class: "w-75" %>
 	</div>
 
-	<div class="col-9 small">
+	<div class="col-7 small">
 		<div class="col-12">
 			<%= comment.content %>
 		</div>
-		<div class="col-12 text-right row mt-4">
+	</div>
+	<div class="col-3">
+		<span id="btn-hide" onclick='execReply("<%= comment.id %>")'>	<%= fa_icon('comment') %> </span>
+		<% if current_user == comment.user %>
+			<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+		<% end %>
+	</div>	
+</div>
 
-			<div class="col-4">
+
+<div class="float-right row no-gutters col-12 mt-4">	
+	<div id="reply-<%= comment.id %>" class="col-12 reply-hide">
+		<div class="mb-2">
+			<%= render 'form' %>
+		</div>
+			<% comment.descendants.each do |c| %>
+		<div class="small col-12 row border-top">
+			<div class="col-2">
+				<%= image_tag c.user.photo(:thumb), class: "w-75" %>
 			</div>
 
-			<div class="col-8">
-				<%= link_to fa_icon("comment", class: "profile-link"), new_wad_comment_path(@wad, :parent_id => comment.id) %>
-				<% if current_user == comment.user %>
+			<div class="col-6">
+				<%= c.content %>
+			</div>
+			<div class="col-3 row-fluid">
+				<span class="child-cmt" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
+				<span><% if current_user == comment.user %>
 					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
-				<% end %>
+				<% end %></span>	
 			</div>
 		</div>
+			<% end %>
 	</div>
 </div>
+
