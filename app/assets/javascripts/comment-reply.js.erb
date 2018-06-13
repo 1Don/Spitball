@@ -37,6 +37,7 @@ function toggleReply(id) {
 		reply.style.display = "none";
 		show.style.display = "block";
 	} else {
+		$('.reply-hide').css("display", "none");
 		reply.style.display = "block";
 		show.style.display = "none";
 	}
@@ -54,12 +55,23 @@ function setVal(id) {
 	};
 	*/
 	$('.hid-field').attr('value', id);
-
 };
 
+function setFormId(id) {
+	$('.form-field').attr('id', "form-field-" + id);
+}
 
+function setReply(id, user) {
+	$('.form-field').val("@" + user);
+}
 //Runs all setters
 function execReply(id){
+	$('.form-field').val(null);
 	setVal(id);
+	setFormId(id);
 	toggleReply(id);
+}
+function secondaryReply(cmt_id, id, name) {
+	setVal(id);
+	setReply(cmt_id, name);
 }

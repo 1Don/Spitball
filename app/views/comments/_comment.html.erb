@@ -21,20 +21,19 @@
 		<%= fa_icon('bullhorn 2x', class: "2x") %>	
 	</div>	
 
-	<div id="show-<%= comment.id %>" class="small col-10 repl-show">
-		<= CLICK TO VIEW/CREATE COMMENT(S)
-	</div>
-
 	<div id="reply-<%= comment.id %>" class="col-10 reply-hide">
+		<div class="mb-2">
 			<%= render 'form' %>
+		</div>
 			<% comment.children.each do |c| %>
 		<div class="small col-12 row border">
 			<div class="col-5">
-				<%= c.user.name %>:
+				<%= image_tag c.user.photo(:thumb), class: "w-75" %>
 			</div>
 
 			<div class="col-7">
-				<%= c.content %>
+				<%= c.content %><br>
+				<span class="child-cmt" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
 			</div>
 		</div>
 			<% end %>
