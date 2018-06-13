@@ -32,14 +32,11 @@ function toggleForm(id) {
 //Toggles reply tree on and off
 function toggleReply(id) {
 	var reply = document.getElementById('reply-' + id);
-	var show = document.getElementById('show-' + id);
-	if (reply.style.display == "block" && show.style.display == "none") {
+	if (reply.style.display == "block") {
 		reply.style.display = "none";
-		show.style.display = "block";
 	} else {
 		$('.reply-hide').css("display", "none");
 		reply.style.display = "block";
-		show.style.display = "none";
 	}
 }
 
@@ -62,7 +59,7 @@ function setFormId(id) {
 }
 
 function setReply(id, user) {
-	$('.form-field').val("@" + user);
+	$('.form-field').val("@" + user + " ");
 }
 //Runs all setters
 function execReply(id){
