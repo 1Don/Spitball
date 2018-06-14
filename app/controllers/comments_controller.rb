@@ -18,8 +18,11 @@ class CommentsController < ApplicationController
   		@error = @comment.errors.full_messages
     	render 'new'
     end
-    current_user.update_attributes(points: current_user.points + 20)
-    redirect_to @wad
+    		(@wad.users.uniq - [current_user]).each do |user|
+			Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
+		end
+		    current_user.update_attributes(points: current_user.points + 20)
+		    redirect_to @wad
 	end
 
 	def index

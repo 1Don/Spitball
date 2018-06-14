@@ -12,6 +12,9 @@ class AnswersController < ApplicationController
   	else
     	@answer = @discussion.answers.build(answer_params)
   	end
+  		 (@discussion.users.uniq - [current_user]).each do |user|
+			Notification.create(recipient: @discussion.user, actor: current_user, action: "commented", notifiable: @discussion)
+		end
 		@answer.user_id = current_user.id
 	 	unless @answer.save
   		@error = @answer.errors.full_messages

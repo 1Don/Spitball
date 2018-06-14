@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
 #Defining routes for search navigation
     get    '/search', to: 'wads#search'
-
+  resources :notifications
   resources :users 
 
   resources :discussions do
