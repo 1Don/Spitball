@@ -1,4 +1,4 @@
-<div class="row">
+<div id="cmt-<%= comment.id %>" class="row">
 	<div class="col-2 border-right text-center">
 		<%= image_tag comment.user.photo(:thumb), class: "w-75" %>
 	</div>
@@ -9,16 +9,16 @@
 		</div>
 	</div>
 	<div class="col-3">
-		<span id="btn-hide" onclick='execReply("<%= comment.id %>")'>	<%= fa_icon('comment') %> </span>
+		<span id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= fa_icon('comment') %> </span>
 		<% if current_user == comment.user %>
-			<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+			<span onclick='removeComment("<%= comment.id %>");'><%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete, remote: true %></span>
 		<% end %>
 	</div>	
 </div>
 
 
 <div class="float-right row no-gutters col-12 mt-4">	
-	<div id="reply-<%= comment.id %>" class="col-12 reply-hide">
+	<div id="reply-<%= comment.id %>" class="col-12 reply-hid">
 		<div class="mb-2">
 			<%= render 'form' %>
 		</div>
@@ -34,7 +34,7 @@
 			<div class="col-3 row-fluid">
 				<span class="child-cmt" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
 				<span><% if current_user == comment.user %>
-					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete, remote: true %>
 				<% end %></span>	
 			</div>
 		</div>

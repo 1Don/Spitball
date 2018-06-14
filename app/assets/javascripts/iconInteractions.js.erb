@@ -28,7 +28,6 @@ function toggleForm(id) {
 <<<<<<< HEAD
 =======
 */
-
 //Toggles reply tree on and off
 function toggleReply(id) {
 	var reply = document.getElementById('reply-' + id);
@@ -40,6 +39,9 @@ function toggleReply(id) {
 	}
 }
 
+function removeComment(id) {
+	$('#cmt-' + id).html("your comment has been removed");
+}
 
 //Gives each parent_id hidden field its ID
 function setVal(id) {

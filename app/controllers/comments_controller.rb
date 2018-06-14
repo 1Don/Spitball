@@ -58,7 +58,6 @@ class CommentsController < ApplicationController
 		if current_user == @comment.user
 			@comment.destroy
 			current_user.update_attributes(points: current_user.points - 20)
-			redirect_to @wad
 		end
 	end
 

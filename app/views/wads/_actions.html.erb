@@ -5,7 +5,7 @@
 	      <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%>
 	    <% end %>
 	    
-	    <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put %>
-	     <span class="nowrap"> <%= wad.get_upvotes.size %> </span>
+	    <span onclick='updateFigure("<%= wad.id %>");'><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>
+	     <span id="like-<%= wad.id %>" class="nowrap"> <%= wad.get_upvotes.size %> </span>
     </div>
 </div>
