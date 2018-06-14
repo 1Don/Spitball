@@ -3,6 +3,8 @@ class User < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   acts_as_voter
   has_many :wads, dependent: :destroy
+  has_many :discussions, dependent: :destroy
+  has_many :answers
   has_many :comments
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
