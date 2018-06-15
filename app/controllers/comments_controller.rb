@@ -7,22 +7,23 @@ class CommentsController < ApplicationController
 
 	def create
 		if params[:comment][:parent_id].to_i > 0
-	    parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-	    @comment = parent.children.build(comment_params)
-	    wad_id = parent.id
-  	else
-    	@comment = @wad.comments.build(comment_params)
-  	end
+	    	parent = Comment.find_by_id(params[:comment].delete(:parent_id))
+	    	@comment = parent.children.build(comment_params)
+	   		wad_id = parent.id
+  		else
+    		@comment = @wad.comments.build(comment_params)
+  		end
 		@comment.user_id = current_user.id
-	 	unless @comment.save
-  		@error = @comment.errors.full_messages
-    	render 'new'
-    end
-    		(@wad.users.uniq - [current_user]).each do |user|
+    	(@wad.users.uniq - [current_user]).each do |user|
 			Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
 		end
-		    current_user.update_attributes(points: current_user.points + 20)
-		    redirect_to @wad
+		current_user.update_attributes(points: current_user.points + 20)
+		redirect_to @wad
+
+	 	unless @comment.save
+	  		@error = @comment.errors.full_messages
+	    	render 'new'
+   		end
 	end
 
 	def index
