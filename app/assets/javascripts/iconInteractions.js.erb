@@ -1,33 +1,3 @@
-/*
-function changeParams(id) {
-	var wad_id;
-	var home_url;
-	var a = document.getElementById('wad');
-	wad_id = a.getAttribute('data-wad');
-	home_url = "http://localhost:3000/wads/" + wad_id +"/comments";	
-
-	curr_url = window.document.location.href;
-	if (curr_url != home_url) {
-		window.history.pushState(null, null, home_url);
-	} else {
-		window.history.pushState(null, null, curr_url + "/new?parent_id=" + id);
-	}
-}
-*/
-
-/* Toggles form on and off
-function toggleForm(id) {
-	var replyForm = document.getElementById('cmt-rply-form-' + id);
->>>>>>> comments
-	if (replyForm.style.display == "block") {
-		replyForm.style.display = "none";
-	} else {
-		replyForm.style.display = "block";
-	}
-}
-<<<<<<< HEAD
-=======
-*/
 function setProfileLinks(id) {
 	var cmts = document.getElementsByClassName("cmt-content");
 	var text;var prefix; var suffix; var name; var linked_name; var comp;
@@ -43,53 +13,17 @@ function setProfileLinks(id) {
 		if (comp ==="," || comp ==="!" || comp ==="?" || comp ==="@" || comp ==="#" || comp ==="$" || comp ==="%" || comp ==="^" || comp ==="&" || comp ==="*" || comp ==="(" || comp ===")" || comp ==="-" || comp ==="+" || comp ==="=" || comp ===";" || comp ===":" || comp ==="." || comp ==="<" || comp ===">") {
 			suffix = text.substring(prefix.length + name.length);			
 			cmts[i].innerHTML = prefix + name + suffix;
+		} else if (name[0] != "@") {
+			suffix = text.substring(prefix.length + name.length);			
+			cmts[i].innerHTML = prefix + name + suffix;
 		} else {
-			linked_name = name.link("/users/" + id);
+			linked_name = name.link("/users/" + id);// <= this is the link that needs to be defined properly
 			suffix = text.substring(prefix.length + name.length);
 			cmts[i].innerHTML = prefix + linked_name + suffix;
 		};
 	};
 
 }
-		/*
-		switch (text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))){
-			case ",":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			case "!":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			case "?":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			case "/":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			default:
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;			
-			*/
-
-
-
-
 
 //Toggles reply tree on and off
 function toggleReply(id) {
@@ -105,17 +39,8 @@ function toggleReply(id) {
 function removeComment(id) {
 	$('#cmt-' + id).html("your comment has been removed");
 }
-
 //Gives each parent_id hidden field its ID
 function setVal(id) {
-	/*
-	var field = document.getElementsByClassName('hid-field');
-	var loop_comp = field.length - 1;
-	var i;
-	for (i=0; i < loop_comp; i++ ) {
-		field[i].setAttribute('data-id', 'hid-field' + id);
-	};
-	*/
 	$('.hid-field').attr('value', id);
 };
 
@@ -125,7 +50,6 @@ function setFormId(id) {
 
 function setReply(id, user, uid) {
 	$('.form-field').val("@" + user + " ");
-	var user_id = 
 }
 //Runs all setters
 function execReply(id){

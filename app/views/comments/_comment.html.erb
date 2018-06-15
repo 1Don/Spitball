@@ -33,8 +33,8 @@
 			</div>
 			<div class="col-3 row-fluid">
 				<span class="child-cmt" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
-				<span><% if current_user == comment.user %>
-					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete %>
+				<span><% if current_user == c.user %>
+					<%= link_to fa_icon("trash", class: "profile-link"), [c.wad , c], method: :delete %>
 				<% end %></span>	
 			</div>
 		</div>
