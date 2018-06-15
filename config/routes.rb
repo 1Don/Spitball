@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 #Defining routes for search navigation
     get    '/search', to: 'wads#search'
 
-  resources :users 
+  resources :users
   resources :wads do
     member do
         put "like", to: "wads#upvote"
