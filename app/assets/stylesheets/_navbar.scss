@@ -14,10 +14,6 @@ nav .nav-link {
   color: white !important;
   }
 
-.backgrounddoe{
-  color: #fff;
-  background-color: #274350;
-}
 
 
 #header {
@@ -29,4 +25,9 @@ nav .nav-link {
 body {
   padding-top: 75px;
   background-color: #fdfdfd;
+}
+
+.nav-button{
+  background-color: #274350;
+  border:0px solid transparent;
 }
