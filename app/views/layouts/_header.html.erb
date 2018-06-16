@@ -15,12 +15,13 @@
     <ul class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
 
-        <li class="nav-item dropdown" data-behavior="notifications">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <%= fa_icon("bell") %>
+        <li class="nav-item dropdown" data-behavior='notifications' data-behavior="notifications-link">
+          <a id="notificationsDD" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <%= fa_icon("bell") %><span data-behavior='unread-count'></span>
           </a>
 
-          <div class="dropdown-menu" data-behavior="notification-items">
+          <div class="dropdown-menu" data-behavior="notification-items" aria-labelledby="notificationsDD">
+            <a> Will anythign work?</a>
           <!--
           <a class='dropdown-item' href='#'>yeo</a>
            -->
