@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get    '/comingsoon',  to: 'static_pages#landing'
+  get    '/popular',  to:'wads#popwads'
+  
 
 #Defining routes for industry navigation
   get '/industries', to: 'industries#index'

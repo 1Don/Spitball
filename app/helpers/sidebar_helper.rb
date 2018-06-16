@@ -1,6 +1,10 @@
 module SidebarHelper
   def sidebar_elements
     [
+      {
+        link: "/popular",
+        name: "Popular Wads"
+      },
 
       {
         link: "/b2b",
