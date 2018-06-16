@@ -28,69 +28,6 @@ function toggleForm(id) {
 <<<<<<< HEAD
 =======
 */
-function setProfileLinks(id) {
-	var cmts = document.getElementsByClassName("cmt-content");
-	var text;var prefix; var suffix; var name; var linked_name; var comp;
-	var nonos = [",","!","?"];
-	var leng = cmts.length;
-	var i;
-	for (i = 0; i < leng; i++) {
-		text = cmts[i].textContent;
-		prefix = text.substring(0, text.indexOf("@"));
-		name = text.substring(text.indexOf("@"), text.indexOf(" ", prefix.length));
-		comp = name[name.length - 1];
-		//will make DRYer at some point
-		if (comp ==="," || comp ==="!" || comp ==="?" || comp ==="@" || comp ==="#" || comp ==="$" || comp ==="%" || comp ==="^" || comp ==="&" || comp ==="*" || comp ==="(" || comp ===")" || comp ==="-" || comp ==="+" || comp ==="=" || comp ===";" || comp ===":" || comp ==="." || comp ==="<" || comp ===">") {
-			suffix = text.substring(prefix.length + name.length);			
-			cmts[i].innerHTML = prefix + name + suffix;
-		} else {
-			linked_name = name.link("/users/" + id);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;
-		};
-	};
-
-}
-		/*
-		switch (text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))){
-			case ",":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			case "!":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			case "?":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			case "/":
-			name = name.substring(0, name.indexOf(text.substring(prefix.length + comp, text.indexOf(" ", prefix.length))));
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;					
-			break;
-
-			default:
-			linked_name = name.link("/users/" + name);
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;			
-			*/
-
-
-
-
-
 //Toggles reply tree on and off
 function toggleReply(id) {
 	var reply = document.getElementById('reply-' + id);
@@ -123,9 +60,8 @@ function setFormId(id) {
 	$('.form-field').attr('id', "form-field-" + id);
 }
 
-function setReply(id, user, uid) {
+function setReply(id, user) {
 	$('.form-field').val("@" + user + " ");
-
 }
 //Runs all setters
 function execReply(id){
@@ -133,7 +69,6 @@ function execReply(id){
 	setVal(id);
 	setFormId(id);
 	toggleReply(id);
-	setProfileLinks();
 }
 function secondaryReply(cmt_id, id, name) {
 	setVal(id);

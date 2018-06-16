@@ -1,4 +1,4 @@
-<%= form_for([@wad, @comment], remote: true) do |f| %>
+<%= form_for([@wad, @wad.comments]) do |f| %>
 	<div class="col-12 mx-auto row">
 	      <div class="col-4">
 	        <%= f.submit 'Comment', class: 'text-center btn btn-primary btn-sm', id: "btn" %>

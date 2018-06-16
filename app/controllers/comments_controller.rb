@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
 	  		@error = @comment.errors.full_messages
 	    	render 'new'
    		end
+
 	end
 
 	def index
@@ -62,7 +63,6 @@ class CommentsController < ApplicationController
 		if current_user == @comment.user
 			@comment.destroy
 			current_user.update_attributes(points: current_user.points - 20)
-			redirect_to @wad
 		end
 	end
 
