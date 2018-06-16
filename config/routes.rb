@@ -26,15 +26,6 @@ Rails.application.routes.draw do
   get    '/events',     to:  'industries#events'
   get    '/innovate',     to:  'industries#innovate'
   get    '/media',     to:  'industries#media'
-
-
-#Defining routes for discussion/forum navigation
-  resources :discussions do
-    member do
-      put "like", to: "discussions#upvote"
-      patch :solved
-    end
-  end
   get    '/forum',    to:   'discussions#index'
 
 
@@ -46,7 +37,25 @@ Rails.application.routes.draw do
 #Defining routes for search navigation
     get    '/search', to: 'wads#search'
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+  
   resources :users 
+
+  resources :discussions do
+    member do
+        put "like", to: "discussions#upvote"
+        patch :solved
+    end
+      resources :answers do 
+        put "like", to: "answers#upvote"
+      end   
+  end
+
+
   resources :wads do
     member do
         put "like", to: "wads#upvote"

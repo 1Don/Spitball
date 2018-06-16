@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180610193709) do
+ActiveRecord::Schema.define(version: 20180615190627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "answer_anc_desc_udx", unique: true
+    t.index ["descendant_id"], name: "answer_desc_idx"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.integer "discussion_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+  end
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -42,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180610193709) do
 
   create_table "discussions", force: :cascade do |t|
     t.text "content"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
@@ -50,6 +67,17 @@ ActiveRecord::Schema.define(version: 20180610193709) do
     t.string "tags"
     t.index ["user_id", "created_at"], name: "index_discussions_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_discussions_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.boolean "read", default: false
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,7 +105,7 @@ ActiveRecord::Schema.define(version: 20180610193709) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "votes", id: :serial, force: :cascade do |t|
+  create_table "votes", force: :cascade do |t|
     t.string "votable_type"
     t.integer "votable_id"
     t.string "voter_type"
@@ -92,7 +120,7 @@ ActiveRecord::Schema.define(version: 20180610193709) do
   end
 
   create_table "wads", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.text "long_form"
     t.text "category"
     t.text "problem_state"
@@ -114,6 +142,4 @@ ActiveRecord::Schema.define(version: 20180610193709) do
     t.index ["user_id"], name: "index_wads_on_user_id"
   end
 
-  add_foreign_key "discussions", "users"
-  add_foreign_key "wads", "users"
 end

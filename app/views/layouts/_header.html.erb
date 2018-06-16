@@ -17,11 +17,23 @@
 
     <ul class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
+
+        <li class="nav-item dropdown" data-behavior='notifications' data-behavior="notifications-link">
+          <a id="notificationsDD" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <%= fa_icon("bell") %><span data-behavior='unread-count'></span>
+          </a>
+
+          <div class="dropdown-menu" data-behavior="notification-items" aria-labelledby="notificationsDD">
+            <a> Will anythign work?</a>
+          <!--
+          <a class='dropdown-item' href='#'>yeo</a>
+           -->
+          </div>
+        </li>
+
         <li class="nav-item">
           <%= link_to "Forum", discussions_path, class: 'nav-link' %>
         </li>
-
-       
 
         <% sidebar_elements.each do |element| %>
           <li class="d-md-none nav-item">
