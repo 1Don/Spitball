@@ -9,23 +9,24 @@
   }
 }
 
-.static_pages.landing {
-  #header {
-    background-color: transparent;
 
-    .nav-item,
-    .nav-item .nav-link {
-      color: $body-color;
-    }
+nav .nav-link {
+  color: white !important;
   }
+
+.backgrounddoe{
+  color: #fff;
+  background-color: #274350;
 }
 
 
 #header {
   z-index: 1;
-  background-color: #d2e2ea;
+  background-color: #274350;
 }
+
 
 body {
   padding-top: 75px;
+  background-color: #fdfdfd;
 }
