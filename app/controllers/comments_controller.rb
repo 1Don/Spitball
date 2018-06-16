@@ -19,7 +19,6 @@ class CommentsController < ApplicationController
     	render 'new'
     end
     current_user.update_attributes(points: current_user.points + 20)
-    redirect_to @wad
 	end
 
 	def index

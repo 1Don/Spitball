@@ -18,24 +18,36 @@
 
 
 <div class="float-right row no-gutters col-12 mt-4">	
-	<div id="reply-<%= comment.id %>" class="col-12 reply-hid">
-		<div class="mb-2">
+	<div id="reply-<%= comment.id %>" class="col-12 reply-hide">
+		<div id="cmt-form-<%= comment.id %>" class="mb-2">
 			<%= render 'form' %>
 		</div>
+
+			<div id="cmt-<%= comment.id %>" class="small col-12 row">
+				<div id="cmt-img-<%= comment.id %>" class="col-4">
+
+				</div>
+
+				<div id="cmt-cnt-<%= comment.id%>" class="col-6">
+
+				</div>
+
+			</div>
+
 			<% comment.descendants.each do |c| %>
-		<div class="small col-12 row border-top">
-			<div class="col-2">
-				<%= image_tag c.user.photo(:thumb), class: "w-75" %>
+		<div id="cmt-<%= c.id %>" class="small col-12 row border-top">
+			<div class="col-4">
+				<%= c.user.name %>:
 			</div>
 
 			<div class="col-6">
 				<%= c.content %>
 			</div>
-			<div class="col-3 row-fluid">
+			<div class="col-2 row-fluid">
 				<span class="child-cmt" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
-				<span><% if current_user == comment.user %>
-					<%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete, remote: true %>
-				<% end %></span>	
+				<% if current_user == c.user %>
+					<span onclick='removeComment("<%= c.id %>");'><%= link_to fa_icon("trash", class: "profile-link"), [c.wad , c], method: :delete, remote: true %></span>
+				<% end %>	
 			</div>
 		</div>
 			<% end %>
