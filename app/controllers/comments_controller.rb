@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
 			Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
 		end
 		current_user.update_attributes(points: current_user.points + 20)
-		redirect_to @wad
 
 	 	unless @comment.save
 	  		@error = @comment.errors.full_messages
