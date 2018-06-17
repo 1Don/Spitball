@@ -4,7 +4,7 @@ class Notifications
         @setup() if @notifications.length > 0 
 
     setup: -> 
-        $("[data-behavior='notifications-link']").on "click", @handleClick ->
+        $("[data-behavior='notifications-link']").on "click", @handleClick
 
         $.ajax(
             url: "/notifications.json"
