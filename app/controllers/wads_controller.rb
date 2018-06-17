@@ -62,7 +62,10 @@ class WadsController < ApplicationController
 		@wad = Wad.find(params[:id])
 		@wad.upvote_by current_user
 		current_user.update_attributes(points: current_user.points + 5)  
-		@wad.user.update_attributes(points: @wad.user.points + 15)  
+		@wad.user.update_attributes(points: @wad.user.points + 15)
+		unless current_user.voted_for? @wad  
+			Notification.create(recipient: @wad.user, actor: current_user, action: "liked", notifiable: @wad)
+		end	
 	end
 
 	def report
