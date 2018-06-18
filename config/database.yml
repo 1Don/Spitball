@@ -19,7 +19,7 @@ development:
   encoding: unicode
   default: &default
   host: localhost
-  database: iThompkins
+  database: spitball
   pool: 5
   timeout: 5000
  
