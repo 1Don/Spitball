@@ -49,17 +49,9 @@ ActiveRecord::Schema.define(version: 20180615190627) do
     t.integer "parent_id"
   end
 
-  create_table "discussion_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "discussion_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "discussion_desc_idx"
-  end
-
   create_table "discussions", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
@@ -105,7 +97,7 @@ ActiveRecord::Schema.define(version: 20180615190627) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", id: :serial, force: :cascade do |t|
     t.string "votable_type"
     t.integer "votable_id"
     t.string "voter_type"
@@ -120,7 +112,7 @@ ActiveRecord::Schema.define(version: 20180615190627) do
   end
 
   create_table "wads", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.text "long_form"
     t.text "category"
     t.text "problem_state"
@@ -142,4 +134,6 @@ ActiveRecord::Schema.define(version: 20180615190627) do
     t.index ["user_id"], name: "index_wads_on_user_id"
   end
 
+  add_foreign_key "discussions", "users"
+  add_foreign_key "wads", "users"
 end
