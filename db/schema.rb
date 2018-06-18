@@ -49,14 +49,6 @@ ActiveRecord::Schema.define(version: 20180616215539) do
     t.integer "parent_id"
   end
 
-  create_table "discussion_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "discussion_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "discussion_desc_idx"
-  end
-
   create_table "discussions", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
