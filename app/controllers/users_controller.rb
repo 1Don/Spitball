@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @wads = Wad.all
     @user = User.find(params[:id])
     if @user.interests[0] != nil
       k = @user.interests[0].split(", ")

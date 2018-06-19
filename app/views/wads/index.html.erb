@@ -4,26 +4,11 @@
 			<span class="h2">
 				What's the world missing?
 			</span>
-
-			<%= link_to fa_icon("edit"), new_wad_path, class: "profile-link fa-2x"  %>
+			
+			<%= button_to "Let's get it", new_wad_path, :class => "newbutton", :method => :get  %>
 		</div>
 
-		<%# Popular Wads display %>
-		<div class="col-xs-12 col-md-9 mb-4">
-			<div class="card">
-				<div class="card-header d-none d-md-flex">
-					Popular Wads
-				</div>
-
-				<div class="list-group list-group-flush">
-					<%= render "pop_wads" %>
-				</div>
-
-				<div class="card-footer text-center d-none">
-					See all
-				</div>
-			</div>
-		</div>
+		
 
 		<%# The display for all wads%>
 		<div class="col-xs-12 col-md-9 mb-4 d-none d-md-block">

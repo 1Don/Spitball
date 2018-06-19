@@ -1,0 +1,64 @@
+function setProfileLinks(id) {
+	var cmts = document.getElementsByClassName("cmt-content");
+	var text;var prefix; var suffix; var name; var linked_name; var comp;
+	var nonos = [",","!","?"];
+	var leng = cmts.length;
+	var i;
+	for (i = 0; i < leng; i++) {
+		text = cmts[i].textContent;
+		prefix = text.substring(0, text.indexOf("@"));
+		name = text.substring(text.indexOf("@"), text.indexOf(" ", prefix.length));
+		comp = name[name.length - 1];
+		//will make DRYer at some point
+		if (comp ==="," || comp ==="!" || comp ==="?" || comp ==="@" || comp ==="#" || comp ==="$" || comp ==="%" || comp ==="^" || comp ==="&" || comp ==="*" || comp ==="(" || comp ===")" || comp ==="-" || comp ==="+" || comp ==="=" || comp ===";" || comp ===":" || comp ==="." || comp ==="<" || comp ===">") {
+			suffix = text.substring(prefix.length + name.length);			
+			cmts[i].innerHTML = prefix + name + suffix;
+		} else if (name[0] != "@") {
+			suffix = text.substring(prefix.length + name.length);			
+			cmts[i].innerHTML = prefix + name + suffix;
+		} else {
+			linked_name = name.link("/users/" + id);// <= this is the link that needs to be defined properly
+			suffix = text.substring(prefix.length + name.length);
+			cmts[i].innerHTML = prefix + linked_name + suffix;
+		};
+	};
+
+}
+
+//Toggles reply tree on and off
+function toggleReply(id) {
+	var reply = document.getElementById('reply-' + id);
+	if (reply.style.display == "block") {
+		reply.style.display = "none";
+	} else {
+		$('.reply-hide').css("display", "none");
+		reply.style.display = "block";
+	}
+}
+
+function removeComment(id) {
+	$('#cmt-' + id).html("your comment has been removed");
+}
+//Gives each parent_id hidden field its ID
+function setVal(id) {
+	$('.hid-field').attr('value', id);
+};
+
+function setFormId(id) {
+	$('.form-field').attr('id', "form-field-" + id);
+}
+
+function setReply(id, user) {
+	$('.form-field').val("@" + user + " ");
+}
+//Runs all setters
+function execReply(id){
+	$('.form-field').val(null);
+	setVal(id);
+	setFormId(id);
+	toggleReply(id);
+}
+function secondaryReply(cmt_id, id, name) {
+	setVal(id);
+	setReply(cmt_id, name);
+}

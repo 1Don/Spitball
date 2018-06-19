@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180610193709) do
+ActiveRecord::Schema.define(version: 20180616215539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "answer_anc_desc_udx", unique: true
+    t.index ["descendant_id"], name: "answer_desc_idx"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.integer "discussion_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+  end
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
@@ -32,14 +49,6 @@ ActiveRecord::Schema.define(version: 20180610193709) do
     t.integer "parent_id"
   end
 
-  create_table "discussion_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "discussion_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "discussion_desc_idx"
-  end
-
   create_table "discussions", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -50,6 +59,15 @@ ActiveRecord::Schema.define(version: 20180610193709) do
     t.string "tags"
     t.index ["user_id", "created_at"], name: "index_discussions_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_discussions_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.boolean "read", default: false
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
   end
 
   create_table "users", force: :cascade do |t|

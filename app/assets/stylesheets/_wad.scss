@@ -38,6 +38,50 @@
     bottom: 5px;
     right:15px; 
   }
-
+.Spitballbutton{
+  background-color: #274350;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  cursor:pointer;
+}
+.newbutton{
+  background-color: #274350;
+  margin-left: 200px;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  cursor:pointer;
+}
 /* Wad New */
 
+.info-cards {
+  display: none;
+}
+.wadnewbutton{
+  background-color: #274350;
+  margin-right: 50px;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  cursor:pointer;
+}
+.question-marker-ps {
+  cursor:pointer;
+}
+.navbutton {
+  background-color: #274350;
+  margin-left: 25px;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  cursor:pointer;
+}

@@ -22,16 +22,14 @@
        
    <div class="actions row col-12 text-center">
 
-      <div class="float-right col-4">
+      <div class="float-right col-1">
         <% if current_user == wad.user %>
           <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%>
         <% end %>
       </div>
-
-      <div class="actions">
-        <%= link_to fa_icon("comment"), wad_comments_path(wad), class: "profile-link pr-1" %> &nbsp;
-        <%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %>
-        <%= wad.get_upvotes.size %>
+      <div class="actions col-2">
+        <span onclick='updateFigure("<%= wad.id %>");'><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>
+        <span id="like-<%= wad.id %>"><%= wad.get_upvotes.size %></span>
       </div>
     
 

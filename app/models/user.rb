@@ -1,8 +1,11 @@
 class User < ApplicationRecord
+  has_many :notifications, foreign_key: :recipient_id
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   acts_as_voter
   has_many :wads, dependent: :destroy
+  has_many :discussions, dependent: :destroy
+  has_many :answers
   has_many :comments
   attr_accessor :remember_token
   before_save { self.email = email.downcase }

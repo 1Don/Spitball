@@ -4,7 +4,9 @@
 			<span class="h2"> 
 				Spread the Knowledge 
 		   </span>
-		<%= link_to fa_icon("edit"), new_discussion_path, class: "profile-link fa-2x"  %>
+		<%= link_to new_discussion_path do %>
+   			 <button class="newbutton mt-4 shadow-sm small">Question?</button>
+		<% end %>
 
 	</div>
 

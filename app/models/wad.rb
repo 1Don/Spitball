@@ -8,6 +8,7 @@ class Wad < ApplicationRecord
   validates :category, presence: true
   validates :long_form, presence: true, length: { maximum: 300 }
   validates :problem_state, presence: true, length: { maximum: 75 }
+  has_many :users, through: :comments
 
 #Search Functionality
  def self.search(search)

@@ -1,13 +1,19 @@
 class WadsController < ApplicationController
-	layout 'wad', only: [:index]
+	layout 'wad', only: [:index, :popwads]
 
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
 
 	def index
-		 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
-		 	@rankedwads = Wad.order(cached_votes_total: :desc)
+		@comment = Comment.new
+	 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
+	 	@rankedwads = Wad.order(cached_votes_total: :desc)
     end
+
+    def popwads
+		@wads = Wad.all.paginate(page: params[:page], per_page: 20)
+		@rankedwads = Wad.order(cached_votes_total: :desc)
+	end
 
 	def show
 		redirect_to wad_comments_path(@wad)
@@ -53,16 +59,18 @@ class WadsController < ApplicationController
 
 
 	def upvote 
-			@wad = Wad.find(params[:id])
-			@wad.upvote_by current_user
-			current_user.update_attributes(points: current_user.points + 5)  
-			@wad.user.update_attributes(points: @wad.user.points + 15)  
-			redirect_to @wad
-			
+		@wad = Wad.find(params[:id])
+		@wad.upvote_by current_user
+		current_user.update_attributes(points: current_user.points + 5)  
+		@wad.user.update_attributes(points: @wad.user.points + 15)
+		unless current_user.voted_for? @wad  
+			Notification.create(recipient: @wad.user, actor: current_user, action: "liked", notifiable: @wad)
+		end	
 	end
 
 	def report
 	end
+
 
 #Search Bar functionality
 	def search

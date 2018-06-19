@@ -1,0 +1,27 @@
+<div class="col-12 col-md-9">
+	<div class="row">
+		<div class="col-12 d-flex align-items-center mb-3">
+			<span class="h2">
+				Get yours here
+			</span>
+
+			<%= button_to "Do that shit", new_wad_path, :class => "newbutton", :method => :get  %>
+		</div>
+
+		
+
+		<div class="col-xs-12 col-md-9 mb-4">
+			<div class="card">
+				<div class="card-header d-none d-md-flex">
+					Popular Wads
+				</div>
+
+				<div class="list-group list-group-flush">
+					<%= render "pop_wads" %>
+				</div>
+
+				<div class="card-footer text-center d-none">
+					See all
+				</div>
+			</div>
+		</div>

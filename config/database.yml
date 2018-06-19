@@ -17,7 +17,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: Spitball_app_development
+  default: &default
+  host: localhost
+  database: spitball
   pool: 5
   timeout: 5000
  
