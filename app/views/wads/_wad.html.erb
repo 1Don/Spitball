@@ -28,8 +28,8 @@
         <% end %>
       </div>
       <div class="actions col-2">
-        <span onclick='updateFigure("<%= wad.id %>");'><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>
-        <span id="like-<%= wad.id %>"><%= wad.get_upvotes.size %></span>
+        <span><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>
+        <span data-check="<%= current_user.voted_for? wad %>" id="like-<%= wad.id %>"><%= wad.get_upvotes.size %></span>
       </div>
     
 

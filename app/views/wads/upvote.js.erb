@@ -1,1 +1,9 @@
-$("#like-<%= @wad.id %>").addClass("bg-success text-white").html("+ 1");
+$(document).ready(function() {
+const current_count = parseInt($("#like-<%= @wad.id %>").html());
+	if ($("#like-<%= @wad.id %>").attr("data-check") == "true") {
+		console.log($("#like-<%= @wad.id %>").html());
+	} else {
+		 $("#like-<%= @wad.id %>").html(current_count + 1);
+		 $("#like-<%= @wad.id %>").attr("data-check", "true");
+	}
+});
