@@ -31,5 +31,4 @@ class Notifications
         if items.length is 0
             $("[data-behavior='unread-count']").text("")               
 
-jQuery ->
-    new Notifications
+$(document).on('turbolinks:load', -> new Notifications)
