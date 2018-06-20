@@ -16,16 +16,15 @@ Rails.application.routes.draw do
   get    '/popular',  to:'wads#popwads'
   
 
-#Defining routes for industry navigation
-  get '/industries', to: 'industries#index'
-  get    '/tech',    to:  'industries#consumertech'
-  get    '/b2b',     to:  'industries#b2b'
-  get    '/product',     to:  'industries#product'
-  get    '/social',     to:  'industries#social'
-  get    '/local',     to:  'industries#local'
-  get    '/events',     to:  'industries#events'
-  get    '/innovate',     to:  'industries#innovate'
-  get    '/media',     to:  'industries#media'
+  get    '/tech',    to:  'wads#consumertech'
+  get    '/b2b',     to:  'wads#b2b'
+  get    '/product',     to:  'wads#product'
+  get    '/social',     to:  'wads#social'
+  get    '/local',     to:  'wads#local'
+  get    '/events',     to:  'wads#events'
+  get    '/innovate',     to:  'wads#innovate'
+  get    '/media',     to:  'wads#media'
+
   get    '/forum',    to:   'discussions#index'
 
 

@@ -1,16 +1,14 @@
-<div class= "page">
-<h1> Wads </h1>
-
-<%#<%= render "wads/sidebar" %>
-
-		<div class="col-10 mb-4 d-none d-md-block">
+		<%# The display for B2B wads%>
+		<div class="col-xs-12 col-md-9 mb-4 d-none d-md-block">
 			<div class="card">
 				<div class="card-header">
-					All Wads
+					@wads.category
 				</div>
 
 				<div class="list-group list-group-flush">
-					<%= render "all_wads" %>
+				<%= render "all_wads" %>
+				
+
 				</div>
 
 				<div class="card-footer text-center d-none">
@@ -18,3 +16,5 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
