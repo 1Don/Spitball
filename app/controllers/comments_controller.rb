@@ -14,7 +14,9 @@ class CommentsController < ApplicationController
     		@comment = @wad.comments.build(comment_params)
   		end
 		@comment.user_id = current_user.id
-		Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
+		unless @comment.user == @wad.user 
+			Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
+		end
 		current_user.update_attributes(points: current_user.points + 20)
 
 	 	unless @comment.save
