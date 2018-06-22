@@ -16,7 +16,9 @@
             <p class="small">
               <% if @user.location.present? %>
                 <%= fa_icon("map-marker th", text: @user.location) %> <br>
-              <% end %>              
+              <% end %>     
+
+            <%= link_to "Add Friend", new_friend_request_path (:friend_id => @user), :method => :post %>         
             <%# &lt;<%= @user.email &gt; %>
             </p>
             <div class="text-right d-block d-sm-none">

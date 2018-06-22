@@ -1,5 +1,5 @@
 class WadsController < ApplicationController
-	layout 'wad', only: [:index, :popwads]
+	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product, :innovate, :events, :local]
 
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
@@ -71,6 +71,41 @@ class WadsController < ApplicationController
 	def report
 	end
 
+#category views
+	def consumertech
+		@wads = Wad.where("category like ?", "%Consumer tech%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def b2b
+		@wads = Wad.where("category like ?", "%B2B Tech%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def media
+		@wads = Wad.where("category like ?", "%Media and Entertainment%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def social
+		@wads = Wad.where("category like ?", "%Social Entrepreneurship%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def local
+		@wads = Wad.where("category like ?", "%Location Specific%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def product
+		@wads = Wad.where("category like ?", "%Consumer products%").paginate(page: params[:page], per_page: 20)
+	end
+
+
+	def innovate
+		@wads = Wad.where("category like ?", "%Avant-Garde%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def events
+		@wads = Wad.where("category like ?", "%Events%").paginate(page: params[:page], per_page: 20)
+	end
+
+
 
 #Search Bar functionality
 	def search
@@ -84,9 +119,7 @@ class WadsController < ApplicationController
 		end
 	end
 
-
-
-	private
+private
 
 	def wad_params
 		params.require(:wad).permit(:problem_state, :long_form, :category, :image, :tags)

@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="col-3">
-		<span id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= fa_icon('comment') %> </span>
+		<span id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= fa_icon('comment', class: "profile-link") %> </span>
 		<% if current_user == comment.user %>
 			<span onclick='removeComment("<%= comment.id %>");'><%= link_to fa_icon("trash", class: "profile-link"), [comment.wad , comment], method: :delete, remote: true %></span>
 		<% end %>

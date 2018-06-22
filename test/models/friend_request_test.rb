@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IndustriesControllerTest < ActionDispatch::IntegrationTest
+class FriendRequestTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

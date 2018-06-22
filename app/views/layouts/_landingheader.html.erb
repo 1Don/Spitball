@@ -5,6 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+<<<<<<< HEAD
   <div id="navbar" class="collapse navbar-collapse">
     <%= form_tag search_path, method: :get, class: 'form-inline' do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search", class: 'form-control mr-sm-2' %>
@@ -14,12 +15,33 @@
 
     <ul class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
+=======
+
+    <ul class="nav navbar-nav navbar-right ml-auto">
+      <% if logged_in? %>
+
+        <li class="nav-item dropdown" data-behavior='notifications' data-behavior="notifications-link">
+          <a id="notificationsDD" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <%= fa_icon("bell") %><span data-behavior='unread-count'></span>
+          </a>
+
+          <div class="dropdown-menu" data-behavior="notification-items" aria-labelledby="notificationsDD">
+          <!--
+          <a class='dropdown-item' href='#'>yeo</a>
+           -->
+          </div>
+        </li>
+
+>>>>>>> development
         <li class="nav-item">
           <%= link_to "Forum", discussions_path, class: 'nav-link' %>
         </li>
 
+<<<<<<< HEAD
        
 
+=======
+>>>>>>> development
         <% sidebar_elements.each do |element| %>
           <li class="d-md-none nav-item">
             <%= link_to element[:name], element[:link], class: 'nav-link' %>
@@ -44,6 +66,7 @@
         <li class="nav-item">
           <%= link_to "Log in", login_path, class: 'nav-link' %>
         </li>
+<<<<<<< HEAD
       <% end %>
 
       <li class="nav-item">
@@ -53,3 +76,13 @@
   </div>
 </nav>
 
+=======
+          <li class="nav-item">
+          <%= link_to " Sign Up", signup_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
+>>>>>>> development
