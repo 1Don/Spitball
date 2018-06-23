@@ -13,6 +13,19 @@
               <%= @user.first_name %> <%= @user.last_name %> -  <%= @user.occupation %><br>
                 <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
+
+
+
+ 
+            <% unless @user == current_user %>
+            	<%= link_to "Connect", friend_requests_path(:friend_id => @user), :method => :post %>
+            <% else %>
+                <%= link_to "View Friend Requests", friend_requests_path %>
+            <% end %>
+
+
+
+
             <p class="small">
               <% if @user.location.present? %>
                 <%= fa_icon("map-marker th", text: @user.location) %> <br>

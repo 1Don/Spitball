@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :friend_requests
+  get 'friendships/create'
+
+  get 'friendships/destroy'
+
   get 'sessions/new'
 
   get 'users/new'

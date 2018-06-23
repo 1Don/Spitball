@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :friend_requests, dependent: :destroy
+  has_many :pending_friends, through: :friend_requests, source: :friend
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   has_many :notifications, foreign_key: :recipient_id
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
@@ -47,4 +51,11 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  
+  #gets rid of friend
+  def remove_friend(friend)
+    current_user.friends.destroy(friend)
+  end
+
 end
