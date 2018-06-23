@@ -6,11 +6,6 @@
   </button>
 
 
-  <div id="navbar" class="collapse navbar-collapse">
-
-    <ul class="nav navbar-nav navbar-right ml-auto">
-      <% if logged_in? %>
-
     <ul class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
 
@@ -54,12 +49,6 @@
         <li class="nav-item">
           <%= link_to "Log in", login_path, class: 'nav-link' %>
         </li>
-      <% end %>
-
-    </ul>
-  </div>
-</nav>
-
           <li class="nav-item">
           <%= link_to " Sign Up", signup_path, class: 'nav-link' %>
         </li>
@@ -68,3 +57,4 @@
     </ul>
   </div>
 </nav>
+
