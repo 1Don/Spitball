@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :conversations
+  has_many :messages
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
   has_many :friendships, dependent: :destroy

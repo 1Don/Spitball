@@ -41,6 +41,10 @@ Rails.application.routes.draw do
 #Defining routes for search navigation
     get    '/search', to: 'wads#search'
 
+	resources :conversations do
+	  resources :messages
+	 end
+ 
   resources :notifications do
     collection do
       post :mark_as_read
