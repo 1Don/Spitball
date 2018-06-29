@@ -49,6 +49,4 @@ test:
   encoding: unicode
   database: spitball
   pool: 5
-  username: nmorgan
-  password: cocaina
   timeout: 5000

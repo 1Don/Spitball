@@ -8,9 +8,8 @@ class DiscussionsController < ApplicationController
 	def show
 			@all_discussions = Discussion.all
 			@discussion = Discussion.find(params[:id])
-			@discussions = @discussion.children.all
-			@replies = @discussions.hash_tree
 	end
+
 	def new
 			@discussion = Discussion.new
 	end
@@ -37,7 +36,7 @@ class DiscussionsController < ApplicationController
 			@discussion = current_user.discussions.build(discussion_params)
 		if @discussion.save
     		current_user.update_attributes(points: current_user.points + 50)
-   			 redirect_to @discussion    
+   			 redirect_to discussion_answers_path(@discussion)
 		else
 			flash[:error] = 'Error try again'
 			render 'new'
