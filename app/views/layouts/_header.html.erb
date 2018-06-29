@@ -48,6 +48,8 @@
           <div class="dropdown-menu">
             <%= link_to "Profile", current_user, class: 'dropdown-item' %>
             <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
+            <%= link_to "Inbox", conversations_path(:conversation_id => @conversation), class: 'dropdown-item', :method => :post %>
+            <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
 
             <div class="dropdown-divider"></div>
 

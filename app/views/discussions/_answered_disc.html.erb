@@ -18,9 +18,9 @@
 
 			 <div class="actions">
 						<% if discussion.resolved == false %>
-						<%= link_to 'Answer', discussion_path(discussion), class: 'profile-link' %>
+						<%= link_to 'Answer', discussion_answers_path(discussion), class: 'profile-link' %>
 						<% else %>
-						<%= link_to 'Contribute', discussion_path(discussion), class: 'profile-link' %>
+						<%= link_to 'Contribute', discussion_answers_path(discussion), class: 'profile-link' %>
 						<% end %>
 			 </div>
 

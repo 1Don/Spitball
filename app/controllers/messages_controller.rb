@@ -1,13 +1,15 @@
 class MessagesController < ApplicationController
 layout 'wad', only: [:index]
- before_action :find_conversation
+ before_action :find_conversation, only: [:new, :create]
+
 
 	def index
+		@conversation = Conversation.find(params[:conversation_id])
 		 @messages = @conversation.messages
 		  if @messages.length > 10
 		   @over_ten = true
 		   @messages = @messages[-10..-1]
-	  end
+	 	  end
 
 	 if params[:m]
 		   @over_ten = false
@@ -18,7 +20,7 @@ layout 'wad', only: [:index]
 		  if @messages.last.user_id != current_user.id
 		   @messages.last.read = true;
 		  end
-		end
+	end
 			@message = @conversation.messages.new
 	end
 
@@ -38,9 +40,13 @@ layout 'wad', only: [:index]
 
 	private
 
+	 def userconvo
+
+	 end
+
 
 	 def message_params
-	  	params.require(:message).permit(:body, :user_id)
+	  	params.permit(:body, :user_id, :message)
 	 end
 
 	 def find_conversation

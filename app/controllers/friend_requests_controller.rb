@@ -10,7 +10,8 @@ class FriendRequestsController < ApplicationController
       redirect_to friend 
       flash[:notice] = "Request Sent"
     else
-      render json: @friend_request.errors, status: :unprocessable_entity
+      redirect_to friend 
+      flash[:notice] = "You've already sent a request!"
     end
   end
 

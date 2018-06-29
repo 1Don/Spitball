@@ -10,7 +10,7 @@
           </div>
           <div class="col-md-5 col-8">
             <p>
-              <%= @user.first_name %> <%= @user.last_name %> -  <%= @user.occupation %><br>
+              <%= @user.first_name %> <%= @user.last_name %>  - <%= @user.occupation %><br>
                 <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
 
@@ -18,14 +18,15 @@
 
  
             <% unless @user == current_user %>
-            	<%= link_to "Connect", friend_requests_path(:friend_id => @user), :method => :post %>
-            <% else %>
-                <%= link_to "View Friend Requests", friend_requests_path %>
+             <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @user), :method => :post %>     
+      
+
+             <% if @convo.present? %>
+                <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversation_messages_path(@conversation) %>
+             <% else %>
+                <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversation_messages_path(@conversation), :method => :post %>
+             <% end %>
             <% end %>
-
-
-             <%= link_to "Message this person", conversations_path(:conversation_id => @conversation), :method => :post %>
-             
 
 
 
@@ -34,7 +35,6 @@
               <% if @user.location.present? %>
                 <%= fa_icon("map-marker th", text: @user.location) %> <br>
               <% end %>              
-            <%# &lt;<%= @user.email &gt; %>
             </p>
             <div class="text-right d-block d-sm-none">
               <% if @user.twitter.present? %>

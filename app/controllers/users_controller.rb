@@ -8,8 +8,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @wads = Wad.all
+    @friends = current_user.friends.all
     @user = User.find(params[:id])
+    @wads = Wad.all
+    @convo = Conversation.between(current_user.id, @user.id)
+
+    unless current_user == @user
+
+     if @convo.present?
+        @conversation = Conversation.between(current_user.id, @user.id).first
+     else
+
+        @conversation = Conversation.create!(params[:recipient_id])
+
+       
+     end
+    end
+    
+    
     if @user.interests[0] != nil
       k = @user.interests[0].split(", ")
       @interest_1 = k[0]
@@ -92,4 +108,10 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
+
+    def conversation_params
+      params.permit(:sender_id, :recipient_id, :user)
+    end
+
+   
 end
