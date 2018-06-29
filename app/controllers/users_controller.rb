@@ -18,9 +18,7 @@ class UsersController < ApplicationController
      if @convo.present?
         @conversation = Conversation.between(current_user.id, @user.id).first
      else
-
         @conversation = Conversation.create!(params[:recipient_id])
-
        
      end
     end

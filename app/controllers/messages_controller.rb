@@ -46,7 +46,7 @@ layout 'wad', only: [:index]
 
 
 	 def message_params
-	  	params.permit(:body, :user_id, :message)
+	  	params.require(:message).permit(:body, :user_id, :message)
 	 end
 
 	 def find_conversation
