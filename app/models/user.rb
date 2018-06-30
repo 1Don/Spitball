@@ -54,6 +54,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  #Controls the search feature
+   def self.search(search)
+      where("name LIKE ?", "%#{search}%")
+   end
   
   #gets rid of friend
   def remove_friend(friend)

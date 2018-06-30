@@ -1,18 +1,11 @@
-<div class="list-group">
+<div class="list-group-item">
   <div class="row">
     <div class="col-3">
       <%= image_tag user.photo.url(:thumb), class: 'img-fluid' %>
     </div>
 
     <div class="col-9">
-      <p><%= link_to user.name, user %></p>
-
-      <p class="text-right">
-        <% if current_user.admin? && !current_user?(user) %>
-          | <%= link_to "delete", user, method: :delete,
-                                        data: { confirm: "You sure?" } %>
-        <% end %>
-      </p>
+      <p><%= link_to user.name, user, class: "profile-link" %></p>
     </div>
   </div>
 </div>

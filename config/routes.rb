@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
 
 #Defining routes for search navigation
-    get    '/search', to: 'wads#search'
+    get    '/search', to: 'static_pages#search'
 
 	resources :conversations do
 	  resources :messages
