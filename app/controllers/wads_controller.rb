@@ -105,20 +105,6 @@ class WadsController < ApplicationController
 		@wads = Wad.where("category like ?", "%Events%").paginate(page: params[:page], per_page: 20)
 	end
 
-
-
-#Search Bar functionality
-	def search
-		@wads = Wad.all
-		if params[:search]
-			@wads = Wad.search(params[:search]).order("created_at DESC")
-			@discussions = Discussion.all
-			@discussion = Discussion.find_by(params[:id])
-		else
-			@wads = Wad.all.order("created_at DESC")
-		end
-	end
-
 private
 
 	def wad_params
