@@ -13,24 +13,14 @@
               <%= @user.first_name %> <%= @user.last_name %>  - <%= @user.occupation %><br>
                 <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
-
-
-
- 
             <% unless @user == current_user %>
              <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @user), :method => :post %>     
-      
-
-             <% if @convo.present? %>
+             <% if @conversation.present? %>
                 <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversation_messages_path(@conversation) %>
              <% else %>
-                <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversation_messages_path(@conversation), :method => :post %>
+                <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversations_path(:user_id => @user.id), :method => :post %>
              <% end %>
             <% end %>
-
-
-
-
             <p class="small">
               <% if @user.location.present? %>
                 <%= fa_icon("map-marker th", text: @user.location) %> <br>

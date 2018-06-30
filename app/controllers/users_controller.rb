@@ -11,18 +11,7 @@ class UsersController < ApplicationController
     @friends = current_user.friends.all
     @user = User.find(params[:id])
     @wads = Wad.all
-    @convo = Conversation.between(current_user.id, @user.id)
-
-    unless current_user == @user
-
-     if @convo.present?
-        @conversation = Conversation.between(current_user.id, @user.id).first
-     else
-        @conversation = Conversation.create!(params[:recipient_id])
-       
-     end
-    end
-    
+    @conversation = Conversation.between(current_user.id, @user.id).first   
     
     if @user.interests[0] != nil
       k = @user.interests[0].split(", ")
