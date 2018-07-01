@@ -1,0 +1,29 @@
+<div class="list-group-item wad-list-group-item">
+  <div class="row col-12 mb-5">
+  
+
+     <div class="wadinfo col-9 mt-1">
+      <% @conversations.each do |conversation|%>
+        <%= link_to conversation_messages_path(conversation), class: 'wad-link' do %>
+            
+
+           <% if  current_user.id == conversation.sender_id %>
+              <%  @user = User.find(conversation.recipient_id)  %>
+           <%  else %>
+                <% @user = User.find(conversation.sender_id) %>
+            <% end %>
+            
+               <h6 class><%= @user.first_name %></h6>
+       
+              
+
+            <p class="small"><%= conversation.messages.last.body %></p>
+          <% end %>
+        <% end %>
+
+     </div>
+
+
+   </div>                    
+</div>
+
