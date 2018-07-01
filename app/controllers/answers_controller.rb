@@ -12,8 +12,8 @@ class AnswersController < ApplicationController
   		else
     		@answer = @discussion.answers.build(answer_params)
   		end
-  		unless @answer.user == @discussion.user
-			Notification.create(recipient: @discussion.user, actor: current_user, action: "commented", notifiable: @discussion)
+  		unless current_user == @discussion.user
+			Notification.create(recipient: @discussion.user, actor: current_user, action: "answered", notifiable: @discussion)
 		end
 			@answer.user_id = current_user.id
    			current_user.update_attributes(points: current_user.points + 20)
