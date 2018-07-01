@@ -1,11 +1,15 @@
 class MessagesController < ApplicationController
-layout 'wad', only: [:index]
+	layout "message", only:[:index]
+
  before_action :find_conversation, only: [:new, :create]
 
 
 	def index
 		@conversation = Conversation.find(params[:conversation_id])
-		 @messages = @conversation.messages
+		@conversations = Conversation.all
+		@messages = @conversation.messages	
+
+
 		  if @messages.length > 10
 		   @over_ten = true
 		   @messages = @messages[-10..-1]
