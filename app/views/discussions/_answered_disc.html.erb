@@ -2,28 +2,21 @@
 	<% if discussion.parent_id.nil? && discussion.resolved == true %>
 		<div class="list-group-item">
 		  <div class="row">
-
 		  	<%= link_to discussion_answers_path(discussion), class: 'profile-link' do %>
-		  	 <div class="col-xs-12 col-md-9 mb-4">
-		                <h6 class="small"><%= discussion.content  %></h6>          
-		            </div> 	
+		  	 <div class="col-xs-12 col-md-12 mb-4">
+				<%= discussion.content  %>        	
 			 </div>
 			 <% end %>
-
-			  <div class="float-right col-4">			   	
-			        <% if current_user == discussion.user %>
-			          <%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%>
-			        <% end %>
-		      </div>
-
-			 <div class="actions">
+			 <div class="actions col-3">
+				        <% if current_user == discussion.user %>
+				          <%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%>
+				        <% end %>
 						<% if discussion.resolved == false %>
 						<%= link_to 'Answer', discussion_answers_path(discussion), class: 'profile-link' %>
 						<% else %>
 						<%= link_to 'Contribute', discussion_answers_path(discussion), class: 'profile-link' %>
 						<% end %>
 			 </div>
-
 		  </div>
 		</div>
 	<% end %>

@@ -35,7 +35,9 @@ function toggleReply(id) {
 		reply.style.display = "block";
 	}
 }
-
+function removeAnswer(id) {
+	$('#ans-' + id).html('your answer was removed');
+}
 function removeComment(id) {
 	$('#cmt-' + id).html("your comment has been removed");
 }
