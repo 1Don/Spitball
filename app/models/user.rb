@@ -11,8 +11,8 @@ class User < ApplicationRecord
   acts_as_voter
   has_many :wads, dependent: :destroy
   has_many :discussions, dependent: :destroy
-  has_many :answers
-  has_many :comments
+  has_many :answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
