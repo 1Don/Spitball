@@ -2,7 +2,7 @@
   <ul>
   <% @incoming.each do |request| %>
     <li><%=link_to request.user.name, user_path(request.user), class:"profile-link" %></li><br>
-    <%= link_to "Accept Friend Request",  friend_request_path(friend_id: request.friend_id, id: request.id), method:"put"   %>
+    <%= link_to "Accept Friend Request",  friend_request_path(friend_id: request.friend_id, user_id: request.user_id, id: request.id), method:"put"   %>
   <% end %>
   </ul>
 <% else %>

@@ -7,6 +7,7 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.friend_requests.new(friend: friend)
 
     if @friend_request.save
+      Notification.create(recipient: User.find(params[:friend_id]), actor: current_user, action: "sent you", notifiable: @friend_request)      
       redirect_to friend 
       flash[:notice] = "Request Sent"
     else
