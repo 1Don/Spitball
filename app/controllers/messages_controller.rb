@@ -10,14 +10,7 @@ class MessagesController < ApplicationController
 		@convo = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).first
 		@messages = @conversation.messages	
 
-		 if  current_user.id == @convo.sender_id 
-               @user = User.find(@convo.recipient_id)  
-            else 
-                 @user = User.find(@convo.sender_id) 
-            end
-            
-
-
+	 
 		  if @messages.length > 10
 		   @over_ten = true
 		   @messages = @messages[-10..-1]
