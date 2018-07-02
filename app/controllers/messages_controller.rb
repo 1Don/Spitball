@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
 	def index
 		@conversation = Conversation.find(params[:conversation_id])
-		@conversations = Conversation.all
+		@conversations = Conversation.where(sender_id: current_user.id) or Conversation.where(recipient_id: current_user.id)
 		@messages = @conversation.messages	
 
 
