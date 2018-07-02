@@ -1,38 +1,28 @@
 <div class=”ui segment”>
- <h3>Inbox</h3>
+ <h3>Start a conversation</h3>
 	 <div class=”ui list”>
 	  <div class=”item”>
-
-     <% @conversations.each do |conversation| %>
-       <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender_id == current_user.id %>
-          <% recipient = User.find(Conversation.where(sender_id: current_user.id).first.recipient_id) %>
-        <% else %>
-          <% recipient = User.find(conversation.sender_id) %>
-        <% end %>
-        <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-       <% end %>
-    <% end %>
-    </div>
-   </div>
-  </div>
-
-
-
-
-
 
 
 
 <div class=”ui segment”>
-  <h3>Friends</h3>
+  <h3>Start a Chat</h3>
     <div class=”ui list”>
-      <% @friends.each do |friend| %>
-        <% if friend.id != current_user.id %>
+      <% @users.each do |user| %>
+        <% if user.id != current_user.id %>
             <div class=”item”>
-               <%= friend.first_name %> <%= link_to "Start a conversation", conversations_path(sender_id: current_user.id, recipient_id: friend.id), method: "post"%>
+               <%= user.first_name %> <%= link_to "Start a conversation", conversations_path(:user_id => user.id), :method => :post%>
             </div>
         <% end %>
       <% end %>
     </div>
 </div>
+
+
+
+
+
+
+
+
+

@@ -6,8 +6,16 @@ class MessagesController < ApplicationController
 
 	def index
 		@conversation = Conversation.find(params[:conversation_id])
-		@conversations = Conversation.where(sender_id: current_user.id) or Conversation.where(recipient_id: current_user.id)
+		@conversations = Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)
+		@convo = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).first
 		@messages = @conversation.messages	
+
+		 if  current_user.id == @convo.sender_id 
+               @user = User.find(@convo.recipient_id)  
+            else 
+                 @user = User.find(@convo.sender_id) 
+            end
+            
 
 
 		  if @messages.length > 10

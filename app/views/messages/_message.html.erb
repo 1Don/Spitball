@@ -3,7 +3,7 @@
   
 
      <div class="wadinfo col-9 mt-1">
-      <% @conversations.each do |conversation|%>
+         <% @conversations.each do |conversation|%>
         <%= link_to conversation_messages_path(conversation), class: 'wad-link' do %>
 
         
@@ -19,7 +19,7 @@
        
               
             <% if conversation.messages.present? %>
-            <p class="small"><%= conversation.messages.last.body %></p>
+            <p class="small"><%= truncate(conversation.messages.last.body, :length => 40) %></p>
           <% end %>
         <% end %>
 
