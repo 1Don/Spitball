@@ -8,22 +8,23 @@
 }
 
 .message-box{
+	margin-top: 20px;
 	position: fixed; bottom: 0; 
-	padding-left: 50px;
+	margin-left: 0px;
 	width: 800px;
-	margin-bottom: 5px;
 }
 
 .send-button{
 	position: fixed; bottom: 0; 
 	margin-left: 800px;
 	background-color: white;
-	margin-bottom: 5px;
+	margin-bottom: 0px;
     cursor:pointer;	
 }
 
 .content{
 	width: 700px;
+	margin-top:-30px;
 }
 
 .right-element {
