@@ -1,10 +1,9 @@
+<div class="col-12 col-md-9">
 <% if @over_ten %>
- 	<%= link_to "Show Previous", "?m=all" %>
+ 	<%= link_to "Show Previous", "?m=all", class: "profile-link" %>
 <% end %>
 <div class="ui">
-	<%= link_to conversations_path do %>
-	    <button class="navbutton mt-4 shadow-sm"><%= fa_icon("arrow-left 2x") %></button>
-	<% end %> 
+	<%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversations_path %>
 	<div class="ml-5">
 
 
@@ -14,31 +13,39 @@
 		<% if message.body %>
 		 <% user = User.find(message.user_id) %>
 			  <div class="item mt-3">
-				 <div class=”content”>
-				   <div class=”header”><strong><%= user.first_name %></strong>    
-				     <div class=”list”>
-				       <div class=”item”>
-				        <i class=”right triangle icon”></i>
-				         <%= message.body %>
-				      </div>
-				    </div>
-				   </div>
-				 </div>
+				   <div class="header"><strong><%= user.first_name %></strong>    
+				     <div class="list">
+				       <div class="item">
+				 			<div class="content">
+				         		<%= message.body %>
+					      	</div>
+					    </div>
+					  </div>
+					</div>
 		<% end %>
 		<% end %>
-			</div>
+		</div>
 		
+</div>
+
 
 
 
 	<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-	 <div class=”field”>
+	 <div class="message-box">
 	   <%= f.text_area :body, class: "form-control"%>
 	 </div>
-	 <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
-	 <div>
-	   <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-	 </div>
-	<% end %>
 
+	
+	  <button type="submit", class="send-button", style="display: inline">
+	 	<i class="nav-link fa fa-paper-plane"></i>
+	 </button>
+
+
+
+	 <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+
+
+	<% end %>
 </div>
+

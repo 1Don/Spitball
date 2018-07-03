@@ -5,5 +5,29 @@
 
 .message{
 	border-bottom: 5px solid;
+}
 
+.message-box{
+	position: fixed; bottom: 0; 
+	padding-left: 50px;
+	width: 800px;
+	margin-bottom: 5px;
+}
+
+.send-button{
+	position: fixed; bottom: 0; 
+	margin-left: 800px;
+	background-color: white;
+	margin-bottom: 5px;
+    cursor:pointer;	
+}
+
+.content{
+	width: 700px;
+}
+
+.right-element {
+    display: inline-block;
+    position: absolute;
+    right: 0;
 }
