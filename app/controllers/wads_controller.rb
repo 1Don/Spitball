@@ -73,7 +73,7 @@ class WadsController < ApplicationController
 
 #category views
 	def consumertech
-		@wads = Wad.where("category like ?", "%Consumer tech%").paginate(page: params[:page], per_page: 20)
+		@wads = Wad.where("category like ?", "%Consumer Tech%").paginate(page: params[:page], per_page: 20)
 	end
 
 	def b2b
@@ -93,12 +93,12 @@ class WadsController < ApplicationController
 	end
 
 	def product
-		@wads = Wad.where("category like ?", "%Consumer products%").paginate(page: params[:page], per_page: 20)
+		@wads = Wad.where("category like ?", "%Consumer Products%").paginate(page: params[:page], per_page: 20)
 	end
 
 
 	def innovate
-		@wads = Wad.where("category like ?", "%Avant-Garde%").paginate(page: params[:page], per_page: 20)
+		@wads = Wad.where("category like ?", "%Avant-garde%").paginate(page: params[:page], per_page: 20)
 	end
 
 	def events
