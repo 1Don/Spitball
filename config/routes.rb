@@ -1,18 +1,10 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-  get 'friends/index'
-
-  get 'friends/destroy'
-
-  resources :friend_requests
-=======
   resources :friend_requests
   get 'friendships/create'
 
   get 'friendships/destroy'
 
->>>>>>> development
   get 'sessions/new'
 
   get 'users/new'
@@ -49,15 +41,11 @@ Rails.application.routes.draw do
 #Defining routes for search navigation
     get    '/search', to: 'static_pages#search'
 
-	resources :conversations do
-	  resources :messages
-	 end
+  resources :conversations do
+    resources :messages
+   end
 
-<<<<<<< HEAD
-
-=======
  
->>>>>>> development
   resources :notifications do
     collection do
       post :mark_as_read

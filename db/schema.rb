@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180622031743) do
-=======
 ActiveRecord::Schema.define(version: 20180629005425) do
->>>>>>> development
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,8 +82,6 @@ ActiveRecord::Schema.define(version: 20180629005425) do
     t.index ["user_id"], name: "index_friend_requests_on_user_id"
   end
 
-<<<<<<< HEAD
-=======
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -106,7 +100,6 @@ ActiveRecord::Schema.define(version: 20180629005425) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
->>>>>>> development
   create_table "notifications", force: :cascade do |t|
     t.integer "recipient_id"
     t.integer "actor_id"
@@ -182,9 +175,6 @@ ActiveRecord::Schema.define(version: 20180629005425) do
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "discussions", "users"
   add_foreign_key "friend_requests", "users"
-<<<<<<< HEAD
-=======
   add_foreign_key "friend_requests", "users", column: "friend_id"
->>>>>>> development
   add_foreign_key "wads", "users"
 end

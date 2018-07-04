@@ -1,17 +1,10 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
-  has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
-  has_many :friend_requests, dependent: :destroy
-  has_many :pending_friends, through: :friend_requests, source: :friend
-=======
   has_many :conversations
   has_many :messages, dependent: :destroy
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
->>>>>>> development
   has_many :notifications, foreign_key: :recipient_id
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
@@ -62,12 +55,6 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-<<<<<<< HEAD
-  def remove_friend(friend)
-    current_user.friends.destroy(friend)
-  end
-  
-=======
   #Controls the search feature
    def self.search(search)
       where("name LIKE ?", "%#{search}%")
@@ -92,5 +79,4 @@ class User < ApplicationRecord
     self.save
   end
 
->>>>>>> development
 end
