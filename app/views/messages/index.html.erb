@@ -9,7 +9,7 @@
 
 
 
-
+	<div>
 		<% @messages.each do |message| %>
 		<% if message.body %>
 		 <% user = User.find(message.user_id) %>
@@ -24,21 +24,23 @@
 				    </div>
 				   </div>
 				 </div>
+				</div>
 		<% end %>
 		<% end %>
-			</div>
+			
+	</div>
+	<div id="new-message">
 		
-
-
-
-	<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-	 <div class=”field”>
-	   <%= f.text_area :body, class: "form-control"%>
-	 </div>
-	 <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
-	 <div>
-	   <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-	 </div>
-	<% end %>
-
+	</div>
+	<div>
+		<%= form_for [@conversation, @message], html: {class: "ui reply form"}, remote: true do |f| %>
+		 <div class=”field”>
+		   <%= f.text_area :body, class: "form-control", id: "message-form" %>
+		 </div>
+		 <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
+		 <div>
+		   <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
+		 </div>
+		<% end %>
+	</div>
 </div>
