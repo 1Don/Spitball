@@ -6,22 +6,21 @@ class AnswersController < ApplicationController
 
 	def create
 		if params[:answer][:parent_id].to_i > 0
-	    parent = Answer.find_by_id(params[:answer].delete(:parent_id))
-	    @answer = parent.children.build(answer_params)
-	    discussion_id = parent.id
-  	else
-    	@answer = @discussion.answers.build(answer_params)
-  	end
-  		 (@discussion.users.uniq - [current_user]).each do |user|
-			Notification.create(recipient: @discussion.user, actor: current_user, action: "commented", notifiable: @discussion)
+	    	parent = Answer.find_by_id(params[:answer].delete(:parent_id))
+	    	@answer = parent.children.build(answer_params)
+	    	discussion_id = parent.id
+  		else
+    		@answer = @discussion.answers.build(answer_params)
+  		end
+  		unless current_user == @discussion.user
+			Notification.create(recipient: @discussion.user, actor: current_user, action: "answered", notifiable: @discussion)
 		end
-		@answer.user_id = current_user.id
+			@answer.user_id = current_user.id
+   			current_user.update_attributes(points: current_user.points + 20)
 	 	unless @answer.save
-  		@error = @answer.errors.full_messages
-    	render 'new'
-    end
-    current_user.update_attributes(points: current_user.points + 20)
-    redirect_to action: "index"
+  			@error = @answer.errors.full_messages
+    		render 'new'
+    	end
 	end
 
 	def index
@@ -60,7 +59,6 @@ class AnswersController < ApplicationController
 		if current_user == @answer.user
 			@answer.destroy
 			current_user.update_attributes(points: current_user.points - 20)
-			redirect_to action: "index"
 		end
 	end
 

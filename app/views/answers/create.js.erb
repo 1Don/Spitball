@@ -1,0 +1,8 @@
+if ("<%= @answer.parent_id %>" == "") {
+	document.location.reload();		
+} else {
+	$('#ans-form-<%= @answer.root.id %>').html("You posted a response!")
+	$('#ans-img-<%= @answer.root.id %>').html("<%= @answer.user.name %>:")
+	$('#ans-cnt-<%= @answer.root.id %>').html("<%= @answer.content %>")
+	$('.form-field').val("")
+}

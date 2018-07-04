@@ -1,0 +1,33 @@
+  <div class="row col-12">
+  
+      <ul class="list-group">
+         <% @conversations.each do |conversation|%>
+        <%= link_to conversation_messages_path(conversation), class: 'wad-link' do %>
+
+        
+            
+
+            <% if  current_user.id == conversation.sender_id %>
+              <% @user = User.find(conversation.recipient_id)  %>
+            <%  else %>
+               <% @user = User.find(conversation.sender_id) %>
+            <% end %>
+
+              
+              <li class="list-group-item list-group-item-action wadinfo">
+                 <h6><%= @user.first_name %></h6>  
+              <% if conversation.messages.present? %>
+              <p class="small"><%= truncate(conversation.messages.last.body, :length => 40) %></p>
+               <% else %>
+               <p class="small"> Reach out and start a convo! </p>
+            </li>
+            <% end %>
+        <% end %>
+
+      <% end %>
+
+   </ul>
+
+   </div>                    
+
+

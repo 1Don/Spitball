@@ -1,4 +1,4 @@
-<div class="row">
+<div id="ans-<%= answer.id %>" class="row">
 	<div class="col-2 border-right text-center">
 		<%= image_tag answer.user.photo(:thumb), class: "w-75" %>
 	</div>
@@ -9,9 +9,9 @@
 		</div>
 	</div>
 	<div class="col-3">
-		<span id="btn-hide" onclick='execReply("<%= answer.id %>")'>	<%= fa_icon('comment') %> </span>
+		<span id="btn-hide" onclick='execReply("<%= answer.id %>")'><%= fa_icon('comment') %></span>
 		<% if current_user == answer.user %>
-			<%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete %>
+			<span onclick='removeAnswer("<%= answer.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
 		<% end %>
 	</div>	
 </div>
@@ -19,23 +19,34 @@
 
 <div class="float-right row no-gutters col-12 mt-4">	
 	<div id="reply-<%= answer.id %>" class="col-12 reply-hide">
-		<div class="mb-2">
+		<div id="ans-form-<%= answer.id %>" class="mb-2">
 			<%= render 'form' %>
 		</div>
+
+		<div id="ans-<%= answer.id %>" class="small col-12 row">
+			<div id="ans-img-<%= answer.id %>" class="col-4">
+
+			</div>
+
+			<div id="ans-cnt-<%= answer.id %>" class="col-6">
+
+			</div>
+
+		</div>		
 			<% answer.descendants.each do |c| %>
-		<div class="small col-12 row border-top">
-			<div class="col-2">
-				<%= image_tag c.user.photo(:thumb), class: "w-75" %>
+		<div id="ans-<%= c.id %>" class="small col-12 row border-top">
+			<div class="col-4">
+				<%= c.user.name %>:
 			</div>
 
 			<div class="col-6">
 				<%= c.content %>
 			</div>
-			<div class="col-3 row-fluid">
+			<div class="col-2 row-fluid">
 				<span class="child-cmt" onclick='secondaryReply("<%= answer.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
-				<span><% if current_user == answer.user %>
-					<%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete %>
-				<% end %></span>	
+				<% if current_user == answer.user %>
+					<span onclick='removeAnswer("<%= c.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [c.discussion , c], method: :delete, remote: true %></span>
+				<% end %>	
 			</div>
 		</div>
 			<% end %>

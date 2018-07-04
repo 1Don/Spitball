@@ -1,17 +1,27 @@
 class User < ApplicationRecord
+<<<<<<< HEAD
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
+=======
+  has_many :conversations
+  has_many :messages, dependent: :destroy
+  has_many :friend_requests, dependent: :destroy
+  has_many :pending_friends, through: :friend_requests, source: :friend
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+>>>>>>> development
   has_many :notifications, foreign_key: :recipient_id
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   acts_as_voter
   has_many :wads, dependent: :destroy
   has_many :discussions, dependent: :destroy
-  has_many :answers
-  has_many :comments
+  has_many :answers, dependent: :destroy
+  has_many :comments, dependent: :destroy
   attr_accessor :remember_token
+  after_create :set_default_profile_image, unless: :photo?
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -52,8 +62,35 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+<<<<<<< HEAD
   def remove_friend(friend)
     current_user.friends.destroy(friend)
   end
   
+=======
+  #Controls the search feature
+   def self.search(search)
+      where("name LIKE ?", "%#{search}%")
+   end
+  
+  #gets rid of friend
+  def remove_friend(friend)
+    current_user.friends.destroy(friend)
+  end
+
+  def set_default_profile_image
+    file = Tempfile.new([self.first_name, ".jpg"])
+    file.binmode
+    file.write(Avatarly.generate_avatar(self.first_name, format: "jpg", size: 300))
+    file.read # <-- this fixes the issue
+  begin
+    self.photo = File.open(file.path)
+  ensure
+    file.close
+    file.unlink
+  end
+    self.save
+  end
+
+>>>>>>> development
 end

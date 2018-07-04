@@ -1,0 +1,54 @@
+<div class="col-12 col-md-9">
+
+	<div class="row">
+		<% if @over_ten %>
+		 	<%= link_to "Show Previous", "?m=all", class: "profile-link" %>
+		<% end %>
+		<div class="ui">
+			<%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversations_path %>
+			<div class="ml-5 pb-5">
+
+
+				<% @messages.each do |message| %>
+				<% if message.body %>
+				 <% user = User.find(message.user_id) %>
+					  <div class="item mt-3">   
+						     <div class="list">
+						       <div class="item">
+						       	 <strong><%= user.first_name %></strong>
+						 			<div class="content">
+						         		<%= message.body %>
+							      	</div>
+							    </div>
+							  </div>
+							</div>
+				<% end %>
+				<% end %>
+	</div>
+
+		<div id="new-message">
+			
+		</div>
+		
+
+
+	    <div class="container" style="margin-top:25px;">
+
+		<%= form_for [@conversation, @message], html: {class: "ui reply form"}, remote: true  do|f| %>
+		
+		   <%= f.text_area :body, class: "message-box",  id: "message-form"%>
+	
+		  <button type="submit", class="send-button", style="display: inline">
+		 	<i class="nav-link fa fa-paper-plane"></i>
+		 </button>
+
+
+
+		 <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+
+		<% end %>
+		</div>
+	</div>
+
+
+

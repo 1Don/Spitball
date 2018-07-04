@@ -1,21 +1,17 @@
 <div class="col-12 col-md-6">
 	<%= render 'discussions/panel' %>
-		
-
-	<div class="h5">
+	<div class="h5 mt-3">
 		Discussion
 	</div>
-
-	<div class="card mb-4">
+	<div class="card">
 		<div class="card-header">
-			<%= form_for [@discussion, @discussion.answers.build], html: { class: 'form-inline' }, remote: true do |f| %>
+			<%= form_for [@discussion, @discussion.answers.build], class: 'form-inline', remote: true  do |f| %>
 			<%= f.hidden_field :discussion_id %>
 			<%= f.label :content, class: 'sr-only' %>
-			<%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'Have any suggestions?' %>
-			<%= f.submit 'Answer', class: 'btn btn-primary', disable_with: 'Sending' %>
+			<%= f.text_field :content, class: 'form-control w-50 mr-2 d-inline', placeholder: 'Have any suggestions?' %>
+			<%= f.submit 'Answer', class: 'commentBtn d-inline', disable_with: 'Sending' %>
 		  <% end %>
 		</div>
-
 		<div class="list-group list-group-flush">
 			<%= answers_tree_for @replies %>
 		</div>

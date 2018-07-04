@@ -7,7 +7,9 @@ class NotificationsController < ApplicationController
 	def mark_as_read
 		@notifications = Notification.where(recipient: current_user).unread
 		@notifications.update_all(read: true)
-		render json: { success: true }
+		respond_to do |format|
+			format.js { render json: { success: true } }
+		end
 	end 
 
 end
