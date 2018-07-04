@@ -32,10 +32,6 @@ class FriendRequestsController < ApplicationController
   flash[:notice] = "You're now connected"
   end
 
-  def destroy
-  current_user.remove_friend(@friend)
-  head :no_content
-  end
 
  private
 
