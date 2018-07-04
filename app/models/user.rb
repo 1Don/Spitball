@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
   attr_accessor :remember_token
+  after_create :set_default_profile_image, unless: :photo?
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -62,6 +63,20 @@ class User < ApplicationRecord
   #gets rid of friend
   def remove_friend(friend)
     current_user.friends.destroy(friend)
+  end
+
+  def set_default_profile_image
+    file = Tempfile.new([self.first_name, ".jpg"])
+    file.binmode
+    file.write(Avatarly.generate_avatar(self.first_name, format: "jpg", size: 300))
+    file.read # <-- this fixes the issue
+  begin
+    self.photo = File.open(file.path)
+  ensure
+    file.close
+    file.unlink
+  end
+    self.save
   end
 
 end
