@@ -5,7 +5,10 @@
         <div class="row mb-3">
 
           <div class="col-md-3 col-4 text-center">
-            <%= image_tag @user.photo.url(:medium), class: "img-fluid border rounded-circle" %>
+           
+              <%= image_tag @user.photo.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
+    
+
             <p class="text-center"><%= @user.points %></p>
           </div>
           <div class="col-md-5 col-8">

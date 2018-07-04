@@ -23,6 +23,7 @@ gem 'paperclip', '~> 6.0'
 gem 'font-awesome-rails', '~> 4.7.0.0'
 gem 'city-state'
 gem 'pg',  '0.18.4'
+gem "avatarly"
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

@@ -1,0 +1,31 @@
+<div class="list-group list-group-flush">
+
+<% @users.each do |user| %>
+
+
+	<div class="list-group-item wad-list-group-item">
+	  <div class="row col-12 mb-5">
+
+	    <div class="col-3 mt-2 text-center">
+			        <%= link_to link_to conversations_path(:user_id => user.id), :method => :post do %>
+			            <% if user.photo.url(:medium) == "/images/medium/missing.png"  %>
+			              <%= image_tag "spitball_b.png", class: 'img-fluid h-75 border border-dark rounded' %>
+			            <% else %>
+			              <%= image_tag user.photo.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
+			            <% end %>
+			        <% end %>
+			     </div>
+			
+				  <%= link_to conversations_path(:user_id => user.id), :method => :post, class: 'wad-link' do%>
+
+		           
+		                 <h6><%= user.first_name %></h6>  
+		          
+		               <p class="small"> Reach out to start a convo! </p>
+	               <% end %>
+	       
+	   </div>                        
+	</div>
+
+<% end %>
+</div>
