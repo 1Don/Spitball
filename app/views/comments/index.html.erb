@@ -11,7 +11,7 @@
 		    <%= f.hidden_field :wad_id %>
 
 		    <%= f.label :content, class: 'sr-only' %>
-		    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?' %>
+		    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?', id: "focus-field" %>
 
 		    <%= f.submit 'Comment', class: 'commentBtn', disable_with: 'Sending' %>
 		  <% end %>

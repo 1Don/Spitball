@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
 	def index
-		@notifications = Notification.where(recipient: current_user).unread
+		@notifications = Notification.where(recipient: current_user).last(5)
 	end
 
 	def mark_as_read
@@ -11,5 +11,4 @@ class NotificationsController < ApplicationController
 			format.js { render json: { success: true } }
 		end
 	end 
-
 end

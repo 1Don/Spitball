@@ -18,7 +18,7 @@ class Notifications
             "<a onclick='sendPost()' class='dropdown-item' href='#{notification.url}'>#{notification.actor} #{notification.action} #{notification.notifiable.type}</a>"
         console.log(items)
 
-        $("[data-behavior='notification-items']").html(items)
+        $("[data-behavior='notification-items']").prepend(items)
         $("[data-behavior='unread-count']").text(items.length)
         if items.length is 0
             $("[data-behavior='unread-count']").text("")               

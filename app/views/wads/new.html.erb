@@ -35,13 +35,13 @@
                 </div>
                 <div class="col-6">  
                    <%= f.label :tags, "Tags" %>
-                   <%= f.text_field :tags, placeholder: "seperate using ', '", class: 'form-control form-control-sm'   %> 
+                   <%= f.text_field :tags, placeholder: "seperate using ', '", class: 'form-control form-control-sm'  %> 
                 </div>
           </div>
 
             <div class="form-group">
               <%= f.label :problem_state, "Call to Action/Problem Statement" %><span onclick="toggleInfo('1');" class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
-              <%= f.text_field :problem_state, class: 'form-control form-control-sm' %>
+              <%= f.text_field :problem_state, class: 'form-control form-control-sm', id: "focus-field"  %>
             </div>
 
             <div class="form-group">

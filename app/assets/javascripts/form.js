@@ -1,3 +1,6 @@
+$(document).ready(function() {
+	$('#focus-field').focus();
+});
 var card;
 function toggleInfo(id) {
 	card = document.getElementById('info-card-' + id)
