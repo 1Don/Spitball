@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
 	def index
 		@conversation = Conversation.find(params[:conversation_id])
-		@conversations = Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)
+		@conversations = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).order('updated_at DESC')
 		@convo = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).first
 		@messages = @conversation.messages	
 
@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
 	end
 			@message = @conversation.messages.new
 	end
+
 
 	def new
 	 	@message = @conversation.messages.new
