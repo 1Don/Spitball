@@ -1,6 +1,7 @@
 json.array! @notifications do |notification|
 	json.actor notification.actor.name
 	json.action notification.action
+	json.read notification.read
 	if notification.notifiable_type == "Wad"
 		json.notifiable do 
 			json.type "on your #{notification.notifiable.class.to_s.underscore.humanize.downcase}"

@@ -20,7 +20,7 @@
 
         <li class="nav-item dropdown" data-behavior='notifications' data-behavior="notifications-link">
           <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
-            <%= fa_icon("list-alt 2x") %> <span><sup>new</sup></span>
+            <%= fa_icon("list-alt 2x") %> <span><sup id="notification-indic"></sup></span>
           </a>
 
           <div class="dropdown-menu" data-behavior="notification-items" aria-labelledby="notificationsDD">
@@ -40,7 +40,7 @@
 
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            Account
+            <%= image_tag current_user.photo, class: "border border-white", style: "width:30px;" %>
           </a>
 
           <div class="dropdown-menu">
