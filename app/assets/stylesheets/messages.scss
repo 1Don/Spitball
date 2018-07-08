@@ -11,24 +11,40 @@
 	margin-top: 20px;
 	position: fixed; bottom: 0; 
 	margin-left: 0px;
-	width: 800px;
+	width: 700px;
+	display: block;
+}
+
+.more-link{
+	position: fixed; top: 15%;
 }
 
 .send-button{
 	position: fixed; bottom: 0; 
-	margin-left: 800px;
+	margin-left: 700px;
 	background-color: white;
 	margin-bottom: 0px;
     cursor:pointer;	
+    display: inline;
 }
 
 .content{
 	width: 700px;
 	margin-top:-30px;
+	position: relative;
 }
 
 .right-element {
     display: inline-block;
     position: absolute;
     right: 0;
+}
+
+.convo-container{
+	padding-bottom:100px;
+
+}
+
+.message-action{
+	position: fixed; bottom: -5px;
 }
