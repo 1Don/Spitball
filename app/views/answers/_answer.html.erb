@@ -15,6 +15,15 @@
 		<% if current_user == answer.user %>
 			<span onclick='removeAnswer("<%= answer.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
 		<% end %>
+		<% if current_user == @discussion.user %>
+			<%= link_to solved_discussion_path(@discussion), class: "profile-link", method: :patch, remote: true do %>
+				<% if @discussion.resolved == false %>
+					<span><%= fa_icon('check') %></span>
+				<% else %>
+					<span><%= fa_icon('question') %></span>
+				<% end %>
+			<% end %>
+		<% end %>
 	</div>	
 </div>
 
