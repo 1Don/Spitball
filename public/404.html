@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Something went wrong</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+
+  </style>
+</head>
+
+<body class="rails-default-error-page">
+  <!-- This file lives in public/404.html -->
+  <div class="dialog">
+    <div>
+      <h1>Something went wrong and it's our fault. Sorry.</h1>
+      <p>If you were trying to change the world please see here or here</p>
+    </div>
+
+  </div>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
   <head>
     <title>Something bad happened</title>
     <%= csrf_meta_tags %>
@@ -21,7 +45,6 @@
     <div class="container-fluid">
       <%= content_for?(:sub_layout) ? yield(:sub_layout) : yield %>
     </div>
-
      <div>
       <h1>Something went wrong and it's our fault. Sorry.</h1>
       <p>If you were trying to change the world please see here or here</p>

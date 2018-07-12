@@ -63,14 +63,15 @@ class AnswersController < ApplicationController
 	end
 
 	def upvote
-		unless current_user != nil
-			@answer = Answer.find(params[:discussion_id])
-			@discussion = @comment.discussion
+			@answer = Answer.find(params[:answer_id])
+			@discussion = @answer.discussion
 			@answer.upvote_by current_user
-			redirect_to discussion_path(@discussion)
-		end
-		redirect_to action: "index"
+			current_user.update_attributes(points: current_user.points + 5)
+	  		@answer.user.update_attributes(points: @answer.user.points + 10) 
 
+	  		if @answer.get_upvotes.size % 5 == 0
+				@comment.user.update_attributes(points: @answer.user.points + 100)
+			end 
 	end
 
 	def solved

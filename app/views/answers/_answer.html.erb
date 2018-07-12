@@ -12,6 +12,8 @@
 	</div>
 	<div class="col-3">
 		<span id="btn-hide" onclick='execReply("<%= answer.id %>")'><%= fa_icon('comment') %></span>
+			<span><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true %></span>
+        		<span data-check="<%= current_user.voted_for? answer %>" id="like-<%= answer.id %>"><%= answer.get_upvotes.size %></span>
 		<% if current_user == answer.user %>
 			<span onclick='removeAnswer("<%= answer.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
 		<% end %>
@@ -35,17 +37,18 @@
 			</div>
 
 		</div>		
-			<% answer.descendants.each do |c| %>
-		<div id="ans-<%= c.id %>" class="small col-12 row border-top">
+			<% answer.descendants.each do |answer| %>
+		<div id="ans-<%= answer.id %>" class="small col-12 row border-top">
 			<div class="col-4">
-				<%= c.user.name %>:
+				<%= answer.user.name %>:
 			</div>
 
 			<div class="col-6">
-				<%= c.content %>
+				<%= answer.content %>
 			</div>
 			<div class="col-2 row-fluid">
-				<span class="child-cmt" onclick='secondaryReply("<%= answer.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= fa_icon("comment") %></span>
+
+				<span class="child-cmt" onclick='secondaryReply("<%= answer.id %>", "<%= answer.id %>", "<%= answer.user.name %>");'><%= fa_icon("comment") %></span>
 				<% if current_user == answer.user %>
 					<span onclick='removeAnswer("<%= c.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [c.discussion , c], method: :delete, remote: true %></span>
 				<% end %>	
