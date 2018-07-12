@@ -48,6 +48,7 @@ class DiscussionsController < ApplicationController
 	  	@discussion.upvote_by current_user
 	  	current_user.update_attributes(points: current_user.points + 5)
 	  	@discussion.user.update_attributes(points: @discussion.user.points + 10)  
+	  	
 	  	if @discussion.get_upvotes.size % 5 == 0
 				@discussion.user.update_attributes(points: @discussion.user.points + 100)
 		end

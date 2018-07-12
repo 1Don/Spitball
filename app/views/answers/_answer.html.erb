@@ -41,6 +41,8 @@
 			<% answer.descendants.each do |answer| %>
 		<div id="ans-<%= answer.id %>" class="small col-12 row border-top">
 			<div class="col-4">
+				<span data-check="<%= current_user.voted_for? answer %>" id="like-<%= answer.id %>"><%= answer.get_upvotes.size %></span>
+						<span><%= link_to fa_icon("caret-up", class: "profile-link"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true %>
 				<%= answer.user.name %>:
 			</div>
 

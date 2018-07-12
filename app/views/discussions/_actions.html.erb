@@ -2,7 +2,7 @@
 
 	<div class="col-12 text-right">
 		<% if current_user == discussion.user %>
-	      <%= link_to fa_icon("trash", class: "profile-link pr-3"), dicussion_path(discussion), method: :delete, remote: true%>
+	      <%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%>
 	    <% end %>
 	    
 	    <span><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>

@@ -75,8 +75,6 @@ class CommentsController < ApplicationController
 				@comment.user.update_attributes(points: @comment.user.points + 100)
 			end
 
-			redirect_to @wad
-
 
 	end
 
