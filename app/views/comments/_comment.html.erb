@@ -41,6 +41,8 @@
 		<% comment.descendants.each do |c| %>
 				<div id="cmt-<%= c.id %>" class="small col-12 row border-top">
 					<div class="col-4">
+						<span data-check="<%= current_user.voted_for? c %>" id="like-<%= c.id %>"><%= c.get_upvotes.size %></span>
+						<span><%= link_to fa_icon("caret-up", class: "profile-link"), wad_comment_like_path(c.wad, c), method: :put, remote: true %>
 						<%= c.user.name %>:
 					</div>
 
