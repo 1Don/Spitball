@@ -53,8 +53,16 @@ class DiscussionsController < ApplicationController
 
 
 	def solved
+		@answer = Answer.find(params[:answer_id])
 		@discussion = Discussion.find(params[:id])
-		@discussion.toggle!(:resolved)
+		if current_user == @discussion.user
+			@discussion.toggle!(:resolved)
+			if @discussion.resolved ==  true
+				@answer.update(solution: true)
+			else
+				@answer.update(solution: false)
+			end
+		end
 	end
 
 

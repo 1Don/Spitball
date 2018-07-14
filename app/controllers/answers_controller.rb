@@ -27,6 +27,13 @@ class AnswersController < ApplicationController
 		@discussion = Discussion.find(params[:discussion_id])
 		@answers = @discussion.answers.all
 		@answer = Answer.new(parent_id: params[:parent_id], discussion_id: params[:discussion_id])
+		@answers.each do |ans|
+			if ans.solution
+				@solution = ans
+			else
+				@solution = nil
+			end 
+		end 
 		@replies = @answers.hash_tree
 	end
 
@@ -48,8 +55,12 @@ class AnswersController < ApplicationController
 	end
 
 	def update
-		if @answer.update(params[:answer].permit(:content, :id))
-			redirect_to discussion_path(@discussion)
+		if current_user == @discussion.user
+			if @answer.solution == false || @answer.solution == nil
+				@answer.update(solution: true)
+			elsif @answer.solution == true
+				@answer.update(solution: false)
+			end
 		else
 			render 'edit'
 		end
@@ -63,7 +74,7 @@ class AnswersController < ApplicationController
 	end
 
 	def upvote
-		unless current_user != nil
+		unless current_user == nil
 			@answer = Answer.find(params[:discussion_id])
 			@discussion = @comment.discussion
 			@answer.upvote_by current_user

@@ -1,6 +1,5 @@
 class WadsController < ApplicationController
 	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product, :innovate, :events, :local]
-
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
 

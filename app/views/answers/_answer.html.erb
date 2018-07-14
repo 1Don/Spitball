@@ -16,10 +16,10 @@
 			<span onclick='removeAnswer("<%= answer.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
 		<% end %>
 		<% if current_user == @discussion.user %>
-			<%= link_to solved_discussion_path(@discussion), class: "profile-link", method: :patch, remote: true do %>
+			<%= link_to solved_discussion_path(@discussion, answer_id: answer.id), class: "profile-link", method: :patch, remote: true do %>
 				<% if @discussion.resolved == false %>
-					<span><%= fa_icon('check') %></span>
-				<% else %>
+					<span class="solution-check" data-check="<%= answer.solution %>"><%= fa_icon('check') %></span>
+				<% elsif @discussion.resolved && answer.solution %>
 					<span><%= fa_icon('question') %></span>
 				<% end %>
 			<% end %>

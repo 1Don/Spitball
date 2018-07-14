@@ -3,7 +3,15 @@
 		<%= render 'discussions/panel' %>
 	</div>
 	<div class="h5 mt-3 small">
-		Use the <%= fa_icon('check') %> to select the correct answer!
+		<% if current_user == @discussion.user && !@discussion.resolved %>
+			Use the <%= fa_icon('check') %> to select the correct answer!
+		<% elsif current_user == @discussion.user && @discussion.resolved %>
+			If the answer you selected wasn't right, use the <%= fa_icon('question') %> to open the question again
+		<% elsif current_user != @discussion.user && !@discussion.resolved %>
+			This question needs to be answered!
+		<% elsif current_user != @discussion.user && @discussion.resolved %>
+			Even though this question has been answered, feel free to join in the conversation!
+		<% end %>
 	</div>
 	<div class="card">
 		<div class="card-header">
@@ -14,8 +22,24 @@
 			<%= f.submit 'Answer', class: 'commentBtn d-inline', disable_with: 'Sending' %>
 		  <% end %>
 		</div>
-		<div class="list-group list-group-flush">
-			<%= answers_tree_for @replies %>
-		</div>
 	</div>
+	<% unless @solution.nil? %>
+		<div class="row card mt-2 mb-2 pl-4">
+			<div class="col-2">
+				<div class="mt-2 border-right">
+					<%= link_to user_path(@solution.user) do %>
+						<%= image_tag @solution.user.photo(:thumb), class: "w-75" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-7 small">
+				<%= @solution.content %>
+			</div>
+		</div>
+	<% end %>
+
+	<div class="list-group list-group-flush">
+		<%= answers_tree_for @replies %>
+	</div>
+
 </div>
