@@ -23,19 +23,26 @@
 		  <% end %>
 		</div>
 	</div>
-	<% unless @solution.nil? %>
-		<div class="row card mt-2 mb-2 pl-4">
-			<div class="col-2">
-				<div class="mt-2 border-right">
-					<%= link_to user_path(@solution.user) do %>
-						<%= image_tag @solution.user.photo(:thumb), class: "w-75" %>
-					<% end %>
-				</div>
+	<% if @solution %>
+	<div class="list-group card list-group-flush mt-2 mb-2">
+		<div class="row pb-2">
+			<div class="col-2 mt-2 border-right text-center d-inline">
+				<%= link_to user_path(@solution.user) do %>
+					<%= image_tag @solution.user.photo(:thumb), class: "w-75" %>
+				<% end %>
 			</div>
-			<div class="col-7 small">
+
+			<div class="col-7 small float-right d-inline mt-2 ml-2">
 				<%= @solution.content %>
 			</div>
+			<div class="col-2">
+				<%= link_to solved_discussion_path(@discussion, answer_id: @solution.id), class: "profile-link", method: :patch, remote: true do %>
+					<span><%= fa_icon('question') %></span>
+				<% end %>				
+			</div>
 		</div>
+	</div>
+
 	<% end %>
 
 	<div class="list-group list-group-flush">
