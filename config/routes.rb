@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'dashboard/show'
+  get '/dashboard' => 'dashboard#show'
+  get "/auth/oauth2/callback" => "auth0#callback"
+  get "/auth/failure" => "auth0#failure"
+
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  resources :sessions, only: [:create, :destroy]
+
   resources :friend_requests
   get 'friendships/create'
 
@@ -14,9 +25,9 @@ Rails.application.routes.draw do
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact'
   get    '/signup',  to: 'users#new'
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  #get    '/login',   to: 'sessions#new'
+  #post   '/login',   to: 'sessions#create'
+  #delete '/logout',  to: 'sessions#destroy'
   get    '/comingsoon',  to: 'static_pages#landing'
   get    '/popular',  to:'wads#popwads'
   

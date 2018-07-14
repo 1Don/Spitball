@@ -1,5 +1,12 @@
 module SessionsHelper
 
+  def get_state
+    state = SecureRandom.hex(24)
+    session['omniauth.state'] = state
+
+    state
+  end
+
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
