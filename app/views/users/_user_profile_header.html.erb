@@ -26,7 +26,9 @@
             <% end %>
             <p class="small">
               <% if @user.location.present? %>
-                <%= fa_icon("map-marker th", text: @user.location) %> <br>
+                <%= link_to "https://www.google.com/maps/place/#{@user.location}", class: "profile-link" do %>
+                  <%= fa_icon("map-marker th", text: @user.location) %> <br>
+                <% end %>
               <% end %>              
             </p>
             <div class="text-right d-block d-sm-none">
