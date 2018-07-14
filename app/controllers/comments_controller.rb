@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 		unless @comment.user == @wad.user 
 			Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
 		end
-		current_user.update_attributes(points: current_user.points + 20)
+		current_user.update_attributes(points: current_user.points + 5)
 
 	 	unless @comment.save
 	  		@error = @comment.errors.full_messages
@@ -66,13 +66,15 @@ class CommentsController < ApplicationController
 	end
 
 	def upvote
-		unless current_user != nil
-			@comment = Comment.find(params[:wad_id])
+			@comment = Comment.find(params[:comment_id])
 			@wad = @comment.wad
 			@comment.upvote_by current_user
-			redirect_to wad_path(@wad)
-		end
-		redirect_to @wad
+			current_user.update_attributes(points: current_user.points + 5) 
+
+			if @comment.get_upvotes.size % 5 == 0
+				@comment.user.update_attributes(points: @comment.user.points + 100)
+			end
+
 
 	end
 

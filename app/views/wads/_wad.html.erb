@@ -22,7 +22,7 @@
        
    <div class="actions row col-12 text-center">
 
-      <div class="float-right col-1">
+      <div class="col-1">
         <% if current_user == wad.user %>
           <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%>
         <% end %>

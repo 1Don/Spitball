@@ -24,7 +24,7 @@ module AnswersHelper
 		@discussion = Discussion.find(params[:discussion_id])
 	end
 
-#Finds comment for either controller
+#Finds answer for either controller
 	def find_answer
 		@discussion = Discussion.find(params[:discussion_id])
 		@answer = @discussion.answers.find(params[:id])

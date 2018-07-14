@@ -1,0 +1,11 @@
+<div class="col-md-8 col-12 row text-center">
+
+	<div class="col-12 text-right">
+		<% if current_user == discussion.user %>
+	      <%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%>
+	    <% end %>
+	    
+	    <span><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
+	     <span data-check="<%= current_user.voted_for? discussion %>" id="like-<%= discussion.id %>" class="nowrap"> <%= discussion.get_upvotes.size %> </span>
+    </div>
+</div>

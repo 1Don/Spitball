@@ -23,7 +23,7 @@
             <%= fa_icon("list-alt 2x") %> <span><sup id="notification-indic"></sup></span>
           </a>
 
-          <div class="dropdown-menu" data-behavior="notification-items" aria-labelledby="notificationsDD">
+          <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
             <%= link_to "see all", "#" %>
           </div>
         </li>
@@ -38,23 +38,22 @@
           </li>
         <% end %>
 
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <%= image_tag current_user.photo, class: "border border-white", style: "width:30px;" %>
-          </a>
+        <li class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %>
+            </a>
 
-          <div class="dropdown-menu">
-            <%= link_to "Profile", current_user, class: 'dropdown-item' %>
-            <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
-            <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
-            <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to "Profile", current_user, class: 'dropdown-item' %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
+              <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
+              <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
 
-            <div class="dropdown-divider"></div>
-
-            <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
-          </div>
+                <div class="dropdown-divider"></div>
+                   <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
+                </div>
         </li>
-      <% else %>
+            <% else %>
         <li class="nav-item">
           <%= link_to "Log in", login_path, class: 'nav-link' %>
         </li>
