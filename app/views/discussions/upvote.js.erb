@@ -1,0 +1,9 @@
+$(document).ready(function() {
+const current_count = parseInt($("#like-<%= @discussion.id %>").html());
+	if ($("#like-<%= @discussion.id %>").attr("data-check") == "true") {
+		console.log($("#like-<%= @discussion.id %>").html());
+	} else {
+		 $("#like-<%= @discussion.id %>").html(current_count + 1);
+		 $("#like-<%= @discussion.id %>").attr("data-check", "true");
+	}
+});

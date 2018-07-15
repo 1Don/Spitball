@@ -27,6 +27,13 @@ class AnswersController < ApplicationController
 		@discussion = Discussion.find(params[:discussion_id])
 		@answers = @discussion.answers.all
 		@answer = Answer.new(parent_id: params[:parent_id], discussion_id: params[:discussion_id])
+		@answers.each do |ans|
+			if ans.solution
+				@solution = ans
+			else
+				@solution = nil
+			end 
+		end 
 		@replies = @answers.hash_tree
 	end
 
@@ -48,8 +55,12 @@ class AnswersController < ApplicationController
 	end
 
 	def update
-		if @answer.update(params[:answer].permit(:content, :id))
-			redirect_to discussion_path(@discussion)
+		if current_user == @discussion.user
+			if @answer.solution == false || @answer.solution == nil
+				@answer.update(solution: true)
+			elsif @answer.solution == true
+				@answer.update(solution: false)
+			end
 		else
 			render 'edit'
 		end
@@ -63,14 +74,16 @@ class AnswersController < ApplicationController
 	end
 
 	def upvote
-		unless current_user != nil
-			@answer = Answer.find(params[:discussion_id])
-			@discussion = @comment.discussion
+		unless current_user == nil
+			@answer = Answer.find(params[:answer_id])
+			@discussion = @answer.discussion
 			@answer.upvote_by current_user
-			redirect_to discussion_path(@discussion)
+			current_user.update_attributes(points: current_user.points + 5)
+	  		@answer.user.update_attributes(points: @answer.user.points + 10) 
+	  		if @answer.get_upvotes.size % 5 == 0
+				@comment.user.update_attributes(points: @answer.user.points + 100)
+			end 
 		end
-		redirect_to action: "index"
-
 	end
 
 	def solved

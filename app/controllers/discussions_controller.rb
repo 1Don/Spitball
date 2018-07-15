@@ -47,14 +47,25 @@ class DiscussionsController < ApplicationController
 		@discussion = Discussion.find(params[:id])
 	  	@discussion.upvote_by current_user
 	  	current_user.update_attributes(points: current_user.points + 5)
-	  	@discussion.user.update_attributes(points: @discussion.user.points + 15)  
-	  	redirect_to @discussion
+	  	@discussion.user.update_attributes(points: @discussion.user.points + 10)  
+	  	
+	  	if @discussion.get_upvotes.size % 5 == 0
+				@discussion.user.update_attributes(points: @discussion.user.points + 100)
+		end
 	end
 
 
 	def solved
+		@answer = Answer.find(params[:answer_id])
 		@discussion = Discussion.find(params[:id])
-		@discussion.toggle!(:resolved)
+		if current_user == @discussion.user
+			@discussion.toggle!(:resolved)
+			if @discussion.resolved ==  true
+				@answer.update(solution: true)
+			else
+				@answer.update(solution: false)
+			end
+		end
 	end
 
 

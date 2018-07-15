@@ -1,12 +1,11 @@
 class WadsController < ApplicationController
 	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product, :innovate, :events, :local]
-
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 
 
 	def index
 		@comment = Comment.new
-	 	@wads = Wad.all.paginate(page: params[:page], per_page: 20)
+	 	@wads = Wad.all.paginate(page: params[:page], per_page: 20).order('created_at DESC')
     end
 
     def popwads
@@ -61,10 +60,15 @@ class WadsController < ApplicationController
 		@wad = Wad.find(params[:id])
 		@wad.upvote_by current_user
 		current_user.update_attributes(points: current_user.points + 5)  
-		@wad.user.update_attributes(points: @wad.user.points + 15)
+		@wad.user.update_attributes(points: @wad.user.points + 10)
 		unless current_user.voted_for? @wad  
 			Notification.create(recipient: @wad.user, actor: current_user, action: "liked", notifiable: @wad)
 		end	
+
+		if @wad.get_upvotes.size % 5 == 0
+				@wad.user.update_attributes(points: @wad.user.points + 50)
+
+		end
 	end
 
 	def report
