@@ -2,32 +2,29 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  root   'static_pages#home'
+  authenticated :user do
+    root 'wads#events', as: :authenticated_root
+  end
+  root 'static_pages#home'
 
   resources :friend_requests
 
   get 'friendships/create'
   get 'friendships/destroy'
-  # get 'sessions/new'
-  # get 'users/new'
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
-  # get '/signup',  to: 'users#new'
-  # get '/login',   to: 'sessions#new'
-  # post '/login',   to: 'sessions#create'
-  # delete '/logout',  to: 'sessions#destroy'
   get '/comingsoon',  to: 'static_pages#landing'
-  get '/popular',  to:'wads#popwads'
-  get '/tech',    to:  'wads#consumertech'
-  get '/b2b',     to:  'wads#b2b'
-  get '/product',     to:  'wads#product'
-  get '/social',     to:  'wads#social'
-  get '/local',     to:  'wads#local'
-  get '/events',     to:  'wads#events'
-  get '/innovate',     to:  'wads#innovate'
-  get '/media',     to:  'wads#media'
-  get '/forum',    to:   'discussions#index'
+  get '/popular',  to: 'wads#popwads'
+  get '/tech',    to: 'wads#consumertech'
+  get '/b2b',     to: 'wads#b2b'
+  get '/product',     to: 'wads#product'
+  get '/social',     to: 'wads#social'
+  get '/local',     to: 'wads#local'
+  get '/events',     to: 'wads#events'
+  get '/innovate',     to: 'wads#innovate'
+  get '/media',     to: 'wads#media'
+  get '/forum',    to: 'discussions#index'
 
   #Defining routes for user profile navigation
   get '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments

@@ -1,14 +1,15 @@
 class WadsController < ApplicationController
-	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product, :innovate, :events, :local]
+	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product,
+											 :innovate, :events, :local]
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
-
+	before_action :authenticate_user!
 
 	def index
 		@comment = Comment.new
 	 	@wads = Wad.all.paginate(page: params[:page], per_page: 20).order('created_at DESC')
-    end
+  end
 
-    def popwads
+  def popwads
 		@wads = Wad.all.paginate(page: params[:page], per_page: 20)
 		@rankedwads = Wad.order(cached_votes_total: :desc)
 	end
@@ -32,17 +33,17 @@ class WadsController < ApplicationController
 		end
 	end
 
-
 	def edit
 	end
 
 	def update
-			if @wad.update
-				redirect_to @wad
-			else
-				flash[]
-				render 'edit'
-			end
+		@wad = current_user.wads.build(wad_params)
+		if @wad.update
+			redirect_to @wad
+		else
+			flash[]
+			render 'edit'
+		end
 	end
 
 	def destroy	
@@ -55,8 +56,7 @@ class WadsController < ApplicationController
 			end
 	end
 
-
-	def upvote 
+	def upvote
 		@wad = Wad.find(params[:id])
 		@wad.upvote_by current_user
 		current_user.update_attributes(points: current_user.points + 5)  
@@ -66,15 +66,13 @@ class WadsController < ApplicationController
 		end	
 
 		if @wad.get_upvotes.size % 5 == 0
-				@wad.user.update_attributes(points: @wad.user.points + 50)
-
+			@wad.user.update_attributes(points: @wad.user.points + 50)
 		end
 	end
 
 	def report
 	end
 
-#category views
 	def consumertech
 		@wads = Wad.where("category like ?", "%Consumer Tech%").paginate(page: params[:page], per_page: 20)
 	end
@@ -99,7 +97,6 @@ class WadsController < ApplicationController
 		@wads = Wad.where("category like ?", "%Consumer Products%").paginate(page: params[:page], per_page: 20)
 	end
 
-
 	def innovate
 		@wads = Wad.where("category like ?", "%Avant-garde%").paginate(page: params[:page], per_page: 20)
 	end
@@ -108,11 +105,8 @@ class WadsController < ApplicationController
 		@wads = Wad.where("category like ?", "%Events%").paginate(page: params[:page], per_page: 20)
 	end
 
-private
-
+	private
 	def wad_params
 		params.require(:wad).permit(:problem_state, :long_form, :category, :image, :tags)
 	end
-
-
 end
