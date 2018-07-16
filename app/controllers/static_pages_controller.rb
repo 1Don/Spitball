@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-layout "_landing", only: [:landing, :home]
+  layout "_landing", only: [:landing, :home]
 
   def home
   end
@@ -8,9 +8,6 @@ layout "_landing", only: [:landing, :home]
   end
 
   def about
-  end
-
-  def landing
   end
 
   def search

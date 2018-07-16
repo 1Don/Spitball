@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   root   'static_pages#home'
 
   resources :friend_requests
 
   get 'friendships/create'
   get 'friendships/destroy'
-  get 'sessions/new'
-  get 'users/new'
+  # get 'sessions/new'
+  # get 'users/new'
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
-  get '/signup',  to: 'users#new'
-  get '/login',   to: 'sessions#new'
-  post '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  # get '/signup',  to: 'users#new'
+  # get '/login',   to: 'sessions#new'
+  # post '/login',   to: 'sessions#create'
+  # delete '/logout',  to: 'sessions#destroy'
   get '/comingsoon',  to: 'static_pages#landing'
   get '/popular',  to:'wads#popwads'
   get '/tech',    to:  'wads#consumertech'
