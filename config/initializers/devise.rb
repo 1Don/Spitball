@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-# Use this hook to configure devise mailer, warden hooks and so forth.
-# Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -111,7 +107,7 @@ Devise.setup do |config|
   # a value less than 10 in other environments. Note that, for bcrypt (the default
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 11
+  config.stretches = 11
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = 'b5d4cd46368928be61cd9fe053b54e195ef0715a18fb5a2c90b7a825fb5d12a09d74c33486f53220ad0b6536b26454fa7d0d7054aae26e89d4f8c6549aacbdd1'
