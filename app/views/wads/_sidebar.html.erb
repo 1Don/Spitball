@@ -1,12 +1,27 @@
-<div class="row row-sidebar">
-
+<div class="row row-sidebar h-100">
   <div class="col-12">
-    <ul class="list-group">
-      <% sidebar_elements.each do |element| %>
-        <a class="list-group-item list-group-item-action" href="<%= element[:link] %>">
-          <%= element[:name] %>
-        </a>
-      <% end %>
-    </ul>
+  	<div class="h-100" style="background-color: rgb(30,67,81);">
+   		<div class="text-white text-center">
+  			<%= fa_icon("bullhorn 2x", class: "border-right pr-3 mt-3") %>
+  			<%= fa_icon("envelope 2x", class: "pl-3") %>
+  		</div> 		
+  		<div class="col-12 d-flex text-center mt-3">
+		    <%= form_tag search_path, method: :get, class: 'form-inline' do %> 
+		      <span><%= button_to "Search", class: 'nav-button', name: nil do %>
+		          <i class="nav-link fa fa-search text-white d-inline pr-0"></i>
+		      <% end %></span>		     
+		      <span><%= text_field_tag :search, params[:search], placeholder: "Search", class: 'h-75 mt-1 form-control mr-sm-1 col-11' %></span>
+		    <% end %>			
+  		</div>
+  		<div class="mr-2">
+		    <ul class="list-group col-12 mt-3 text-center mb-5">
+		      <% sidebar_elements.each do |element| %>
+		        <a id="sidebar-item" class="text-white text-center ml-2 mt-2 mb-2 " href="<%= element[:link] %>" style="text-decoration: none;background-color: rgb(30,67,81);">
+		          <%= element[:name] %>
+		        </a>
+		      <% end %>
+		    </ul>
+		</div>
+	</div>
   </div>
 </div>
