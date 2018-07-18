@@ -8,11 +8,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all',                                              'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= render 'layouts/landingheader' %>
+   <%# <%= render 'layouts/landingheader' %>
   </head>
 
   <body class="<%= params[:controller] %> <%= params[:action] %>">
-    <%= render 'layouts/landingheader' %>
+    <%#<%= render 'layouts/landingheader' %>
 
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
