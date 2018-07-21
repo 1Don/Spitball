@@ -23,7 +23,10 @@ gem 'paperclip', '~> 6.0'
 gem 'font-awesome-rails', '~> 4.7.0.0'
 gem 'city-state'
 gem 'pg',  '0.18.4'
-gem "avatarly"
+gem 'avatarly'
+gem 'omniauth', '~> 1.6.1'
+gem 'omniauth-auth0', '~> 2.0.0'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
