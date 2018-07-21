@@ -18,7 +18,7 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
-    <div class="container-fluid">
+    <div class="">
       <%= content_for?(:sub_layout) ? yield(:sub_layout) : yield %>
     </div>
 
