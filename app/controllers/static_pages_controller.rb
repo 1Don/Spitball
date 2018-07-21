@@ -17,5 +17,6 @@ layout "_landing", only: [:landing, :home]
   	@wads = Wad.search(params[:search])
   	@discussions = Discussion.search(params[:search])
   	@users = User.search(params[:search])
+    @all_wads = Wad.all
   end 
 end
