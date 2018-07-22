@@ -1,1 +1,1 @@
-$("#cmt-cnt-" + params[:id]).html("<p> Comment Removed </p>")
+$("#cmt-<%= @comment.id %>").text("Comment Removed")

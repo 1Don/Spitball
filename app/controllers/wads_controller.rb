@@ -71,6 +71,11 @@ class WadsController < ApplicationController
 		end
 	end
 
+	def unvote
+		@wad = Wad.find(params[:id])
+		@wad.upvote_by current_user
+	end		
+
 	def report
 	end
 

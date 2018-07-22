@@ -1,8 +1,10 @@
 if ("<%= @answer.parent_id %>" == "") {
 	document.location.reload();		
 } else {
-	$('#ans-form-<%= @answer.root.id %>').html("You posted a response!")
+	/*$('#ans-form-<%= @answer.root.id %>').html("You posted a response!")
 	$('#ans-img-<%= @answer.root.id %>').html("<%= @answer.user.name %>:")
-	$('#ans-cnt-<%= @answer.root.id %>').html("<%= @answer.content %>")
+	$('#ans-cnt-<%= @answer.root.id %>').html("<%= @answer.content %>")*/
+	const userPhoto = $("#user-photo").html();
+	$('#new-ans-<%= @answer.root.id %>').prepend("<div class='col-4 border-top ml-4 mb-1 mt-2'>" + userPhoto + "</div><div class='col-7 border-top mb-1 mt-2'><%= @answer.content %></div>")	
 	$('.form-field').val("")
 }

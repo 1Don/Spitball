@@ -1,7 +1,7 @@
-<div id="ans-<%= answer.id %>" class="row">
+<div onmouseover='showTrash("<%= answer.id %>")' onmouseleave='hideTrash("<%= answer.id %>")' id="ans-<%= answer.id %>" class="row">
 	<div class="col-2 border-right text-center">
 		<%= link_to user_path(answer.user) do %>
-			<%= image_tag answer.user.photo(:thumb), class: "w-75" %>
+			<%= image_tag answer.user.photo(:thumb), class: "w-75 rounded-circle" %>
 		<% end %>
 	</div>
 
@@ -14,7 +14,7 @@
 		<span id="btn-hide" onclick='execReply("<%= answer.id %>")'><%= fa_icon('comment') %></span>
 
 		<% if current_user == answer.user %>
-			<span onclick='removeAnswer("<%= answer.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
+			<span id="trash-<%= answer.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
 		<% end %>
 		<% if current_user == @discussion.user %>
 			<%= link_to solved_discussion_path(@discussion, answer_id: answer.id), class: "profile-link", method: :patch, remote: true do %>
@@ -38,7 +38,7 @@
 			<%= render 'form' %>
 		</div>
 
-		<div id="ans-<%= answer.id %>" class="small col-12 row">
+		<div id="new-ans-<%= answer.id %>" class="small col-12 row">
 			<div id="ans-img-<%= answer.id %>" class="col-4">
 
 			</div>
@@ -48,22 +48,22 @@
 			</div>
 
 		</div>		
-			<% answer.descendants.each do |answer| %>
-		<div id="ans-<%= answer.id %>" class="small col-12 row border-top">
+			<% answer.descendants.each do |a| %>
+		<div onmouseover='showTrash("<%= a.id %>")' onmouseleave='hideTrash("<%= a.id %>")' id="ans-<%= a.id %>" class="small col-12 row border-top">
 			<div class="col-4">
-				<span data-check="<%= current_user.voted_for? answer %>" id="like-<%= answer.id %>"><%= answer.get_upvotes.size %></span>
-						<span><%= link_to fa_icon("caret-up", class: "profile-link"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true %>
-				<%= answer.user.name %>:
+				<span data-check="<%= current_user.voted_for? a %>" id="like-<%= a.id %>"><%= answer.get_upvotes.size %></span>
+						<span><%= link_to fa_icon("caret-up", class: "profile-link"), discussion_answer_like_path(a.discussion, a), method: :put, remote: true %>
+						<%= link_to image_tag(a.user.photo(:thumb), class: "w-25 mt-2 rounded-circle" ), user_path(a.user)%>
 			</div>
 
 			<div class="col-6">
-				<%= answer.content %>
+				<%= a.content %>
 			</div>
 			<div class="col-2 row-fluid">
 
-				<span class="child-cmt" onclick='secondaryReply("<%= answer.id %>", "<%= answer.id %>", "<%= answer.user.name %>");'><%= fa_icon("comment") %></span>
+				<span class="child-cmt" onclick='secondaryReply("<%= answer.id %>", "<%= a.id %>", "<%= a.user.name %>");'><%= fa_icon("comment") %></span>
 				<% if current_user == answer.user %>
-					<span onclick='removeAnswer("<%= answer.id %>")'><%= link_to fa_icon("trash", class: "profile-link"), [answer.discussion , answer], method: :delete, remote: true %></span>
+					<span id="trash-<%= a.id %>" class='trash'><%= link_to fa_icon("trash", class: "profile-link"), [a.discussion , a], method: :delete, remote: true %></span>
 				<% end %>	
 			</div>
 		</div>

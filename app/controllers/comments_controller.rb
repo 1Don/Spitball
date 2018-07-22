@@ -31,6 +31,7 @@ class CommentsController < ApplicationController
 		@comments = @wad.comments.all
 		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 		@replies = @comments.hash_tree
+		@photo_path = current_user.photo(:thumb)
 	end
 
 

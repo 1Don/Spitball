@@ -35,11 +35,11 @@ function toggleReply(id) {
 		reply.style.display = "block";
 	}
 }
-function removeAnswer(id) {
-	$('#ans-' + id).html('your answer was removed');
+function showTrash(id) {
+	$('#trash-' + id).css("display", "block");
 }
-function removeComment(id) {
-	$('#cmt-' + id).html("your comment has been removed");
+function hideTrash(id) {
+	$('#trash-' + id).css("display", "none");
 }
 //Gives each parent_id hidden field its ID
 function setVal(id) {
