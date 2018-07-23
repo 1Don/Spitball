@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-#Auth0 routes
- get 'dashboard/show'
+  get 'dashboard/show'
   get '/dashboard' => 'dashboard#show'
-  get "/auth/oauth2/callback" => "auth0#callback"
-  get "/auth/failure" => "auth0#failure"
 
+  # Google oauth2 callbacks
+  get "/auth/google_oauth2", as: :google_session
+  get "/auth/google_oauth2/callback" => "google_oauth2#callback"
+  get "/auth/google_oauth2/failure" => "google_oauth2#failure"
 
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions, only: [:create, :destroy]
 
@@ -21,19 +20,17 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  get 'users/new'
-
   root   'static_pages#home'
   get    '/help',    to: 'static_pages#help'
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact'
-  #get    '/signup',  to: 'users#new'
-  #get    '/login',   to: 'sessions#new'
-  #post   '/login',   to: 'sessions#create'
+  get    '/signup',  to: 'users#new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get    '/comingsoon',  to: 'static_pages#landing'
+  get    '/comingsoon', to: 'static_pages#landing'
   get    '/popular',  to:'wads#popwads'
-  
+
 
   get    '/tech',    to:  'wads#consumertech'
   get    '/b2b',     to:  'wads#b2b'
@@ -59,14 +56,14 @@ Rails.application.routes.draw do
     resources :messages
    end
 
- 
+
   resources :notifications do
     collection do
       post :mark_as_read
     end
   end
-  
-  resources :users 
+
+  resources :users
 
   resources :discussions do
     member do
@@ -74,10 +71,10 @@ Rails.application.routes.draw do
         put "dislike", to: "discussions#downvote"
         patch :solved
     end
-      resources :answers do 
+      resources :answers do
         put "like", to: "answers#upvote"
         put "dislike", to: "answers#downvote"
-      end   
+      end
   end
 
 
@@ -86,9 +83,9 @@ Rails.application.routes.draw do
         put "like", to: "wads#upvote"
         put "dislike", to: "wads#downvote"
     end
-      resources :comments do 
+      resources :comments do
         put "like", to: "comments#upvote"
         put "dislike", to: "comments#downvote"
-      end   
+      end
   end
 end

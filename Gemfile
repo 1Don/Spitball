@@ -25,7 +25,6 @@ gem 'city-state'
 gem 'pg',  '0.18.4'
 gem 'avatarly'
 gem 'omniauth', '~> 1.6.1'
-gem 'omniauth-auth0', '~> 2.0.0'
 gem 'omniauth-google-oauth2'
 
 group :development, :test do
