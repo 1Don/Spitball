@@ -1,5 +1,4 @@
 class Auth0Controller < ApplicationController
-	skip_before_filter :verify_authenticity_token
 
   def callback
     # This stores all the user information that came from Auth0
