@@ -74,7 +74,7 @@ class AnswersController < ApplicationController
 	end
 
 	def upvote
-		unless current_user == nil
+		unless current_user.nil?
 			@answer = Answer.find(params[:answer_id])
 			@discussion = @answer.discussion
 			@answer.upvote_by current_user
@@ -85,7 +85,15 @@ class AnswersController < ApplicationController
 			end 
 		end
 	end
-
+	def downvote
+		unless current_user.nil?
+			@answer = Answer.find(params[:answer_id])
+			@discussion = @answer.discussion
+			@answer.downvote_by current_user
+			current_user.update_attributes(points: current_user.points - 5)
+	  		@answer.user.update_attributes(points: @answer.user.points - 10) 
+		end
+	end
 	def solved
 		@discussion = Discussion.find(params[:discussion_id])
 		@discussion.toggle!(:resolved)

@@ -23,9 +23,15 @@
 				<% end %>
 			<% end %>
 		<% end %>
-
-			<span><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true %></span>
-        		<span data-check="<%= current_user.voted_for? answer %>" id="like-<%= answer.id %>"><%= answer.get_upvotes.size %></span>
+		<% if current_user.voted_down_on? answer %>
+			<span id="vote-span-<%= answer.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true %></span>
+		<% elsif !current_user.voted_for? answer %>
+			<span id="vote-span-<%= answer.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true %></span>		
+		<% else %>
+			<span id="vote-span-<%= answer.id %>"><%= link_to fa_icon("chevron-circle-down", class: "profile-link"), discussion_answer_dislike_path(answer.discussion, answer), method: :put, remote: true %></span>		
+		<% end %>
+			
+        	<span data-check="parent" id="like-<%= answer.id %>"><%= answer.get_upvotes.size %></span>
 		
 
 	</div>	
@@ -39,20 +45,20 @@
 		</div>
 
 		<div id="new-ans-<%= answer.id %>" class="small col-12 row">
-			<div id="ans-img-<%= answer.id %>" class="col-4">
-
-			</div>
-
-			<div id="ans-cnt-<%= answer.id %>" class="col-6">
-
-			</div>
 
 		</div>		
 			<% answer.descendants.each do |a| %>
 		<div onmouseover='showTrash("<%= a.id %>")' onmouseleave='hideTrash("<%= a.id %>")' id="ans-<%= a.id %>" class="small col-12 row border-top">
 			<div class="col-4">
-				<span data-check="<%= current_user.voted_for? a %>" id="like-<%= a.id %>"><%= answer.get_upvotes.size %></span>
-						<span><%= link_to fa_icon("caret-up", class: "profile-link"), discussion_answer_like_path(a.discussion, a), method: :put, remote: true %>
+				<span data-check="child" id="like-<%= a.id %>"><%= answer.get_upvotes.size %></span>
+				<% if current_user.voted_down_on? a %>
+					<span id="vote-span-<%= a.id %>"><%= link_to fa_icon("caret-up", class: "profile-link"), discussion_answer_like_path(a.discussion, a), method: :put, remote: true %></span>
+				<% elsif !current_user.voted_for? a %>
+					<span id="vote-span-<%= a.id %>"><%= link_to fa_icon("caret-up", class: "profile-link"), discussion_answer_like_path(a.discussion, a), method: :put, remote: true %></span>				
+				<% else %>
+					<span id="vote-span-<%= a.id %>"><%= link_to fa_icon("caret-down", class: "profile-link"), discussion_answer_dislike_path(a.discussion, a), method: :put, remote: true %></span>
+				<% end %>
+					
 						<%= link_to image_tag(a.user.photo(:thumb), class: "w-25 mt-2 rounded-circle" ), user_path(a.user)%>
 			</div>
 

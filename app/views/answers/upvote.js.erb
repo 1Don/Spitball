@@ -1,9 +1,7 @@
-$(document).ready(function() {
-const current_count = parseInt($("#like-<%= @answer.id %>").html());
-	if ($("#like-<%= @answer.id %>").attr("data-check") == "true") {
-		console.log($("#like-<%= @answer.id %>").html());
-	} else {
-		 $("#like-<%= @answer.id %>").html(current_count + 1);
-		 $("#like-<%= @answer.id %>").attr("data-check", "true");
-	}
-});
+console.log("upvote script running")
+$("#like-<%= @answer.id %>").html((parseInt($("#like-<%= @answer.id %>").html())+1).toString());
+if ($("#like-<%= @answer.id %>").attr("data-check") == "parent") {
+	$('#vote-span-<%= @answer.id %>').html('<%= link_to fa_icon("chevron-circle-down", class: "profile-link"), discussion_answer_dislike_path(@discussion, @answer), method: :put, remote: true %>')
+} else if ($("#like-<%= @answer.id %>").attr("data-check") == "child") {
+	$('#vote-span-<%= @answer.id %>').html('<%= link_to fa_icon("caret-down", class: "profile-link"), discussion_answer_dislike_path(@discussion, @answer), method: :put, remote: true %>')
+}

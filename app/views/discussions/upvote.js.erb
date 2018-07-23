@@ -1,9 +1,3 @@
-$(document).ready(function() {
-const current_count = parseInt($("#like-<%= @discussion.id %>").html());
-	if ($("#like-<%= @discussion.id %>").attr("data-check") == "true") {
-		console.log($("#like-<%= @discussion.id %>").html());
-	} else {
-		 $("#like-<%= @discussion.id %>").html(current_count + 1);
-		 $("#like-<%= @discussion.id %>").attr("data-check", "true");
-	}
-});
+console.log("upvote script running")
+$('#vote-span-<%= @discussion.id %>').html('<%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_discussion_path(@discussion), method: :put, remote: true %>')
+$("#like-<%= @discussion.id %>").html((parseInt($("#like-<%= @discussion.id %>").html())+1).toString());

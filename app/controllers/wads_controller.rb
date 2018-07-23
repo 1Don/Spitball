@@ -71,9 +71,11 @@ class WadsController < ApplicationController
 		end
 	end
 
-	def unvote
+	def downvote 
 		@wad = Wad.find(params[:id])
-		@wad.upvote_by current_user
+		@wad.downvote_by current_user
+		current_user.update_attributes(points: current_user.points - 5)  
+		@wad.user.update_attributes(points: @wad.user.points - 10)
 	end		
 
 	def report

@@ -71,10 +71,12 @@ Rails.application.routes.draw do
   resources :discussions do
     member do
         put "like", to: "discussions#upvote"
+        put "dislike", to: "discussions#downvote"
         patch :solved
     end
       resources :answers do 
         put "like", to: "answers#upvote"
+        put "dislike", to: "answers#downvote"
       end   
   end
 
@@ -82,9 +84,11 @@ Rails.application.routes.draw do
   resources :wads do
     member do
         put "like", to: "wads#upvote"
+        put "dislike", to: "wads#downvote"
     end
       resources :comments do 
         put "like", to: "comments#upvote"
+        put "dislike", to: "comments#downvote"
       end   
   end
 end

@@ -54,6 +54,13 @@ class DiscussionsController < ApplicationController
 		end
 	end
 
+	def downvote
+		@discussion = Discussion.find(params[:id])
+	  	@discussion.downvote_by current_user
+	  	current_user.update_attributes(points: current_user.points - 5)
+	  	@discussion.user.update_attributes(points: @discussion.user.points - 10)  
+	end	
+
 
 	def solved
 		@answer = Answer.find(params[:answer_id])

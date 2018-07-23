@@ -75,10 +75,13 @@ class CommentsController < ApplicationController
 			if @comment.get_upvotes.size % 5 == 0
 				@comment.user.update_attributes(points: @comment.user.points + 100)
 			end
-
-
 	end
-
+	def downvote
+			@comment = Comment.find(params[:comment_id])
+			@wad = @comment.wad
+			@comment.downvote_by current_user
+			current_user.update_attributes(points: current_user.points - 5) 
+	end
 
 private
 
