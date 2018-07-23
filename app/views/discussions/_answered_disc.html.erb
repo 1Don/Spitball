@@ -17,11 +17,11 @@
 						<%= link_to 'Contribute', discussion_answers_path(discussion), class: 'profile-link' %>
 						<% end %>
 						<% if current_user.voted_down_on? discussion %>
-						 <span id="vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
+						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
 						<% elsif !current_user.voted_for? discussion %>
-						<span id="vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
+						<span id="discussion-vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
 						<% else %>
-						 <span id="vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_discussion_path(discussion), method: :put, remote: true %></span>
+						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_discussion_path(discussion), method: :put, remote: true %></span>
 						<% end %>
         <span data-check="<%= current_user.voted_for? discussion %>" id="like-<%= discussion.id %>"><%= discussion.get_upvotes.size %></span>
 			 </div>
