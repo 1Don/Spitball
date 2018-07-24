@@ -43,7 +43,7 @@
 					        <%# place holder for actual erb %>
 					        <input type="checkbox"><span class="small pl-2">I Consent to the Terms & Services Agreement</span>
 					      </div>
-					    </div>	
+					    </div>
 					  </div>
 					</div>
 			</div>
@@ -91,8 +91,9 @@
 </div>
 
 <div class="row d-none d-sm-block">
-	<div class="ml-4 form-group col-8 text-center"> 
+	<div class="ml-4 form-group col-8 text-center">
 		<%= f.submit class: "Spitballbutton" %>
+		<%= link_to "Sign up with google", google_session_path %>
 	</div>
 </div>
 <% end %>
@@ -143,14 +144,14 @@
 				        <%# place holder for actual erb %>
 				        <input type="checkbox"><span class="small pl-2">I Consent to the Terms & Services Agreement</span>
 				      </div>
-				    </div>	   
+				    </div>
 				  </div>
 				</div>
 		</div>
-	
+
 
 		<div class="col-xs-12">
-					
+
 				 <div class="col-md-10 mx-auto mt-5 h-100">
 
 				    <h5 class="text-center mt-3 small font-italic">(Optional)</h5>
@@ -195,10 +196,11 @@
 				        </div>
 
 					 	<div class="row">
-							<div class="form-group col-12 text-center"> 
+							<div class="form-group col-12 text-center">
 								<%= f.submit class: "Spitballbutton" %>
+								<%= link_to "Sign up with google", google_session_path %>
 							</div>
-						</div>				        
+						</div>
 
 				      </div>
 				 </div>
@@ -208,4 +210,3 @@
 <% end %>
 
 </div>
-
