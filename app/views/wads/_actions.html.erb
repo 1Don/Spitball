@@ -5,12 +5,12 @@
 	      <span id="trash-<%= wad.id %>" class="trash mr-5"> <%= link_to fa_icon("trash", class: "profile-link pr-3"), wad_path(wad), method: :delete, remote: true%></span>
 	    <% end %>
 	    <% if current_user.voted_down_on? wad %>
-	    	<span id="vote-span-<%= wad.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>
+	    	<span id="wad-vote-span-<%= wad.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>
 	   	<% elsif !current_user.voted_for? wad %>
-	    	<span id="vote-span-<%= wad.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>	   		
+	    	<span id="wad-vote-span-<%= wad.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_wad_path(wad), method: :put, remote: true %></span>	   		
 	    <% else %>
-	    	<span id="vote-span-<%= wad.id %>"><%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_wad_path(wad), method: :put, remote: true %></span>
+	    	<span id="wad-vote-span-<%= wad.id %>"><%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_wad_path(wad), method: :put, remote: true %></span>
 	    <% end %>
-	     	<span data-check="<%= current_user.voted_for? wad %>" id="like-<%= wad.id %>" class="nowrap"> <%= wad.get_upvotes.size %> </span>
+	     	<span data-check="<%= current_user.voted_for? wad %>" id="wad-like-<%= wad.id %>" class="nowrap"> <%= wad.get_upvotes.size %> </span>
     </div>
 </div>

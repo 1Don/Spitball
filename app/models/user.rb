@@ -55,23 +55,31 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  #Oauth function
+  # Find user by omniauth
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+    where(provider: auth.provider, uid: auth.uid).first
+  end
+
+  # Sign up from oauth function
+  def self.sign_up_from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
+      user.email = auth.info.email
       user.name = auth.info.name
+      user.password = user.password_confirmation = SecureRandom.hex(20)
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.photo = open(URI.parse(auth.info.image))
       user.save!
     end
   end
 
   #Controls the search feature
-   def self.search(search)
-      where("name LIKE ?", "%#{search}%")
-   end
-  
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+
   #gets rid of friend
   def remove_friend(friend)
     current_user.friends.destroy(friend)
@@ -90,5 +98,11 @@ class User < ApplicationRecord
   end
     self.save
   end
+
+  private
+
+    def session_with_provider?
+      self.provider.present? && self.uid.present?
+    end
 
 end
