@@ -24,6 +24,7 @@ gem 'font-awesome-rails', '~> 4.7.0.0'
 gem 'city-state'
 gem 'pg',  '0.18.4'
 gem 'avatarly'
+gem 'exception_handler'
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-google-oauth2'
 
