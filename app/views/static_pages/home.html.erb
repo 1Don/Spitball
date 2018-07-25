@@ -34,14 +34,38 @@
 		    </ul>
 		    <ul class="navbar-nav ml-5 display-orange">
 		      <li class="nav-item">
-						<%= link_to "Sign up", signup_path, class: "nav-link hover" %>
+						<%#<%= link_to "Sign up", signup_path, class: "nav-link hover" %>
+						<a onclick="toggleModal()" class="nav-link hover">sign up</a>
 		      </li>
 		    </ul>
 		  </div>
 		</div>
 	</nav>
-
+	<div id="signup-modal" class="fixed-top mt-4">
+		<div class="text-center">
+			<br><br><br><br>
+			<div class="row card mx-auto col-6">
+				<span onclick="toggleModal()" class="float-right">X</span>
+				<div class="col-6 border-right mt-3 mb-2">
+					<div class="col-10">
+						<button class="text-white pl-1 mb-2" style="background-color: #fbbc05;"><i class="fab fa-google border-right pr-1"></i> sign up with google</button>
+					</div>
+					<div class="col-10">
+						<button class="text-white pl-1 mb-2" style="background-color: #86888a;"><i class="fab fa-linkedin-in border-right pr-1"></i> sign up with linkedin</buttton>
+					</div>
+					<div class="col-10">
+						<button class="text-white pl-1 mb-2" style="background-color: #3b5998;"><i class="fab fa-facebook-f border-right pr-1"></i> sign up with facebook</button>
+					</div>
+				</div>
+				<div class="col-6">
+					
+				</div>
+			</div>
+		</div>
+	</div>	
+<div id="overlay">
 	<div class="banner jumbotron jumbotron-fluid w-100">
+	
 		  <%= image_tag("banner.jpg", class: 'banner-img') %>
 	  	<div class="container">
 	  		<div class="desc">
@@ -197,7 +221,7 @@
 			</div>
 		</div>
 	</footer>
-
+</div>
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

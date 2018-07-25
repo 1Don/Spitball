@@ -11,3 +11,11 @@ $(document).ready(function() {
 	        'slow');
 	});	
 })
+
+var toggleModal = function(){
+	if ($('#signup-modal').css("display") == "none") {
+		$('#signup-modal').css("display", "block")
+	} else {
+		$('#signup-modal').css("display", "none")
+	}
+};
