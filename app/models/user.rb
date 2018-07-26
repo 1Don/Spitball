@@ -66,7 +66,9 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
-      user.name = auth.info.name
+      user.name = auth.info.email.partition('@').first
+      user.first_name = auth.info.name.split.first
+      user.last_name = auth.info.name.split.last
       user.password = user.password_confirmation = SecureRandom.hex(20)
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
