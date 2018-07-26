@@ -2,12 +2,6 @@
     <button class="navbutton mt-4 shadow-sm"><%= fa_icon("arrow-left 2x") %></button>
 <% end %>
 <div class="row col-12">
-  <div id="info-card-1" class="card h-50 col-2 small mt-5 info-cards">
-    <h6 class="text-center mt-1">Call to Action</h6>
-    <div class="mt-1 mb-1">
-      Here is where you should set the frame for your idea. Generally speaking, ventures are concieved and executed as a means of solving problems. What is the problem you're seeking to solve? 
-    </div>
-  </div>
 
   <div class="row col-8 text-center mx-auto">
     <div class="col-10 mx-auto">
@@ -40,12 +34,12 @@
           </div>
 
             <div class="form-group">
-              <%= f.label :problem_state, "Call to Action/Problem Statement" %><span onclick="toggleInfo('1');" class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
+              <%= f.label :problem_state, "Call to Action/Problem Statement" %><span data-toggle="tooltip" data-placement="right" title="Here is where you should set the frame for your idea. Generally speaking, ventures are concieved and executed as a means of solving problems. What is the problem you're seeking to solve? "class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
               <%= f.text_field :problem_state, class: 'form-control form-control-sm', id: "focus-field"  %>
             </div>
 
             <div class="form-group">
-              <%= f.label :long_form, "The Pitch" %><span onclick="toggleInfo('2');" class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
+              <%= f.label :long_form, "The Pitch" %><span data-toggle="tooltip" data-placement="right" title="This is where you should really think out your idea. What is the target demographic it's going to serve, how will it serve them? Consider how your idea is different than other similar products currently on the market and why someone would pick yours over competitors." class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
               <%= f.text_area :long_form, class: 'form-control form-control-sm', style: "resize: none;", :rows => 8 %>
             </div>
             <div class="row">
@@ -63,10 +57,3 @@
       </div>
     </div>
   </div>
-  <div id="info-card-2" class="mt-5 col-2 card small info-cards h-50">
-    <h6 class="text-center mt-1">The Pitch</h6>
-    <div class="mt-1 mb-1">
-       This is where you should really think out your idea. What is the target demographic it's going to serve, how will it serve them? Consider how your idea is different than other similar products currently on the market and why someone would pick yours over competitors.
-    </div>
-  </div>
-</div>
