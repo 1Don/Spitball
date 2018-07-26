@@ -38,6 +38,7 @@ h2{
 	/*padding-right: .7rem;*/
 	padding-left: 1.7rem!important;
     color: #ffffff!important;
+    cursor: pointer;
 }
 
 .visible-xs{
@@ -48,6 +49,9 @@ h2{
     padding-top: 0;
     background-color: #3b3736;
     padding-bottom: 90px;
+}
+#banner{
+	background: image-url('banner.jpg');
 }
 .banner:after{
 	background-image: url(banner-bottom.jpg);
@@ -98,6 +102,8 @@ span.numbering {
 #signup-modal {
 	display:none;
 }
+
+
 #landing-btn{
 	cursor: pointer;
 }

@@ -29,44 +29,57 @@
 		        <a class="nav-link" href="#">About Us</a>
 		      </li>
 		      <li class="nav-item">
-						<%= link_to "Log in", login_path, class: "nav-link" %>
+					<%#<%= link_to "Log in", login_path, class: "nav-link" %>
+					<a data-toggle="modal" data-target="#myModal" class="nav-link">Log in</a>
 		      </li>
 		    </ul>
 		    <ul class="navbar-nav ml-5 display-orange">
 		      <li class="nav-item">
-						<%#<%= link_to "Sign up", signup_path, class: "nav-link hover" %>
-						<a onclick="toggleModal()" class="nav-link hover">sign up</a>
+					<%#<%= link_to "Sign up", signup_path, class: "nav-link hover" %>
+					<a data-toggle="modal" data-target="#myModal" class="nav-link hover">Sign up</a>
 		      </li>
 		    </ul>
 		  </div>
 		</div>
 	</nav>
-	<div id="signup-modal" class="fixed-top mt-4">
-		<div class="text-center">
-			<br><br><br><br>
-			<div class="row card mx-auto col-6">
-				<span onclick="toggleModal()" class="float-right">X</span>
+
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header h-50">
+		        <h4 class="modal-title">Signup on Spitball</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body row">
 				<div class="col-6 border-right mt-3 mb-2">
-					<div class="col-10">
-						<button class="text-white pl-1 mb-2" style="background-color: #fbbc05;"><i class="fab fa-google border-right pr-1"></i> sign up with google</button>
+					<div class="col-12">
+						<%= link_to google_session_path do %>
+							<button class="text-white pl-1 mb-2" style="background-color: #fbbc05;"><i class="fab fa-google border-right pr-1"></i> sign up with google</button>
+						<% end %>
 					</div>
-					<div class="col-10">
-						<button class="text-white pl-1 mb-2" style="background-color: #86888a;"><i class="fab fa-linkedin-in border-right pr-1"></i> sign up with linkedin</buttton>
+					<div class="col-12">
+						<button class="text-white pl-1 mb-2" style="background-color: #86888a;"><i class="fab fa-linkedin-in border-right "></i> sign up with linkedin</buttton>
 					</div>
-					<div class="col-10">
-						<button class="text-white pl-1 mb-2" style="background-color: #3b5998;"><i class="fab fa-facebook-f border-right pr-1"></i> sign up with facebook</button>
+					<div class="col-12">
+						<button class="text-white pl-1 mb-2" style="background-color: #3b5998;"><i class="fab fa-facebook-f border-right "></i> sign up with facebook</button>
 					</div>
 				</div>
 				<div class="col-6">
 					
 				</div>
-			</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
-	</div>	
-<div id="overlay">
+
 	<div class="banner jumbotron jumbotron-fluid w-100">
-	
-		  <%= image_tag("banner.jpg", class: 'banner-img') %>
+		<div id="banner">
+			<%= image_tag("banner.jpg", class: 'banner-img') %>
+		</div>
+		  
 	  	<div class="container">
 	  		<div class="desc">
 	  			<h1>Can Your <strong>Idea</strong> <br>Change The <strong>World</strong>?</h1>
@@ -221,7 +234,7 @@
 			</div>
 		</div>
 	</footer>
-</div>
+
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
