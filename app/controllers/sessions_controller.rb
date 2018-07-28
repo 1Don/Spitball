@@ -51,7 +51,8 @@ class SessionsController < ApplicationController
           redirect_to root_url, notice: "Signed in!"
         else
           # No user associated with the identity so we need to create a new one
-          @identity.user = User.sign_up_from_omniauth(request.env['omniauth.auth'])
+          @identity.user = user = User.sign_up_from_omniauth(request.env['omniauth.auth'])
+          user.identities << @identity
           log_in @identity.user
           redirect_to wads_path
         end

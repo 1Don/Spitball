@@ -8,7 +8,7 @@ class Identity < ApplicationRecord
 
   # Find user by omniauth
    def self.find_with_omniauth(auth)
-    find_by(uid: auth['uid'], provider: auth['provider'])
+    	find_by(uid: auth['uid'], provider: auth['provider'])
    end
 
 end
