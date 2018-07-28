@@ -25,7 +25,6 @@ class SessionsController < ApplicationController
       @identity = Identity.find_with_omniauth(auth)
 
       if @identity.nil?
-        # If no identity was found, create a brand new one here
         @identity = Identity.sign_up_from_omniauth(auth)
       end
 
@@ -35,20 +34,21 @@ class SessionsController < ApplicationController
           # account. But we found the identity and the user associated with it 
           # is the current user. So the identity is already associated with 
           # this user. So let's display an error message.
-          redirect_to root_url, notice: "Already linked that account!"
+          redirect_to wads_path, notice: "Already linked that account!"
         else
           # The identity is not associated with the current_user so lets 
           # associate the identity
           @identity.user = current_user
           @identity.save
-          redirect_to root_url, notice: "Successfully linked that account!"
+          redirect_to wads_path, notice: "Successfully linked that account!"
         end
       else
         if @identity.user.present?
           # The identity we found had a user associated with it so let's 
           # just log them in here
-          self.current_user = @identity.user
-          redirect_to root_url, notice: "Signed in!"
+          current_user = @identity.user
+          log_in @identity.user
+          redirect_to wads_path, notice: "Signed in!"
         else
           # No user associated with the identity so we need to create a new one
           @identity.user = user = User.sign_up_from_omniauth(request.env['omniauth.auth'])

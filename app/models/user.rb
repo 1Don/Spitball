@@ -70,7 +70,7 @@ class User < ApplicationRecord
           user.last_name = auth.info.name.split.last
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
-          if auth.provider = "facebook" || "google"        
+          unless auth.provider == "linkedin"      
             user.oauth_expires_at = Time.at(auth.credentials.expires_at)
             user.photo = open(URI.parse(auth.info.image))
           end
