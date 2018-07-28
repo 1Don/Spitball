@@ -70,11 +70,13 @@ class User < ApplicationRecord
           user.last_name = auth.info.name.split.last
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
-          #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-          #user.photo = open(URI.parse(auth.info.image))
-          user.save!
+          if auth.provider = "facebook" || "google"        
+            user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+            user.photo = open(URI.parse(auth.info.image))
+          end
+           user.save!
         end
-      end
+    end
   end
 
   #Controls the search feature
