@@ -47,34 +47,49 @@
 		  <div class="modal-dialog modal-lg">
 		    <div class="modal-content">
 		      <div class="modal-header h-50">
-		        <h4 class="modal-title">Signup on Spitball</h4>
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h2 class="col-12 modal-title text-center">Ready to Make Change?</h2>
+		        <button type="button" style="color:#fff"class="close" data-dismiss="modal">&times;</button>
 		      </div>
-		      <div class="modal-body row">
-				<div class="col-6 border-right mt-3 mb-2">
-					<div class="col-12">
-						<%= link_to google_session_path do %>
-							<button class="text-white pl-1 mb-2" style="background-color: #fbbc05;"><i class="fab fa-google border-right pr-1"></i> sign up with google</button>
+
+
+		      <div class="modal-body">
+		      	<div class="container col-md-12">
+		      		<div class = "row justify-content-center">
+
+		      	<div class="col-md-3">
+		      	<%= link_to google_session_path do %>
+					
+							<%= image_tag("google-button.png") %>
+							<% end %>
+					</div>
+					
+
+					<div class="col-md-3">
+					<%= link_to linkedin_session_path do %>
+					
+						<%= image_tag("linkedin-button.png") %>
 						<% end %>
 					</div>
-					<%= link_to linkedin_session_path do %>
-					<div class="col-12">
-						<button class="text-white pl-1 mb-2" style="background-color: #86888a;"><i class="fab fa-linkedin-in border-right "></i> sign up with linkedin</buttton>
-					</div>
-					<% end %>
 
+
+					<div class="col-md-3">
 					<%= link_to facebook_session_path do %>
-					<div class="col-12">
-						<button class="text-white pl-1 mb-2" style="background-color: #3b5998;"><i class="fab fa-facebook-f border-right "></i> sign up with facebook</buttton>
+				
+						<%= image_tag("facebook-button.png") %>
+						<% end %>
 					</div>
-					<% end %>
-				</div>
-				<div class="col-6">
 					
+					</div>
+				</div>
+
+				<div class = "text-center mt-5">
+					<%= link_to	signup_path do %>
+						<p> Or create a Spitball Account </p>
+						<% end %>
 				</div>
 		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		      <div class="modal-footer text-center">
+		      	By contuning through any of the above providers you consent to Spitball's Terms & Conditions and Privacy Policy
 		      </div>
 		    </div>
 		  </div>
