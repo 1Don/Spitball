@@ -72,7 +72,10 @@ class User < ApplicationRecord
           user.oauth_token = auth.credentials.token
           unless auth.provider == "linkedin"      
             user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-            user.photo = open(URI.parse(auth.info.image))
+            user.photo = open(URI.parse(auth.info.image))   
+          else
+            user.occupation = auth.info.description
+            user.location = auth.info.location
           end
            user.save!
         end
