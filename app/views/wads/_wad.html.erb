@@ -4,7 +4,7 @@
     <span id="trash-<%= wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete, remote: true%></span>
   <% end %>
 </div>
-  <div class="row col-12 mb-3">
+  <div class="row col-12 mb-5">
 
     <div class="col-2 mt-2 text-center">
         <%= link_to wad_comments_path(wad) do %>
