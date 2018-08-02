@@ -11,3 +11,6 @@ function toggleInfo(id) {
 	}
 };
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});

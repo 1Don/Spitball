@@ -11,7 +11,7 @@ module Spitball
     # Initialize configuration defaults for originally generated Rails version.
    config.exception_handler = {
       
-      dev: true,
+      dev: false,
       layouts: {
         500 => '_landing',
         400 => '_landing',

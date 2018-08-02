@@ -6,6 +6,7 @@ class WadsController < ApplicationController
 	def index
 		@comment = Comment.new
 	 	@wads = Wad.all.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+	 	@wad = Wad.new
     end
 
     def popwads

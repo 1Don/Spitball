@@ -13,7 +13,12 @@
           </div>
           <div class="col-md-5 col-8">
             <p>
-              <%= @user.first_name %> <%= @user.last_name %>  - <%= @user.occupation %><br>
+              <% if @user.occupation.present? %>
+              <%= @user.first_name %> <%= @user.last_name %> - <%= @user.occupation %><br>
+              <% else %>
+              <%= @user.first_name %> <%= @user.last_name %><br>
+              <% end %>
+
                 <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
             <% unless @user == current_user %>
@@ -26,9 +31,7 @@
             <% end %>
             <p class="small">
               <% if @user.location.present? %>
-                <%= link_to "https://www.google.com/maps/place/#{@user.location}", class: "profile-link" do %>
                   <%= fa_icon("map-marker th", text: @user.location) %> <br>
-                <% end %>
               <% end %>              
             </p>
             <div class="text-right d-block d-sm-none">

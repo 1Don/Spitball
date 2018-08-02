@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :identities, dependent: :destroy
   has_many :conversations
   has_many :messages, dependent: :destroy
   has_many :friend_requests, dependent: :destroy
@@ -55,23 +56,29 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  # Find user by omniauth
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first
-  end
-
   # Sign up from oauth function
   def self.sign_up_from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.password = user.password_confirmation = SecureRandom.hex(20)
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.photo = open(URI.parse(auth.info.image))
-      user.save!
+    if User.find_by(email: auth.info.email)
+      find_by(email: auth.info.email)
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+          user.provider = auth.provider
+          user.uid = auth.uid
+          user.email = auth.info.email
+          user.name = auth.info.email.partition('@').first
+          user.first_name = auth.info.name.split.first
+          user.last_name = auth.info.name.split.last
+          user.password = user.password_confirmation = SecureRandom.hex(20)
+          user.oauth_token = auth.credentials.token
+          unless auth.provider == "linkedin"      
+            user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+            user.photo = open(URI.parse(auth.info.image))   
+          else
+            user.occupation = auth.info.description
+            user.location = auth.info.location
+          end
+           user.save!
+        end
     end
   end
 

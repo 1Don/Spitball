@@ -29,36 +29,106 @@
 		        <a class="nav-link" href="#">About Us</a>
 		      </li>
 		      <li class="nav-item">
+<<<<<<< HEAD
 		        <a class="nav-link" href="/login">Log In</a>
 
 
+=======
+					<%#<%= link_to "Log in", login_path, class: "nav-link" %>
+					<a data-toggle="modal" data-target="#myModal" class="nav-link">Log in</a>
+>>>>>>> development
 		      </li>
 		    </ul>
 		    <ul class="navbar-nav ml-5 display-orange">
 		      <li class="nav-item">
+<<<<<<< HEAD
 
 		        <a class="nav-link hover" href='/signup'> Sign Up</a>
+=======
+					<%#<%= link_to "Sign up", signup_path, class: "nav-link hover" %>
+					<a data-toggle="modal" data-target="#myModal" class="nav-link hover">Sign up</a>
+>>>>>>> development
 		      </li>
 		    </ul>
 		  </div>
 		</div>
 	</nav>
 
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header h-50">
+		        <h2 class="col-12 modal-title text-center">Ready to Build the Future?</h2>
+		        <button type="button" style="color:#fff"class="close" data-dismiss="modal">&times;</button>
+		      </div>
+
+
+		      <div class="modal-body">
+		      	<div class="container col-md-12">
+		      		<div class = "row justify-content-center">
+
+		      	<div class="col-md-3">
+		      	<%= link_to google_session_path do %>
+					
+							<%= image_tag("google-button.png") %>
+							<% end %>
+					</div>
+					
+
+					<div class="col-md-3">
+					<%= link_to linkedin_session_path do %>
+					
+						<%= image_tag("linkedin-button.png") %>
+						<% end %>
+					</div>
+
+
+					<div class="col-md-3">
+					<%= link_to facebook_session_path do %>
+				
+						<%= image_tag("facebook-button.png") %>
+						<% end %>
+					</div>
+					
+					</div>
+				</div>
+
+				<div class = "text-center mt-3">
+						<p style="color:#000"> Or </p>
+				</div>
+
+				<div class = "text-center mt-3">
+					<%= link_to	signup_path do %>
+						<p style="color:#000"><strong> Create a Spitball Account </p></strong>
+						<% end %>
+				</div>
+		      </div>
+		      <div class="modal-footer text-center">
+		      	By continuing through any of the above providers you consent to Spitball's Terms & Conditions and Privacy Policy
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 	<div class="banner jumbotron jumbotron-fluid w-100">
-		  <%= image_tag("banner.jpg", class: 'banner-img') %>
+		<div id="banner">
+			<%= image_tag("banner.jpg", class: 'banner-img') %>
+		</div>
+		  
 	  	<div class="container">
 	  		<div class="desc">
 	  			<h1>Can Your <strong>Idea</strong> <br>Change The <strong>World</strong>?</h1>
-		    	<a href="#" class="theme-btn">Let’s find out</a>
+		    	<a id="landing-btn" class="theme-btn">Let’s find out</a>
 	  		</div>
 	  	</div>
 	</div>
 
-	<section class="platforms">
+	<section id="what-we-do" class="platforms">
 		<div class="container">
 			<div class="d-none d-sm-block d-md-block">
-				<h2 class="text-center">What We Do</h2>
-				<p class="mt-1 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a pharetra quam, vitae interdum ex. Curabitur arcu ligula, varius sed tellus id, rutrum scelerisque felis. Vivamus pellentesque ut nisi lobortis posuere. Sed blandit mattis maximus. Duis et quam sit amet lacus volutpat lobortis fermentum vel lorem. Nam quis eros lacus. Quisque sit amet turpis ac massa egestas gravida a non turpis. Integer varius efficitur fringilla.</p>
+				<h2 class="text-center mt-5">What's Spitball?</h2>
+				<p class="mt-1 text-center">Spitball is a community for entrepreneurs and early adopters. Our platform is a place for entrepreneurs to validate their concepts and ideas through targeted feedback, and connect with people who can help them take it to the next level. For enthusiasts and consumers it’s a chance to influence tomorrow’s products. We’re building a new model for incubating ideas, based on community engagement, early potential customer feedback and leveraging our expanding network of executional talent (see our FAQs for more). Though the growth process will vary widely across different ventures, we think our framework can be generalized to the following steps:
+</p>
 				<%= image_tag("flow-diagram.png", class: 'flow-diagram-desktop hidden-xs mt-2') %>
 				<!-- <img class="flow-diagram-mobile visible-xs mt-2" src="images/flow-diagram-mobile.png" alt="Flow Diagram"> -->
 			</div>

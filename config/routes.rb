@@ -8,7 +8,28 @@ Rails.application.routes.draw do
   get 'dashboard/show'
   get '/dashboard' => 'dashboard#show'
 
+
+#Facebook callbacks
+  match '/auth/facebook/callback', to: 'sessions#create', via: [:get, :post]
+  match '/logout', to: 'sessions#destroy', via: [:get, :post]
+  get "/auth/facebook", as: :facebook_session
+  get "/auth/facebook/callback" => "facebook#callback"
+  get "/auth/facebook/failure" => "facebook#failure"
+
+
+
+  # Linkedin callbacks
+  match '/auth/linkedin/callback', to: 'sessions#create', via: [:get, :post]
+  match '/logout', to: 'sessions#destroy', via: [:get, :post]
+  get "/auth/linkedin", as: :linkedin_session
+  get "/auth/linkedin/callback" => "linkedin#callback"
+  get "/auth/linkedin/failure" => "linkedin#failure"
+
+  
+
   # Google oauth2 callbacks
+  match '/auth/google_oauth2/callback', to: 'sessions#create', via: [:get, :post]
+  match '/logout', to: 'sessions#destroy', via: [:get, :post]
   get "/auth/google_oauth2", as: :google_session
   get "/auth/google_oauth2/callback" => "google_oauth2#callback"
   get "/auth/google_oauth2/failure" => "google_oauth2#failure"
