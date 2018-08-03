@@ -20,7 +20,7 @@ class DiscussionsController < ApplicationController
 				@discussion.destroy
 				current_user.update_attributes(points: current_user.points - 50)
 				redirect_to discussions_path
-			end
+	    end
 	end
 
 	def update
