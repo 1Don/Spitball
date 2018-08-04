@@ -28,7 +28,7 @@ gem 'exception_handler'
 gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
-gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

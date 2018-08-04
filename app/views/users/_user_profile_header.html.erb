@@ -4,14 +4,14 @@
       <h5 class="display-5 container text-profile">
         <div class="row mb-3">
 
-          <div class="col-md-3 col-4 text-center">
+          <div class="col-md-4 col-4 text-center">
            
               <%= image_tag @user.photo.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
     
 
             <p class="text-center"><%= @user.points %></p>
           </div>
-          <div class="col-md-5 col-8">
+          <div class="col-md-6 col-8">
             <p>
               <% if @user.occupation.present? %>
               <%= @user.first_name %> <%= @user.last_name %> - <%= @user.occupation %><br>

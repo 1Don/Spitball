@@ -1,6 +1,13 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<div class="col-md-12 mx-auto col-12 mt-2">
+
+
+<div class ="col-md-2 d-none d-md-block">
+	<%= render 'wads/sidebar' %>
+</div>
+
+
+	<div class="col-md-8 mx-auto col-12 mt-3">
 		<%= render 'users/user_profile_header' %>
 
 		<ul class="nav nav-tabs text-profile" id="profile-tab" role="tablist">
