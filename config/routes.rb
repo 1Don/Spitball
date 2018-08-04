@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#show'
 
 
-#Facebook callbacks
-  match '/auth/facebook/callback', to: 'sessions#create', via: [:get, :post]
+#Twitter callbacks
+  match '/auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :post]
-  get "/auth/facebook", as: :facebook_session
-  get "/auth/facebook/callback" => "facebook#callback"
-  get "/auth/facebook/failure" => "facebook#failure"
+  get "/auth/twitter", as: :twitter_session
+  get "/auth/twitter/callback" => "twitter#callback"
+  get "/auth/twitter/failure" => "twitter#failure"
 
 
 

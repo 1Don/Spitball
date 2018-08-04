@@ -17,12 +17,11 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
 
   provider(
-  	:facebook,
-  	'204039150277736',
-  	'44afc809e37281a3cc365c8e90d8a75a',
-    callback_path: "/auth/facebook/callback",
-    :image_size => 'large'
- 	)
+  	:twitter,
+  	'hiDLRtGo8kfJB5O9lOMCE4gop',
+  	'niWUXeDD99SAkcDJ5s3ticit8txCr8fpDtTvYWeJIBX9SQn5DJ',
+    callback_path: "/auth/twitter/callback"
+  )
 
   
 end
