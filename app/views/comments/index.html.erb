@@ -1,21 +1,24 @@
-<div class="col-12 col-md-6 mt-3">
-	<%= render 'wads/panel' %>
+<div class="row">
+	<div class="col-md-6 mt-3">
+		<%= render 'wads/panel' %>
+		<div class="">
+			<div class="col-12 mb-3  ">
+			  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline col-12 ' }, remote: true do |f| %>
+			    <%= f.hidden_field :wad_id %>
 
+			    <%= f.label :content, class: 'sr-only' %>
+			    <%= f.text_area :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?', id: "focus-field" %>
 
-	<div class="card mb-4">
-		<div class="card-header">
-		  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline' }, remote: true do |f| %>
-		    <%= f.hidden_field :wad_id %>
+			    <%= f.submit 'Comment', class: 'commentBtn', disable_with: 'Sending' %>
+			  <% end %>
+			</div>
 
-		    <%= f.label :content, class: 'sr-only' %>
-		    <%= f.text_field :content, class: 'form-control w-50 mr-2', placeholder: 'What are your thoughts on this idea?', id: "focus-field" %>
-
-		    <%= f.submit 'Comment', class: 'commentBtn', disable_with: 'Sending' %>
-		  <% end %>
+			<div class="">
+				<%= comments_tree_for @replies %>
+			</div>
 		</div>
-
-		<div class="list-group list-group-flush">
-			<%= comments_tree_for @replies %>
-		</div>
+	</div>
+	<div class="col-md-6 mt-3">
+		<%= render 'wads/side_wad' %>	
 	</div>
 </div>
