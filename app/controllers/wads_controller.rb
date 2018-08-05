@@ -6,9 +6,9 @@ class WadsController < ApplicationController
 
 
 	def index
-		@comment = Comment.new
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
+	 	
     end
 
     def popwads
@@ -81,7 +81,13 @@ class WadsController < ApplicationController
 		@wad.user.update_attributes(points: @wad.user.points - 10)
 	end		
 
-	def report
+	def join
+		if Collaboration.find_by(wad_id: params[:id], user_id: current_user.id)
+			flash[:notice] = "You've already joined this project!"
+		else
+			@collaboration = current_user.collaborations.build(wad_id: params[:id], user_id: params[:user_id]).save
+		end
+		redirect_to wad_comments_path(Wad.find(params[:id]))
 	end
 
 #category views
