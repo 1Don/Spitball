@@ -32,6 +32,18 @@ class CommentsController < ApplicationController
 		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 		@replies = @comments.hash_tree
 		@photo_path = current_user.photo(:thumb)
+		@wads = Wad.where(category: @wad.category).order('created_at DESC').reject { |w| w == @wad }
+		if @wads.empty?
+			@wads = Wad.all
+		end
+		user_ids = []
+		@collaborators = []
+		Collaboration.where(wad_id: @wad.id).each do |c|
+			user_ids.append(c.user_id)
+		end
+		user_ids.each do |u|
+			@collaborators.append(User.find(u))
+		end
 	end
 
 

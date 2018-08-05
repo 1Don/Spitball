@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :discussions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :collaborations, through: :wads
   attr_accessor :remember_token
   after_create :set_default_profile_image, unless: :photo?
   before_save { self.email = email.downcase }

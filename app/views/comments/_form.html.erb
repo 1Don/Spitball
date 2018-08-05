@@ -1,7 +1,7 @@
 <%= form_for([@wad, @comment], remote: true) do |f| %>
 	<div class="col-12 mx-auto row">
 	      <div class="col-4">
-	        <%= f.submit 'Comment', class: 'text-center commentBtn btn-sm', id: "btn" %>
+	        <%= f.submit 'Comment', class: 'text-center comment-btn btn-sm', id: "btn" %>
 	   	  </div>
 	      <div class="col-8 mt-1">
 	        <%= f.text_field :content, class: 'form-control form-control-sm form-field' %>

@@ -1,32 +1,18 @@
-<div class="col-12 col-md-9">
+<div class="col-12 mt-4">
 	<div class="row">
-		<div class="col-12 d-flex align-items-center mb-3">
-			<span class="h2">
-				What's the world missing?
-			</span>
-			
-			<%= button_to "You B2B bro?", new_wad_path, :class => "newbutton", :method => :get  %>
-		</div>
-
-		
-
-		<%# The display for B2B wads%>
-		<div class="col-xs-12 col-md-9 mb-4 d-none d-md-block">
-			<div class="card">
-				<div class="card-header">
-					Events
-				</div>
-
-				<div class="list-group list-group-flush">
-				<%= render "all_wads" %>
-				
-
-				</div>
-
-				<div class="card-footer text-center d-none">
-					See all
-				</div>
+		<%# The display for all wads%>
+		<div class="col-xs-12 col-8 mb-5 pr-0 pl-5">
+			<div class="col-11 align-items-center mb-4 row-flex">
+				<%= render 'category_nav' %>
+			</div>	
+			<div class="col-11">
+				<% @wads.each do |wad| %>
+					<%= render wad %>
+				<% end %>
 			</div>
+		</div>
+		<div class="col-4 mt-5">
+			<%= render 'wad_form' %>
 		</div>
 	</div>
 </div>

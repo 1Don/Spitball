@@ -9,7 +9,8 @@ class Wad < ApplicationRecord
   validates :long_form, presence: true, length: { maximum: 300 }
   validates :problem_state, presence: true, length: { maximum: 75 }
   has_many :users, through: :comments
-
+  has_many :collaborations
+  has_many :users, through: :collaborations
 #Search Functionality
  def self.search(search)
     where("problem_state LIKE ? OR long_form LIKE ? OR tags LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 

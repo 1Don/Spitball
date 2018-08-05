@@ -1,29 +1,49 @@
-<%= form_for @wad, html: { multipart: true } do |f| %>
+<div style="border-radius: 10px;" class="card shadow-sm">
+  <div style="background-color: #2a3435; border-radius: 10px 10px 0px 0px; height: 55px;" class="card-header text-center text-white">
+    <div class="row mt-1">
+      <div id="new-wad-btn" class="col-6 border-right nav-btn">
+          New Wad
+      </div>
+      <div id="menu-btn" class="col-6 nav-btn">
+          Menu
+      </div>
+    </div>
+  </div>
+  <div id="wad-new-form" class="card-body">
+    <%= form_for @wad, html: { multipart: true } do |f| %>
 
-<%= f.text_field :problem_state, placeholder: "Problem Statement", class: 'form-control form-control-sm col-11 mx-auto mt-3 mb-2 wad-form-item'  %>
+    <div data-toggle="tooltip" title="Information on the problem statement goes here" data-placement="left"><%= f.text_field :problem_state, placeholder: "Problem Statement", class: 'form-control form-control-sm col-11 mx-auto mt-3 mb-2 wad-form-item' %></div>
 
-<%= f.select :category,
-          options_for_select(
-            [
-              "B2B Tech",
-              "Consumer Products",
-              "Events",
-              "Media and Entertainment",
-              "Consumer Tech",
-              "Social Entrepreneurship",
-              "Location Specific",
-              "Avant-garde"
-              ]
-          ),
-          {},
-          class: 'form-control form-control-sm col-11 mx-auto mb-2 wad-form-item' %>
+    <%= f.select :category,
+              options_for_select(
+                [
+                  "B2B Tech",
+                  "Consumer Products",
+                  "Events",
+                  "Media and Entertainment",
+                  "Consumer Tech",
+                  "Social Entrepreneurship",
+                  "Location Specific",
+                  "Avant-garde"
+                  ]
+              ),
+              {},
+              class: 'form-control form-control-sm col-11 mx-auto mb-2 wad-form-item' %>
 
-<%= f.text_field :tags, placeholder: "seperate using ', '", class: 'form-control form-control-sm col-11 mx-auto mb-2 wad-form-item'  %>
+    <div data-toggle="tooltip" title="Information on the tags goes here" data-placement="left"><%= f.text_field :tags, placeholder: "seperate using ', '", class: 'form-control form-control-sm col-11 mx-auto mb-2 wad-form-item' %></div>
 
 
-<%= f.text_area :long_form, placeholder: "The Pitch",class: 'form-control form-control-sm col-11 mx-auto mb-2 ', style: "resize: none;", :rows => 8 %>
+    <div data-toggle="tooltip" title="Information on the Pitch goes here" data-placement="left"><%= f.text_area :long_form, placeholder: "The Pitch",class: 'form-control form-control-sm col-11 mx-auto mb-2 ', style: "resize: none;", :rows => 8 %></div>
 
-<%= f.file_field :image, class: 'form-control-file pl-5 col-11 mx-auto mb-2' %>
+    <div class="upload-div col-11 ml-3 text-center pt-1"><%= f.label :image, fa_icon('upload') + " Upload an image", class: "mx-auto pointer" %>
+    <%= f.file_field :image, class: 'form-control-file pl-5 col-11 mx-auto mb-2 inputfile' %></div><br>
 
-<%= f.submit "Spitball", class: "theme-btn ml-5" %>
-<% end %>
+    <div class="text-center"><%= f.submit "Spitball", class: "theme-btn" %></div>
+    <% end %>
+  </div>
+  <div id="nav-menu" class="card-body">
+    <div>
+      News? Messages?
+    </div>
+  </div>
+</div>
