@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#show'
 
 
+  get '/terms', to: 'static_pages#terms'
+
+
 #Twitter callbacks
   match '/auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :post]
