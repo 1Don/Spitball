@@ -3,17 +3,7 @@
 		<%# The display for all wads%>
 		<div class="col-xs-12 col-8 mb-5 pr-0 pl-5">
 			<div class="col-11 align-items-center mb-4 row-flex">
-				<span class="h2 font-weight-light">
-					What's the world missing?
-				</span>
-				<span class="float-right mt-2">
-					<span class="mr-3">Category</span> 
-					<select>
-						<option>
-							Consumer Tech
-						</option>
-					</select>
-				</span>
+				<%= render 'category_nav' %>
 			</div>	
 			<div class="col-11">
 				<% @wads.each do |wad| %>
@@ -22,13 +12,7 @@
 			</div>
 		</div>
 		<div class="col-4 mt-5">
-			<div style="border-radius: 10px;" class="card shadow-sm">
-				<div style="background-color: #2a3435; border-radius: 10px 10px 0px 0px; height: 55px;" class="card-header text-center text-white">
-					<%= image_tag("idea-bulb-transparent.png", class: "wad-new-form-img float-left") %>
-					<span class="float-left ml-3 mt-1">What's the world missing?</span>
-				</div class="card-body">	
-					<%= render 'wad_form' %>
-			</div>
+			<%= render 'wad_form' %>
 		</div>
 	</div>
 </div>

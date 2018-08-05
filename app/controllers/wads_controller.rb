@@ -1,12 +1,14 @@
 class WadsController < ApplicationController
 	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product, :innovate, :events, :local]
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
+	before_action :set_new_wad, only: [:consumertech, :b2b, :media, :innovate, :local, :social, :events, :product]
+	before_action :all_wads
 
 
 	def index
-		@comment = Comment.new
-	 	@wads = Wad.all.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
+	 	
     end
 
     def popwads
@@ -79,7 +81,13 @@ class WadsController < ApplicationController
 		@wad.user.update_attributes(points: @wad.user.points - 10)
 	end		
 
-	def report
+	def join
+		if Collaboration.find_by(wad_id: params[:id], user_id: current_user.id)
+			flash[:notice] = "You've already joined this project!"
+		else
+			@collaboration = current_user.collaborations.build(wad_id: params[:id], user_id: params[:user_id]).save
+		end
+		redirect_to wad_comments_path(Wad.find(params[:id]))
 	end
 
 #category views
@@ -122,5 +130,12 @@ private
 		params.require(:wad).permit(:problem_state, :long_form, :category, :image, :tags)
 	end
 
+	def set_new_wad
+		@wad = Wad.new
+	end
+
+	def all_wads
+		@all_wads = Wad.all
+	end
 
 end

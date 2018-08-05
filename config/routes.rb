@@ -106,6 +106,7 @@ Rails.application.routes.draw do
     member do
         put "like", to: "wads#upvote"
         put "dislike", to: "wads#downvote"
+        post '/collab', to: 'wads#join'
     end
       resources :comments do
         put "like", to: "comments#upvote"
