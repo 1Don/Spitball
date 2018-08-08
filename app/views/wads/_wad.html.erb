@@ -1,17 +1,17 @@
 <div onmouseover='showTrash("<%= wad.id %>")' onmouseleave='hideTrash("<%= wad.id %>")' class="card mb-4 shadow "  style="border-radius: 10px; border-width: thin;">
 <div class="">
-  <% if current_user == wad.user %>
-    <span id="trash-<%= wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete, remote: true%></span>
-  <% end %>
+
 </div>
   <div class="row col-12 mb-3">
-
+    <% if current_user == wad.user %>
+      <span id="trash-<%= wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete, remote: true%></span>
+    <% end %>
     <div class="col-2 mt-2 text-center">
         <%= link_to wad_comments_path(wad) do %>
             <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
               <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-5' %>
             <% else %>
-              <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
+              <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle mt-4' %>
             <% end %>
         <% end %>
     </div>

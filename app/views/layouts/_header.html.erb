@@ -40,8 +40,8 @@
         <% end %>
 
         <li class="dropdown mr-5">
-            <a id="user-photo" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <span class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><span class="ml-1"><%= current_user.name %></span>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><span class="ml-1"><%= current_user.name %></span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">

@@ -14,6 +14,7 @@ class WadsController < ApplicationController
     def popwads
 		@wads = Wad.all.paginate(page: params[:page], per_page: 20)
 		@rankedwads = Wad.order(cached_votes_total: :desc)
+		@wad = Wad.new
 	end
 
 	def show

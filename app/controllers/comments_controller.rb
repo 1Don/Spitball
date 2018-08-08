@@ -34,15 +34,13 @@ class CommentsController < ApplicationController
 		@photo_path = current_user.photo(:thumb)
 		@wads = Wad.where(category: @wad.category).order('created_at DESC').reject { |w| w == @wad }
 		if @wads.empty?
-			@wads = Wad.all
+			@wads = Wad.all.order('created_at DESC').reject { |w| w == @wad }
 		end
-		user_ids = []
-		@collaborators = []
-		Collaboration.where(wad_id: @wad.id).each do |c|
-			user_ids.append(c.user_id)
-		end
-		user_ids.each do |u|
-			@collaborators.append(User.find(u))
+		@likers= []
+		User.all.each do |u|
+			if u.voted_for? @wad
+				@likers.append(u)
+			end
 		end
 	end
 

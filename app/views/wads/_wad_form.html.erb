@@ -1,11 +1,11 @@
 <div style="border-radius: 10px;" class="card shadow-sm">
   <div style="background-color: #2a3435; border-radius: 10px 10px 0px 0px; height: 55px;" class="card-header text-center text-white">
     <div class="row mt-1">
-      <div id="new-wad-btn" class="col-6 border-right nav-btn">
+      <div id="menu-btn" class="col-6 nav-btn border-right">
+          Categories
+      </div>      
+      <div id="new-wad-btn" class="col-6 nav-btn">
           New Wad
-      </div>
-      <div id="menu-btn" class="col-6 nav-btn">
-          Menu
       </div>
     </div>
   </div>
@@ -37,13 +37,11 @@
 
     <div class="upload-div col-11 ml-3 text-center pt-1"><%= f.label :image, fa_icon('upload') + " Upload an image", class: "mx-auto pointer" %>
     <%= f.file_field :image, class: 'form-control-file pl-5 col-11 mx-auto mb-2 inputfile' %></div><br>
-
-    <div class="text-center"><%= f.submit "Spitball", class: "theme-btn" %></div>
+    <div class="text-center"><%= link_to "Gotta BIG Idea?", new_wad_path, class: "small profile-link mb-1 align-top" %></div>
+    <div class="text-center"><%= f.submit "Spitball", class: "theme-btn pointer" %></div>
     <% end %>
   </div>
-  <div id="nav-menu" class="card-body">
-    <div>
-      News? Messages?
-    </div>
+  <div id="nav-menu" class="">
+      <%= render 'sidebar' %>
   </div>
 </div>

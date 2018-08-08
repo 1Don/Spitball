@@ -1,57 +1,69 @@
 <div class="row mt-3">
-	<div class="col-md-7 mt-1">
+	<div class="col-md-8 mt-1">
 		<%= render 'wads/panel' %>
+		<div id="comment-tab-open" class="row mx-auto pointer">
+			<div class="col-5 border-top mt-2">
+				
+			</div>
+			<div id="comment-tab-text" class="col-2 text-center">
+				<span class="">comment</span> <%= fa_icon("sort-down", class: "align-top") %>
+			</div>
+			<div class="col-5 border-top mt-2">
+				
+			</div>
+		</div>
 		<div class="mt-4">
-			<div class="">
+			<div id="comments-display" class="mb-3">
 				<div class="col-12 mb-3">
 				  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline col-12 mx-auto' }, remote: true do |f| %>
 				    <%= f.hidden_field :wad_id %>
 
-				    <%= f.text_area :content, class: 'form-control col-8 mx-auto mr-2 comment-text', placeholder: 'What are your thoughts on this idea?' %>
+				    <%= f.text_area :content, class: 'form-control col-12 mx-auto mr-2 comment-text', placeholder: 'What are your thoughts on this idea?' %>
 
-				    <%= f.submit 'Comment', class: 'comment-btn mx-auto mt-1 pointer', disable_with: 'Sending' %>
+				    <%= f.submit 'Comment', class: 'comment-btn mx-auto mt-3 mb-2 pointer', disable_with: 'Sending' %>
 				  <% end %>
 				</div>
+				<div id="comment-tab-close" class="row mx-auto pointer">
+					<div class="col-5 border-top mt-2">
+						
+					</div>
+					<div class="col-2 text-center">
+						<span class="">close</span> <%= fa_icon('sort-up', class: "align-bottom") %>
+					</div>
+					<div class="col-5 border-top mt-2">
+						
+					</div>
+				</div>				
 			</div>
 
-			<div class="">
-				<%= comments_tree_for @replies %>
+			<div id="daddy-comment-div" class="card">
+					<%= comments_tree_for @replies %>
 			</div>
 		</div>
 	</div>
 
-	<div class="col-md-5 mt-3">
-		<div class="row">
-			<h4 class="col-8 pb-0">Top Collaborators</h4>
-			<div class="col-4 mb-4">
-					<div class="small mr-2">
-						Like this project?
+	<div class="col-md-4 mt-3">
+		<div class="">
+			<h6 class="text-center mb-2">See who else likes this idea!</h6>
+			<div class="col-12 row">
+				<div class="mt-2 col-2">
+					<%= link_to "Like", like_wad_path(@wad, user_id: current_user.id, wad_id: @wad.id), class: " text-black profile-link ", method: :put, remote: true %>
+				</div>
+				<div class="col-10 row">
+					<div class="col-6">
+						<% if !@likers.empty? %>
+							<% if @likers[0] %><%= image_tag @likers[0].photo(:thumb), class: "rounded-circle collab-img position-absolute mid-pic" %><% end %>
+							<% if @likers[1] %><%= image_tag @likers[1].photo(:thumb), class: "rounded-circle collab-img position-absolute far-pic" %><% end %>
+							<% if @likers[2] %><%= image_tag @likers[2].photo(:thumb), class: "rounded-circle collab-img position-absolute" %><% end %>
+						<% end %>
 					</div>
-					<div class="mt-2">
-						<%= link_to "Join in", collab_wad_path(@wad, user_id: current_user.id, wad_id: @wad.id), class: " text-black profile-link", method: :post %>
+					<div class="col-6">
+						<span class="small font-weight-light" data-check="<%= current_user.voted_for? @wad %>" id="wad-like-<%= @wad.id %>">& <%= @wad.get_upvotes.size %> other votes!</span>
 					</div>
+				</div>
 			</div>	
 		</div>
-		<% if !@collaborators.empty? %>	
-			<div class="card" style="border-radius: 10px;">
-				<div class="mt-2 ml-3 mb-1 row">
-					<% @collaborators.each do |c| %>
-						<div class="col-3 text-center">
-							<div><%= c.name %></div>
-							<div>
-								<h6 class=""><%= image_tag c.photo(:thumb), class: "rounded-circle side-wad-pic " %></h6>
-								<div class="ml-2 small"><%= c.occupation %></div>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			</div>
-		<% else %>
-			<div>
-				There are no collaborators :/ Be the first!
-			</div>
-		<% end %>
-		<h4 class="mt-5 mb-4"> Related Wads</h4>
+		<h5 class="mt-5 text-center"> Related Wads</h5>
 		<%= render 'wads/side_wad' %>	
 	</div>
 </div>
