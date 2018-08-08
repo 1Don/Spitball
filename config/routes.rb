@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+#Auth0 routes
+ #get 'dashboard/show'
+  #get '/dashboard' => 'dashboard#show'
+  #get "/auth/oauth2/callback" => "auth0#callback"
+  #get "/auth/failure" => "auth0#failure"
   get 'dashboard/show'
   get '/dashboard' => 'dashboard#show'
 
@@ -32,6 +37,10 @@ Rails.application.routes.draw do
   get "/auth/google_oauth2/callback" => "google_oauth2#callback"
   get "/auth/google_oauth2/failure" => "google_oauth2#failure"
 
+
+  #get 'auth/:provider/callback', to: 'sessions#create'
+  #get 'auth/failure', to: redirect('/')
+  #get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions, only: [:create, :destroy]
 
