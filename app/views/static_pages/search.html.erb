@@ -14,6 +14,15 @@
 		</div>
 	<% end %>
 
+	<% if @users.present? %>
+		<div class="col-4">
+			<h4 class="text-center">Users</h4>
+			<% @users.each do |user| %>
+					<%= render user %>
+			<% end %>
+		</div>
+	<% end %>
+
 	<% if @discussions.present? %>
 		<div class="col-8">
 			<h4 class="text-center">Discussions</h4>
@@ -23,17 +32,4 @@
 		</div>
 	<% end %>
 
-	<% if @users.present? %>
-		<div class="col-4">
-			<h4 class="text-center">Users</h4>
-			<% @users.each do |user| %>
-					<%= render user %>
-			<% end %>
-		</div>
-	<% end %>
-</div>
-<div>
-	<% @all_wads.each do |wad| %>
-		<%= render wad %>
-	<% end %>
 </div>

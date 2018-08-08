@@ -11,6 +11,6 @@ function toggleInfo(id) {
 	}
 };
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });

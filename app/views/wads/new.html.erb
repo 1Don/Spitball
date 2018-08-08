@@ -43,9 +43,9 @@
               <%= f.text_area :long_form, class: 'form-control form-control-sm', style: "resize: none;", :rows => 8 %>
             </div>
             <div class="row">
-              <div class="form-group col-7">
-                <%= f.label :image, "Images" %>
-                <%= f.file_field :image, class: 'form-control-file pl-5' %>
+              <div class="form-group col-6 ml-5 upload-div">
+                <%= f.label :image, fa_icon('upload') + " Upload an image", class: "mx-auto pointer mt-2" %>
+                <%= f.file_field :image, class: 'form-control-file pl-5 col-11 mx-auto mb-2 inputfile' %>
               </div>
               <div class="col-5">
                 <!-- I want to use logo's text inside of button --> 
