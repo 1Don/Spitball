@@ -1,12 +1,7 @@
-<div class="row row-sidebar">
+<% sidebar_elements.each do |element| %>
+	<a class="list-group-item list-group-item-action" href="<%= element[:link] %>">
+	  <%= element[:name] %>
+	</a>
+<% end %>
 
-  <div class="col-12">
-    <ul class="list-group">
-      <% sidebar_elements.each do |element| %>
-        <a class="list-group-item list-group-item-action" href="<%= element[:link] %>">
-          <%= element[:name] %>
-        </a>
-      <% end %>
-    </ul>
-  </div>
-</div>
+

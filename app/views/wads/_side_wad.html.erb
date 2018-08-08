@@ -1,34 +1,22 @@
 <% @wads.each do |wad| %>
-<div onmouseover='showTrash("<%= wad.id %>")' onmouseleave='hideTrash("<%= wad.id %>")' class="card col-12 mb-2" style="border-radius: 10px;">
-	<div class="card-body">
-		<div class="row">
-			<div class="col-2">
-		        <%= link_to wad_comments_path(wad) do %>
-		            <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
-		              <%= image_tag "bulb.png", class: 'img-fluid side-wad-pic rounded' %>
-		            <% else %>
-		              <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
-		            <% end %>
-		        <% end %>
+	<div onmouseover='showTrash("<%= wad.id %>")' onmouseleave='hideTrash("<%= wad.id %>")' class="card col-12" style="border-radius: 10px;">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-2">
+			        <%= link_to wad_comments_path(wad) do %>
+			            <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
+			              <%= image_tag "bulb.png", class: 'img-fluid side-wad-pic rounded' %>
+			            <% else %>
+			              <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
+			            <% end %>
+			        <% end %>
+				</div>
+
+				<div class="col-10 small">
+					<h6><%= wad.problem_state %></h6>
+				</div>
+
 			</div>
-
-			<div class="col-10 small">
-				<h6><%= wad.problem_state %></h6>
-				<%= wad.long_form %>
-			</div>
-
-
 		</div>
 	</div>
-
-	<div class="row">
-
-		<div class="col-4 text-left">
-			<%= link_to "@" + wad.user.name, user_path(wad.user), class: "profile-link orange-text" %> 
-		</div>
-		
-		<%= render 'wads/actions', wad: wad %>
-
-	</div>
-</div>
 <% end %>

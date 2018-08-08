@@ -1,20 +1,18 @@
-<div class="col-12 col-md-9">
+<div class="col-12 mt-4">
 	<div class="row">
+		<div class="col-4">
+			<%= render 'wad_form' %>
+		</div>
 		<%# The display for all wads%>
-			
-				<div class="col-12 d-flex align-items-center mb-3">
-					
-					<span class="h4 font-weight-light">
-						Welcome back, <%= current_user.first_name %>!
-					</span>
-					<%= button_to "Let's get it", new_wad_path, :class => "newbutton", :method => :get  %>
-				</div>	
-				<div class="col-xs-12 col-md-9 mb-4">
-					<% @wads.each do |wad| %>
-						<%= render wad %>
-					<% end %>
-				</div>
+		<div class="col-xs-12 col-8 mb-5 pr-0 pl-5">
+			<div class="col-11 align-items-center mb-4 row-flex">
+				<%= render 'category_nav' %>
+			</div>	
+			<div class="col-11">
+				<% @wads.each do |wad| %>
+					<%= render wad %>
+				<% end %>
 			</div>
-
+		</div>
 	</div>
 </div>

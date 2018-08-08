@@ -1,7 +1,7 @@
-<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card col-12 mb-3" style="border-radius: 10px;">
+<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card col-12 mb-3 panel-div" style="border-radius: 10px;">
 	<div class="card-body">
 		<div class="row">
-			<div class="col-3">
+			<div class="col-2">
 		        <%= link_to wad_comments_path(@wad) do %>
 		            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
 		              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4' %>
@@ -12,21 +12,10 @@
 			</div>
 
 			<div class="col-9 small mt-3">
-				<h6><%= @wad.problem_state %></h6>
-				<%= @wad.long_form %>
+				<h4><%= @wad.problem_state %></h4>
+				<span class=""><%= simple_format(@wad.long_form) %></span>
 			</div>
-
-
 		</div>
 	</div>
-
-	<div class="card-body row">
-
-		<div class="col-4 text-left">
-			<%= link_to "@" + @wad.user.name, user_path(@owner), class: "profile-link orange-text" %> 
-		</div>
-		
-		<%= render 'wads/actions', wad: @wad %>
-
-	</div>
+	<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>	
 </div>

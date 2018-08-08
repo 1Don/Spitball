@@ -1,7 +1,7 @@
 module CommentsHelper
 	def comments_tree_for(replies, nested = false, id = nil)
 	    replies.map do |comment, nested_comments|
-				content_tag(:div, id: id, class: "ml-4 comment card mb-1 col-11") do
+				content_tag(:div, id: id, class: "ml-4 comment mb-1 col-12") do
 					render(comment) 
 				end
 	    end.join.html_safe
