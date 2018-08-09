@@ -47,7 +47,7 @@
               <% else %>
                 <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic svg-icon"), dislike_wad_path(wad), method: :put, remote: true %></span>
               <% end %>
-              <span class="small font-weight-light" data-check="<%= current_user.voted_for? wad %>" id="wad-like-<%= wad.id %>"><%= wad.get_upvotes.size %> votes</span>
+              <span class="small font-weight-light" data-check="<%= current_user.liked? wad %>" id="wad-like-<%= wad.id %>"><%= wad.get_upvotes.size %></span><span class="small font-weight-light"> votes</span>
             </div>
 
         </div>
