@@ -17,5 +17,9 @@
 			</div>
 		</div>
 	</div>
-	<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>	
+	<% if @wad.user.occupation.present? %>
+			<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>	
+	<% else %>
+			<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name, user_path(@wad.user), class: "profile-link" %></span>	
+	<% end %>
 </div>

@@ -11,7 +11,12 @@
 
 		<div class="col-8 small">
 			<div class="small mb-3 mt-1">
-				<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %> 
+				<% if comment.user.occupation.present? %>
+					<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %> 
+				<% else %>
+					<%= comment.user.first_name + " " + comment.user.last_name %> 
+				<% end %>
+
 			</div>
 			<div class="col-12">
 				<%= comment.content %>
