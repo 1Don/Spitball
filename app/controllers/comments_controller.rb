@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
 		if @wads.empty?
 			@wads = Wad.all.order('created_at DESC').reject { |w| w == @wad }
 		end
-		@likers= []
+		@likers = []
 		User.all.each do |u|
 			if u.voted_for? @wad
 				@likers.append(u)

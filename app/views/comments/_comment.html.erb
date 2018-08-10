@@ -11,14 +11,19 @@
 
 		<div class="col-8 small">
 			<div class="small mb-3 mt-1">
-				<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %> 
+				<% if comment.user.occupation.present? %>
+					<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %> 
+				<% else %>
+					<%= comment.user.first_name + " " + comment.user.last_name %> 
+				<% end %>
+
 			</div>
 			<div class="col-12">
 				<%= comment.content %>
 			</div>
 		</div>
 		<div class="col-2 mt-4">
-			<span id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic ml-3 mr-4") %> </span>
+			<span class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic ml-3 mr-3") %> </span>
 			<% unless current_user == comment.user %>
 				<% if current_user.voted_down_on? comment %>
 					<span id="vote-span-<%= comment.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(comment.wad, comment), method: :put, remote: true %></span>
@@ -27,7 +32,7 @@
 				<% else %>
 					<span id="vote-span-<%= comment.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_dislike_path(comment.wad, comment), method: :put, remote: true %></span>			
 				<% end %>			
-				<span data-check="parent" id="like-<%= comment.id %>"><%= comment.get_upvotes.size %></span>
+				<span class="align-middle" data-check="parent" id="like-<%= comment.id %>"><%= comment.get_upvotes.size %></span>
 			<% end %>
 		</div>	
 	</div>
@@ -65,7 +70,7 @@
 							<% end %>
 						</div>					
 						<div class="mt-1 col-1 row-fluid">
-							<span class="child-cmt" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
+							<span class="child-cmt pointer" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
 						<% if current_user == c.user %>
 							<span id="trash-<%= c.id %>" class="cmt-trash trash align-top"><%= link_to fa_icon("trash", class: "profile-link"), [c.wad , c], method: :delete, remote: true %></span>
 						<% end %>	

@@ -42,28 +42,8 @@
 		</div>
 	</div>
 
-	<div class="col-md-4 mt-3">
-		<div class="">
-			<h6 class="text-center mb-2">See who else likes this idea!</h6>
-			<div class="col-12 row">
-				<div class="mt-2 col-2">
-					<%= link_to "Like", like_wad_path(@wad, user_id: current_user.id, wad_id: @wad.id), class: " text-black profile-link ", method: :put, remote: true %>
-				</div>
-				<div class="col-10 row">
-					<div class="col-6">
-						<% if !@likers.empty? %>
-							<% if @likers[0] %><%= image_tag @likers[0].photo(:thumb), class: "rounded-circle collab-img position-absolute mid-pic" %><% end %>
-							<% if @likers[1] %><%= image_tag @likers[1].photo(:thumb), class: "rounded-circle collab-img position-absolute far-pic" %><% end %>
-							<% if @likers[2] %><%= image_tag @likers[2].photo(:thumb), class: "rounded-circle collab-img position-absolute" %><% end %>
-						<% end %>
-					</div>
-					<div class="col-6">
-						<span class="small font-weight-light" data-check="<%= current_user.voted_for? @wad %>" id="wad-like-<%= @wad.id %>">& <%= @wad.get_upvotes.size %> other votes!</span>
-					</div>
-				</div>
-			</div>	
-		</div>
-		<h5 class="mt-5 text-center"> Related Wads</h5>
+	<div class="col-md-4">
+		<h5 class="mt-2 text-center"> Related Wads</h5>
 		<%= render 'wads/side_wad' %>	
 	</div>
 </div>
