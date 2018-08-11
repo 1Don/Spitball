@@ -71,9 +71,8 @@ class User < ApplicationRecord
           user.last_name = auth.info.name.split.last
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
-          unless auth.provider == "linkedin"      
-            user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-            user.photo = open(URI.parse(auth.info.image))   
+          unless auth.provider == "linkedin" 
+            user.photo = open(URI.parse(auth.info.image)) 
           else
             user.occupation = auth.info.description
             user.location = auth.info.location

@@ -1,4 +1,3 @@
-
 if ("<%= @comment.parent_id %>" == "") {
 	document.location.reload();		
 } else {
@@ -6,7 +5,7 @@ if ("<%= @comment.parent_id %>" == "") {
 	$('#cmt-img-<%= @comment.root.id %>').html("<%= @comment.user.name %>:")
 	$('#cmt-cnt-<%= @comment.root.id %>').html("<%= @comment.content %>")*/
 	const userPhoto = $("#user-photo").html();
-	$('#new-cmt-<%= @comment.root.id %>').prepend("<div class='col-4 border-top ml-4 mb-1 mt-2'>" + userPhoto + "</div><div class='col-7 border-top mb-1 mt-2'><%= @comment.content %></div>")
+	$('#new-cmt-<%= @comment.root.id %>').prepend("<div class='col-3 border-top ml-2 mb-1 mt-2'>" + userPhoto + "</div><div class='col-8 border-top mb-1 mt-2'><%= @comment.content %></div>")
 	$('.form-field').val("")
 	$('.hid-field').attr('value', "<%= @comment.root.id %>");
 }

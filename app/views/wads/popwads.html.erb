@@ -1,27 +1,19 @@
-<div class="col-12 col-md-9">
+<div class="col-12 mt-4">
 	<div class="row">
-		<div class="col-12 d-flex align-items-center mb-3">
-			<span class="h2">
-				Get yours here
-			</span>
-
-			<%= button_to "Do that shit", new_wad_path, :class => "newbutton", :method => :get  %>
+		<div class="col-md-4 mb-5 d-none d-md-block iphone-disappear">
+			<%= render 'wad_form' %>
 		</div>
 
-		
-
-		<div class="col-xs-12 col-md-9 mb-4">
-			<div class="card">
-				<div class="card-header d-none d-md-flex">
-					Popular Wads
-				</div>
-
-				<div class="list-group list-group-flush">
-					<%= render "pop_wads" %>
-				</div>
-
-				<div class="card-footer text-center d-none">
-					See all
-				</div>
+		<%# The display for all wads%>
+		<div class="col-xs-12 col-sm-12 col-md-8 mb-5">
+			<div class="col-md-12 col-xs-12  col-sm-12 align-items-center mb-4 row-flex">
+				<%= render 'category_nav' %>
+			</div>	
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<% @wads.each do |wad| %>
+					<%= render wad %>
+				<% end %>
 			</div>
 		</div>
+	</div>
+</div>

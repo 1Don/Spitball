@@ -1,7 +1,7 @@
-<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card col-12 mb-3" style="border-radius: 10px;">
+<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card col-12 mb-3 panel-div" style="border-radius: 10px;">
 	<div class="card-body">
 		<div class="row">
-			<div class="col-3">
+			<div class="col-2">
 		        <%= link_to wad_comments_path(@wad) do %>
 		            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
 		              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4' %>
@@ -12,21 +12,44 @@
 			</div>
 
 			<div class="col-9 small mt-3">
-				<h6><%= @wad.problem_state %></h6>
-				<%= @wad.long_form %>
+				<h4><%= @wad.problem_state %></h4>
+				<span class=""><%= simple_format(@wad.long_form) %></span>
 			</div>
-
-
 		</div>
 	</div>
-
-	<div class="card-body row">
-
-		<div class="col-4 text-left">
-			<%= link_to "@" + @wad.user.name, user_path(@owner), class: "profile-link orange-text" %> 
+	<div class="row col-12">
+		<div class="col-5 mt-4">
+			<% if @wad.user.occupation.present? %>
+					<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>	
+			<% else %>
+					<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name, user_path(@wad.user), class: "profile-link" %></span>	
+			<% end %>
 		</div>
-		
-		<%= render 'wads/actions', wad: @wad %>
-
+		<div class="col-7">
+			<div class="ml-5 col-12">
+				<h6 class="ml-3 mb-2">See who else likes this idea!</h6>
+				<div class="col-12 row">
+					<div class="mb-3 col-4">
+						<%= link_to fa_icon('thumbs-up'), like_wad_path(@wad, user_id: current_user.id, wad_id: @wad.id), class: "orange-btn", method: :put, remote: true %>
+					</div>
+					<div class="col-8 row">
+						<div class="col-4">
+							<% if !@likers.empty? %>
+								<% if @likers[0] %><%= image_tag @likers[0].photo(:thumb), class: "rounded-circle trio-img position-absolute" %><% end %>
+								<% if @likers[1] %><%= image_tag @likers[1].photo(:thumb), class: "rounded-circle trio-img position-absolute mid-pic" %><% end %>
+								<% if @likers[2] %><%= image_tag @likers[2].photo(:thumb), class: "rounded-circle trio-img position-absolute far-pic" %><% end %>
+							<% end %>
+						</div>
+						<div class="col-8">
+							<% if @wad.get_upvotes.size - 3 > 1 %> 
+								<span class="small font-weight-light">& <span id="wad-like-<%= @wad.id %>" data-check="<%= current_user.liked? @wad %>"><%= @wad.get_upvotes.size - 3 %></span> others!</span>
+							<% else %>
+								<span class="small font-weight-light">& <span id="wad-like-<%= @wad.id %>" data-check="<%= current_user.liked? @wad %>"><%= @wad.get_upvotes.size %></span> others!</span>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>		
 	</div>
 </div>

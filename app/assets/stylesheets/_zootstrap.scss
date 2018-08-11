@@ -17,8 +17,16 @@
 .side-wad-pic{
 	width:75px;
 }
-.text-black{
+.orange-btn{
 	color: white;
+	background-color: #e17525;
+	text-decorations:none;
+	border: 1px solid #e17525;
+    border-radius: 50px;
+    padding: .5rem 1.5rem !important;
+}
+.orange-btn:hover{
+	color: #2a3435;
 	background-color: #e17525;
 	text-decorations:none;
 	border: 1px solid #e17525;
@@ -43,6 +51,15 @@
 .comment-text{
 	resize:none;
 	height: 100px;
+}
+.trio-img{
+	width: 30px;
+}
+.mid-pic{
+	margin-left: 17px;
+}
+.far-pic{
+	margin-left: 35px;
 }
 .inputfile {
 	width: 0.1px;

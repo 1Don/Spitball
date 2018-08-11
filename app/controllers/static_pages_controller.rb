@@ -14,9 +14,13 @@ layout "_landing", only: [:landing, :home]
   end
 
   def search
-  	@wads = Wad.search(params[:search])
-  	@discussions = Discussion.search(params[:search])
-  	@users = User.search(params[:search])
-    @all_wads = Wad.all
+    if !params[:search].empty?
+    	@wads = Wad.search(params[:search])
+    	@discussions = Discussion.search(params[:search])
+    	@users = User.search(params[:search])
+    else
+      redirect_back(fallback_location: wads_path)
+      flash[:notice] = "Please enter some search terms"
+    end
   end 
 end

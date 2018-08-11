@@ -1,7 +1,7 @@
 <% if @wads.first %>
 	<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
 		<span class="h4 font-weight-light">
-			Welcome back, <%= current_user.name %>!
+			Welcome back, <%= current_user.first_name %>!
 		</span>
 	<% else %>
 		<span class="h2 font-weight-light">
@@ -11,21 +11,3 @@
 <% else %>
 	NEEDS WADS
 <% end %>
-<span class="float-right mt-2 row-flex">
-		<span class="mr-3 d-inline">Category</span> 
-		<div class="d-inline">
-		  <button type="button" class="dropdown-toggle" data-toggle="dropdown">
-		    Select one
-		  </button>
-		  <div class="dropdown-menu mr-5">
-		  	<ul class="list-group list-no-style">
-			    <li class=""><%= link_to "B2B", b2b_path, class: "profile-link list-group-item hover-darken" %></li>
-			    <li class=""><%= link_to "Product", product_path, class: "profile-link list-group-item hover-darken" %></li>
-			    <li class=""><%= link_to "Local", local_path, class: "profile-link list-group-item hover-darken" %></li>
-			    <li class=""><%= link_to "Events", events_path, class: "profile-link list-group-item hover-darken" %></li>
-			    <li class=""><%= link_to "Innovate", innovate_path, class: "profile-link list-group-item hover-darken" %></li>
-			    <li class=""><%= link_to "Media", media_path, class: "profile-link list-group-item hover-darken" %></li>
-			</ul>
-		  </div>
-		</div>
-	</span>

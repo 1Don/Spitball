@@ -1,12 +1,13 @@
-<nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #2e2c2a;">
+<nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #2a3435;">
   <%= link_to image_tag("Spitball-Logo---Transparent-White-Logo-.png"), wads_path, class: 'ml-5 navbar-brand' %>
-
+    <div class="d-none d-sm-block d-md-block">
       <%= form_tag search_path, method: :get, class: 'form-inline' do %>
       <%= text_field_tag :search, params[:search], placeholder: "", class: 'form-control form-control-sm mr-sm-1' %> 
-      <%= button_to "Search", style: "background-color: #2e2c2a;", name: nil do %>
+      <%= button_to "Search", style: "background-color: #2a3435;", name: nil do %>
           <i class="nav-link fa fa-search"></i>
        <% end %>
-    <% end %>
+      <% end %>
+    </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
     <span class="navbar-toggler-icon"></span>
@@ -16,6 +17,15 @@
 
     <ul id="navbar-elements" class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
+
+        <li class="nav-item dropdown float-left d-block d-sm-none col-xs-12">
+          <%= form_tag search_path, method: :get, class: 'form-inline' do %>
+          <%= text_field_tag :search, params[:search], placeholder: "", class: 'form-control form-control-sm mr-sm-1' %> 
+          <%= button_to "Search", style: "background-color: #2a3435;", name: nil do %>
+              <i class="nav-link fa fa-search"></i>
+           <% end %>
+          <% end %>
+        </li>
 
         <li class="nav-item dropdown" data-behavior='notifications' data-behavior="notifications-link">
           <a id="notificationsDD" href="#" class="nav-link mr-3" data-toggle="dropdown">
@@ -40,8 +50,8 @@
         <% end %>
 
         <li class="dropdown mr-5">
-            <a id="user-photo" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <span class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><span class="ml-1"><%= current_user.name %></span>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><span class="ml-1"><%= current_user.name %></span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
