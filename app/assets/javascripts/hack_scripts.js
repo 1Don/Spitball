@@ -6,6 +6,12 @@ function sendPost() {
 //Hacks for landing page scroll
 
 $(document).on('turbolinks:load', function() {
+	$("#landing-btn").click(function() {
+	    $('html,body').animate({
+	        scrollTop: $("#what-we-do").offset().top},
+	        'slow');
+	});	
+
 	$('#wad-new-form').hide();
 	if ($(window).width() <= 570 ){
 		$('#nav-menu').hide();
