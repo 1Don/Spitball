@@ -17,6 +17,10 @@
 .side-wad-pic{
 	width:75px;
 }
+.search-btn{
+	border-color: #2a3435;
+	background-color: #2a3435;
+}
 .orange-btn{
 	color: white;
 	background-color: #e17525;
@@ -47,6 +51,12 @@
     display: inline-block;
     letter-spacing: 1px;
     border-radius: 50px;
+}
+.wad-shadow{
+	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.wad-shadow:hover{
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .comment-text{
 	resize:none;
