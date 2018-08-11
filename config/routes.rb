@@ -65,6 +65,20 @@ Rails.application.routes.draw do
   get    '/popular',  to:'wads#popwads'
 
 
+#Question categories
+  get    '/fundraising',    to:  'discussions#fundraising'
+  get    '/teambuilding',     to:  'discussions#teambuilding'
+  get    '/mentorship',     to:  'discussions#mentorship'
+  get    '/marketing',     to:  'discussions#marketing'
+  get    '/entityformation',     to:  'discussions#entityformation'
+  get    '/unicorns',     to:  'discussions#unicorns'
+  get    '/random',     to:  'discussions#random'
+  get    '/other',     to:  'discussions#other'
+
+
+
+
+#Wad Categories
   get    '/tech',    to:  'wads#consumertech'
   get    '/b2b',     to:  'wads#b2b'
   get    '/product',     to:  'wads#product'

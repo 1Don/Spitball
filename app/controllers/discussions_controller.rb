@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-	layout 'discussion', only: [:index]
+	layout 'discussion', only: [:index, :fundraising, :teambuilding, :mentorship, :marketing, :entityformation, :unicorns, :random, :other]
 
 	def index
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
@@ -75,11 +75,45 @@ class DiscussionsController < ApplicationController
 		end
 	end
 
+#Question types
+	def fundraising
+		@discussions = Discussion.where("category like ?", "%Fundraising%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def teambuilding
+		@discussions = Discussion.where("category like ?", "%Building A Team%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def mentorship
+		@discussions = Discussion.where("category like ?", "%How To Find A Mentor%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def marketing
+		@discussions = Discussion.where("category like ?", "%Marketing%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def entityformation
+		@discussions = Discussion.where("category like ?", "%Legal Registration%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def unicorns
+		@discussions = Discussion.where("category like ?", "%How Did That Other Company Do It%").paginate(page: params[:page], per_page: 20)
+	end
+
+
+	def random
+		@discussions = Discussion.where("category like ?", "%Random%").paginate(page: params[:page], per_page: 20)
+	end
+
+	def other
+		@discussions = Discussion.where("category like ?", "%Other%").paginate(page: params[:page], per_page: 20)
+	end
+
 
 private
 
 	def discussion_params
-		params.require(:discussion).permit(:content)
+		params.require(:discussion).permit(:content, :category)
 	end
 
 

@@ -1,5 +1,29 @@
 <% @discussions.each do |discussion| %>
-	<% if discussion.parent_id.nil? %>
-			<%= render discussion %>
+	<% if discussion.parent_id.nil? && discussion.resolved == false %>
+		<div onmouseover='showTrash("<%= discussion.id %>")' onmouseleave='hideTrash("<%= discussion.id %>")' class="list-group-item">
+		  <div class="row">
+			 <%= link_to discussion_answers_path(discussion), class: 'profile-link' do %>
+		  	 <div class="col-xs-12 col-md-12 mb-4 small">
+				<%= discussion.content  %>
+			 </div>
+	<% end %>
+
+			 <div class="actions col-3 small">
+				        <% if current_user == discussion.user %>
+				          <span id="trash-<%= discussion.id %>" class="trash mr-5"><%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%></span>
+				        <% end %>			 	
+						<% if current_user.voted_down_on? discussion %>
+						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
+						<% elsif !current_user.voted_for? discussion %>
+						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-up", class: "profile-link"), like_discussion_path(discussion), method: :put, remote: true %></span>
+						<% else %>
+						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_discussion_path(discussion), method: :put, remote: true %></span>
+						<% end %>
+       			 <span data-check="<%= current_user.voted_for? discussion %>" id="like-<%= discussion.id %>"><%= discussion.get_upvotes.size %></span>
+			 </div>
+
+		  </div>
+		</div>
 	<% end %>
 <% end %>
+
