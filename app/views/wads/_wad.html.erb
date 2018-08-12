@@ -1,20 +1,19 @@
 <div onmouseover='showTrash("<%= wad.id %>")' onmouseleave='hideTrash("<%= wad.id %>")' class="card mb-4 wad-shadow"  style="border-radius: 10px; border-width: thin;">
-  
-  <div class="row col-12 mb-3">
     <% if current_user == wad.user %>
-      <span id="trash-<%= wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link"), wad_path(wad), method: :delete, remote: true%></span>
-    <% end %>
-    <div class="col-2 mt-2 text-center">
+      <span id="trash-<%= wad.id %>" class="trash mt-3"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(wad), method: :delete, remote: true%></span>
+    <% end %>  
+  <div class="row col-12">
+    <div class="col-2 text-center">
         <%= link_to wad_comments_path(wad) do %>
             <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
-              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-5' %>
+              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-5 h-50 w-100' %>
             <% else %>
-              <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle mt-4' %>
+              <%= image_tag wad.image.url(:medium), class: 'img-fluid h-50 w-100 border border-light rounded-circle mt-4' %>
             <% end %>
         <% end %>
     </div>
 
-    <div class="col-10 mt-4">
+    <div class="col-10">
         <%= link_to wad_comments_path(wad), class: 'wad-link' do %>
             <h6 class="mt-3"><%= wad.problem_state %></h6>
             <p class="small"><%= wad.long_form %></p>
@@ -22,9 +21,9 @@
     </div>
   </div>
 
-     <div class="row col-12 mb-2 ml-1">
+     <div class="row col-12 mb-2">
 
-        <div class="col-md-5 d-none d-md-block text-center ml-1">
+        <div class="col-md-5 d-none d-md-block text-center ml-3">
           <span class="small"><%= link_to "@" + wad.user.name, user_path(wad.user), class: "profile-link orange-text", style: "" %></span>
         </div>
 
