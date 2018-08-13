@@ -1,7 +1,9 @@
 <% if @wads.first %>
 	<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
 		<span class="h4 font-weight-light">
-			Welcome back, <%= current_user.first_name %>!
+			<% if current_user %> Welcome back, <%= current_user.first_name %>!
+			<% else %> Welcome back!<% end %>
+
 		</span>
 	<% else %>
 		<span class="h2 font-weight-light">

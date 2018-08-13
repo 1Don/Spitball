@@ -52,6 +52,7 @@ class SessionsController < ApplicationController
         else
           # No user associated with the identity so we need to create a new one
           @identity.user = user = User.sign_up_from_omniauth(request.env['omniauth.auth'])
+          UserMailer.welcome_email(user).deliver_now
           user.identities << @identity
           log_in @identity.user
           redirect_to wads_path
