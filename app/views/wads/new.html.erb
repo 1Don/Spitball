@@ -1,11 +1,10 @@
 <%= link_to wads_path do %>
-    <button class="navbutton mt-4 shadow-sm"><%= fa_icon("arrow-left 2x") %></button>
+    <button class="navbutton mt-4 shadow-sm mx-auto"><%= fa_icon("arrow-left 2x") %></button>
 <% end %>
-<div class="row col-12">
-
-  <div class="row col-8 text-center mx-auto">
-    <div class="col-10 mx-auto">
-      <div class="row card mt-1">
+<div class="row col-12 no-gutters">
+  <div class="row col-md-8 col-xs-12 text-center mx-auto">
+    <div class="col-md-10 col-xs-12 mx-auto">
+      <div class="row card-md mt-1">
         <div class="col-12 form-control-sm small">
           <div class="row">
                 <div class="form-group col-6">
@@ -43,13 +42,14 @@
               <%= f.text_area :long_form, class: 'form-control form-control-sm', style: "resize: none;", :rows => 8 %>
             </div>
             <div class="row">
-              <div class="form-group col-6 ml-5 upload-div">
+              <div class="form-group col-md-6 col-xs-12 ml-5 upload-div">
                 <%= f.label :image, fa_icon('upload') + " Upload an image", class: "mx-auto pointer mt-2" %>
                 <%= f.file_field :image, class: 'form-control-file pl-5 col-11 mx-auto mb-2 inputfile' %>
               </div>
-              <div class="col-5">
+              <div class="col-md-5 col-xs-12">
                 <!-- I want to use logo's text inside of button --> 
-                <%= f.submit "Spitball", class: "wadnewbutton" %>
+                <%= f.submit "Spitball", class: "wadnewbutton d-none d-md-block" %>
+                <%= f.submit "Spitball", class: "wadnewbutton mx-auto d-block d-sm-none" %>
               </div>
             </div>
           <% end %>

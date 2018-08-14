@@ -1,19 +1,8 @@
 <div class="row mt-3">
-	<div class="col-md-8 mt-1">
+	<div class="col-md-8 mt-1">	
 		<%= render 'wads/panel' %>
-		<div id="comment-tab-open" class="row mx-auto pointer">
-			<div class="col-5 border-top mt-2">
-				
-			</div>
-			<div id="comment-tab-text" class="col-2 text-center">
-				<span class="">comment</span> <%= fa_icon("sort-down", class: "align-top") %>
-			</div>
-			<div class="col-5 border-top mt-2">
-				
-			</div>
-		</div>
 		<div class="mt-4">
-			<div id="comments-display" class="mb-3">
+			<div id="" class="mb-3">
 				<div class="col-12 mb-3">
 				  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline col-12 mx-auto' }, remote: true do |f| %>
 				    <%= f.hidden_field :wad_id %>
@@ -22,23 +11,13 @@
 
 				    <%= f.submit 'Comment', class: 'comment-btn mx-auto mt-3 mb-2 pointer', disable_with: 'Sending' %>
 				  <% end %>
-				</div>
-				<div id="comment-tab-close" class="row mx-auto pointer">
-					<div class="col-5 border-top mt-2">
-						
-					</div>
-					<div class="col-2 text-center">
-						<span class="">close</span> <%= fa_icon('sort-up', class: "align-bottom") %>
-					</div>
-					<div class="col-5 border-top mt-2">
-						
-					</div>
 				</div>				
 			</div>
-
-			<div id="daddy-comment-div" class="card">
-					<%= comments_tree_for @replies %>
-			</div>
+			<% if @wad.comments.exists? %>
+				<div id="daddy-comment-div" class="card">
+						<%= comments_tree_for @replies %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 

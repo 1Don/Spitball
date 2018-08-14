@@ -1,4 +1,4 @@
-<nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #2a3435;">
+<nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top small" style="background-color: #2a3435;">
   <%= link_to image_tag("Spitball-Logo---Transparent-White-Logo-.png"), wads_path, class: 'ml-5 navbar-brand' %>
     <div class="d-none d-sm-block d-md-block">
         <%= form_tag search_path, method: :get, class: 'form-inline' do %>
@@ -18,7 +18,7 @@
     <ul id="navbar-elements" class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
 
-        <li class="nav-item dropdown d-block d-sm-none mt-3">
+        <li class="nav-item dropdown float-left d-block d-sm-none mt-3">
           <%= form_tag search_path, method: :get, class: 'form-inline' do %>    
           <%= text_field_tag :search, params[:search], placeholder: "", class: 'col-10 form-control form-control-sm mr-sm-1' %> 
           <%= button_to "Search", class: "search-btn pointer col-2", name: nil do %>
@@ -43,6 +43,11 @@
           <% end %>
         </li>
 
+        <% sidebar_elements.each do |element| %>
+          <li class="d-md-none nav-item float-right">
+            <%= link_to element[:name], element[:link], class: 'nav-link' %>
+          </li>
+        <% end %>
 
         <li class="dropdown mr-5">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -64,11 +69,7 @@
           <%= link_to "Log in", new_user_path, class: 'nav-link' %>
         </li>
       <% end %>
-        <% sidebar_elements.each do |element| %>
-          <li class="d-md-none nav-item float-right align-right">
-            <%= link_to element[:name], element[:link], class: 'nav-link' %>
-          </li>
-        <% end %>
+
     </ul>
   </div>
 </nav>

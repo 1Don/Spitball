@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="col-2 mt-4">
-			<span class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic ml-3 mr-3") %> </span>
+			<span class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic mr-3") %> </span>
 			<% unless current_user == comment.user %>
 				<% if current_user.voted_down_on? comment %>
 					<span id="vote-span-<%= comment.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(comment.wad, comment), method: :put, remote: true %></span>

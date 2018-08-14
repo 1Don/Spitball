@@ -1,38 +1,45 @@
-<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card col-12 mb-3 panel-div" style="border-radius: 10px;">
+<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card mb-3 panel-div" style="border-radius: 10px;">
+	<div class="card-header col-md-5 text-center d-block d-sm-none">
+		<% if @wad.user.occupation.present? %>
+				<span class="small mb-2"><%= link_to @wad.user.name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>
+		<% else %>
+				<span class="small mb-2"><%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link" %></span>	
+		<% end %>
+	</div>	
 	<div class="card-body">
 		<div class="row">
-			<div class="col-2">
-		        <%= link_to wad_comments_path(@wad) do %>
-		            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
-		              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4' %>
-		            <% else %>
-		              <%= image_tag @wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
-		            <% end %>
-		        <% end %>
+			<div class="col-md-2 col-xs-4">
+	            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
+	              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4' %>
+	            <% else %>
+	              <%= image_tag @wad.image.url(:medium), class: 'd-none d-sm-block img-fluid border border-light rounded-circle' %>
+	              <%= image_tag @wad.image.url(:medium), class: 'd-block d-sm-none mx-auto img-fluid border border-light rounded-circle' %>
+	            <% end %>
 			</div>
 
-			<div class="col-9 small mt-3">
-				<h4><%= @wad.problem_state %></h4>
-				<span class=""><%= simple_format(@wad.long_form) %></span>
+			<div class="col-md-10 small mt-3 text-justify">
+		        <h6 class="mt-3 d-none d-md-block"><%= @wad.problem_state %></h6>
+		        <h6 class="mt-1 text-center d-block d-sm-none"><%= @wad.problem_state %></h6>
+		        <p class="small d-block d-sm-none"><%= simple_format(@wad.long_form) %></p>		        
 			</div>
 		</div>
 	</div>
-	<div class="row col-12">
-		<div class="col-5 mt-4">
+	<div class="row">
+		<div class="col-md-5 col-xs-12 mt-4 text-center d-none d-sm-block">
 			<% if @wad.user.occupation.present? %>
 					<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>	
 			<% else %>
 					<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name, user_path(@wad.user), class: "profile-link" %></span>	
 			<% end %>
 		</div>
-		<div class="col-7">
+		<div class="col-md-7 col-xs-12">
 			<div class="ml-5 col-12">
 				<h6 class="ml-3 mb-2">See who else likes this idea!</h6>
-				<div class="col-12 row">
-					<div class="mb-3 col-4">
+				<div class="row">
+					<div class="mb-3 col-4 pr-0">
 						<%= link_to fa_icon('thumbs-up'), like_wad_path(@wad, user_id: current_user.id, wad_id: @wad.id), class: "orange-btn", method: :put, remote: true %>
 					</div>
-					<div class="col-8 row">
+					<div class="col-8 pl-0 row">
 						<div class="col-4">
 							<% if !@likers.empty? %>
 								<% if @likers[0] %><%= image_tag @likers[0].photo(:thumb), class: "rounded-circle trio-img position-absolute" %><% end %>
