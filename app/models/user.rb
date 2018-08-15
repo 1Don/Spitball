@@ -106,6 +106,17 @@ class User < ApplicationRecord
     self.save
   end
 
+  def friends_with?(user)
+    self.friends.all.each do |f|
+      if f == user
+        return true
+      else 
+        return false
+      end
+    end 
+  end
+
+
   private
 
     def session_with_provider?

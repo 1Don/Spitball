@@ -3,5 +3,5 @@ $("#like-<%= @comment.id %>").html((parseInt($("#like-<%= @comment.id %>").html(
 if ($("#like-<%= @comment.id %>").attr("data-check") == "parent") {
 	$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic"), wad_comment_dislike_path(@wad, @comment), method: :put, remote: true %>')
 } else if ($("#like-<%= @comment.id %>").attr("data-check") == "child") {
-	$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic"), wad_comment_dislike_path(@wad, @comment), method: :put, remote: true %>')
+	$('#vote-span-<%= @comment.id %>').html('<%= link_to fa_icon("caret-down", class: "profile-link align-top mt-1"), wad_comment_dislike_path(@wad, @comment), method: :put, remote: true %>')
 }

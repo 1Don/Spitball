@@ -1,12 +1,23 @@
 <div onmouseover='showTrash("<%= wad.id %>")' onmouseleave='hideTrash("<%= wad.id %>")' class="card mb-4 wad-shadow"  style="border-radius: 10px; border-width: thin;">
-    <% if current_user == wad.user %>
-      <span id="trash-<%= wad.id %>" class="trash mt-3"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(wad), method: :delete, remote: true%></span>
-    <% end %>  
+    <div class="card-header col-md-5 text-center d-block d-sm-none">
+      <% if wad.user.occupation.present? %>
+          <span class="small mb-2"><%= link_to wad.user.name + " · " + wad.user.occupation, user_path(wad.user), class: "profile-link" %></span>
+      <% else %>
+          <span class="small mb-2"><%= link_to wad.user.name, user_path(wad.user), class: "profile-link" %></span>  
+      <% end %>
+      <% if current_user == wad.user %>
+        <span id="trash-<%= wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(wad), method: :delete, remote: true%></span>
+      <% end %>
+      <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
+       <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => wad.user), :method => :post %>     
+      <% end %>            
+    </div>  
   <div class="row">
     <div class="col-md-2 h-25 text-center">
         <%= link_to wad_comments_path(wad) do %>
             <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
-              <%= image_tag "bulb.png", class: 'img-fluid rounded mt-5' %>
+              <%= image_tag "bulb.png", class: 'img-fluid rounded mt-5 d-none d-md-block' %>
+              <%= image_tag "bulb.png", style: "width:200px;", class: 'img-fluid rounded mx-auto mt-2 mb-1 d-block d-sm-none' %>
             <% else %>
               <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle mt-4 d-none d-md-block' %>
               <%= image_tag wad.image.url(:medium), class: 'img-fluid border mx-auto h-50 border-light rounded-circle mt-4 d-block d-sm-none' %>
@@ -16,9 +27,9 @@
 
     <div class="col-md-10">
         <h6 class="mt-3 d-none d-md-block"><%= wad.problem_state %></h6>
-        <h6 class="mt-1 text-center d-block d-sm-none"><%= wad.problem_state %></h6>
+        <h6 class="mt-1 text-center d-block d-sm-none col-12"><%= wad.problem_state %></h6>
         <p class="small d-none d-md-block"><%= wad.long_form %></p>
-        <p class="text-center small d-block d-sm-none"><%= wad.long_form %></p>
+        <p class="text-center small d-block d-sm-none col-12"><%= wad.long_form %></p>
     </div>
   </div>
 
@@ -30,14 +41,14 @@
 
         
          <div class="row col-md-6 col-sm-3 text-center ml-5">
-            <div class="col-6">
+            <div class="col-6 small">
               <%= link_to wad_comments_path(wad), class: "profile-link" do %>
                 <span><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
-                <span class="small font-weight-light"><%= wad.comments.count %> comments</span>
+                <span class="small font-weight-light"><%= wad.comments.count %><span class="small align-middle"> comments</span></span>
               <% end %>
             </div>
             <%# current way to display upvotes %>
-            <div class="col-4">
+            <div class="col-4 small">
               <% if current_user.voted_down_on? wad %>
                 <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_wad_path(wad), method: :put, remote: true %></span>
               <% elsif !current_user.voted_for? wad %>

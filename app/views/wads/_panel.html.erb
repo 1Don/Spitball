@@ -5,12 +5,19 @@
 		<% else %>
 				<span class="small mb-2"><%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link" %></span>	
 		<% end %>
+        <% unless @wad.user == current_user || @wad.user.friends_with?(current_user) %>
+         <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @wad.user), :method => :post %>     
+        <% end %>
+		<% if current_user == @wad.user %>
+		<span id="trash-<%= @wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(@wad), method: :delete, remote: true%></span>
+		<% end %>        		
 	</div>	
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-2 col-xs-4">
 	            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
-	              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4' %>
+	              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4 d-none d-sm-block' %>
+	              <%= image_tag "bulb.png", style: "width: 200px;" , class: 'img-fluid rounded mx-auto d-block d-sm-none' %>
 	            <% else %>
 	              <%= image_tag @wad.image.url(:medium), class: 'd-none d-sm-block img-fluid border border-light rounded-circle' %>
 	              <%= image_tag @wad.image.url(:medium), class: 'd-block d-sm-none mx-auto img-fluid border border-light rounded-circle' %>
