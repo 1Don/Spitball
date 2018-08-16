@@ -27,23 +27,19 @@
           <% end %>
         </li>
 
-        <li class="nav-item dropdown" data-behavior='notifications' data-behavior="notifications-link">
+        <li class="nav-item dropdown d-inline" data-behavior='notifications' data-behavior="notifications-link">
           <a id="notificationsDD" href="#" class="nav-link mr-3" data-toggle="dropdown">
             <%= fa_icon("bell 2x") %> <span><sup id="notification-indic"></sup></span>
           </a>
-
           <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
             <div class="text-center profile-link"><%= link_to "see all", "#" %></div>
           </div>
         </li>
-
         <li class="nav-item display-orange mr-3">
           <%= link_to discussions_path, class: 'nav-link'  do%>
             <span><%= fa_icon("comments", class: "mr-1") %> Forum</span>
           <% end %>
         </li>
-
-
         <li class="dropdown mr-5">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
               <span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><span class="ml-1"><%= current_user.name %></span>
@@ -59,6 +55,7 @@
                    <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
                 </div>
         </li>
+
             <% else %>
         <li class="nav-item">
           <%= link_to "Log in", new_user_path, class: 'nav-link' %>
