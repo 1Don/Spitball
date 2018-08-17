@@ -14,8 +14,9 @@
 					<%= form_for [@discussion, @discussion.answers.build], class: 'form-inline', remote: true  do |f| %>
 					<%= f.hidden_field :discussion_id %>
 					<%= f.label :content, class: 'sr-only' %>
-					<%= f.text_field :content, class: 'form-control w-50 mr-2 d-inline', placeholder: 'Have any suggestions?' %>
-					<%= f.submit 'Answer', class: 'newbutton d-inline', disable_with: 'Sending' %>
+					<span class="d-none d-sm-block"><%= f.text_field :content, class: 'form-control mr-2 d-inline ', placeholder: 'Have any suggestions?' %></span>
+					<span class="d-block d-sm-none"><%= f.text_field :content, class: 'form-control mr-2 d-inline', placeholder: 'Have any suggestions?' %></span>		
+					<%= f.submit 'Answer', class: 'newbutton mx-auto', disable_with: 'Sending' %>
 				  <% end %>
 				</div>
 			</div>

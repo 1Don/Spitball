@@ -1,3 +1,8 @@
 console.log("upvote script running")
-$('#discussion-vote-span-<%= @discussion.id %>').html('<%= link_to fa_icon("chevron-circle-down", class: "profile-link"), dislike_discussion_path(@discussion), method: :put, remote: true %>')
-$("#like-<%= @discussion.id %>").html((parseInt($("#like-<%= @discussion.id %>").html())+1).toString());
+if ($('#discussion-like-<%= @discussion.id %>').attr('data-check') == 'false'){
+	$('#discussion-vote-span-<%= @discussion.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic"), dislike_discussion_path(@discussion), method: :put, remote: true %>')
+	$("#discussion-like-<%= @discussion.id %>").html((parseInt($("#discussion-like-<%= @discussion.id %>").html())+1).toString());
+	$('#discussion-like-<%= @discussion.id %>').attr('data-check', 'true')
+} else{
+
+}

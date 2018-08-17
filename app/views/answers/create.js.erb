@@ -5,6 +5,6 @@ if ("<%= @answer.parent_id %>" == "") {
 	$('#ans-img-<%= @answer.root.id %>').html("<%= @answer.user.name %>:")
 	$('#ans-cnt-<%= @answer.root.id %>').html("<%= @answer.content %>")*/
 	const userPhoto = $("#user-photo").html();
-	$('#new-ans-<%= @answer.root.id %>').prepend("<div class='col-4 border-top ml-4 mb-1 mt-2'>" + userPhoto + "</div><div class='col-7 border-top mb-1 mt-2'><%= @answer.content %></div>")	
+	$('#new-ans-<%= @answer.root.id %>').prepend("<div class='col-4 border-top ml-4 mb-1 mt-2'>" + userPhoto + "</div><div class='col-5 border-top mb-1 mt-2'><%= @answer.content %></div>")	
 	$('.form-field').val("")
 }

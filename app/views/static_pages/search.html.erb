@@ -6,7 +6,7 @@
 <div class="row mt-2">
 
 	<% if @wads.present? %>
-		<div class="col-8">
+		<div class="col-md-8 col-xs-12">
 			<h4 class="text-center">Wads</h4>
 			<% @wads.each do |wad| %>
 				<%= render wad %>
@@ -15,7 +15,7 @@
 	<% end %>
 
 	<% if @users.present? %>
-		<div class="col-4">
+		<div class="col-md-4 col-xs-12">
 			<h4 class="text-center">Users</h4>
 			<% @users.each do |user| %>
 					<%= render user %>
@@ -24,7 +24,7 @@
 	<% end %>
 
 	<% if @discussions.present? %>
-		<div class="col-8">
+		<div class="col-md-8 col-xs-12">
 			<h4 class="text-center">Discussions</h4>
 			<% @discussions.each do |discussion| %>
 				<%= render discussion %>
