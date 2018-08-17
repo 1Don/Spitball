@@ -1,13 +1,10 @@
 <%= link_to discussions_path do %>
     <button class="navbutton mt-4 shadow-sm"><%= fa_icon("arrow-left 2x") %></button>
 <% end %>
-
-
+<h4 class="d-block d-sm-none mx-auto">Start a discussion thread!</h4>
 <div class="row">
-  <div class="col-6 mx-auto">
-    <h1> Start a discussion thread! </h1>
-
-
+  <div class=" mx-auto">
+    <h1 class="d-none d-sm-block"> Start a discussion thread! </h1>
 
        <%= form_for @discussion do |f| %>
                       <%= f.label :category %>
@@ -26,11 +23,13 @@
                                   ),
                                   {},
                                   class: 'form-control form-control-sm' %>
-
-    <div class="col-6">  
+    <div class="col-12">  
         <div class="form-group">
           <%= f.label :content %>
-          <%= f.text_area :content, class: 'form-control', style: "resize: none;" %>
+          <%= f.text_area :content, class: 'form-control d-none d-sm-block', style: "resize: none;" %>
+        </div>
+        <div>
+          <%= f.text_field :content, class: 'form-control d-block d-sm-none col-12' %>
         </div>
 
         <%= f.submit "Submit", class: 'Spitballbutton' %>
