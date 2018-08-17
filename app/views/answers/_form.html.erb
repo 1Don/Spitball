@@ -1,9 +1,9 @@
 <%= form_for([@discussion, @answer], remote: true) do |f| %>
-	<div class="col-12 mx-auto row">
+	<div class="col-12 row">
 	      <div class="col-4">
-	       <%= f.submit 'Comment', class: 'text-center commentBtn btn-sm', id: "btn" %>
+	       <%= f.submit 'Reply', class: 'text-center commentBtn btn-sm', id: "btn" %>
 	   	  </div>
-	      <div class="col-8">
+	      <div class="col-7">
 	        <%= f.text_field :content, class: 'form-control form-control-sm form-field' %>
 	        <%= f.hidden_field :discussion_id %>
 	        <%= f.hidden_field :parent_id, class: "hid-field" %>

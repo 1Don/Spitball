@@ -55,7 +55,14 @@ $(document).on('turbolinks:load', function() {
 		$('#comment-tab-open').html(orig)
 	})
 })
-
+$(document).on('turbolinks:load', function() {
+	$('#discussion-panel').mouseover(function(){
+		$('#discussion-trash').css("display", "block");
+	});
+	$('#discussion-panel').mouseleave(function(){
+		$('#discussion-trash').css("display", "none");
+	});
+});
 var toggleModal = function(){
 	if ($('#signup-modal').css("display") == "none") {
 		$('#signup-modal').css("display", "block")

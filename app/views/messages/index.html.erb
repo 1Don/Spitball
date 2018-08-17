@@ -1,54 +1,37 @@
-	<div class="col-12 col-md-9">
-
-		
-
-				<% if @over_ten %>
-				 	<%= link_to "Show Earlier", '?m=all', class: "profile-link" %>
-				<% end %>
-
-
-				<div class="ui-segment convo-container">
-
-						<% @messages.each do |message| %>
-						<% if message.body %>
-						 <% user = User.find(message.user_id) %>
-							  <div class="mt-3">   
-								       	 <strong><%= user.first_name %></strong>
-								 			<div class="content">
-								         		<%= simple_format(message.body) %>
-									      	</div>
-									  
-							   </div>
-						<% end %>
-						<% end %>
-
-	
-				</div>
-
-
-
-
-
-
-			<div class="message-action">
-
-					<%= form_for [@conversation, @message], html: {class: "form-horizontal"}, remote: true  do|f| %>
-
-					
-					   <%= f.text_area :body, id: "message-form", class: "message-box" %>
-			
-				
-					  <button type="submit", class="send-button">
-					 	<i class="nav-link fa fa-paper-plane"></i>
-					 </button>
-
-
-					 <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-
-					<% end %>
-			 </div>
-		</div>
+<div class="col-12 col-md-9">
+	<% if @over_ten %>
+	 	<%= link_to "Show Earlier", '?m=all', class: "profile-link" %>
+	<% end %>
+	<div class="ui-segment convo-container">
+		<% @messages.each do |message| %>
+			<% if message.body %>
+			 <% user = User.find(message.user_id) %>
+				  <div class="mt-3">   
+			       	 <strong><%= user.first_name %></strong>
+			 			<div class="content">
+			         		<%= simple_format(message.body) %>
+				      	</div>
+				   </div>
+			<% end %>
+		<% end %>
+	<div id="new-message">
 	</div>
+	</div>
+
+	<div class="message-action">
+		<%= form_for [@conversation, @message], html: {class: "form-horizontal"}, remote: true  do|f| %>
+		   <%= f.text_area :body, id: "message-form", class: "message-box d-none d-sm-block" %>
+		   <%= f.text_area :body, id: "message-form", class: "message-box d-block d-sm-none col-8" %>
+		 <button type="submit", class="send-button d-none d-sm-block">
+		 	<i class="nav-link fa fa-paper-plane"></i>
+		 </button>
+		 <button type="submit", class="send-button d-block d-sm-none">
+		 	<i class="nav-link fa fa-paper-plane"></i>
+		 </button>			 
+		 <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+		<% end %>
+	 </div>
+</div>
 
 
 
