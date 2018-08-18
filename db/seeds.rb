@@ -11,4 +11,3 @@ User.create!([{name: 'iThompkins',
 			   password_confirmation: 'foobar', 
 			   first_name:'Nick', 
 			   last_name: 'Morgan'}])
-Wad.create!([{},{}])
