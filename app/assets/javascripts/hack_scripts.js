@@ -62,6 +62,7 @@ $(document).on('turbolinks:load', function() {
 	$('#discussion-panel').mouseleave(function(){
 		$('#discussion-trash').css("display", "none");
 	});
+
 });
 var toggleModal = function(){
 	if ($('#signup-modal').css("display") == "none") {

@@ -29,6 +29,7 @@ gem 'omniauth', '~> 1.6.1'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

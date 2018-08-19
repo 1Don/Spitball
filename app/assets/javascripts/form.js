@@ -13,4 +13,7 @@ function toggleInfo(id) {
 
 $(document).on('turbolinks:load', function(){
     $('[data-toggle="tooltip"]').tooltip(); 
+    $('#friends').autocomplete({
+    	source: ["billy","todd", "george"]
+    })
 });

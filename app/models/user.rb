@@ -106,6 +106,7 @@ class User < ApplicationRecord
     self.save
   end
 
+  #Sees if user has a friendship with another user
   def friends_with?(user)
     self.friends.all.each do |f|
       if f == user
@@ -116,6 +117,14 @@ class User < ApplicationRecord
     end 
   end
 
+  #Sees if user has a conversation with another user
+  def conversation_with?(user)
+    if Conversation.between(self.id, user.id).exists?
+      return true
+    else
+      return false
+    end
+  end
 
   private
 

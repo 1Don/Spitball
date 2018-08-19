@@ -103,7 +103,7 @@ Rails.application.routes.draw do
     resources :messages
    end
 
-
+  resources :friends
   resources :notifications do
     collection do
       post :mark_as_read
