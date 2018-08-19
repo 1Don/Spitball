@@ -1,11 +1,16 @@
-<div class="row row-sidebar">
-
-  <div class="col-12">
-
-        <%= render "message" %> 
-    
-    </ul>
-  </div>
+<div class="card col-4">
+<div class="border-bottom">
+  <div class="mt-2 mb-3">
+    <div class="d-inline ">
+      Users
+    </div>
+    <div class="float-right d-inline">
+      <%= form_tag(autocomplete_friends_path, method: "get") do %>
+        <%= text_field_tag(:autocomplete_friends) %>
+        <%= submit_tag("look up") %>
+      <% end %>
+    </div>
+  </div>      
 </div>
-
-
+  <%= render "conversations/conversation_list" %>
+</div>

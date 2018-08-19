@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   get '/terms', to: 'static_pages#terms'
-
+  get '/autocomplete_friends', to: 'conversations#autocomplete_friends'
 
 #Twitter callbacks
   match '/auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
@@ -93,11 +93,11 @@ Rails.application.routes.draw do
 
 
 #Defining routes for user profile navigation
-    get    '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments
-    get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
+  get    '/users/:id/profile_comments', to: 'users#profile_comments', as: :profile_comments
+  get    '/users/:id/profile_mail', to: 'users#profile_mail', as: :profile_mail
 
 #Defining routes for search navigation
-    get    '/search', to: 'static_pages#search'
+  get    '/search', to: 'static_pages#search'
 
   resources :conversations do
     resources :messages

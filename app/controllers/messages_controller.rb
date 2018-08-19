@@ -14,17 +14,25 @@ class MessagesController < ApplicationController
 		   @messages = @messages[-10..-1]
 	 	  end
 
-	 if params[:m]
-		   @over_ten = false
-		   @messages = @conversation.messages
-	 end
-
-	if @messages.last
-		  if @messages.last.user_id != current_user.id
-		   @messages.last.read = true;
+		  if params[:m]
+				@over_ten = false
+				@messages = @conversation.messages
 		  end
-	end
-		@message = @conversation.messages.new
+
+			if @messages.last
+				  if @messages.last.user_id != current_user.id
+				   @messages.last.read = true;
+				  end
+			end
+			@message = @conversation.messages.new
+
+
+		 @conversationalists = []
+		 User.all.each do |person|
+		 	if person.conversation_with?(current_user)
+		 		@conversationalists.push(person)
+		 	end
+		 end			
 	end
 
 
@@ -34,9 +42,8 @@ class MessagesController < ApplicationController
 
 
 	def create
-		 @message = @conversation.messages.new(message_params)
+		 @message = @conversation.messages.build(message_params)
 		 @message.save
-
 	end
 
 
@@ -49,7 +56,7 @@ class MessagesController < ApplicationController
 
 
 	 def message_params
-	  	params.require(:message).permit(:body, :user_id, :message)
+	  	params.require(:message).permit(:body, :user_id)
 	 end
 
 	 def find_conversation

@@ -1,27 +1,42 @@
-<div class="col-12 col-md-9">
-  <div class="row">
-    <div class="col-12 d-flex align-items-center mb-3">
-      <span class="h2">
-        Start a Chat!
-      </span>
-    </div>
-
-    <%# The display for all wads%>
-    <div class=" mb-4">
-      <div class="card">
-        <div class="card-header">
+<%# The display for all wads%>
+<div class="row col-12 mt-4">
+  <div class="card col-4">
+    <div class="border-bottom">
+      <div class="mt-2 mb-3">
+        <div class="d-inline ">
           Users
         </div>
-
-
-     <input id="autocomplete-friends">
-          <%= render "conversation_list" %>
+        <div class="float-right d-inline">
+          <%= form_tag(autocomplete_friends_path, method: "get") do %>
+            <%= text_field_tag(:autocomplete_friends) %>
+            <%= submit_tag("look up") %>
+          <% end %>
+        </div>
+      </div>      
+    </div>
+      <%= render "conversation_list" %>
+  </div>
+  <div class="col-8">
+    <div class="card full-height">
+      <div class="card-header">
         
-
+      </div>
+      <div class="card-body">
+        
+      </div>
+      <div class="w-100">
+        <form class="form-horizontal">
+          <textarea id="message-form" class="message-box d-none d-sm-block"></textarea>
+          <textarea id="message-form" class="message-box d-block d-sm-none col-8"></textarea>     
+            <button type="submit", class="send-button d-none d-sm-block send-height-width">
+            <i class="nav-link fa fa-paper-plane"></i>
+            </button>
+            <button type="submit", class="send-button d-block d-sm-none send-height-width">
+            <i class="nav-link fa fa-paper-plane"></i>
+            </button> 
+            <input type="hidden" value="<%= current_user.id %>">
+        </form>         
       </div>
     </div>
   </div>
 </div>
-
-
-
