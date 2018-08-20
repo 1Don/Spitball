@@ -1,3 +1,9 @@
+<div class="d-block d-sm-none mb-5">
+	<%= form_tag(autocomplete_friends_path, method: "get") do %>
+		<%= text_field_tag(:autocomplete_friends) %>
+		<%= submit_tag("look up") %>
+	<% end %>
+</div>
 <div class="col-12 card ">	
 	<div class="card-header">
 		
@@ -12,7 +18,7 @@
 				<% if message.body %>
 				 <% user = User.find(message.user_id) %>
 					  <div class="mt-3">   
-				       	 <strong><%= user.first_name %></strong>
+				       	 <strong><%= user.first_name %> sent at <%= message.created_at.strftime("%-I:%M %Z") %></strong>
 				 			<div class="content">
 				         		<%= simple_format(message.body) %>
 					      	</div>

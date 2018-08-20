@@ -48,11 +48,16 @@ class ConversationsController < ApplicationController
 	end
 
 	def autocomplete_friends
-		search_conversation = Conversation.between(User.find_by_name(params[:autocomplete_friends]).id, current_user.id)
-		if !search_conversation[0].nil?
-			redirect_to conversation_messages_path(search_conversation[0].id)
+		if User.find_by_name(params[:autocomplete_friends])
+			search_conversation = Conversation.between(User.find_by_name(params[:autocomplete_friends]).id, current_user.id)
+			if !search_conversation[0].nil?
+				redirect_to conversation_messages_path(search_conversation[0].id)
+			else
+				create
+			end
 		else
-			create
+			redirect_back(fallback_location: conversations_path)
+			flash[:notice] = "You don't have any friends named #{params[:autocomplete_friends]}."
 		end
 	end		
 
