@@ -98,7 +98,12 @@ class AnswersController < ApplicationController
 		@discussion = Discussion.find(params[:discussion_id])
 		@discussion.toggle!(:resolved)
 	end
-
+	def flag
+		unless current_user.flags.find_by(answer_id: params[:id])
+			flag = current_user.flags.build(answer_id: params[:id])
+			flag.save
+		end
+	end
 
 
 private

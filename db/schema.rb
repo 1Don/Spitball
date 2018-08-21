@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809052218) do
+ActiveRecord::Schema.define(version: 20180820234139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,23 @@ ActiveRecord::Schema.define(version: 20180809052218) do
     t.string "category"
     t.index ["user_id", "created_at"], name: "index_discussions_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_discussions_on_user_id"
+  end
+
+  create_table "flags", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "wad_id"
+    t.bigint "comment_id"
+    t.bigint "discussion_id"
+    t.bigint "answer_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_flags_on_answer_id"
+    t.index ["comment_id"], name: "index_flags_on_comment_id"
+    t.index ["discussion_id"], name: "index_flags_on_discussion_id"
+    t.index ["user_id", "wad_id", "comment_id", "discussion_id", "answer_id"], name: "by_flagged_content_id", unique: true
+    t.index ["user_id"], name: "index_flags_on_user_id"
+    t.index ["wad_id"], name: "index_flags_on_wad_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -194,6 +211,11 @@ ActiveRecord::Schema.define(version: 20180809052218) do
   add_foreign_key "conversations", "users", column: "recipient_id"
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "discussions", "users"
+  add_foreign_key "flags", "answers"
+  add_foreign_key "flags", "comments"
+  add_foreign_key "flags", "discussions"
+  add_foreign_key "flags", "users"
+  add_foreign_key "flags", "wads"
   add_foreign_key "friend_requests", "users"
   add_foreign_key "friend_requests", "users", column: "friend_id"
   add_foreign_key "wads", "users"

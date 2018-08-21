@@ -75,6 +75,13 @@ class DiscussionsController < ApplicationController
 		end
 	end
 
+	def flag
+		unless current_user.flags.find_by(discussion_id: params[:id])
+			flag = current_user.flags.build(discussion_id: params[:id])
+			flag.save
+		end
+	end
+
 #Question types
 	def fundraising
 		@discussions = Discussion.where("category like ?", "%Fundraising%").paginate(page: params[:page], per_page: 20)

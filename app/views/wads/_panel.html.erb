@@ -10,8 +10,11 @@
         <% end %>
 		<% if current_user == @wad.user %>
 		<span id="trash-<%= @wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(@wad), method: :delete, remote: true%></span>
-		<% end %>        		
-	</div>	
+		<% end %> 
+	</div>
+	<div class="ml-2 mt-1">	
+		<%= link_to fa_icon('flag', class: 'profile-link'), flag_wad_path(@wad), remote: true %>
+	</div>  
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-2 col-xs-4">
@@ -24,7 +27,7 @@
 	            <% end %>
 			</div>
 
-			<div class="col-md-10 small mt-3 text-justify">
+			<div class="col-md-10 small text-justify">
 		        <h6 class="mt-3 d-none d-md-block"><%= @wad.problem_state %></h6>
 		        <h6 class="mt-1 text-center d-block d-sm-none"><%= @wad.problem_state %></h6>
 		        <p class="small d-block d-sm-none"><%= simple_format(@wad.long_form) %></p>		        

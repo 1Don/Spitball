@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#show'
 
 
+
   get '/terms', to: 'static_pages#terms'
   get '/autocomplete_friends', to: 'conversations#autocomplete_friends'
 
@@ -114,11 +115,13 @@ Rails.application.routes.draw do
 
   resources :discussions do
     member do
+        get "flag", to: "discussions#flag"
         put "like", to: "discussions#upvote"
         put "dislike", to: "discussions#downvote"
         patch :solved
     end
       resources :answers do
+        get "flag", to: "answers#flag"
         put "like", to: "answers#upvote"
         put "dislike", to: "answers#downvote"
       end
@@ -127,11 +130,13 @@ Rails.application.routes.draw do
 
   resources :wads do
     member do
+        get "flag", to: "wads#flag"
         put "like", to: "wads#upvote"
         put "dislike", to: "wads#downvote"
         post '/collab', to: 'wads#join'
     end
       resources :comments do
+        get "flag", to: "comments#flag"
         put "like", to: "comments#upvote"
         put "dislike", to: "comments#downvote"
       end

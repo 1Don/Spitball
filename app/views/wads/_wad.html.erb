@@ -12,6 +12,9 @@
        <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => wad.user), :method => :post %>     
       <% end %>            
     </div>  
+  <div class="ml-2 mt-1"> 
+    <%= link_to fa_icon('flag', class: 'profile-link'), flag_wad_path(wad), remote: true %>
+  </div> 
   <div class="row">
     <div class="col-md-2 h-25 text-center">
         <%= link_to wad_comments_path(wad) do %>

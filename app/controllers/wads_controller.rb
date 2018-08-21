@@ -91,6 +91,13 @@ class WadsController < ApplicationController
 		redirect_to wad_comments_path(Wad.find(params[:id]))
 	end
 
+	def flag
+		unless current_user.flags.find_by(wad_id: params[:id])
+			flag = current_user.flags.build(wad_id: params[:id])
+			flag.save
+		end
+	end
+
 #category views
 	def consumertech
 		@wads = Wad.where("category like ?", "%Consumer Tech%").paginate(page: params[:page], per_page: 20)

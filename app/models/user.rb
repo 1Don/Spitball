@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :flags
   has_many :identities, dependent: :destroy
   has_many :conversations
   has_many :messages, dependent: :destroy

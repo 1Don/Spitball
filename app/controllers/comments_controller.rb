@@ -98,6 +98,13 @@ class CommentsController < ApplicationController
 		current_user.update_attributes(points: current_user.points - 5) 
 	end
 
+	def flag
+		unless current_user.flags.find_by(comment_id: params[:comment_id])
+			flag = current_user.flags.build(comment_id: params[:comment_id])
+			flag.save
+		end
+	end	
+
 private
 
 	def comment_params

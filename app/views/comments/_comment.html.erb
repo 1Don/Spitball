@@ -29,6 +29,7 @@
 			</div>
 		</div>
 		<div class="col-2 mt-4">
+    		<%= link_to fa_icon('flag', class: 'profile-link mr-2 align-middle'), wad_comment_flag_path(@wad, comment), remote: true %>
 			<span class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic mr-3") %> </span>
 		</div>	
 	</div>
@@ -64,6 +65,8 @@
 						<% end %>
 					</div>					
 					<div class="">
+				    	<%= link_to fa_icon('flag', class: 'profile-link mr-2 align-middle'), wad_comment_flag_path(@wad, c), remote: true %>
+		
 						<span class="child-cmt pointer" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
 						<% if current_user == c.user %>
 							<span id="trash-<%= c.id %>" class="cmt-trash trash "><%= link_to fa_icon("trash", class: "profile-link"), [c.wad , c], method: :delete, remote: true %></span>

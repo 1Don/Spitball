@@ -11,6 +11,9 @@
 	    <% end %>		
 	</div>	
 	<div class="card-body">
+		<div class="ml-2 mt-1">	
+			<%= link_to fa_icon('flag', class: 'profile-link'), flag_discussion_path(@discussion), remote: true %>
+		</div> 
 		<div class="row">
 			<div class="col-3 text-center small">
 		      	<%= link_to user_path(@discussion.user), class: "profile-link" do %>

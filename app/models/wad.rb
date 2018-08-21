@@ -11,6 +11,7 @@ class Wad < ApplicationRecord
   has_many :users, through: :comments
   has_many :collaborations
   has_many :users, through: :collaborations
+  has_many :flags  
 #Search Functionality
  def self.search(search)
     where("problem_state LIKE ? OR long_form LIKE ? OR tags LIKE ? OR user LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%") 
