@@ -102,6 +102,7 @@ class AnswersController < ApplicationController
 		unless current_user.flags.find_by(answer_id: params[:id])
 			flag = current_user.flags.build(answer_id: params[:id])
 			flag.save
+			AdminMailer.flag_notice(wad_path(Answer.find(params[:id]))).deliver_now
 		end
 	end
 

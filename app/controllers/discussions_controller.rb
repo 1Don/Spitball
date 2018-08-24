@@ -79,6 +79,7 @@ class DiscussionsController < ApplicationController
 		unless current_user.flags.find_by(discussion_id: params[:id])
 			flag = current_user.flags.build(discussion_id: params[:id])
 			flag.save
+			AdminMailer.flag_notice(wad_path(Discussion.find(params[:id]))).deliver_now
 		end
 	end
 

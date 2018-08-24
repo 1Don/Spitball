@@ -102,6 +102,7 @@ class CommentsController < ApplicationController
 		unless current_user.flags.find_by(comment_id: params[:comment_id])
 			flag = current_user.flags.build(comment_id: params[:comment_id])
 			flag.save
+			AdminMailer.flag_notice(wad_path(Wad.find(params[:comment_id]))).deliver_now
 		end
 	end	
 
