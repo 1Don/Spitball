@@ -27,33 +27,24 @@ function setProfileLinks(id) {
 
 //Toggles reply tree on and off
 function toggleReply(id) {
-	var reply = document.getElementById('reply-' + id);
-	if (reply.style.display == "block") {
-		reply.style.display = "none";
+	if ($('#reply-' + id).is(":hidden")){
+		$('.reply-hide-area').slideUp()
+		$('#reply-' + id).slideToggle()
 	} else {
-		$('.reply-hide').css("display", "none");
-		reply.style.display = "block";
+		$('#reply-' + id).slideUp()
 	}
 }
 
-function showTrash(id) {
-	$('#trash-' + id).css("display", "block");
-}
-function hideTrash(id) {
-	$('#trash-' + id).css("display", "none");
-}
 //Gives each parent_id hidden field its ID
 function setVal(id) {
 	$('.hid-field').attr('value', id);
 };
-
 function setFormId(id) {
 	$('.form-field').attr('id', "form-field-" + id);
-}
-
+};
 function setReply(id, user) {
 	$('.form-field').val("@" + user + " ");
-}
+};
 //Runs all setters
 function execReply(id){
 	$('.form-field').val(null);

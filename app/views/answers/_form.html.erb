@@ -1,12 +1,28 @@
 <%= form_for([@discussion, @answer], remote: true) do |f| %>
-	<div class="col-12 row">
-	      <div class="col-4">
-	       <%= f.submit 'Reply', class: 'text-center commentBtn btn-sm', id: "btn" %>
-	   	  </div>
-	      <div class="col-7">
+	<div class="ml-5 d-none d-sm-block">
+		<div class="row">
+		      <div class="col-md-10">
+		        <%= f.text_field :content, class: 'form-control form-control-sm form-field' %>
+		        <%= f.hidden_field :discussion_id %>
+		        <%= f.hidden_field :parent_id, class: "hid-field" %>
+		      </div>
+		      <div class="col-md-2">
+		       <%= f.submit 'Reply', class: 'text-center commentBtn btn-sm float-right', id: "btn" %>
+		   	  </div>
+		</div>	      
+	</div>
+<% end %>
+<%= form_for([@discussion, @answer], remote: true) do |f| %>
+	<div class="ml-5 d-block d-sm-none">
+		<div class="row">
+	      <div class="col-xs-9">
 	        <%= f.text_field :content, class: 'form-control form-control-sm form-field' %>
 	        <%= f.hidden_field :discussion_id %>
 	        <%= f.hidden_field :parent_id, class: "hid-field" %>
 	      </div>
+	      <div class="col-xs-3">
+	       <%= f.submit 'Reply', class: 'text-center commentBtn btn-sm float-right', id: "btn" %>
+	   	  </div>
+	   	 </div>	      
 	</div>
 <% end %>

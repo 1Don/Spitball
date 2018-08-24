@@ -1,19 +1,23 @@
-<div onmouseover='showTrash("<%= wad.id %>")' onmouseleave='hideTrash("<%= wad.id %>")' class="card mb-4 wad-shadow"  style="border-radius: 10px; border-width: thin;">
-    <div class="card-header col-md-5 text-center d-block d-sm-none">
+<div onmouseover='$(".hidden_wad_<%= wad.id %>_icon").show()' onmouseleave='$(".hidden_wad_<%= wad.id %>_icon").hide()' class="card mb-4 wad-shadow"  style="border-radius: 10px; border-width: thin;">
+    <div onmouseover='$(".hidden_wad_<%= wad.id %>_icon-sm").show()' onmouseleave='$(".hidden_wad_<%= wad.id %>_icon-sm").hide()' class="card-header col-md-5 text-center d-block d-sm-none">
+      <%= link_to fa_icon('flag', class: "hidden_icon profile-link hidden_wad_" + wad.id.to_s + "_icon-sm float-left"), flag_wad_path(wad), remote: true %>      
       <% if wad.user.occupation.present? %>
           <span class="small mb-2"><%= link_to wad.user.name + " · " + wad.user.occupation, user_path(wad.user), class: "profile-link" %></span>
       <% else %>
           <span class="small mb-2"><%= link_to wad.user.name, user_path(wad.user), class: "profile-link" %></span>  
       <% end %>
       <% if current_user == wad.user %>
-        <span id="trash-<%= wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(wad), method: :delete, remote: true%></span>
+      <%= link_to fa_icon("trash", class: "hidden_icon profile-link float-right pointer hidden_wad_" + wad.id.to_s + "_icon-sm"), wad_path(wad), method: :delete, remote: true%>
       <% end %>
       <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
-       <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => wad.user), :method => :post %>     
+       <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => wad.user), :method => :post %> 
       <% end %>            
     </div>  
-  <div class="ml-2 mt-1"> 
-    <%= link_to fa_icon('flag', class: 'profile-link'), flag_wad_path(wad), remote: true %>
+  <div class="ml-2 mt-1 d-none d-sm-block">
+      <%= link_to fa_icon('flag', class: "hidden_icon profile-link hidden_wad_" + wad.id.to_s + "_icon float-left"), flag_wad_path(wad), remote: true %>  
+      <% if current_user == wad.user %>
+      <%= link_to fa_icon("trash", class: "hidden_icon profile-link float-right pointer hidden_wad_" + wad.id.to_s + "_icon"), wad_path(wad), method: :delete, remote: true%>
+      <% end %>
   </div> 
   <div class="row">
     <div class="col-md-2 h-25 text-center">

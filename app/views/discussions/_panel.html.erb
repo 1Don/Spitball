@@ -1,37 +1,28 @@
-<div id="discussion-panel" class="card mb-3">
-	<div class="card-header d-block d-sm-none">
+<div onmouseover='$(".hidden_discussion_icon").show()' onmouseleave='$(".hidden_discussion_icon").hide()' id="discussion-panel" class="card mb-3">
+	<div onmouseover='$(".hidden_discussion_icon-sm").show()' onmouseleave='$(".hidden_discussion_icon-sm").hide()' class="card-header d-block d-sm-none row-flex">
 		<span class="small"><%= link_to @discussion.user.name, user_path(@discussion.user), class: "profile-link small d-block d-sm-none" %></span>  			
 		<% if current_user == @discussion.user %>
-	      <span id="discussion-trash" class="trash mr-5"> <%= link_to fa_icon("trash", class: "profile-link pr-3"), discussion_path(@discussion), method: :delete, remote: true%></span>
+	      <span id="" class=""> <%= link_to fa_icon("trash", class: "hidden_icon profile-link float-right hidden_discussion_icon-sm"), discussion_path(@discussion), method: :delete, remote: true%></span>
 	    <% end %>
+	    <span><%= link_to fa_icon('flag', class: 'hidden_icon float-right mr-4 profile-link hidden_discussion_icon-sm'), flag_discussion_path(@discussion), remote: true %></span>
 	</div>
 	<div class="d-none d-sm-block">
 		<% if current_user == @discussion.user %>
-	      <span id="discussion-trash" class=""> <%= link_to fa_icon("trash", class: "profile-link ml-2 mt-1"), discussion_path(@discussion), method: :delete, remote: true%></span>
-	    <% end %>		
+	      <span id="" class=""> <%= link_to fa_icon("trash", class: "hidden_icon profile-link ml-2 mt-1 hidden_discussion_icon"), discussion_path(@discussion), method: :delete, remote: true%></span>
+	    <% end %>
+	    <%= link_to fa_icon('flag', class: 'hidden_icon profile-link float-right mr-3 mt-1 hidden_discussion_icon'), flag_discussion_path(@discussion), remote: true %>		
 	</div>	
 	<div class="card-body">
-		<div class="ml-2 mt-1">	
-			<%= link_to fa_icon('flag', class: 'profile-link'), flag_discussion_path(@discussion), remote: true %>
-		</div> 
 		<div class="row">
 			<div class="col-3 text-center small">
-		      	<%= link_to user_path(@discussion.user), class: "profile-link" do %>
-		      		<%= image_tag @discussion.user.photo.url(:thumb), class: "img-fluid mt-1" %>
-				<% end %>
-			<%= link_to @discussion.user.name, user_path(@discussion.user), class: "profile-link d-none d-sm-block" %>
-			
+		      	<%= link_to image_tag(@discussion.user.photo.url(:thumb), class: "rounded-circle img-fluid mt-1"), user_path(@discussion.user) %>
+				<%= link_to @discussion.user.name, user_path(@discussion.user), class: "profile-link d-none d-sm-block" %>
 			</div>	
-		
-		<div class="col-9">
+			
+			<div class="col-9 mt-2">
 				<%= @discussion.content %>
+			</div>
 		</div>
 	</div>
-
-
-
-
 	<%= render 'discussions/actions', discussion: @discussion %>
 </div>
-
-

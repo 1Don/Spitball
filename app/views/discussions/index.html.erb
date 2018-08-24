@@ -5,6 +5,14 @@
 		</div>
 
 		<div class="col-md-8 col-xs-12">
+			<div class=" d-block d-sm-none">
+				<div>
+					<span class="ml-3">Question Categories</span><button id="disc_nav_btn"><%= fa_icon("caret-down") %></button>
+				</div>
+				<p id="disc_nav_menu">
+					<%= render "discussions/sidebar" %>
+				</p>
+			</div>
 			<div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-6 mb-5 d-none d-sm-block">
@@ -12,13 +20,9 @@
 							Spread the Knowledge 
 					   </span>
 					</div>
-					<div class="col-xs-3 col-sm-12 col-md-7 mb-5 d-block d-sm-none">
-						<span class="h2"> 
-							Q & A 
-					   </span>
-					</div>					
+				
 					<div class="col-md-4 col-xs-8">
-						<span>
+						<span class="d-none d-sm-block">
 							<%= link_to new_discussion_path do %>
 					   			 <button class="newbutton mt-4 shadow-sm small">Question?</button>
 							<% end %>
@@ -30,8 +34,10 @@
 				<div class="card">
 					<div class="card-header">
 						<div class="row">
-							<div class="col-6">
-								<h4>Questions</h4>
+							<div class="col-6 d-block d-sm-none">
+								<%= link_to new_discussion_path do %>
+						   			 <button class="comment-btn mt-4 shadow-sm small">Question?</button>
+								<% end %>
 							</div>
 						</div>				
 					</div>

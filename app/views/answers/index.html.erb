@@ -10,15 +10,20 @@
 			</div>
 
 			<div class="card">
-				<div class="card-header">
+				<div class="card-header d-none d-sm-block">
 					<%= form_for [@discussion, @discussion.answers.build], class: 'form-inline', remote: true  do |f| %>
 					<%= f.hidden_field :discussion_id %>
-					<%= f.label :content, class: 'sr-only' %>
-					<span class="d-none d-sm-block"><%= f.text_field :content, class: 'form-control mr-2 d-inline ', placeholder: 'Have any suggestions?' %></span>
-					<span class="d-block d-sm-none"><%= f.text_field :content, class: 'form-control mr-2 d-inline', placeholder: 'Have any suggestions?' %></span>		
-					<%= f.submit 'Answer', class: 'newbutton mx-auto', disable_with: 'Sending' %>
+					<span class="d-none d-sm-block"><%= f.text_area :content, class: 'form-control mr-2 d-inline ', style: "resize:none;", placeholder: 'Have any suggestions?' %></span>	
+					<%= f.submit 'Answer', class: 'newbutton float-right d-none d-sm-block', disable_with: 'Sending' %>
 				  <% end %>
 				</div>
+				<div class="card-header d-block d-sm-none">
+					<%= form_for [@discussion, @discussion.answers.build], class: 'form-inline', remote: true  do |f| %>
+					<%= f.hidden_field :discussion_id %>
+					<span class="d-block d-sm-none"><%= f.text_area :content, class: 'form-control mr-2 d-inline', style: "resize:none;", placeholder: 'Have any suggestions?' %></span>		
+					<%= f.submit 'Answer', class: 'newbutton mx-auto d-block d-sm-none', disable_with: 'Sending' %>
+				  <% end %>
+				</div>				
 			</div>
 		
 			<div class="list-group list-group-flush">

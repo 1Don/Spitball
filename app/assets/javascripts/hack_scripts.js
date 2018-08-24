@@ -6,6 +6,7 @@ function sendPost() {
 //Hacks for landing page scroll
 
 $(document).on('turbolinks:load', function() {
+	//Scrolls from landing button to about
 	$("#landing-btn").click(function() {
 	    $('html,body').animate({
 	        scrollTop: $("#what-we-do").offset().top},
@@ -44,17 +45,8 @@ $(document).on('turbolinks:load', function() {
 			}
 		}
 	});	
-	const orig = $('#comment-tab-open').html()
-	$('#comments-display').hide()
-	$('#comment-tab-open').click(function(){
-		$('#comments-display').show();
-		$('#comment-tab-open').html('')
-	});
-	$('#comment-tab-close').click(function(){
-		$('#comments-display').hide()
-		$('#comment-tab-open').html(orig)
-	})
 })
+
 $(document).on('turbolinks:load', function() {
 	$('#discussion-panel').mouseover(function(){
 		$('#discussion-trash').css("display", "block");
@@ -62,12 +54,4 @@ $(document).on('turbolinks:load', function() {
 	$('#discussion-panel').mouseleave(function(){
 		$('#discussion-trash').css("display", "none");
 	});
-
 });
-var toggleModal = function(){
-	if ($('#signup-modal').css("display") == "none") {
-		$('#signup-modal').css("display", "block")
-	} else {
-		$('#signup-modal').css("display", "none")
-	}
-};

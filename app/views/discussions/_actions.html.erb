@@ -1,8 +1,5 @@
-<div class="col-md-8 col-12 row text-center">
-
-	<div class="col-12 text-right">
-
-	    
+<div>
+	<div class="float-right mr-3">
 	    <% if current_user.voted_down_on? discussion %>
 	    	<span id="discussion-vote-span-<%= discussion.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_discussion_path(discussion), method: :put, remote: true %></span>
 	   	<% elsif !current_user.voted_for? discussion %>
@@ -13,3 +10,4 @@
 	     	<span data-check="<%= current_user.liked? discussion %>" id="discussion-like-<%= discussion.id %>" class="nowrap"> <%= discussion.get_upvotes.size %> </span>
     </div>
 </div>
+

@@ -1,5 +1,6 @@
-<div onmouseover='showTrash("<%= @wad.id %>")' onmouseleave='hideTrash("<%= @wad.id %>")' class="card mb-3 panel-div" style="border-radius: 10px;">
-	<div class="card-header col-md-5 text-center d-block d-sm-none">
+<div onmouseover="$('.hidden_wad_icon').show()" onmouseleave="$('.hidden_wad_icon').hide()" class="card mb-3 panel-div" style="border-radius: 10px;">
+	<div onmouseover="$('.hidden_wad_icon').show()" onmouseleave="$('.hidden_wad_icon').hide()" class="card-header col-md-5 text-center d-block d-sm-none">
+		<%= link_to fa_icon('flag', class: 'float-left profile-link hidden_wad_icon'), flag_wad_path(@wad), remote: true %>		
 		<% if @wad.user.occupation.present? %>
 				<span class="small mb-2"><%= link_to @wad.user.name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>
 		<% else %>
@@ -9,11 +10,14 @@
          <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @wad.user), :method => :post %>     
         <% end %>
 		<% if current_user == @wad.user %>
-		<span id="trash-<%= @wad.id %>" class="trash"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_path(@wad), method: :delete, remote: true%></span>
+			<%= link_to fa_icon("trash", class: "profile-link pointer hidden_wad_icon float-right"), wad_path(@wad), method: :delete, remote: true%>
 		<% end %> 
 	</div>
-	<div class="ml-2 mt-1">	
-		<%= link_to fa_icon('flag', class: 'profile-link'), flag_wad_path(@wad), remote: true %>
+	<div class="ml-2 mt-1 d-none d-sm-block">	
+		<%= link_to fa_icon('flag', class: 'profile-link hidden_wad_icon'), flag_wad_path(@wad), remote: true %>
+		<% if current_user == @wad.user %>
+			<%= link_to fa_icon("trash", class: "profile-link pointer hidden_wad_icon float-right mr-2"), wad_path(@wad), method: :delete, remote: true%>
+		<% end %> 		
 	</div>  
 	<div class="card-body">
 		<div class="row">

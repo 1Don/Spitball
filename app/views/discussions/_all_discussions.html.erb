@@ -1,9 +1,6 @@
 <% @discussions.each do |discussion| %>
 	<% if discussion.parent_id.nil? && discussion.resolved == false %>
-		<div onmouseover='showTrash("<%= discussion.id %>")' onmouseleave='hideTrash("<%= discussion.id %>")' class="list-group-item">
-		  <div class="ml-2 mt-1"> 
-		    <%= link_to fa_icon('flag', class: 'profile-link'), flag_discussion_path(discussion), remote: true %>
-		  </div> 					
+		<div onmouseover='$(".hidden_discussion_<%= discussion.id %>_icon").show()' onmouseleave='$(".hidden_discussion_<%= discussion.id %>_icon").hide()' class="list-group-item"> 					
 		  <div class="row">
 			 <%= link_to discussion_answers_path(discussion), class: 'profile-link' do %>
 		  	 <div class="col-xs-12 col-md-12 mb-4 small">
@@ -11,7 +8,8 @@
 			 </div>
 	<% end %>
 
-			 <div class="actions col-3 small">			 	
+			 <div class="actions col-3 small">	
+			 		    <%= link_to fa_icon('flag', class: "mr-3 hidden_icon profile-link hidden_discussion_" + discussion.id.to_s + "_icon"), flag_discussion_path(discussion), remote: true %>		 	
 						<% if current_user.voted_down_on? discussion %>
 						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_discussion_path(discussion), method: :put, remote: true %></span>
 						<% elsif !current_user.voted_for? discussion %>

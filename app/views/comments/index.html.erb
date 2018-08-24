@@ -3,7 +3,7 @@
 		<%= render 'wads/panel' %>
 		<div class="mt-4">
 			<div id="" class="mb-3">
-				<div class="col-12 mb-3">
+				<div class=" mb-3">
 				  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline col-12 mx-auto' }, remote: true do |f| %>
 				    <%= f.hidden_field :wad_id %>
 
