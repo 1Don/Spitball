@@ -7,8 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all',                                              'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= render 'layouts/shim' %>    
-  </head>
+    <%= render 'layouts/shim' %>
+    <meta property="og:title" content="Spitball Site">
+    <meta property="og:description" content="Spitball Site">
+    <meta property="og:url" content="http://spitball.io/">    
+    </head>
 
   <body class="<%= params[:controller] %> <%= params[:action] %>" style="background-color: #f1f1f1">
     <div class=""><%= render 'layouts/header' %></div>
