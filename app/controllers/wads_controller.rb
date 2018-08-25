@@ -99,6 +99,12 @@ class WadsController < ApplicationController
 		end
 	end
 
+	def unflag
+		if Flag.find_by(wad_id: params[:id])
+			current_user.flags.find(Flag.find_by(wad_id: params[:id]).id).destroy
+		end 
+	end
+
 #category views
 	def consumertech
 		@wads = Wad.where("category like ?", "%Consumer Tech%").paginate(page: params[:page], per_page: 20)

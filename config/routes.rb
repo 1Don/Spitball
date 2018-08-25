@@ -131,6 +131,7 @@ Rails.application.routes.draw do
   resources :wads do
     member do
         get "flag", to: "wads#flag"
+        delete "unflag", to: "wads#unflag"
         put "like", to: "wads#upvote"
         put "dislike", to: "wads#downvote"
         post '/collab', to: 'wads#join'

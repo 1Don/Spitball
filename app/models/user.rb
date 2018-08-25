@@ -107,6 +107,13 @@ class User < ApplicationRecord
     self.save
   end
 
+  #Sees if user flagged object
+  def flagged?(object)
+    object.flags.each do |flag|
+      return flag.user == self ? true : false
+    end
+  end
+
   #Sees if user has a friendship with another user
   def friends_with?(user)
     self.friends.all.each do |f|

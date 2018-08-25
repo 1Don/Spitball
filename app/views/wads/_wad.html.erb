@@ -7,16 +7,20 @@
           <span class="small mb-2"><%= link_to wad.user.name, user_path(wad.user), class: "profile-link" %></span>  
       <% end %>
       <% if current_user == wad.user %>
-      <%= link_to fa_icon("trash", class: "hidden_icon profile-link float-right pointer hidden_wad_" + wad.id.to_s + "_icon-sm"), wad_path(wad), method: :delete, remote: true%>
+      <%= link_to fa_icon("trash", class: "hidden_icon profile-link float-right pointer hidden_wad_" + wad.id.to_s + "_icon-sm"), wad_path(wad), method: :delete, remote: true %>
       <% end %>
       <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
        <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => wad.user), :method => :post %> 
       <% end %>            
     </div>  
   <div class="ml-2 mt-1 d-none d-sm-block">
-      <%= link_to fa_icon('flag', class: "hidden_icon profile-link hidden_wad_" + wad.id.to_s + "_icon float-left"), flag_wad_path(wad), remote: true %>  
+    <% if current_user.flagged?(wad) %>
+      <%= link_to fa_icon('flag', class: "hidden_icon orange-text tiny-icon profile-link hidden_wad_" + wad.id.to_s + "_icon float-left", id: "wad_flag"), unflag_wad_path(wad), method: :delete, remote: true %>   
+    <% else %>
+      <%= link_to fa_icon('flag', class: "hidden_icon tiny-icon profile-link hidden_wad_" + wad.id.to_s + "_icon float-left", id: "wad_flag"), flag_wad_path(wad), remote: true %>    
+    <% end %>
       <% if current_user == wad.user %>
-      <%= link_to fa_icon("trash", class: "hidden_icon profile-link float-right pointer hidden_wad_" + wad.id.to_s + "_icon"), wad_path(wad), method: :delete, remote: true%>
+      <%= link_to fa_icon("trash", class: "hidden_icon tiny-icon profile-link float-right pointer hidden_wad_" + wad.id.to_s + "_icon"), wad_path(wad), method: :delete, remote: true%>
       <% end %>
   </div> 
   <div class="row">
@@ -58,12 +62,10 @@
             </div>
             <%# current way to display upvotes %>
             <div class="col-4 small">
-              <% if current_user.voted_down_on? wad %>
-                <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_wad_path(wad), method: :put, remote: true %></span>
-              <% elsif !current_user.voted_for? wad %>
-                <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_wad_path(wad), method: :put, remote: true %></span>        
+              <% if current_user.voted_down_on?(wad) || !current_user.voted_for?(wad)%>
+                <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_wad_path(wad), method: :put, remote: true %></span>  
               <% else %>
-                <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic svg-icon"), dislike_wad_path(wad), method: :put, remote: true %></span>
+                <span id="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic svg-icon"), dislike_wad_path(wad), method: :put, remote: true %></span>
               <% end %>
               <span class="small font-weight-light" data-check="<%= current_user.liked? wad %>" id="wad-like-<%= wad.id %>"><%= wad.get_upvotes.size %></span><span class="small font-weight-light"> votes</span>
             </div>
