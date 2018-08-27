@@ -1,11 +1,7 @@
 if ("<%= @comment.parent_id %>" == "") {
-	document.location.reload();		
+	document.location.reload();
 } else {
-	/*$('#cmt-form-<%= @comment.root.id %>').html("comment posted!")
-	$('#cmt-img-<%= @comment.root.id %>').html("<%= @comment.user.name %>:")
-	$('#cmt-cnt-<%= @comment.root.id %>').html("<%= @comment.content %>")*/
-	const userPhoto = $("#user-photo").html();
-	$('#new-cmt-<%= @comment.root.id %>').prepend("<div class='col-3 border-top ml-2 mb-1 mt-2'>" + userPhoto + "</div><div class='col-8 border-top mb-1 mt-2'><%= @comment.content %></div>")
+	$('#new-cmt-<%= @comment.root.id %>').prepend("<div class='col-10 mt-2 mb-1 small'> <%= link_to @comment.user.name, user_path(@comment.user) %><div class='col-12 border-bottom mb-1 mt-1'><%= @comment.content %></div></div>")
 	$('.form-field').val("")
 	$('.hid-field').attr('value', "<%= @comment.root.id %>");
 }

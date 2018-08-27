@@ -11,10 +11,10 @@ function setProfileLinks(id) {
 		comp = name[name.length - 1];
 		//will make DRYer at some point
 		if (comp ==="," || comp ==="!" || comp ==="?" || comp ==="@" || comp ==="#" || comp ==="$" || comp ==="%" || comp ==="^" || comp ==="&" || comp ==="*" || comp ==="(" || comp ===")" || comp ==="-" || comp ==="+" || comp ==="=" || comp ===";" || comp ===":" || comp ==="." || comp ==="<" || comp ===">") {
-			suffix = text.substring(prefix.length + name.length);			
+			suffix = text.substring(prefix.length + name.length);
 			cmts[i].innerHTML = prefix + name + suffix;
 		} else if (name[0] != "@") {
-			suffix = text.substring(prefix.length + name.length);			
+			suffix = text.substring(prefix.length + name.length);
 			cmts[i].innerHTML = prefix + name + suffix;
 		} else {
 			linked_name = name.link("/users/" + id);// <= this is the link that needs to be defined properly
@@ -44,6 +44,7 @@ function setFormId(id) {
 };
 function setReply(id, user) {
 	$('.form-field').val("@" + user + " ");
+	$('.form-field').focus();
 };
 //Runs all setters
 function execReply(id){

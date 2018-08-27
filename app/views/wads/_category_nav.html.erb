@@ -1,5 +1,5 @@
-<div class="row">	
-	<div class="col-6">	
+<div class="row">
+	<div class="col-6">
 		<% if @wads.first %>
 			<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
 				<span class="h4 font-weight-light d-none d-sm-block">
@@ -12,13 +12,13 @@
 			<% else %>
 				<span class="h2 font-weight-light">
 					<%= @wads.first.category %>
-				</span>		
+				</span>
 			<% end %>
 		<% else %>
 			NEEDS WADS
 		<% end %>
 	</div>
 	<div class="col-5">
-		<%= button_to "Gotta BIG Idea?", new_wad_path, class: "profile-link comment-btn", method: :get %>
+		<%= button_to "Gotta new Idea?", new_wad_path, class: "profile-link comment-btn", method: :get %>
 	</div>
 </div>

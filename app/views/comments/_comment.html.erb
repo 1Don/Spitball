@@ -1,93 +1,86 @@
-<div onmouseover='$(".hidden_comment_<%= comment.id %>_icon").show()' onmouseleave='$(".hidden_comment_<%= comment.id %>_icon").hide()' class="">
-	<% if current_user == comment.user %>
-		<%= link_to fa_icon("trash", class: "ml-1 hidden_icon profile-link hidden_comment_" + comment.id.to_s + "_icon"), [comment.wad , comment], method: :delete, remote: true %>
-	<% end %>
-	<%= link_to fa_icon('flag', class: "float-right mt-1 hidden_icon profile-link mr-2 align-middle hidden_comment_" + comment.id.to_s + "_icon"), wad_comment_flag_path(@wad, comment), remote: true %>	
+<div class="">
 	<div id="cmt-<%= comment.id %>" class="row mt-4">
-		<div class="col-2 ml-3">		
-			<div>		
+		<div class="col-2 ml-3">
+			<div>
 				<%= link_to image_tag(comment.user.photo(:thumb), class: "rounded-circle w-50"), user_path(comment.user) %>
 			</div>
 		</div>
 
-		<div class="col-7 small">
+		<div class="col-6 small">
 			<div class="small mb-3 mt-1">
 				<% if comment.user.occupation.present? %>
-					<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %> 
+					<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %>
 				<% else %>
-					<%= comment.user.first_name + " " + comment.user.last_name %> 
+					<%= comment.user.first_name + " " + comment.user.last_name %>
 				<% end %>
 			</div>
 			<div class="">
 				<%= comment.content %>
 			</div>
 		</div>
-		<div class="col-2 mt-2">
-			<% if current_user.voted_down_on? comment %>
-				<span id="vote-span-<%= comment.id %>"> <%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(comment.wad, comment), method: :put, remote: true %></span>
-			<% elsif !current_user.voted_for? comment %>
-				<span id="vote-span-<%=comment.id %>"> <%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(comment.wad, comment), method: :put, remote: true %></span>		
-			<% else %>
-				<span id="vote-span-<%= comment.id %>"> <%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_dislike_path(comment.wad, comment), method: :put, remote: true %></span>
-			<% end %>
-			<span class="small mt-1" data-check="child" id="like-<%= comment.id %>"><%= comment.get_upvotes.size %></span>
-			<span class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic mr-3") %></span>							
-		</div>	
+		<div class="col-2">
+			<div class="col-1 dropdown float-right">
+				<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<%= fa_icon('ellipsis-v') %>
+				</span>
+				<div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
+					<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, comment), remote: true, class: "profile-link" %></span>
+					<% if current_user.voted_down_on?(comment) || !current_user.voted_for?(comment) %>
+						<span class="dropdown-item" id="vote-span-<%= comment.id %>"> <%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic") + " Like!", wad_comment_like_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span>
+					<% else %>
+						<span class="dropdown-item" id="vote-span-<%= comment.id %>"> <%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic") + " unlike", wad_comment_dislike_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span>
+					<% end %>
+					<span class="pointer dropdown-item" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic") %> Comment</span>
+					<% if current_user == comment.user %>
+					<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_comment_path(@wad, comment), method: :delete, remote: true %>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div class="row no-gutters mt-4">	
-		<div id="reply-<%= comment.id %>" class="reply-hide-area mb-5 col-12">
-			<div id="cmt-form-<%= comment.id %>" class="mb-3">
+	<div class="row no-gutters mt-4">
+		<div id="reply-<%= comment.id %>" class="reply-hide-area col-12">
+			<div id="cmt-form-<%= comment.id %>" class="text-center">
 				<%= render 'form' %>
 			</div>
 
-			<div id="new-cmt-<%= comment.id %>" class="small row">
+			<div id="new-cmt-<%= comment.id %>" class="small col-10 mx-auto row">
 
 			</div>
 
 			<% comment.descendants.each do |c| %>
-				<div onmouseover='$(".hidden_comment_<%= c.id %>_icon").show()' onmouseleave='$(".hidden_comment_<%= c.id %>_icon").hide()' id="cmt-<%= c.id %>" class="small col-12 ml-1 border-top">
-					<div class=" row">
-						<div class="col-3">											
-							<%= link_to image_tag(c.user.photo(:thumb), class: "w-25 mt-2 mb-2 rounded-circle" ), user_path(c.user)%>
-						</div>
-						<div class="col-8 mt-2">
+				<div id="cmt-<%= c.id %>" class="small col-10 mx-auto border-bottom row">
+					<div class="col-10 mt-2 mb-1 small">
+						<% if !c.user.occupation || c.user.occupation == "" %><%= link_to c.user.name, user_path(c.user) %><%= " · "  + c.user.points.to_s %><% else %><%= link_to c.user.name , user_path(c.user) %><%= " · " + c.user.occupation %><%= " · "  + c.user.points.to_s %><% end %>
+						<div class="col-12 mt-1">
 							<% if c.parent == comment %>
 								<%= link_to c.content, user_path(c.user), class: "profile-link" %>
 							<% else %>
 								<%= link_to c.content, user_path(c.parent.user), class: "profile-link" %>
 							<% end %>
 						</div>
-					</div>					
-					<div class="d-none d-sm-block">
-				    	<%= link_to fa_icon('flag', class: "hidden_icon profile-link mr-2 align-middle hidden_comment_" + c.id.to_s + "_icon"), wad_comment_flag_path(@wad, c), remote: true %>
-						<% if current_user == c.user %>
-							<%= link_to fa_icon("trash", class: "hidden_icon profile-link hidden_comment_" + c.id.to_s + "_icon"), [c.wad , c], method: :delete, remote: true %>
-						<% end %>					    	
-						<span class="float-right mr-2" data-check="child" id="like-<%= c.id %>"><%= c.get_upvotes.size %></span>	  	
-						<% if current_user.voted_down_on? c %>
-							<span id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic float-right"), wad_comment_like_path(c.wad, c), method: :put, remote: true %></span>
-						<% elsif !current_user.voted_for? c %>
-							<span id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic float-right"), wad_comment_like_path(c.wad, c), method: :put, remote: true %></span>		
-						<% else %>
-							<span id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic float-right"), wad_comment_dislike_path(c.wad, c), method: :put, remote: true %></span>
-						<% end %>	
-							
-						<span class="child-cmt pointer float-right mr-3" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
-						<% if current_user == c.user %>
-							<span id="trash-<%= c.id %>" class="cmt-trash trash "><%= link_to fa_icon("trash", class: "profile-link"), [c.wad , c], method: :delete, remote: true %></span>
-						<% end %>	
 					</div>
-
-					<div class="d-block d-sm-none">
-						<% if current_user == c.user %>
-							<%= link_to fa_icon("trash", class: "hidden_icon profile-link hidden_comment_" + c.id.to_s + "_icon"), [c.wad , c], method: :delete, remote: true %>
-						<% end %>					
-				    	<%= link_to fa_icon('flag', class: "hidden_icon profile-link mr-2 align-middle hidden_comment_" + c.id.to_s + "_icon"), wad_comment_flag_path(@wad, c), remote: true %>
-		
-						<span class="child-cmt pointer" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>	
+					<div class="mt-3 col-1">
+						<div class="col-1 dropdown pointer">
+			        <span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <%= fa_icon('ellipsis-v') %>
+			        </span>
+			        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, c), remote: true, class: "profile-link" %></span>
+								<% if current_user.voted_down_on?(c) || !current_user.voted_for?(c) %>
+									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic") + " Like!", wad_comment_like_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span>
+								<% else %>
+									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic") + " Like!", wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span>
+								<% end %>
+								<span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Comment" %></span>
+								<% if current_user == c.user %>
+									<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_comment_path(@wad, c), method: :delete, remote: true %>
+								<% end %>
+			        </div>
+			      </div>
 					</div>
-				</div>				
+				</div>
 			<% end %>
 		</div>
 	</div>

@@ -1,30 +1,31 @@
-<div onmouseover="$('.hidden_wad_icon').show()" onmouseleave="$('.hidden_wad_icon').hide()" class="card mb-3 panel-div" style="border-radius: 10px;">
-	<div onmouseover="$('.hidden_wad_icon').show()" onmouseleave="$('.hidden_wad_icon').hide()" class="card-header col-md-5 text-center d-block d-sm-none">
-		<%= link_to fa_icon('flag', class: 'float-left profile-link hidden_wad_icon'), flag_wad_path(@wad), remote: true %>		
+<div class="card mb-3 panel-div" style="border-radius: 10px;">
+	<div class="card-header">
 		<% if @wad.user.occupation.present? %>
-				<span class="small mb-2"><%= link_to @wad.user.name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>
+				<%= link_to @wad.user.name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link small float-left" %>
 		<% else %>
-				<span class="small mb-2"><%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link" %></span>	
+				<%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link small float-left" %>
 		<% end %>
-        <% unless @wad.user == current_user || @wad.user.friends_with?(current_user) %>
-         <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @wad.user), :method => :post %>     
-        <% end %>
-		<% if current_user == @wad.user %>
-			<%= link_to fa_icon("trash", class: "profile-link pointer hidden_wad_icon float-right"), wad_path(@wad), method: :delete, remote: true%>
-		<% end %> 
+		<% unless @wad.user == current_user || @wad.user.friends_with?(current_user) %>
+		 <span class="dropdown-item"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => @wad.user), :method => :post, class: "profile-link" %></span>
+		<% end %>
+		<div class="col-1 dropdown dropleft float-right ">
+			<span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= fa_icon('ellipsis-v') %>
+			</span>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + " Flag content", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
+				<% if current_user == @wad.user %>
+				<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_path(@wad), method: :delete, remote: true, class: "profile-link" %>
+				<% end %>
+			</div>
+		</div>
 	</div>
-	<div class="ml-2 mt-1 d-none d-sm-block">	
-		<%= link_to fa_icon('flag', class: 'profile-link hidden_wad_icon'), flag_wad_path(@wad), remote: true %>
-		<% if current_user == @wad.user %>
-			<%= link_to fa_icon("trash", class: "profile-link pointer hidden_wad_icon float-right mr-2"), wad_path(@wad), method: :delete, remote: true%>
-		<% end %> 		
-	</div>  
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-2 col-xs-4">
 	            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
-	              <%= image_tag "bulb.png", class: 'img-fluid h-50 rounded mt-4 d-none d-sm-block' %>
-	              <%= image_tag "bulb.png", style: "width: 200px;" , class: 'img-fluid rounded mx-auto d-block d-sm-none' %>
+	              <%= image_tag "orange_bulb.png", class: 'img-fluid h-50 rounded mt-4 d-none d-sm-block' %>
+	              <%= image_tag "orange_bulb.png", style: "width: 200px;" , class: 'img-fluid rounded mx-auto d-block d-sm-none' %>
 	            <% else %>
 	              <%= image_tag @wad.image.url(:medium), class: 'd-none d-sm-block img-fluid border border-light rounded-circle' %>
 	              <%= image_tag @wad.image.url(:medium), class: 'd-block d-sm-none mx-auto img-fluid border border-light rounded-circle' %>
@@ -34,17 +35,13 @@
 			<div class="col-md-10 small text-justify">
 		        <h6 class="mt-3 d-none d-md-block"><%= @wad.problem_state %></h6>
 		        <h6 class="mt-1 text-center d-block d-sm-none"><%= @wad.problem_state %></h6>
-		        <p class="small d-block d-sm-none"><%= simple_format(@wad.long_form) %></p>		        
+		        <p class="small d-block d-sm-none"><%= simple_format(@wad.long_form) %></p>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-5 col-xs-12 mt-4 text-center d-none d-sm-block">
-			<% if @wad.user.occupation.present? %>
-					<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link" %></span>	
-			<% else %>
-					<span class="small mb-2"><%= link_to @wad.user.first_name + " " + @wad.user.last_name, user_path(@wad.user), class: "profile-link" %></span>	
-			<% end %>
+
 		</div>
 		<div class="col-md-7 col-xs-12">
 			<div class="ml-5 col-12">
@@ -62,15 +59,16 @@
 							<% end %>
 						</div>
 						<div class="col-8">
-							<% if @wad.get_upvotes.size - 3 > 1 %> 
+							<% if @wad.get_upvotes.size - 3 > 1 %>
 								<span class="small font-weight-light">& <span id="wad-like-<%= @wad.id %>" data-check="<%= current_user.liked? @wad %>"><%= @wad.get_upvotes.size - 3 %></span> others!</span>
 							<% else %>
 								<span class="small font-weight-light">& <span id="wad-like-<%= @wad.id %>" data-check="<%= current_user.liked? @wad %>"><%= @wad.get_upvotes.size %></span> others!</span>
 							<% end %>
 						</div>
+						<%#<a href="https://twitter.com/intent/tweet?button_hashtag=button&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Check out what I just came up with on Spitball! <%= request.original_url %ADD CLOSING TAG HERE!!" data-show-count="false">Tweet #button</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>%>						
 					</div>
 				</div>
-			</div>	
-		</div>		
+			</div>
+		</div>
 	</div>
 </div>
