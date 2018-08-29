@@ -24,7 +24,7 @@
 		<div class="row">
 			<div class="col-md-2 col-xs-4">
 	            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
-	              <%= image_tag "orange_bulb.png", class: 'img-fluid h-50 rounded mt-4 d-none d-sm-block' %>
+	              <%= image_tag "orange_bulb.png", class: 'img-fluid rounded d-none d-sm-block' %>
 	              <%= image_tag "orange_bulb.png", style: "width: 200px;" , class: 'img-fluid rounded mx-auto d-block d-sm-none' %>
 	            <% else %>
 	              <%= image_tag @wad.image.url(:medium), class: 'd-none d-sm-block img-fluid border border-light rounded-circle' %>
@@ -65,7 +65,7 @@
 								<span class="small font-weight-light">& <span id="wad-like-<%= @wad.id %>" data-check="<%= current_user.liked? @wad %>"><%= @wad.get_upvotes.size %></span> others!</span>
 							<% end %>
 						</div>
-						<%#<a href="https://twitter.com/intent/tweet?button_hashtag=button&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Check out what I just came up with on Spitball! <%= request.original_url %ADD CLOSING TAG HERE!!" data-show-count="false">Tweet #button</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>%>						
+						<%#<a href="https://twitter.com/intent/tweet?button_hashtag=button&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Check out what I just came up with on Spitball! <%= request.original_url %ADD CLOSING TAG HERE!!" data-show-count="false">Tweet #button</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>%>
 					</div>
 				</div>
 			</div>
