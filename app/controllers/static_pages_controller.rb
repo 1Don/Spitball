@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 layout "_landing", only: [:landing, :home]
-
+skip_before_action :home_lock
   def home
   end
 
@@ -22,5 +22,5 @@ layout "_landing", only: [:landing, :home]
       redirect_back(fallback_location: wads_path)
       flash[:notice] = "Please enter some search terms"
     end
-  end 
+  end
 end

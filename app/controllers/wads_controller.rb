@@ -5,10 +5,11 @@ class WadsController < ApplicationController
 	before_action :all_wads
 
 
+
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
-	 	
+
     end
 
     def popwads
@@ -29,7 +30,7 @@ class WadsController < ApplicationController
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save
     		current_user.update_attributes(points: current_user.points + 50)
-   			 redirect_to @wad    
+   			 redirect_to @wad
 		else
 			flash[:error] = 'Error try again'
 			render 'new'
@@ -49,7 +50,7 @@ class WadsController < ApplicationController
 			end
 	end
 
-	def destroy	
+	def destroy
 			if current_user == @wad.user
 				@wad.destroy
 				current_user.update_attributes(points: current_user.points - 50)
@@ -60,14 +61,14 @@ class WadsController < ApplicationController
 	end
 
 
-	def upvote 
+	def upvote
 		@wad = Wad.find(params[:id])
 		@wad.upvote_by current_user
-		current_user.update_attributes(points: current_user.points + 5)  
+		current_user.update_attributes(points: current_user.points + 5)
 		@wad.user.update_attributes(points: @wad.user.points + 10)
-		unless current_user.voted_for? @wad  
+		unless current_user.voted_for? @wad
 			Notification.create(recipient: @wad.user, actor: current_user, action: "liked", notifiable: @wad)
-		end	
+		end
 
 		if @wad.get_upvotes.size % 5 == 0
 				@wad.user.update_attributes(points: @wad.user.points + 50)
@@ -75,12 +76,12 @@ class WadsController < ApplicationController
 		end
 	end
 
-	def downvote 
+	def downvote
 		@wad = Wad.find(params[:id])
 		@wad.downvote_by current_user
-		current_user.update_attributes(points: current_user.points - 5)  
+		current_user.update_attributes(points: current_user.points - 5)
 		@wad.user.update_attributes(points: @wad.user.points - 10)
-	end		
+	end
 
 	def join
 		if Collaboration.find_by(wad_id: params[:id], user_id: current_user.id)
@@ -102,7 +103,7 @@ class WadsController < ApplicationController
 	def unflag
 		if Flag.find_by(wad_id: params[:id])
 			current_user.flags.find(Flag.find_by(wad_id: params[:id]).id).destroy
-		end 
+		end
 	end
 
 #category views
