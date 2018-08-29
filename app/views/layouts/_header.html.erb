@@ -2,7 +2,7 @@
   <%= link_to image_tag("Spitball-Logo---Transparent-White-Logo-.png"), wads_path, class: 'ml-5 navbar-brand' %>
     <div class="d-none d-sm-block d-md-block">
         <%= form_tag search_path, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :search, params[:search], placeholder: "", class: 'form-control form-control-sm mr-sm-1' %> 
+        <%= text_field_tag :search, params[:search], placeholder: "", class: 'form-control form-control-sm mr-sm-1' %>
         <%= button_to "Search", class: "search-btn pointer", name: nil do %>
             <i class="nav-link fa fa-search "></i>
          <% end %>
@@ -19,23 +19,23 @@
       <% if logged_in? %>
 
       <li class="nav-item dropdown d-block d-sm-none mt-3 d-inline">
-        <%= form_tag search_path, method: :get, class: 'form-inline' do %>    
-        <%= text_field_tag :search, params[:search], placeholder: "", class: 'col-10 form-control form-control-sm mr-sm-1' %> 
+        <%= form_tag search_path, method: :get, class: 'form-inline' do %>
+        <%= text_field_tag :search, params[:search], placeholder: "", class: 'col-10 form-control form-control-sm mr-sm-1' %>
         <%= button_to "Search", class: "search-btn pointer col-2", name: nil do %>
             <i class="nav-link fa fa-search"></i>
-         <% end %>                
+         <% end %>
         <% end %>
       </li>
       <li class="nav-item dropdown d-none d-sm-block" data-behavior='notifications' data-behavior="notifications-link">
         <a id="notificationsDD" href="#" class="nav-link mr-3" data-toggle="dropdown">
-           <span><%= fa_icon("bell 2x") %><sup id="notification-indic"></sup></span>
+           <span class="bell-size align-top"><%= fa_icon("bell") %><sup id="notification-indic"></sup></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
           <div class="text-center profile-link"><%= link_to "see all", "#" %></div>
         </div>
       </li>
 
-      <li class="nav-item display-orange mr-3 d-none d-sm-block">
+      <li class="nav-item display-orange mr-3 d-none d-sm-block mt-1">
         <%= link_to discussions_path, class: 'nav-link'  do%>
           <span><%= fa_icon("comments", class: "mr-1") %> Forum</span>
         <% end %>
@@ -52,7 +52,7 @@
             <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
             <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
               <div class="dropdown-divider">
-                
+
               </div>
                  <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
           </div>
@@ -69,11 +69,11 @@
         <div class="row">
           <div class="col-2 text-center text-white">
             <a id="notificationsDD" href="#" class="nav-link mr-3" data-toggle="dropdown">
-               <span><%= fa_icon("bell 2x") %><sup id="notification-indic"></sup></span>
+               <span class="bell-size"><%= fa_icon("bell") %><sup id="notification-indic"></sup></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
               <div class="text-center profile-link"><%= link_to "see all", "#" %></div>
-            </div>            
+            </div>
           </div>
           <div class="col-6 text-center display-orange">
             <%= link_to discussions_path, class: 'nav-link'  do%>
@@ -82,7 +82,7 @@
           </div>
           <div class="col-4 dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span>
+              <span id="" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle w-25", id: "user-photo" %></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right small">
               <%= link_to "Profile", current_user, class: 'dropdown-item' %>
@@ -90,15 +90,15 @@
               <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
               <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
                 <div class="dropdown-divider">
-                  
+
                 </div>
                    <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
-            </div>            
-          </div> 
+            </div>
+          </div>
           <% else %>
           <div>
-              <%= link_to "Log in", new_user_path, class: 'nav-link' %>            
-          </div>         
+              <%= link_to "Log in", new_user_path, class: 'nav-link' %>
+          </div>
         </div>
       </li>
       <% end %>

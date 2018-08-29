@@ -1,9 +1,9 @@
 <div style="border-radius: 10px;" class="card shadow-sm">
-  <div style="background-color: #2a3435; border-radius: 10px 10px 0px 0px; height: 55px;" class="card-header text-center text-white">
+  <div style="background-color: rgb(40,53,54); border-radius: 10px 10px 0px 0px; height: 55px;" class="card-header text-center text-white">
     <div class="row mt-1">
       <div id="menu-btn" class="col-6 nav-btn border-right">
           Categories
-      </div>      
+      </div>
       <div id="new-wad-btn" class="col-6 nav-btn">
           New Wad
       </div>
@@ -12,7 +12,9 @@
   <div id="wad-new-form" class="card-body">
     <%= form_for @wad, html: { multipart: true } do |f| %>
 
-    <div data-toggle="tooltip" title="Information on the problem statement goes here" data-placement="left"><%= f.text_field :problem_state, placeholder: "Problem Statement", class: 'form-control form-control-sm col-11 mx-auto mt-3 mb-2 wad-form-item' %></div>
+    <div data-toggle="tooltip" title="Information on the problem statement goes here" data-placement="left">
+      <%= f.text_field :problem_state, placeholder: "Problem Statement", class: 'form-control form-control-sm col-11 mx-auto mt-3 mb-2 wad-form-item' %>
+    </div>
 
     <%= f.select :category,
               options_for_select(

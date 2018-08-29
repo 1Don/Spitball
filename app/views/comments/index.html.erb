@@ -1,5 +1,5 @@
 <div class="row mt-3">
-	<div class="col-md-8 mt-1">	
+	<div class="col-md-8 mt-1">
 		<%= render 'wads/panel' %>
 		<div class="mt-4">
 			<div id="" class="mb-3">
@@ -11,7 +11,7 @@
 
 				    <%= f.submit 'Comment', class: 'comment-btn mx-auto mt-3 mb-2 pointer', disable_with: 'Sending' %>
 				  <% end %>
-				</div>				
+				</div>
 			</div>
 			<% if @wad.comments.exists? %>
 				<div id="daddy-comment-div" class="card">
@@ -23,6 +23,6 @@
 
 	<div class="col-md-4">
 		<h5 class="mt-2 text-center"> Related Wads</h5>
-		<%= render 'wads/side_wad' %>	
+		<%= render 'wads/side_wad' %>
 	</div>
 </div>
