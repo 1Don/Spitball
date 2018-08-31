@@ -3,12 +3,8 @@
     <div class="jumbotron p-3">
       <h5 class="display-5 container text-profile">
         <div class="row mb-3">
-
           <div class="col-md-4 col-4 text-center">
-           
               <%= image_tag @user.photo.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
-    
-
             <p class="text-center"><%= @user.points %></p>
           </div>
           <div class="col-md-6 col-8">
@@ -22,7 +18,7 @@
                 <span style="font-size:15px;"> @<%= @user.name %> </span>
             </p>
             <% unless @user == current_user %>
-             <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @user), :method => :post %>     
+             <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @user), :method => :post %>
              <% if @conversation.present? %>
                 <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversation_messages_path(@conversation) %>
              <% else %>
@@ -32,7 +28,7 @@
             <p class="small">
               <% if @user.location.present? %>
                   <%= fa_icon("map-marker th", text: @user.location) %> <br>
-              <% end %>              
+              <% end %>
             </p>
             <div class="text-right d-block d-sm-none">
               <% if @user.twitter.present? %>

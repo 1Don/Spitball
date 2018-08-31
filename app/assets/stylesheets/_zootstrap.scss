@@ -1,3 +1,17 @@
+.comment-reply-form{
+	border: none;
+	outline: none;
+	box-shadow:none !important;
+}
+.comment-reply-form:focus{
+	outline: none;
+}
+.bell-size{
+	font-size: 30px;
+}
+.bg-Spitball-blue{
+	background-color: rgb(40,53,54);
+}
 .list-no-style{
 	list-style: none;
 }
@@ -69,7 +83,7 @@ div.full-height{
 	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .wad-shadow:hover{
-	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+	box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 .comment-text{
 	resize:none;

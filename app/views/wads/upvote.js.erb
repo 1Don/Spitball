@@ -1,7 +1,7 @@
 console.log("upvote script running")
 if ($("#wad-like-<%= @wad.id %>").attr('data-check') == "false"){
-	$('#wad-vote-span-<%= @wad.id %>').html('<%= link_to image_tag("thumbs-up-orange.svg", class: "icon-pic"), dislike_wad_path(@wad), method: :put, remote: true %>')
-	$("#wad-like-<%= @wad.id %>").html((parseInt($("#wad-like-<%= @wad.id %>").html())+1).toString());	
+	$('.wad-vote-span-<%= @wad.id %>').html('<%= link_to image_tag("thumbs-up-orange.svg", class: "icon-pic"), dislike_wad_path(@wad), method: :put, remote: true %>')
+	$("#wad-like-<%= @wad.id %>").html((parseInt($("#wad-like-<%= @wad.id %>").html())+1).toString());
 	$("#wad-like-<%= @wad.id %>").attr('data-check', 'true')
 } else {
 

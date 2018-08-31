@@ -4,8 +4,8 @@ class Discussion < ApplicationRecord
      belongs_to :user
      has_many :answers, dependent: :destroy
      validates :user_id, presence: true
-     has_many :flags
+     has_many :flags, dependent: :destroy
  def self.search(search)
-    where("content LIKE ?","%#{search}%") 
+    where("content LIKE ?","%#{search}%")
  end
 end
