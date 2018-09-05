@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
 layout "_landing", only: [:landing, :home]
+skip_before_action :home_lock
+
 
   def home
   end
