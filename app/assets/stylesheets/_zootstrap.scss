@@ -3,11 +3,20 @@
 	outline: none;
 	box-shadow:none !important;
 }
+.img-circular{
+	display: block;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+}
 .comment-reply-form:focus{
 	outline: none;
 }
 .bell-size{
 	font-size: 30px;
+}
+.roboto{
+	font-family: roboto;
 }
 .bg-Spitball-blue{
 	background-color: rgb(40,53,54);

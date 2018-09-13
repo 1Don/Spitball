@@ -11,16 +11,74 @@
 .text-60 {
   font-size: 60%;
 }
-
+.text-70{
+  font-size: 70%;
+}
 .text-profile {
   @include media-breakpoint-down(sm) {
     font-size: 60%;
   }
 
 }
-
+#occupation-div{
+  background-color: rgb(229,249,241);
+  border-radius: 7px;
+}
+.profile-img{
+  width: 85%;
+  height: 100%;
+}
+.thick-border-bottom{
+  border-bottom: 2px solid;
+  border-color: rgb(232,233,232);
+}
+.thick-border{
+  border: 2px solid;
+  border-top: none;
+  border-color: rgb(232,233,232);
+}
+.wad-card{
+  border: 2px solid;
+  border-color: rgb(232,233,232);
+  border-radius: 6px;
+  height: 50%;
+  max-height: 30.6em;
+  line-height: 1em;
+  display: block;
+}
+.grey-text{
+  color: rgb(156,156,156)
+}
+.wad-card-header{
+}
+.sidebar-text{
+  font-weight: 500;
+  color: rgb(124,145,160);
+}
+#categories-header{
+  font-weight: 375;
+  letter-spacing: 1px;
+}
+.social-icons{
+  text-decoration: none;
+  color: rgb(63,160,217)
+}
+.non-social-icons{
+  text-decoration: none;
+  color:rgb(172,172,172);
+}
+.soft-edge{
+  border-radius: 3px;
+}
+.bg-dark-grey{
+   background-color: rgb(95,117,137);
+   color: rgb(215,219,223);
+ }
+ .bg-orange{
+   background-color: rgb(232,108,39);
+ }
 .social-link{
-    position: absolute; 
+    position: absolute;
     top: 5px;
-    right:-300px; 
+    right:-300px;
 }

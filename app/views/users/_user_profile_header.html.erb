@@ -1,69 +1,57 @@
-<div class="row">
-  <div class="col-12 mb-3">
-    <div class="jumbotron p-3">
-      <h5 class="display-5 container text-profile">
-        <div class="row mb-3">
-          <div class="col-md-4 col-4 text-center">
-              <%= image_tag @user.photo.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
-            <p class="text-center"><%= @user.points %></p>
+<div class="row col-10 mt-3">
+  <div class="col-12 mb-3 mr-2">
+    <div class="thick-border-bottom">
+      <div class="row mt-2 mb-4">
+        <div class="col-2 mt-2 pr-0">
+          <div class="">
+            <%= image_tag @user.photo.url(:thumb), class: "rounded-circle profile-img pr-0" %>
           </div>
-          <div class="col-md-6 col-8">
-            <p>
-              <% if @user.occupation.present? %>
-              <%= @user.first_name %> <%= @user.last_name %> - <%= @user.occupation %><br>
+        </div>
+        <div class="col-5 mt-1 pl-0">
+          <div class="small">
+            <b>
+              <% unless !@user.first_name || !@user.last_name %>
+                <%= @user.first_name %> <%= @user.last_name %>
               <% else %>
-              <%= @user.first_name %> <%= @user.last_name %><br>
+                <%= @user.name %>
               <% end %>
-
-                <span style="font-size:15px;"> @<%= @user.name %> </span>
-            </p>
-            <% unless @user == current_user %>
-             <%= link_to fa_icon("user-plus", class: "profile-link pr-3"), friend_requests_path(:friend_id => @user), :method => :post %>
-             <% if @conversation.present? %>
-                <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversation_messages_path(@conversation) %>
-             <% else %>
-                <%= link_to fa_icon("envelope", class: "profile-link pr-3"), conversations_path(:user_id => @user.id), :method => :post %>
-             <% end %>
-            <% end %>
-            <p class="small">
-              <% if @user.location.present? %>
-                  <%= fa_icon("map-marker th", text: @user.location) %> <br>
-              <% end %>
-            </p>
-            <div class="text-right d-block d-sm-none">
-              <% if @user.twitter.present? %>
-                <%= link_to fa_icon("twitter"), "http://www.twitter.com/#{@user.twitter}", class: "profile-link" %>
-              <% end %>
-              <% if @user.linkedin.present? %>
-                <%= link_to fa_icon("linkedin"), @user.linkedin, class: "profile-link" %>
-              <% end %>
-              <% if @user.github.present? %>
-                <%= link_to fa_icon("github"), @user.github, class: "profile-link" %>
-              <% end %>
+            </b>
+          </div>
+          <% if @user.occupation %>
+          <div id="occupation-div" class="col-3 small mt-2">
+            <div class="py-1 small text-center">
+              <%= @user.occupation %>
             </div>
           </div>
-          <div class="col-md-5 col-sm-12 d-none d-sm-block float-right social-link">
-            <% if @user.twitter.present? %>
-              <%= link_to fa_icon("twitter"), "http://www.twitter.com/#{@user.twitter}", class: "profile-link" %> <br>
-            <% end %>
-            <% if @user.linkedin.present? %>
-              <%= link_to fa_icon("linkedin"), @user.linkedin, class: "profile-link" %> <br>
-            <% end %>
-            <% if @user.github.present? %>
-              <%= link_to fa_icon("github"), @user.github, class: "profile-link" %>
-            <% end %>
+          <% end %>
+        </div>
+        <div class="col-5 social-icons ml-2 row">
+          <div class="col-4">
+            <%= fa_icon('github-alt') %> <span class="small"><%= @user.first_name %></span>
+          </div>
+          <div class="col-4">
+            <%= fa_icon('linkedin') %> <span class="small"><%= @user.first_name %></span>
+          </div>
+          <div class="col-4">
+            <%= fa_icon('twitter') %> <span class="small"><%= @user.first_name %></span>
           </div>
         </div>
-        <div class="row d-none d-sm-block">
-          <div class="col-12">
-            <h6><%= @user.name %>'s interests:</h6>
-            <div class="badge badge-secondary"><%= @interest_1 %></div>
-            <div class="badge badge-secondary"><%= @interest_2 %></div>
-            <div class="badge badge-secondary"><%= @interest_3 %></div>
-          </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-4">
+          <% if @conversation.present? %>
+            <%= link_to fa_icon("envelope", class: "non-social-icons align-middle"), conversation_messages_path(@conversation) %><span class="small ml-2">message <%= @user.name %></span>
+          <% else %>
+            <%= link_to fa_icon("envelope", class: "non-social-icons align-middle"), conversation_path(user_id: @user.id), :method => :post %><span class="small ml-2">message <%= @user.name %></span>
+          <% end %>
         </div>
-      </h5>
-
+        <div class="col-4">
+          <%= fa_icon('users', class: "non-social-icons align-middle") %><span class="small ml-2"><%= @user.name %>'s friends</span>
+        </div>
+        <div class="col-4">
+          <% if @user.location && @user.location != "" %><%= fa_icon('map-pin', class: "non-social-icons align-middle") %><span class="small ml-2"><%= @user.location %></span><% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
