@@ -45,6 +45,7 @@
   max-height: 30.6em;
   line-height: 1em;
   display: block;
+  word-wrap: break-word;
 }
 .grey-text{
   color: rgb(156,156,156)
@@ -81,4 +82,21 @@
     position: absolute;
     top: 5px;
     right:-300px;
+}
+
+
+
+
+
+// Tabs Styling
+.active {
+  border-bottom: 1px solid black;
+}
+/* Style the tab content */
+.tabcontent {
+  animation: fadeEffect 1s;
+}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

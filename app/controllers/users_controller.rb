@@ -12,15 +12,12 @@ class UsersController < ApplicationController
     @friends = current_user.friends.all
     @user = User.find(params[:id])
     @wads = Wad.all
-    @conversation = Conversation.between(current_user.id, @user.id).first   
-    
-    if @user.interests[0] != nil
-      k = @user.interests[0].split(", ")
-      @interest_1 = k[0]
-      @interest_2 = k[1]
-      @interest_3 = k[2]
-    else
-      @interest_1 = @interest_2 = @interest_3 = "Please Add Some Interests!"
+    @conversation = Conversation.between(current_user.id, @user.id).first
+    @likes = []
+    Wad.all.each do |wad|
+      if @user.liked? wad
+        @likes.push(wad)
+      end
     end
   end
 
@@ -64,7 +61,7 @@ class UsersController < ApplicationController
   def profile_comments
     show
   end
-  
+
   def profile_wads
   end
 
@@ -102,5 +99,5 @@ class UsersController < ApplicationController
       params.permit(:sender_id, :recipient_id, :user)
     end
 
-   
+
 end

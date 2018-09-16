@@ -27,13 +27,13 @@
         </div>
         <div class="col-5 social-icons ml-2 row">
           <div class="col-4">
-            <%= fa_icon('github-alt') %> <span class="small"><%= @user.first_name %></span>
+            <%= link_to fa_icon('github-alt'), @user.github %> <span class="small"><%= @user.first_name %></span>
           </div>
           <div class="col-4">
-            <%= fa_icon('linkedin') %> <span class="small"><%= @user.first_name %></span>
+            <%= link_to fa_icon('linkedin'), @user.linkedin %> <span class="small"><%= @user.first_name %></span>
           </div>
           <div class="col-4">
-            <%= fa_icon('twitter') %> <span class="small"><%= @user.first_name %></span>
+            <%= link_to fa_icon('twitter'), @user.twitter %> <span class="small"><%= @user.first_name %></span>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <% end %>
         </div>
         <div class="col-4">
-          <%= fa_icon('users', class: "non-social-icons align-middle") %><span class="small ml-2"><%= @user.name %>'s friends</span>
+          <%= link_to fa_icon('users', class: "non-social-icons align-middle"), friend_requests_path(:friend_id => @user), :method => :post %><span class="small ml-2"><%= @user.name %>'s friends</span>
         </div>
         <div class="col-4">
           <% if @user.location && @user.location != "" %><%= fa_icon('map-pin', class: "non-social-icons align-middle") %><span class="small ml-2"><%= @user.location %></span><% end %>
