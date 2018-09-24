@@ -1,0 +1,22 @@
+<div class="no-gutters" style="height: 550px;">
+  <div class="border" style="background-color: rgb(215,215,215)">
+    <div class="mx-auto">
+      <%= form_tag(autocomplete_friends_path, method: "get", class: "my-1 text-center") do %>
+        <%= text_field_tag :autocomplete_friends, nil, placeholder: "Search", class: "w-100" %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <% @conversations.each do |conversation| %>
+      <div class="border-bottom py-3 ml-2">
+        <span id="defaultOpen" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="pointer">
+          <% unless User.find(conversation.sender_id) == current_user %>
+            <%= User.find(conversation.sender_id).name %>
+          <% else %>
+            <%= User.find(conversation.recipient_id).name %>
+          <% end %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

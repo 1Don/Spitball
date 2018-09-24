@@ -3,15 +3,47 @@ function sendPost() {
 	$.post('/notifications/mark_as_read')
 }
 
+let new_message;
+function openConversation(evt, convoId) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(convoId).style.display = "block";
+    evt.currentTarget.className += " ";
+
+		history.pushState(null,null, '/conversations/' + convoId)
+
+		let conversationField = document.getElementById('conversation_id');
+		conversationField.value = convoId
+}
+
+
+
+
 //Hacks for landing page scroll
 
 $(document).on('turbolinks:load', function() {
+	$("#conversation-id-field").val($('#defaultOpen').attr('value'))
+
 	//Scrolls from landing button to about
 	$("#landing-btn").click(function() {
 	    $('html,body').animate({
 	        scrollTop: $("#what-we-do").offset().top},
 	        'slow');
-	});	
+	});
 
 	$('#wad-new-form').hide();
 	if ($(window).width() <= 570 ){
@@ -24,7 +56,7 @@ $(document).on('turbolinks:load', function() {
 		} else {
 			if ($(window).width() > 600 ){
 				$('#nav-menu').show()
-				$('#wad-new-form').hide()	
+				$('#wad-new-form').hide()
 			} else {
 				$('#wad-new-form').hide()
 				$('#nav-menu').hide()
@@ -32,7 +64,7 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 	$('#new-wad-btn').click(function(){
-		if ($('#wad-new-form').is(":hidden")){	
+		if ($('#wad-new-form').is(":hidden")){
 			$('#nav-menu').hide();
 			$('#wad-new-form').show()
 		} else {
@@ -44,7 +76,7 @@ $(document).on('turbolinks:load', function() {
 			$('#nav-menu').hide()
 			}
 		}
-	});	
+	});
 })
 
 $(document).on('turbolinks:load', function() {

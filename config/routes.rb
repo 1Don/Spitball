@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#show'
 
 
-
+  post '/create_message' => 'conversations#create_message'
   get '/terms', to: 'static_pages#terms'
   get '/autocomplete_friends', to: 'conversations#autocomplete_friends'
 
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "/auth/linkedin/callback" => "linkedin#callback"
   get "/auth/linkedin/failure" => "linkedin#failure"
 
-  
+
 
   # Google oauth2 callbacks
   match '/auth/google_oauth2/callback', to: 'sessions#create', via: [:get, :post]

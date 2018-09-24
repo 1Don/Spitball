@@ -1,3 +1,38 @@
-// Place all the styles related to the conversations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#message-view{
+  position: relative;
+}
+.circle-larry{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+#message-view .message-bar{
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+  border: 2px solid;
+  border-color: rgb(232,233,232);
+  width: 74%;
+  background-color: black;
+}
+.search-conversations{
+  height: 30px; width: 210px;
+}
+.grey{
+  background-color: rgb(236,236,236);
+}
+.conversations-message{
+  display: flex;
+  height: 500px;
+  overflow: auto;
+}
+#message_body{
+  resize: none;
+  width: 87%;
+}
+#message-btn{
+  background-color: rgb(78,228,187);
+}
+.date-text{
+  color: rgb(216,216,216);
+}
