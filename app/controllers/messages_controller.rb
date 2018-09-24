@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 		@conversation = Conversation.find(params[:conversation_id])
 		@conversations = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).order('updated_at DESC')
 		@convo = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).first
-		@messages = @conversation.messages	
+		@messages = @conversation.messages
 		  if @messages.length > 10
 		   @over_ten = true
 		   @messages = @messages[-10..-1]
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
 		 	if person.conversation_with?(current_user)
 		 		@conversationalists.push(person)
 		 	end
-		 end			
+		 end
 	end
 
 
@@ -42,8 +42,7 @@ class MessagesController < ApplicationController
 
 
 	def create
-		 @message = @conversation.messages.build(message_params)
-		 @message.save
+		 @message = Message.create(body: params[:body], conversation_id: params[:id], user_id: current_user.id)
 	end
 
 

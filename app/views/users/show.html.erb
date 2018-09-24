@@ -11,8 +11,8 @@
 		<div class="container">
 			<div class="">
 				<div class="row my-3 col-10 tab text-center">
-					<h4 class="col-3 small tablinks pointer" onclick="openContent(event, 'Wads')"><b><% unless @user == current_user %><%= @user.name %>'s Wads<% else %> Your Wads<% end %></b></h4>
-					<h4 id="defaultOpen" class="col-3 small tablinks pointer" onclick="openContent(event, 'Comments')"><b>Comments</b></h4>
+					<h4 id="defaultOpen" class="col-3 small tablinks pointer" onclick="openContent(event, 'Wads')"><b><% unless @user == current_user %><%= @user.name %>'s Wads<% else %> Your Wads<% end %></b></h4>
+					<h4 class="col-3 small tablinks pointer" onclick="openContent(event, 'Comments')"><b>Comments</b></h4>
 					<h4 class="col-3 small tablinks pointer" onclick="openContent(event, 'Likes')"><b>Likes</b></h4>
 					<h4 class="col-3 small tablinks pointer" onclick="openContent(event, 'Q & A')"><b>Q & A</b></h4>
 				</div>

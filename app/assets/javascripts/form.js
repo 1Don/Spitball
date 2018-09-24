@@ -3,6 +3,4 @@ $(document).on('turbolinks:load', function(){
     $('.reply-hide-area').hide()
     $('.hidden_wad_icon').hide()
     $('.hidden_icon').hide()
-
-
 });
