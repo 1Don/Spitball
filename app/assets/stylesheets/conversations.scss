@@ -1,19 +1,21 @@
 #message-view{
   position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 .circle-larry{
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
-#message-view .message-bar{
+.message-bar{
   position: fixed;
   bottom: 0;
-  height: 65px;
+  height: 20%;
   border: 2px solid;
-  border-color: rgb(232,233,232);
-  width: 74%;
-  background-color: black;
+  border-color: rgb(229,229,229);
+  width: 67%;
+  background-color: rgb(229,229,229);
 }
 .search-conversations{
   height: 30px; width: 210px;
@@ -29,9 +31,13 @@
 #message_body{
   resize: none;
   width: 87%;
+  height: 90%;
+  border-color: rgb(227,226,227);
 }
 #message-btn{
   background-color: rgb(78,228,187);
+  width: 11%;
+  height: 90%;
 }
 .date-text{
   color: rgb(216,216,216);

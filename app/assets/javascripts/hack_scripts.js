@@ -2,7 +2,7 @@
 function sendPost() {
 	$.post('/notifications/mark_as_read')
 }
-
+var objDiv;
 let new_message;
 function openConversation(evt, convoId) {
     // Declare all variables
@@ -24,10 +24,14 @@ function openConversation(evt, convoId) {
     document.getElementById(convoId).style.display = "block";
     evt.currentTarget.className += " ";
 
-		history.pushState(null,null, '/conversations/' + convoId)
+		history.pushState(null,null, '/conversations/' + convoId);
+
+
+		objDiv = document.getElementById(convoId);
+		objDiv.scrollTop = objDiv.scrollHeight;
 
 		let conversationField = document.getElementById('conversation_id');
-		conversationField.value = convoId
+		conversationField.value = convoId;
 }
 
 
