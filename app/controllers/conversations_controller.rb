@@ -60,9 +60,9 @@ class ConversationsController < ApplicationController
 
 	def autocomplete_friends
 		if User.find_by_name(params[:autocomplete_friends])
-			search_conversation = Conversation.between(User.find_by_name(params[:autocomplete_friends]).id, current_user.id)
-			if !search_conversation[0].nil?
-				redirect_to conversation_messages_path(search_conversation[0].id)
+			@search_conversation = Conversation.between(User.find_by_name(params[:autocomplete_friends]).id, current_user.id)
+			if !@search_conversation[0].nil?
+
 			else
 				create
 			end

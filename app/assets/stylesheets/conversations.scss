@@ -13,9 +13,9 @@
   bottom: 0;
   height: 20%;
   border: 2px solid;
-  border-color: rgb(229,229,229);
+  border-color: rgb(242,242,242);
   width: 67%;
-  background-color: rgb(229,229,229);
+  background-color: rgb(242,242,242);
 }
 .search-conversations{
   height: 30px; width: 210px;
@@ -41,4 +41,14 @@
 }
 .date-text{
   color: rgb(216,216,216);
+}
+.search_field{
+  height: 40px;;
+}
+.search_field::placeholder{
+  color: rgb(189,189,189);
+}
+.current_convo{
+  border-right: 3px solid;
+  border-color: rgb(65,226,183);
 }
