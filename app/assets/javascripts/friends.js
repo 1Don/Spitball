@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-	const gooey = ["hey", "I just met you", "and this is crazy"]
 	var fullRequest = $.ajax({
 		url: "/friends.json",
 		type: "GET",
@@ -20,7 +19,6 @@ $(document).on('turbolinks:load', function() {
 				noResults: '',
 				resuts: ''
 			}
-
 		})
 	}
 	$("#autocomplete_friends").focus(function(){

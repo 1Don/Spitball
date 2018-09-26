@@ -3,7 +3,7 @@ if ("<%= @comment.parent_id %>" == "") {
 } else {
 	const nameAndContent =`<div id="cmt-<%= @comment.id %>" class="small col-10 mx-auto row border-bottom">
 													<div class="col-10 mt-2 mb-1 small">
-														<%= link_to @comment.user.name, user_path(@comment.user) %><% if @comment.user.occupation && @comment.user.occupation != "" %> · <%= @comment.occupation %><% end %> · <%= @comment.user.points %>
+														<%= link_to @comment.user.name, user_path(@comment.user) %><% if @comment.user.occupation && @comment.user.occupation != "" %> · <%= @comment.user.occupation %><% end %> · <%= @comment.user.points %>
 														<div class="col-12 mb-1 mt-1">
 															<%= @comment.content %>
 														</div>
