@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-2">
 	<div class="col-6">
 		<% if @wads.first %>
 			<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
@@ -18,7 +18,5 @@
 			NEEDS WADS
 		<% end %>
 	</div>
-	<div class="col-5">
-		<%= button_to "Gotta new Idea?", new_wad_path, class: "profile-link comment-btn", method: :get %>
-	</div>
 </div>
+<%= render 'modal' %>

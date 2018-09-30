@@ -1,15 +1,15 @@
-<div class="no-gutters" style="height: 550px;">
-  <div class="border" style="background-color: rgb(215,215,215)">
+<div class="no-gutters pl-0" style="height: 100%;">
+  <div class="border" style="background-color: rgb(242,242,242);">
     <div class="mx-auto">
-      <%= form_tag(autocomplete_friends_path, method: "get", class: "my-1 text-center") do %>
-        <%= text_field_tag :autocomplete_friends, nil, placeholder: "Search", class: "w-100" %>
+      <%= form_tag(autocomplete_friends_path, method: "get", class: "my-1 mx-1 text-center", remote: true) do %>
+        <%= text_field_tag :autocomplete_friends, nil, placeholder: "Search", class: "w-100 search_field px-3" %>
       <% end %>
     </div>
   </div>
   <div>
     <% @conversations.each do |conversation| %>
-      <div class="border-bottom py-3 ml-2">
-        <span id="defaultOpen" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="pointer">
+      <div id="defaultOpen" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id%>">
+        <span class="ml-5 pointer small">
           <% unless User.find(conversation.sender_id) == current_user %>
             <%= User.find(conversation.sender_id).name %>
           <% else %>

@@ -1,6 +1,20 @@
-
 <% content_for :sub_layout do %>
-	<%= yield %>
+<div class="row col-12">
+	<div class="col-2 mt-5">
+		<%= render 'sidebar' %>
+	</div>
+	<div class="col-7 mt-3">
+		<%= yield %>
+	</div>
+	<div class="col-3 mt-5">
+		<%= render 'news&notifications' %>
+	</div>
+</div>
+<div class="pop bottom-right mr-5 mb-3">
+	<button class="circular-btn pointer" type='button' data-toggle='modal' data-target='#myModal'>
+		<%= fa_icon('plus-square 2x') %><!---make this slide on mouseover/hover --->
+	</button>
+</div>
 <% end %>
 
 <%= render template: 'layouts/application' %>

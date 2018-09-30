@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-	layout 'wad', only: [:index]
 	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
@@ -15,7 +14,7 @@ class CommentsController < ApplicationController
   		end
 		@comment.user_id = current_user.id
 		if @comment.save
-			unless @comment.user == @wad.user 
+			unless @comment.user == @wad.user
 				Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
 			end
 			current_user.update_attributes(points: current_user.points + 5)
@@ -83,7 +82,7 @@ class CommentsController < ApplicationController
 			@wad = @comment.wad
 		if @comment.user != current_user
 			@comment.upvote_by current_user
-			current_user.update_attributes(points: current_user.points + 5) 
+			current_user.update_attributes(points: current_user.points + 5)
 
 			if @comment.get_upvotes.size % 5 == 0
 				@comment.user.update_attributes(points: @comment.user.points + 100)
@@ -95,7 +94,7 @@ class CommentsController < ApplicationController
 		@comment = Comment.find(params[:comment_id])
 		@wad = @comment.wad
 		@comment.downvote_by current_user
-		current_user.update_attributes(points: current_user.points - 5) 
+		current_user.update_attributes(points: current_user.points - 5)
 	end
 
 	def flag
@@ -104,7 +103,7 @@ class CommentsController < ApplicationController
 			flag.save
 			AdminMailer.flag_notice(wad_path(Wad.find(params[:comment_id]))).deliver_now
 		end
-	end	
+	end
 
 private
 

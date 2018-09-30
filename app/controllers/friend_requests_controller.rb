@@ -1,5 +1,4 @@
 class FriendRequestsController < ApplicationController
-   layout 'wad', only: [:index]
    before_action :set_friend_request, except: [:index, :create]
 
   def create
@@ -7,11 +6,11 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.friend_requests.new(friend: friend)
 
     if @friend_request.save
-      Notification.create(recipient: User.find(params[:friend_id]), actor: current_user, action: "sent you", notifiable: @friend_request)      
-      redirect_to friend 
+      Notification.create(recipient: User.find(params[:friend_id]), actor: current_user, action: "sent you", notifiable: @friend_request)
+      redirect_to friend
       flash[:notice] = "Request Sent"
     else
-      redirect_to friend 
+      redirect_to friend
       flash[:notice] = "You've already sent a request!"
     end
   end

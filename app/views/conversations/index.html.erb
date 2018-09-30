@@ -1,6 +1,6 @@
 <div id="message-view" class="">
 <% @conversations.each do |convo| %>
-  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100">
+  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 ml-5 mb-5">
     <% convo.messages.each do |message| %>
       <% if message.user != current_user %>
         <div class="small ml-1 w-100 row">
@@ -27,7 +27,7 @@
       <% end %>
     <% end %>
     </div>
-<% end %>
+<% end %><br><br><br>
 </div>
 <div class="message-bar">
     <%= render 'conversations/messagebar' %>
