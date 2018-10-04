@@ -1,10 +1,12 @@
 <% if @incoming.any? %>
-  <ul>
+
   <% @incoming.each do |request| %>
-    <li><%=link_to request.user.name, user_path(request.user), class:"profile-link" %></li><br>
-    <%= link_to "Accept Friend Request",  friend_request_path(friend_id: request.friend_id, user_id: request.user_id, id: request.id), method:"put"   %>
+    <div>
+      <%=link_to request.user.name, user_path(request.user), class:"profile-link" %>
+      <%= link_to "Accept Friend Request",  friend_request_path(friend_id: request.friend_id, user_id: request.user_id, id: request.id), method:"put" %>
+    </div>
   <% end %>
-  </ul>
+
 <% else %>
   <p>You don't have any friend requests</p>
 <% end %>
