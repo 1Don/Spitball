@@ -9,7 +9,7 @@
 		 <span class="dropdown-item"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => @wad.user), :method => :post, class: "profile-link" %></span>
 		<% end %>
 		<div class="col-1 dropdown dropleft float-right ">
-			<span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= fa_icon('ellipsis-v') %>
 			</span>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div class="col-1 dropdown dropright float-right">
-			<span id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="pointer" id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= fa_icon('share-alt') %>
 			</span>
 

@@ -1,13 +1,13 @@
-<div class="">
-	<div id="cmt-<%= comment.id %>" class="row mt-4">
-		<div class="col-2 ml-3">
-			<div>
+<div class="pointer">
+	<div id="cmt-<%= comment.id %>" class="row">
+		<div  onclick='execReply("<%= comment.id %>");' class="col-2 ml-3 py-2">
+			<div class="mt-1">
 				<%= link_to image_tag(comment.user.photo(:thumb), class: "rounded-circle w-50"), user_path(comment.user) %>
 			</div>
 		</div>
 
-		<div class="col-6 small">
-			<div class="small mb-3 mt-1">
+		<div onclick='execReply("<%= comment.id %>");' class="col-8 small  py-2">
+			<div class="small mb-1 mt-1">
 				<% if comment.user.occupation.present? %>
 					<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %>
 				<% else %>
@@ -18,35 +18,37 @@
 				<%= comment.content %>
 			</div>
 		</div>
-		<div class="col-2">
-			<div class="col-1 dropdown float-right">
+		<div class="col-2 row pr-0">
+			<div class="col-1 dropdown px-0">
 				<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<%= fa_icon('ellipsis-v') %>
 				</span>
 				<div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
 					<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, comment), remote: true, class: "profile-link" %></span>
-					<% if current_user.voted_down_on?(comment) || !current_user.voted_for?(comment) %>
-						<span class="dropdown-item" id="vote-span-<%= comment.id %>"> <%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic") + " Like!", wad_comment_like_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span>
-					<% else %>
-						<span class="dropdown-item" id="vote-span-<%= comment.id %>"> <%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic") + " unlike", wad_comment_dislike_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span>
-					<% end %>
 					<span class="pointer dropdown-item" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic") %> Comment</span>
 					<% if current_user == comment.user %>
 					<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_comment_path(@wad, comment), method: :delete, remote: true %>
 					<% end %>
 				</div>
 			</div>
+			<div class="small">
+				<% if current_user.voted_down_on?(comment) || !current_user.voted_for?(comment) %>
+					<span class="" id="vote-span-<%= comment.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span><span class="small" id="like-<%= comment.id %>"><%= comment.get_upvotes.count %></span>
+				<% else %>
+					<span class="" id="vote-span-<%= comment.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "cmt-png-icon"), wad_comment_dislike_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span><span class="small" id="like-<%= comment.id %>"><%= comment.get_upvotes.count %></span>
+				<% end %>
+			</div>
 		</div>
 	</div>
 
-	<div class="row no-gutters mt-4">
+	<div class="row no-gutters ">
 		<div id="reply-<%= comment.id %>" class="reply-hide-area col-12">
 			<div id="cmt-form-<%= comment.id %>" class="text-center">
 				<%= render 'form' %>
 			</div>
 
 			<div id="new-cmt-<%= comment.id %>" class="">
-				
+
 			</div>
 
 			<% comment.descendants.each do |c| %>
@@ -69,9 +71,9 @@
 			        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, c), remote: true, class: "profile-link" %></span>
 								<% if current_user.voted_down_on?(c) || !current_user.voted_for?(c) %>
-									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic") + " Like!", wad_comment_like_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span>
+									<span class="dropdown-item d-inline pr-0" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span><span class="small d-inline" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span>
 								<% else %>
-									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic") + " Like!", wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span>
+									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic"), wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span><span class="small" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span>
 								<% end %>
 								<span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Comment" %></span>
 								<% if current_user == c.user %>

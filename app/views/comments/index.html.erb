@@ -1,4 +1,4 @@
-<div class="row mt-3 col-12">
+<div class="row mt-3 px-2">
 	<div class="col-md-8 mt-1">
 		<%= render 'wads/panel' %>
 		<div class="mt-4">
@@ -14,7 +14,7 @@
 				</div>
 			</div>
 			<% if @wad.comments.exists? %>
-				<div id="daddy-comment-div" class="card">
+				<div id="daddy-comment-div" class="card border-bottom-0">
 					<%= comments_tree_for @replies %>
 				</div>
 			<% end %>

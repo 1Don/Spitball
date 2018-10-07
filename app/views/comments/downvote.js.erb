@@ -1,3 +1,4 @@
 console.log("downvote script running");
+$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic"), wad_comment_like_path(@wad, @comment), method: :put, remote: true, class: "profile-link" %>')
+
 $("#like-<%= @comment.id %>").html((parseInt($("#like-<%= @comment.id %>").html())-1).toString());
-$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic") + " Like!", wad_comment_like_path(@wad, @comment), method: :put, remote: true, class: "profile-link" %>')
