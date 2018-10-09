@@ -32,8 +32,13 @@ class ConversationsController < ApplicationController
 	end
 	def create_message
 		@conversation = Conversation.find(params[:conversation_id])
-		@message = Message.create(body: params[:message][:body], conversation_id: params[:conversation_id], user_id: current_user.id)
+		@message = current_user.messages.create(message_params)
+		@message.conversation_id = @conversation.id
 		@message.save!
+		respond_to do |format|
+			format.html { redirect_back(fallback_location: conversations_path) }
+			format.js	{render 'create_message'}
+		end
 	end
 
 	def create
@@ -78,6 +83,6 @@ private
 	 end
 
 	 def message_params
-		 params.require(:message).permit(:body)
+		 params.require(:message).permit(:body, :document)
 	 end
 end

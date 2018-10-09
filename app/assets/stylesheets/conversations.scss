@@ -39,6 +39,15 @@
   width: 11%;
   height: 90%;
 }
+#message-document{
+  position: absolute;
+  top: 1vh;
+  right: 10vw;
+  z-index: 1;
+}
+.paperclip{
+  color: #474747;
+}
 .date-text{
   color: rgb(216,216,216);
 }
