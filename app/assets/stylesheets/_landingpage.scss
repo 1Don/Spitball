@@ -184,7 +184,7 @@ html, body {
 }
 /* line 175, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .header-content {
-  width: 1170px;
+  width: 90%;
   margin: auto;
 }
 /* line 180, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
@@ -213,6 +213,7 @@ html, body {
 /* line 200, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .btn-get-started {
   width: 150px;
+  font-weight: bold;
   height: 50px;
   font-size: 16.0px;
   letter-spacing: -.5px;
@@ -515,7 +516,7 @@ html, body {
   left: 54px;
   top: 6px;
   margin: 0;
-  width: auto;
+  width: 110%;
   height: auto;
   position: absolute;
   -webkit-transform: rotate(0);

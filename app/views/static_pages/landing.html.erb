@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<!-- saved from url=(0022)http://localhost:3000/ -->
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>SpitballApp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="all" href="css/bootstrap.css" data-turbolinks-track="reload">
-    <link rel="stylesheet" media="all" href="css/style.css" data-turbolinks-track="reload">
-    <link rel="stylesheet" media="all" href="css/landing.css" data-turbolinks-track="reload">
-    <script src="js/jquery3.js" data-turbolinks-track="reload"></script>
-    <script src="js/popper.js" data-turbolinks-track="reload"></script>
-    <script src="js/bootstrap.js" data-turbolinks-track="reload"></script>
-    <script src="js/landing.js" data-turbolinks-track="reload"></script>
-  </head>
 
-  <body>
     <div class="index-page">
   <div class="header">
     <nav class="navbar navbar-expand-lg">
@@ -28,7 +12,7 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="http://localhost:3000/#">About us</a>
           </li>
 
@@ -46,17 +30,17 @@
     </nav>
     <div class="row header-content h-100">
       <div class="col-md-6 header-text">
-        <h1 class="heading">Main header will <br>
-          be placed here</h1>
-        <p class="description">Sub header with an attractive call<br>
-          to action will be placed here</p>
+        <h1 class="heading">Ready to turn your idea into something real?</h1>
+        <p class="description">
+        </p>
         <div class="form">
           <div class="row">
+         <!--   <div class="col-md-6">
+              <input type="text" class="form-control get-started-input" placeholder="What problem are you solving?">
+            </div> -->
             <div class="col-md-6">
-              <input type="text" class="form-control get-started-input" placeholder="My Idea is called…">
-            </div>
-            <div class="col-md-6">
-              <button class="btn btn-default btn-get-started">Get Started</button>
+              <!-- i'm thinking we make this a sign up prompt instead of scroll?-->
+              <button class="btn btn-default btn-get-started">Let's Execute</button> 
             </div>
           </div>
         </div>
@@ -68,7 +52,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="next-section">
-          <div class="howitworks">How it works?</div>
+          <div class="howitworks">What we do</div>
           <%= image_tag('landing-page-scroll-down.png', class: "scrolldown") %>
         </div>
       </div>
@@ -76,10 +60,10 @@
   </div>
   <div class="step1">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="text-center">
+        <p class="title">
+         Spitball is a community for entrepreneurs, thinkers and enthusiasts to bounce ideas, get them validated, and turn them into the problem solving products of tomorrow. We're building a platform that facilitates a model for idea incubation based on targeted early potential customer feedback and leveraging an expanding network of executional talent to help provide the resources people need to make things happen.
+        </p>
       </div>
     </div>
     <div class="row ideation">
@@ -91,7 +75,7 @@
               <%= image_tag('landing-page-bg-5.png', class: "bg1") %>
             </div>
             <div class="total">
-              <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br><br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+              <div class="loremipsumdolorsi">There should be a platform dedicated to enthusiasts and aspiring entrepreneurs that allows them to validate their concept through targeted feedback, and provide resources and access to the tools needed to be entrepreneurs.</div>
             </div>
             <div class="tabs">
               <%= image_tag("landing-page-separator.png", class: "separator") %>
@@ -104,16 +88,17 @@
             <%= image_tag "landing-page-bg-15.png", class: "bg" %>
             <%= image_tag "landing-page-arrow-pointing-to-right-3@2x.png", class: "arrowpointingtoright" %>
             <div class="viewdetails">View Details</div>
-            <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et…</div>
-            <div class="info">Info:</div>
+            <div class="loremipsumdolorsi">So we're building a platform that allows people to validate their ideas via their target market, meet cofounders and investors, and take their ideas to the next level. We start by targeting peeople's ideas to their target market so they can provide feedback...</div>
             <div class="header1">
-              <div class="socialmediaapp">Social Media App</div>
+              <div class="socialmediaapp">It is too hard for people to take action on their ideas</div>
               <%= image_tag "landing-page-oval-2-3@2x.png", class: "oval2" %>
               <%= image_tag "landing-page-flash-3@2x.png", class: "flash" %>
             </div>
           </div>
         </div>
       </div>
+
+
       <div class="col-md-5 text-container">
         <div class="circles">
           <div class="rectangle7"></div>
@@ -133,11 +118,11 @@
         <div class="text">
           <!-- STEP 1 COPY GOES BELOW -->
           <div class="a1shareyouridea">
-            <span class="span1">1.</span>
-            <span class="span2"> Share<br></span>
-            <span class="span3">your idea</span>
+           <!-- <span class="span1">1.</span> -->
+            <span class="span2"> Ideation<br></span>
+         <!--   <span class="span3"> Idea</span> -->
           </div>
-          <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </div>
+          <div class="loremipsumdolorsi">Good ideas come from identifying something that could be improved. Your perspective is unique and might be what is needed to address a real problem in the world. But how would you know.. </div>
         </div>
       </div>
     </div>
@@ -146,15 +131,15 @@
     <div class="col-md-7">
       <div class="left">
         <div class="buttoncopy">
-          <button class="btn btn-default btn-join">Join Our Community</button>
+          <button class="btn btn-default btn-join">Join The Community</button>
         </div>
         <div class="text">
           <!-- STEP 2 COPY GOES BELOW -->
-          <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </div>
+          <div class="loremipsumdolorsi">We target your idea to people interested in the idea you're proposing. This includes early-adopters, enthusiasts, investors etc. </div>
           <div class="a2getloveandfeed">
-            <span class="span1">2.</span>
-            <span class="span2"> Get love</span>
-            <span class="span3"><br>and feedback</span>
+        <!--    <span class="span1">2.</span> -->
+            <span class="span2"> Market Validation</span>
+      <!--      <span class="span3"><br>your idea</span> -->
           </div>
         </div>
         <div class="circles">
@@ -180,7 +165,7 @@
         <div class="message-left" id="message1">
           <%= image_tag "landing-page-bg-6@2x.png", class: "bg" %>
           <%= image_tag "landing-page-image@2x.png", class: "image" %>
-          <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dohsko eiusmod tempor incididunt </div>
+          <div class="loremipsumdolorsi">Hey I'm a software engineer and and have been thinking about building something similar to what you described. Dm me!</div>
         </div>
         <div class="message-right" id="message2">
           <div class="image">
@@ -188,7 +173,7 @@
             <%= image_tag "landing-page-image-1@2x.png", class: "image1" %>
           </div>
           <%= image_tag "landing-page-bg-7@2x.png", class: "bg" %>
-          <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, ssnjioo consectetur adipiscing elit</div>
+          <div class="loremipsumdolorsi">I don't know that there is a big enough market for this to be profitable to be honest. I'd pivot.</div>
         </div>
         <div class="message-left" id="message3">
           <div class="image">
@@ -196,7 +181,7 @@
             <%= image_tag "landing-page-image-2@2x.png", class: "image1" %>
           </div>
           <%= image_tag "landing-page-bg-6@2x.png", class: "bg" %>
-          <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dohsko eiusmod tempor incididunt </div>
+          <div class="loremipsumdolorsi">Please make this happen!!!! </div>
         </div>
       </div>
     </div>
@@ -211,11 +196,11 @@
             <div class="text">
               <!-- STEP 3 COPY GOES BELOW -->
               <div class="a3accessourincuba">
-                <span class="span1">3.</span>
-                <span class="span2"> Access<br>our incubator</span>
+                <span class="span1"></span>
+                <span class="span2"> Incubation</span>
               </div>
               <div class="loremipsumdolorsi">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+               Based on if it looks like there's a market, we'll connect with domain experts in our network to make a recommendation on the best next steps to accelerate your venture. We'll work with you on the idea and set things up for success. Look out for features like <strong> Spitball campaigns</strong> coming soon.
               </div>
             </div>
             <div class="circles">
@@ -246,11 +231,11 @@
           </div>
           <div class="text">
             <!-- STEP 4 COPY GOES BELOW -->
-            <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </div>
+            <div class="loremipsumdolorsi">We launch the results of our incubaion period! This might mean a prototype, a new marketing strategy or even a pop-up shop. We build an MVP with you, and position it for fast growth and success.
+ </div>
             <div class="a2getloveandfeed">
-              <span class="span1">4.</span>
-              <span class="span2"> Go live</span>
-              <span class="span3"><br>and test it out</span>
+              <span class="span2"> Testing</span>
+            <!--  <span class="span3"><br>and test it out</span> -->
             </div>
           </div>
           <div class="circles">
@@ -278,8 +263,8 @@
       </div>
     </div>
   <div class="call-to-action">
-    <div class="readytostart">Ready to start?</div>
-    <div class="loremipsumdolorsi">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporarily incididunt.</div>
+    <div class="readytostart">Ready to build the future?</div>
+    <div class="loremipsumdolorsi">Join the community to make sure your ideas impact the development of the products you want to use</div>
     <div class="offset-md-6 form">
       <div class="row">
           <input type="text" class="form-control get-started-input" placeholder="My Idea is called…">
@@ -297,7 +282,7 @@
               <%= image_tag "flash@3x.png", height: "20px" %>
             </span>
             <span class="header-text">
-              Social Media App
+              <%= @rankedwads.find(1).problem_state %>
             </span>
           </div>
           <div class="item-content">
@@ -305,7 +290,7 @@
               Info:
             </div>
             <div class="content-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor jskious incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consec…
+              <%= @rankedwads.find(1).long_form %>
             </div>
           </div>
           <div class="item-footer">
@@ -320,15 +305,12 @@
               <%= image_tag "flash@3x.png", height: "20px" %>
             </span>
             <span class="header-text">
-              Social Media App
+              <%= @rankedwads.find(2).problem_state %>
             </span>
           </div>
           <div class="item-content">
-            <div class="content-header">
-              Info:
-            </div>
             <div class="content-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor jskious incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consec…
+              <%= @rankedwads.find(2).long_form %>
             </div>
           </div>
           <div class="item-footer">
@@ -343,7 +325,7 @@
               <%= image_tag "flash@3x.png", height: "20px" %>
             </span>
             <span class="header-text">
-              Social Media App
+              <%= @rankedwads.find(3).problem_state %>
             </span>
           </div>
           <div class="item-content">
@@ -351,7 +333,7 @@
               Info:
             </div>
             <div class="content-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor jskious incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consec…
+             <%= @rankedwads.find(3).long_form %>
             </div>
           </div>
           <div class="item-footer">
@@ -389,4 +371,4 @@
 </div>
 
 
-</body></html>
+
