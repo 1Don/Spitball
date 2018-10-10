@@ -13,6 +13,7 @@ layout "_landing", only: [:landing, :home]
   end
 
   def landing
+    @rankedwads = Wad.order(cached_votes_total: :desc)
   end
 
   def search
