@@ -33,7 +33,13 @@ function openConversation(evt, convoId) {
 		let conversationField = document.getElementById('conversation_id');
 		conversationField.value = convoId;
 }
+$(document).ready(function(){
+	window.addEventListener("load", function(){
+		let load_screen = document.getElementById("load_screen");
+		document.body.removeChild(load_screen);
+	});
 
+})
 
 
 
