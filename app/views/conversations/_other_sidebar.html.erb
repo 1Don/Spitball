@@ -2,4 +2,9 @@
   <div class="border-bottom small text-center py-3">
     <span class="py-3">Previous Attachments</span>
   </div>
+  <% @conversations.each do |convo| %>
+  <div class="convo<%= convo.id %> tabcontent">
+      <%= convo.id %>
+  </div>
+  <% end %>
 </div>

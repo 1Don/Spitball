@@ -8,24 +8,26 @@ html, body {
 
 @font-face {
   font-family: 'sf_pro_textregular';
-  src: url(/assets/sf-pro-text-regular-webfont.woff2) format("woff2"), url(/assets/sf-pro-text-regular-webfont.woff) format("woff");
+  src: url(../fonts/sf-pro-text-regular-webfont.woff2) format("woff2"), url(../fonts/sf-pro-text-regular-webfont.woff) format("woff");
   font-weight: normal;
   font-style: normal;
 }
 /* line 15, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 :root {
+  --breakpoint-md: 1200px;
+  --breakpoint-lg: 1200px;
   --font-family-sans-serif: sf_pro_textregular, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: sf_pro_textregular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-@media (min-width: 992px) {
-  /* line 20, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+@media (min-width: 1200px) {
+  /* line 22, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
   .navbar-expand-lg .navbar-nav .nav-link {
     min-width: 100px;
     text-align: center;
   }
 }
-/* line 25, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 27, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -37,7 +39,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 36, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 38, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle7 {
   background-color: #1c80df;
   top: 25px;
@@ -50,7 +52,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 49, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 51, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle71 {
   background-color: #1c80df;
   top: 40px;
@@ -63,7 +65,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 62, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 64, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle72 {
   background-color: #1c80df;
   top: 90px;
@@ -76,7 +78,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 75, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 77, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle73 {
   background-color: #1c80df;
   top: 50px;
@@ -89,7 +91,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 88, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 90, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle74 {
   background-color: #1c80df;
   top: 30px;
@@ -102,7 +104,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 101, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 103, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle75 {
   background-color: #1c80df;
   top: 20px;
@@ -115,7 +117,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 114, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 116, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle76 {
   background-color: #1c80df;
   top: 0;
@@ -128,7 +130,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 127, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 129, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle77 {
   background-color: #1c80df;
   top: 90px;
@@ -141,7 +143,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 140, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 142, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .circles .rectangle78 {
   background-color: #1c80df;
   top: 140px;
@@ -155,14 +157,14 @@ html, body {
   transform: rotate(0);
 }
 
-/* line 154, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 156, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .index-page {
   background-image: url('background.png');
   background-repeat: no-repeat;
   background-size: 100% 5900px;
 }
 
-/* line 159, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 161, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header {
   /*background-image: asset_url('landing-page-header-bg.png');
   -ms-background-position-x: -2px;
@@ -170,29 +172,34 @@ html, body {
   background-size: 101% 910px;
   background-repeat: no-repeat;*/
 }
-/* line 165, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 168, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+.header .navbar-brand img {
+  height: 60px;
+}
+/* line 172, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .navbar {
-  width: 1170px;
+  max-width: 1200px;
   margin: auto;
   padding-top: 40px;
 }
-/* line 169, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 176, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .navbar a, .header .navbar a:active, .header .navbar a:hover {
   color: #ffffff;
   text-decoration: none;
   font-size: 16.0px;
 }
-/* line 175, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 182, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .header-content {
-  width: 90%;
+  max-width: 1200px;
+  height: 560px;
   margin: auto;
 }
-/* line 180, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 188, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .header-text .heading, .header .header-text .description, .header .header-text .form {
   padding: 0.5rem 1rem;
   color: #ffffff;
 }
-/* line 184, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 192, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .header-text .heading {
   padding-top: 180px;
   font-size: 48.0px;
@@ -200,20 +207,23 @@ html, body {
   letter-spacing: -.5px;
   line-height: 52.0px;
 }
-/* line 191, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 199, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .header-text .description {
   font-size: 24.0px;
   letter-spacing: -.2px;
 }
-/* line 196, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 204, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .header-image {
   padding-top: 100px;
   text-align: right;
 }
-/* line 200, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 207, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+.header .header-image .image {
+  width: 95%;
+}
+/* line 211, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .btn-get-started {
   width: 150px;
-  font-weight: bold;
   height: 50px;
   font-size: 16.0px;
   letter-spacing: -.5px;
@@ -226,7 +236,7 @@ html, body {
   outline: none;
   border: none;
 }
-/* line 216, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 227, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .get-started-input {
   height: 50px;
   background-color: #ffffff;
@@ -234,7 +244,7 @@ html, body {
   color: #b2b2b2;
   padding: 10px 30px;
 }
-/* line 223, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 234, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .header .next-section {
   margin-top: 80px;
   margin-bottom: 80px;
@@ -242,17 +252,17 @@ html, body {
   text-align: center;
 }
 
-/* line 230, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 241, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 {
-  width: 1140px;
+  max-width: 1200px;
   margin: auto;
 }
-/* line 233, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 244, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation {
   background-position-x: 65%;
   height: 680px;
 }
-/* line 236, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 247, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .background-image {
   background-image: url('landing-page-icons-3.png');
   background-repeat: no-repeat;
@@ -262,13 +272,13 @@ html, body {
   height: 700px;
   right: 0px;
 }
-/* line 245, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 256, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container {
   /*opacity: 1;
   text-align: left;
   margin: 100px 0;*/
 }
-/* line 249, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 260, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -280,7 +290,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 260, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 271, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer {
   background-color: rgba(255, 255, 255, 0);
   left: 40px;
@@ -292,7 +302,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 271, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 282, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .bg {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -304,7 +314,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 282, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 293, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .bg .bg1 {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -316,7 +326,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 295, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 306, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .total {
   background-color: rgba(255, 255, 255, 0);
   left: 40px;
@@ -328,7 +338,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 306, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 317, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .total .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -345,7 +355,7 @@ html, body {
   letter-spacing: -.16px;
   line-height: 20.0px;
 }
-/* line 324, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 335, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .tabs {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -357,7 +367,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 335, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 346, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .tabs .separator {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -369,7 +379,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 347, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 358, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .tabs .activetabline {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -381,7 +391,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 359, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 370, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .tabs .newidea {
   background-color: rgba(255, 255, 255, 0);
   left: 94px;
@@ -398,7 +408,7 @@ html, body {
   letter-spacing: -.5px;
   line-height: 17.0px;
 }
-/* line 376, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 387, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .composer .tabs .ifedit2199097 {
   background-color: rgba(255, 255, 255, 0);
   left: 38px;
@@ -410,7 +420,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 390, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 401, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea {
   background-color: rgba(255, 255, 255, 0);
   left: 70px;
@@ -422,7 +432,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 401, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 412, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .bg {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -434,7 +444,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 413, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 424, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .arrowpointingtoright {
   background-color: rgba(255, 255, 255, 0);
   left: 368px;
@@ -446,7 +456,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 425, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 436, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .viewdetails {
   background-color: rgba(255, 255, 255, 0);
   left: 58px;
@@ -464,7 +474,7 @@ html, body {
   letter-spacing: -.57px;
   line-height: 24.0px;
 }
-/* line 443, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 454, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   left: 60px;
@@ -481,7 +491,7 @@ html, body {
   letter-spacing: -.57px;
   line-height: 24.0px;
 }
-/* line 460, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 471, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .info {
   background-color: rgba(255, 255, 255, 0);
   left: 60px;
@@ -498,7 +508,7 @@ html, body {
   letter-spacing: -.57px;
   line-height: 24.0px;
 }
-/* line 477, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 488, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .header1 {
   background-color: rgba(255, 255, 255, 0);
   left: 60px;
@@ -510,13 +520,13 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 488, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 499, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .header1 .socialmediaapp {
   background-color: rgba(255, 255, 255, 0);
   left: 54px;
   top: 6px;
   margin: 0;
-  width: 110%;
+  width: auto;
   height: auto;
   position: absolute;
   -webkit-transform: rotate(0);
@@ -527,7 +537,7 @@ html, body {
   letter-spacing: -.71px;
   line-height: 24.0px;
 }
-/* line 505, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 516, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .header1 .oval2 {
   background-color: rgba(255, 255, 255, 0);
   left: 0;
@@ -539,7 +549,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 517, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 528, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .image-container .left .idea .header1 .flash {
   background-color: rgba(255, 255, 255, 0);
   left: 13px;
@@ -551,17 +561,17 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 533, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 544, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container {
   margin: 100px 0;
 }
-/* line 536, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 547, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .title {
   margin-top: 80px;
   font-size: 17px;
   text-align: center;
 }
-/* line 541, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 552, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 2px;
@@ -573,7 +583,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 552, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 563, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .bg .bg1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -585,7 +595,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 565, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 576, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .pencil {
   background-color: rgba(255, 255, 255, 0);
   top: 51px;
@@ -597,7 +607,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 577, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 588, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .text {
   background-color: rgba(255, 255, 255, 0);
   top: 169px;
@@ -609,7 +619,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 588, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 599, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .text .a1shareyouridea {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -627,22 +637,22 @@ html, body {
   letter-spacing: -.4px;
   line-height: 27.0px;
 }
-/* line 605, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 616, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .text .a1shareyouridea .span1 {
   line-height: 42.0px;
 }
-/* line 608, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 619, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .text .a1shareyouridea .span2 {
   font-size: 36.0px;
   line-height: 42.0px;
 }
-/* line 612, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 623, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .text .a1shareyouridea .span3 {
   font-size: 36.0px;
   color: #141414;
   line-height: 42.0px;
 }
-/* line 618, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 629, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .text-container .text .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 106px;
@@ -661,14 +671,14 @@ html, body {
   line-height: 20.0px;
 }
 
-/* line 640, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 651, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback {
-  width: 943px;
+  max-width: 1200px;
   margin: auto;
   padding-top: 300px;
   height: 1000px;
 }
-/* line 646, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 657, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .buttoncopy {
   top: 377px;
   height: 130px;
@@ -677,7 +687,7 @@ html, body {
   margin: 0;
   left: 43px;
 }
-/* line 654, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 665, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .btn-join {
   width: 224px;
   height: 50px;
@@ -690,7 +700,7 @@ html, body {
   color: #ffffff;
   border-radius: 25px;
 }
-/* line 668, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 679, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 2px;
@@ -702,7 +712,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 679, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 690, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .bg .bg1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -714,7 +724,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 692, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 703, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .like {
   background-color: rgba(255, 255, 255, 0);
   top: 50px;
@@ -726,7 +736,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 704, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 715, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .text {
   background-color: rgba(255, 255, 255, 0);
   top: 169px;
@@ -738,7 +748,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 715, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 726, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .text .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 106px;
@@ -756,7 +766,7 @@ html, body {
   letter-spacing: -.16px;
   line-height: 20.0px;
 }
-/* line 733, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 744, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .text .a2getloveandfeed {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -774,22 +784,22 @@ html, body {
   letter-spacing: -.4px;
   line-height: 27.0px;
 }
-/* line 750, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 761, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .text .a2getloveandfeed .span1 {
   line-height: 42.0px;
 }
-/* line 753, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 764, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .text .a2getloveandfeed .span2 {
   font-size: 36.0px;
   line-height: 42.0px;
 }
-/* line 757, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 768, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .text .a2getloveandfeed .span3 {
   font-size: 36.0px;
   color: #141414;
   line-height: 42.0px;
 }
-/* line 764, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 775, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .background-image {
   background-image: url('landing-page-icons-2.png');
   background-repeat: no-repeat;
@@ -800,28 +810,28 @@ html, body {
   opacity: 0.4;
   top: -70px;
 }
-/* line 776, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 787, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right #message1 {
   top: 0;
   height: 180px;
   width: 375px;
   position: absolute;
 }
-/* line 782, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 793, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right #message2 {
   top: 145px;
   height: 160px;
   width: 335px;
   position: absolute;
 }
-/* line 788, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 799, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right #message3 {
   top: 270px;
   height: 180px;
   width: 375px;
   position: absolute;
 }
-/* line 794, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 805, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-right {
   background-color: rgba(255, 255, 255, 0);
   margin: 0;
@@ -829,7 +839,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 801, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 812, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-right .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -841,7 +851,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 813, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 824, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-right .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 40px;
@@ -859,7 +869,7 @@ html, body {
   letter-spacing: -.43px;
   line-height: 20.0px;
 }
-/* line 831, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 842, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-right .image {
   background-color: #d7d7d7;
   top: 60px;
@@ -873,7 +883,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 845, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 856, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-right .mask {
   background-color: #d7d7d7;
   top: 0;
@@ -886,7 +896,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 858, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 869, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-right .image1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -898,7 +908,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 871, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 882, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-left {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -910,7 +920,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 882, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 893, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-left .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -922,7 +932,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 894, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 905, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-left .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 40px;
@@ -940,7 +950,7 @@ html, body {
   letter-spacing: -.43px;
   line-height: 20.0px;
 }
-/* line 912, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 923, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-left .image {
   background-color: #d7d7d7;
   top: 80px;
@@ -954,7 +964,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 925, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 936, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-left .image .mask {
   background-color: #d7d7d7;
   top: 0;
@@ -967,7 +977,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 938, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 949, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .right .message-left .image .image1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -980,14 +990,14 @@ html, body {
   transform: rotate(0);
 }
 
-/* line 954, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 965, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator {
-  width: 1122px;
+  max-width: 1200px;
   margin: auto;
   padding-top: 250px;
   height: 1100px;
 }
-/* line 959, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 970, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 2px;
@@ -999,7 +1009,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 970, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 981, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .bg .bg1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1011,7 +1021,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 983, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 994, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .ifbriefcase3228516 {
   background-color: rgba(255, 255, 255, 0);
   top: 50px;
@@ -1023,7 +1033,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 995, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1006, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .text {
   background-color: rgba(255, 255, 255, 0);
   top: 169px;
@@ -1035,7 +1045,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1006, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1017, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .text .a3accessourincuba {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1052,16 +1062,16 @@ html, body {
   letter-spacing: -.4px;
   line-height: 27.0px;
 }
-/* line 1022, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1033, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .text .a3accessourincuba .span1 {
   line-height: 42.0px;
 }
-/* line 1025, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1036, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .text .a3accessourincuba .span2 {
   font-size: 36.0px;
   line-height: 42.0px;
 }
-/* line 1030, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1041, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .text .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 106px;
@@ -1078,7 +1088,7 @@ html, body {
   letter-spacing: -.16px;
   line-height: 20.0px;
 }
-/* line 1048, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1059, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .background-image {
   background-image: url('landing-page-icons-1.png');
   background-repeat: no-repeat;
@@ -1090,14 +1100,14 @@ html, body {
   top: -50px;
 }
 
-/* line 1059, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1070, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing {
-  width: 943px;
+  max-width: 1200px;
   margin: auto;
   padding-top: 50px;
   height: 700px;
 }
-/* line 1065, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1076, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .buttoncopy {
   top: 377px;
   height: 130px;
@@ -1106,7 +1116,7 @@ html, body {
   margin: 0;
   left: 43px;
 }
-/* line 1073, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1084, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .btn-join {
   width: 224px;
   height: 50px;
@@ -1119,7 +1129,7 @@ html, body {
   color: #ffffff;
   border-radius: 25px;
 }
-/* line 1087, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1098, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 2px;
@@ -1131,7 +1141,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1098, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1109, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .bg .bg1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1143,7 +1153,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1111, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1122, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .flask {
   background-color: rgba(255, 255, 255, 0);
   top: 50px;
@@ -1155,7 +1165,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1123, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1134, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .text {
   background-color: rgba(255, 255, 255, 0);
   top: 169px;
@@ -1167,7 +1177,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1134, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1145, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .text .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 106px;
@@ -1185,7 +1195,7 @@ html, body {
   letter-spacing: -.16px;
   line-height: 20.0px;
 }
-/* line 1152, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1163, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .text .a2getloveandfeed {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1203,22 +1213,22 @@ html, body {
   letter-spacing: -.4px;
   line-height: 27.0px;
 }
-/* line 1169, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1180, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .text .a2getloveandfeed .span1 {
   line-height: 42.0px;
 }
-/* line 1172, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1183, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .text .a2getloveandfeed .span2 {
   font-size: 36.0px;
   line-height: 42.0px;
 }
-/* line 1176, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1187, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .text .a2getloveandfeed .span3 {
   font-size: 36.0px;
   color: #141414;
   line-height: 42.0px;
 }
-/* line 1183, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1194, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .background-image {
   background-image: url('landing-page-icons.png');
   background-repeat: no-repeat;
@@ -1229,28 +1239,28 @@ html, body {
   opacity: 0.4;
   top: -100px;
 }
-/* line 1195, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1206, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right #message1 {
   top: 0;
   height: 180px;
   width: 375px;
   position: absolute;
 }
-/* line 1201, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1212, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right #message2 {
   top: 145px;
   height: 160px;
   width: 335px;
   position: absolute;
 }
-/* line 1207, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1218, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right #message3 {
   top: 270px;
   height: 180px;
   width: 375px;
   position: absolute;
 }
-/* line 1213, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1224, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-right {
   background-color: rgba(255, 255, 255, 0);
   margin: 0;
@@ -1258,7 +1268,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1220, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1231, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-right .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1270,7 +1280,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1232, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1243, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-right .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 40px;
@@ -1288,7 +1298,7 @@ html, body {
   letter-spacing: -.43px;
   line-height: 20.0px;
 }
-/* line 1250, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1261, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-right .image {
   background-color: #d7d7d7;
   top: 60px;
@@ -1302,7 +1312,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1264, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1275, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-right .mask {
   background-color: #d7d7d7;
   top: 0;
@@ -1315,7 +1325,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1277, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1288, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-right .image1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1327,7 +1337,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1290, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1301, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-left {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1339,7 +1349,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1301, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1312, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-left .bg {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1351,7 +1361,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1313, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1324, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-left .loremipsumdolorsi {
   background-color: rgba(255, 255, 255, 0);
   top: 40px;
@@ -1369,7 +1379,7 @@ html, body {
   letter-spacing: -.43px;
   line-height: 20.0px;
 }
-/* line 1331, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1342, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-left .image {
   background-color: #d7d7d7;
   top: 80px;
@@ -1383,7 +1393,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1344, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1355, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-left .image .mask {
   background-color: #d7d7d7;
   top: 0;
@@ -1396,7 +1406,7 @@ html, body {
   -webkit-transform: rotate(0);
   transform: rotate(0);
 }
-/* line 1357, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1368, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .right .message-left .image .image1 {
   background-color: rgba(255, 255, 255, 0);
   top: 0;
@@ -1409,14 +1419,14 @@ html, body {
   transform: rotate(0);
 }
 
-/* line 1373, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1384, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .call-to-action {
   height: 500px;
-  width: 969px;
+  max-width: 1200px;
   margin: auto;
   padding-top: 100px;
 }
-/* line 1378, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1389, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .call-to-action .readytostart {
   font-size: 36.0px;
   color: white;
@@ -1424,7 +1434,7 @@ html, body {
   letter-spacing: -.4px;
   line-height: 38.0px;
 }
-/* line 1385, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1396, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .call-to-action .loremipsumdolorsi {
   font-size: 24.0px;
   color: white;
@@ -1433,11 +1443,11 @@ html, body {
   line-height: 28.0px;
   width: 60%;
 }
-/* line 1393, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1404, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .call-to-action .form {
   margin-top: 100px;
 }
-/* line 1396, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1407, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .call-to-action .get-started-input {
   width: 290px;
   height: 50px;
@@ -1450,7 +1460,7 @@ html, body {
   font-size: 16px;
   padding: 10px 30px;
 }
-/* line 1408, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1419, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .call-to-action .btn-get-started {
   width: 150px;
   height: 50px;
@@ -1459,12 +1469,12 @@ html, body {
   border-radius: 25px;
 }
 
-/* line 1416, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1427, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas {
   height: 800px;
   padding-top: 100px;
 }
-/* line 1419, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1430, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .title {
   text-align: center;
   font-size: 36.0px;
@@ -1473,37 +1483,37 @@ html, body {
   letter-spacing: -.4px;
   line-height: 38.0px;
 }
-/* line 1426, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1437, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .title .span2 {
   color: #141414;
 }
-/* line 1430, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1441, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-list {
   width: 85%;
   margin: auto;
   margin-top: 100px;
 }
-/* line 1435, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1446, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item {
-  height: 304px;
+  min-height: 304px;
   width: 33%;
   padding: 0 10px;
   display: inline-block;
 }
-/* line 1440, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1451, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container {
   padding: 30px;
   background-color: #ffffff;
   box-shadow: 0 20px 40px 0 #cedae4;
-  height: 304px;
+  min-height: 304px;
   border-radius: 10px;
 }
-/* line 1446, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1457, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-header {
   width: 100%;
   display: flex;
 }
-/* line 1449, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1460, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-header .header-image-container {
   height: 42px;
   width: 42px;
@@ -1513,12 +1523,12 @@ html, body {
   text-align: center;
   margin-right: 15px;
 }
-/* line 1456, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1467, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-header .header-image-container img {
   height: 18px;
   margin-top: 12px;
 }
-/* line 1462, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1473, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-header .header-text {
   padding-top: 10px;
   font-size: 20.0px;
@@ -1527,11 +1537,11 @@ html, body {
   letter-spacing: -.71px;
   line-height: 24.0px;
 }
-/* line 1471, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1482, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-content {
   margin-top: 30px;
 }
-/* line 1473, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1484, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-content .content-header {
   font-size: 16.0px;
   color: #141414;
@@ -1539,7 +1549,7 @@ html, body {
   letter-spacing: -.57px;
   line-height: 24.0px;
 }
-/* line 1480, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1491, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-content .content-text {
   font-size: 16.0px;
   color: #909090;
@@ -1548,11 +1558,11 @@ html, body {
   line-height: 24.0px;
   padding-top: 10px;
 }
-/* line 1489, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1500, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-footer {
   margin-top: 20px;
 }
-/* line 1491, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1502, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-item .item-container .item-footer .item-footer-btn {
   float: right;
   font-size: 16.0px;
@@ -1561,13 +1571,13 @@ html, body {
   letter-spacing: -.57px;
   line-height: 24.0px;
 }
-/* line 1502, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1513, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-btns {
   width: 85%;
   margin: auto;
   margin-top: 100px;
 }
-/* line 1506, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1517, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-btns .ideas-btn {
   width: 128px;
   height: 44px;
@@ -1577,29 +1587,524 @@ html, body {
   color: #ffac5e;
   text-align: center;
 }
-/* line 1515, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1526, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-btns .ideas-btn.left {
   float: left;
 }
-/* line 1518, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1529, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .trending-ideas .ideas-btns .ideas-btn.right {
   float: right;
 }
 
-/* line 1523, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1534, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .footer {
   height: 98px;
   background-color: #3e3e3e;
   padding: 39px 10%;
   color: #ffffff;
 }
-/* line 1528, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1539, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .footer .socialicons {
   text-align: right;
 }
-/* line 1530, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
+/* line 1541, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .footer .socialicons img {
   margin-left: 20px;
   height: 18px;
   width: 20px;
+}
+@media (min-width: 320px) and (max-width: 600px) {
+    /* line 2, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .index-page {
+        background-image: url('background-mobile.png');
+        background-repeat: no-repeat;
+        background-size: 100% 5900px;
+    }
+
+    /* line 7, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .circles {
+        zoom: 0.75;
+        -moz-transform: scale(0.75);
+    }
+
+    /* line 12, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .navbar-brand img {
+        height: 40px !important;
+    }
+
+    /* line 17, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .navbar-toggler .navbar-toggler-icon {
+        background-image: url('menu.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    /* line 23, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .hide-mobile {
+        display: none !important;
+    }
+
+    /* line 27, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .navbar {
+        padding: 20px 10px 10px 30px;
+    }
+    /* line 31, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .header-text .heading {
+        padding-top: 80px;
+        font-size: 34px;
+        line-height: 36px;
+    }
+    /* line 36, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .header-text .description {
+        font-size: 20.0px;
+    }
+    /* line 40, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .header-content {
+        height: 700px;
+    }
+    /* line 43, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .btn-get-started {
+        width: 100%;
+        margin-top: 20px;
+    }
+    /* line 47, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .header-image {
+        padding-top: 40px;
+    }
+    /* line 50, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .header .next-section {
+        margin-top: 90px;
+        margin-bottom: 30px;
+    }
+
+    /* line 57, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .row .title {
+        padding: 0 20px;
+        text-align: center;
+    }
+    /* line 63, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .background-image {
+        background-image: url('icon-idea.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 1;
+        position: absolute;
+        width: 80%;
+        height: 734px;
+        background-position-y: 70px;
+        left: 10%;
+    }
+    /* line 74, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container {
+        position: absolute;
+        top: 1100px;
+        left: 10px;
+        width: 90%;
+    }
+    /* line 79, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .bg .bg1 {
+        height: 133.5px;
+        width: 132px;
+    }
+    /* line 83, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .pencil {
+        top: 36px;
+        height: 35px;
+        width: 35px;
+        position: absolute;
+        margin: 0;
+        left: 50px;
+    }
+    /* line 91, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text {
+        top: 133px;
+        height: 186px;
+        width: 80%;
+        position: absolute;
+        margin: 0;
+        left: 15px;
+    }
+    /* line 98, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text .a1shareyouridea {
+        font-size: 20px;
+    }
+    /* line 100, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text .a1shareyouridea .span1 {
+        line-height: 30px;
+    }
+    /* line 103, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text .a1shareyouridea .span2 {
+        font-size: 28px;
+        line-height: 35px;
+    }
+    /* line 106, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text .a1shareyouridea .span2 br {
+        display: none;
+    }
+    /* line 110, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text .a1shareyouridea .span3 {
+        font-size: 28px;
+        line-height: 35px;
+        color: #141414;
+    }
+    /* line 116, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .text-container .text .loremipsumdolorsi {
+        top: 50px;
+        width: 100%;
+        line-height: 25px;
+    }
+    /* line 123, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .image-container {
+        position: absolute;
+        top: 1400px;
+    }
+    /* line 127, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .image-container .left {
+        width: 90%;
+    }
+    /* line 129, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .image-container .left .composer, .step1 .ideation .image-container .left .idea {
+        zoom: 0.75;
+        -moz-transform: scale(0.75);
+    }
+    /* line 133, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .image-container .left .composer {
+        left: 50px;
+    }
+    /* line 136, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .step1 .ideation .image-container .left .idea {
+        left: 80px;
+    }
+
+    /* line 143, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback {
+        padding-top: 150px;
+    }
+    /* line 145, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left {
+        position: absolute;
+        width: 100%;
+        width: calc(100% - 20px);
+    }
+    /* line 149, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .buttoncopy {
+        top: 275px;
+    }
+    /* line 153, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .bg .bg1 {
+        height: 133.5px;
+        width: 132px;
+    }
+    /* line 158, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .like {
+        top: 36px;
+        height: 35px;
+        width: 35px;
+        position: absolute;
+        margin: 0;
+        left: 53px;
+    }
+    /* line 166, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .background-image {
+        background-image: url('icon-market-validation.png');
+        background-repeat: no-repeat;
+        background-size: 260px 880px;
+        opacity: 1;
+        position: absolute;
+        width: 90%;
+        height: 1000px;
+        background-position-y: 110px;
+        left: 5%;
+    }
+    /* line 177, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text {
+        top: 133px;
+        height: 186px;
+        width: 100%;
+        position: absolute;
+        margin: 0;
+        left: 15px;
+    }
+    /* line 184, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text .a2getloveandfeed {
+        font-size: 20px;
+    }
+    /* line 186, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text .a2getloveandfeed .span1 {
+        line-height: 30px;
+    }
+    /* line 189, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text .a2getloveandfeed .span2 {
+        font-size: 28px;
+        line-height: 35px;
+    }
+    /* line 193, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text .a2getloveandfeed .span3 {
+        font-size: 28px;
+        line-height: 35px;
+        color: #141414;
+    }
+    /* line 194, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text .a2getloveandfeed .span3 br {
+        display: none;
+    }
+    /* line 202, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .left .text .loremipsumdolorsi {
+        top: 50px;
+        width: 100%;
+        line-height: 25px;
+    }
+    /* line 210, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .right #message1 {
+        width: calc(100% - 40px);
+    }
+    /* line 214, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .right .message-left .bg {
+        width: calc(100% - 40px);
+    }
+    /* line 217, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .right .message-left .loremipsumdolorsi {
+        width: calc(100% - 150px);
+    }
+    /* line 222, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .right .message-right .image {
+        right: -15px;
+        left: auto;
+    }
+    /* line 226, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .right .message-right .bg {
+        width: 100%;
+    }
+    /* line 229, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .feedback .right .message-right .loremipsumdolorsi {
+        width: calc(100% - 129px);
+    }
+
+    /* line 235, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator {
+        padding-top: 200px;
+        height: 950px;
+    }
+    /* line 238, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .background-image {
+        background-image: url('icon-incubator.png');
+        background-repeat: no-repeat;
+        background-size: 100% 680px;
+        opacity: 1;
+        position: absolute;
+        width: 90%;
+        height: 740px;
+        background-position-y: 50px;
+        left: 5%;
+    }
+    /* line 250, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-7 {
+        position: absolute;
+        top: 3400px;
+        left: 20px;
+        width: 80%;
+    }
+    /* line 255, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-7 img {
+        width: 100%;
+    }
+    /* line 260, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right {
+        position: absolute;
+        left: 25px;
+        width: calc(100% - 50px);
+    }
+    /* line 265, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .bg .bg1 {
+        height: 133.5px;
+        width: 132px;
+    }
+    /* line 270, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .ifbriefcase3228516 {
+        top: 36px;
+        height: 38px;
+        width: 38px;
+        position: absolute;
+        margin: 0;
+        left: 48px;
+    }
+    /* line 278, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .circles > div {
+        background-color: #ffffff;
+    }
+    /* line 281, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text {
+        top: 133px;
+        height: 186px;
+        width: calc(100% - 50px);
+        position: absolute;
+        margin: 0;
+    }
+    /* line 287, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text .a3accessourincuba {
+        font-size: 20px;
+    }
+    /* line 289, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text .a3accessourincuba .span1 {
+        line-height: 30px;
+    }
+    /* line 292, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text .a3accessourincuba .span2 {
+        font-size: 28px;
+        line-height: 35px;
+        padding-right: 2px;
+    }
+    /* line 295, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text .a3accessourincuba .span2 br {
+        display: none;
+    }
+    /* line 300, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text .a3accessourincuba .span3 {
+        font-size: 28px;
+        line-height: 35px;
+    }
+    /* line 305, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .incubator .row .col-md-5 .right .text .loremipsumdolorsi {
+        top: 50px;
+        width: 100%;
+        line-height: 25px;
+    }
+
+    /* line 317, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .right img {
+        width: 100%;
+    }
+    /* line 321, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 {
+        height: 300px;
+    }
+    /* line 323, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left {
+        position: absolute;
+        left: 10px;
+        width: 100%;
+    }
+    /* line 328, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .bg .bg1 {
+        height: 133.5px;
+        width: 132px;
+    }
+    /* line 333, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .flask {
+        top: 36px;
+        height: 38px;
+        width: 38px;
+        position: absolute;
+        margin: 0;
+        left: 50px;
+    }
+    /* line 341, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text {
+        top: 133px;
+        height: 186px;
+        width: 80%;
+        position: absolute;
+        margin: 0;
+        left: 15px;
+    }
+    /* line 348, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text .a2getloveandfeed {
+        font-size: 20px;
+    }
+    /* line 350, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text .a2getloveandfeed .span1 {
+        line-height: 30px;
+    }
+    /* line 353, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text .a2getloveandfeed .span2 {
+        font-size: 28px;
+        line-height: 35px;
+        padding-right: 2px;
+    }
+    /* line 358, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text .a2getloveandfeed .span3 {
+        font-size: 28px;
+        line-height: 35px;
+    }
+    /* line 359, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text .a2getloveandfeed .span3 br {
+        display: none;
+    }
+    /* line 366, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .col-md-5 .left .text .loremipsumdolorsi {
+        top: 50px;
+        width: 100%;
+        line-height: 25px;
+    }
+    /* line 375, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .testing .left .background-image {
+        background-image: url('icon-test.png');
+        background-repeat: no-repeat;
+        background-size: 100% 675px;
+        opacity: 1;
+        position: absolute;
+        width: 80%;
+        height: 1000px;
+        background-position-y: 110px;
+        left: 10%;
+    }
+
+    /* line 388, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .call-to-action {
+        padding: 140px 20px 20px 20px;
+    }
+    /* line 390, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .call-to-action .readytostart {
+        font-size: 30.0px;
+    }
+    /* line 393, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .call-to-action .loremipsumdolorsi {
+        width: 100%;
+        font-size: 16.0px;
+    }
+    /* line 397, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .call-to-action .form {
+        margin-top: 50px;
+    }
+    /* line 399, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .call-to-action .form .get-started-input {
+        width: 100%;
+        margin: 20px;
+    }
+    /* line 403, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .call-to-action .form .btn-get-started {
+        width: 100%;
+        margin: 0 20px;
+    }
+
+    /* line 409, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .trending-ideas {
+        height: 700px;
+    }
+    /* line 411, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .trending-ideas .ideas-item.d-sm-none {
+        display: none;
+    }
+    /* line 414, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .trending-ideas .ideas-list {
+        margin-top: 50px;
+    }
+    /* line 417, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .trending-ideas .ideas-item {
+        width: 100%;
+    }
+
+    /* line 421, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .footer {
+        height: auto;
+    }
+    /* line 423, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .footer .col-md-4 {
+        text-align: center;
+        margin: 10px 0;
+    }
+    /* line 427, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
+    .footer .socialicons {
+        text-align: center;
+    }
 }

@@ -1,374 +1,368 @@
+<div class="index-page">
+    <div class="header">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="http://localhost:3000/#"><img src="<%= asset_path('logo.png') %>" alt="Mobile version logo copy@2x"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <div class="index-page">
-  <div class="header">
-    <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="http://localhost:3000/#"><%= image_tag("logo.png") %></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                </ul>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/#">About us</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/#">Log in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/#">Sign up</a>
-          </li>
-          <li class="nav-item">
-            <span class="nav-link">&nbsp;</span>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="row header-content h-100">
-      <div class="col-md-6 header-text">
-        <h1 class="heading">Ready to turn your idea into something real?</h1>
-        <p class="description">
-        </p>
-        <div class="form">
-          <div class="row">
-         <!--   <div class="col-md-6">
-              <input type="text" class="form-control get-started-input" placeholder="What problem are you solving?">
-            </div> -->
-            <div class="col-md-6">
-              <!-- i'm thinking we make this a sign up prompt instead of scroll?-->
-              <button class="btn btn-default btn-get-started">Let's Execute</button> 
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:3000/#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/#">Get in touch</a>
+                    </li>
+                    <li class="nav-item hide-mobile">
+                        <span class="nav-link">&nbsp;</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/#">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/#">Sign up</a>
+                    </li>
+                </ul>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 header-image">
-        <%= image_tag('landing-page-main-illustration.svg', class: "image") %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="next-section">
-          <div class="howitworks">What we do</div>
-          <%= image_tag('landing-page-scroll-down.png', class: "scrolldown") %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="step1">
-    <div class="row">
-      <div class="text-center">
-        <p class="title">
-         Spitball is a community for entrepreneurs, thinkers and enthusiasts to bounce ideas, get them validated, and turn them into the problem solving products of tomorrow. We're building a platform that facilitates a model for idea incubation based on targeted early potential customer feedback and leveraging an expanding network of executional talent to help provide the resources people need to make things happen.
-        </p>
-      </div>
-    </div>
-    <div class="row ideation">
-      <div class="background-image"></div>
-      <div class="col-md-7 image-container">
-        <div class="left">
-          <div class="composer">
-            <div class="bg">
-              <%= image_tag('landing-page-bg-5.png', class: "bg1") %>
-            </div>
-            <div class="total">
-              <div class="loremipsumdolorsi">There should be a platform dedicated to enthusiasts and aspiring entrepreneurs that allows them to validate their concept through targeted feedback, and provide resources and access to the tools needed to be entrepreneurs.</div>
-            </div>
-            <div class="tabs">
-              <%= image_tag("landing-page-separator.png", class: "separator") %>
-              <%= image_tag("landing-page-active-tab-line-1.png", class: "activetabline") %>
-              <div class="newidea">New Idea</div>
-              <%= image_tag("landing-page-ifedit2199097@2x.png", class: "ifedit2199097") %>
-            </div>
-          </div>
-          <div class="idea">
-            <%= image_tag "landing-page-bg-15.png", class: "bg" %>
-            <%= image_tag "landing-page-arrow-pointing-to-right-3@2x.png", class: "arrowpointingtoright" %>
-            <div class="viewdetails">View Details</div>
-            <div class="loremipsumdolorsi">So we're building a platform that allows people to validate their ideas via their target market, meet cofounders and investors, and take their ideas to the next level. We start by targeting peeople's ideas to their target market so they can provide feedback...</div>
-            <div class="header1">
-              <div class="socialmediaapp">It is too hard for people to take action on their ideas</div>
-              <%= image_tag "landing-page-oval-2-3@2x.png", class: "oval2" %>
-              <%= image_tag "landing-page-flash-3@2x.png", class: "flash" %>
-            </div>
-          </div>
-        </div>
-      </div>
+        </nav>
+        <div class="row header-content">
+            <div class="col-md-6 header-text">
+                <h1 class="heading">Ready to turn your idea into something real?</h1>
 
-
-      <div class="col-md-5 text-container">
-        <div class="circles">
-          <div class="rectangle7"></div>
-          <div class="rectangle71"></div>
-          <div class="rectangle72"></div>
-          <div class="rectangle73"></div>
-          <div class="rectangle74"></div>
-          <div class="rectangle75"></div>
-          <div class="rectangle76"></div>
-          <div class="rectangle77"></div>
-          <div class="rectangle78"></div>
+                <div class="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control get-started-input" placeholder="My Idea is called…">
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-default btn-get-started">Let's Execute</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 header-image">
+                <img class="image" src="<%= asset_path('landing-page-main-illustration.svg') %>" alt="Landing page main illustration">
+            </div>
         </div>
-        <div class="bg">
-          <%= image_tag "landing-page-bg-11@2x.png", class: "bg1" %>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="next-section">
+                    <div class="howitworks">How it works?</div>
+                    <img class="scrolldown" src="<%= asset_path('landing-page-scroll-down.png') %>" alt="Landing page scroll down">
+                </div>
+            </div>
         </div>
-        <%= image_tag "landing-page-pencil.png", class: "pencil" %>
-        <div class="text">
-          <!-- STEP 1 COPY GOES BELOW -->
-          <div class="a1shareyouridea">
-           <!-- <span class="span1">1.</span> -->
-            <span class="span2"> Ideation<br></span>
-         <!--   <span class="span3"> Idea</span> -->
-          </div>
-          <div class="loremipsumdolorsi">Good ideas come from identifying something that could be improved. Your perspective is unique and might be what is needed to address a real problem in the world. But how would you know.. </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="row feedback">
-    <div class="col-md-7">
-      <div class="left">
-        <div class="buttoncopy">
-          <button class="btn btn-default btn-join">Join The Community</button>
+    <div class="step1">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <p class="title">Spitball is a community for entrepreneurs, thinkers and enthusiasts to bounce ideas, get them validated, and turn them into the problem solving products of tomorrow. We're building a platform that facilitates a model for idea incubation based on targeted early potential customer feedback and leveraging an expanding network of executional talent to help provide the resources people need to make things happen.
+</p>
+            </div>
         </div>
-        <div class="text">
-          <!-- STEP 2 COPY GOES BELOW -->
-          <div class="loremipsumdolorsi">We target your idea to people interested in the idea you're proposing. This includes early-adopters, enthusiasts, investors etc. </div>
-          <div class="a2getloveandfeed">
-        <!--    <span class="span1">2.</span> -->
-            <span class="span2"> Market Validation</span>
-      <!--      <span class="span3"><br>your idea</span> -->
-          </div>
+        <div class="row ideation">
+            <div class="background-image"></div>
+            <div class="col-md-7 image-container">
+                <div class="left">
+                    <div class="composer">
+                        <div class="bg">
+                            <img class="bg1" src="<%= asset_path('landing-page-bg-5.png') %>" alt="Landing page bg 5">
+                        </div>
+                        <div class="total">
+                            <div class="loremipsumdolorsi">There should be a platform dedicated to enthusiasts and aspiring entrepreneurs that allows them to validate their concept through targeted feedback, and provide resources and access to the tools needed to be entrepreneurs.</div>
+                        </div>
+                        <div class="tabs">
+                            <img class="separator" src="<%= asset_path('landing-page-separator.png') %>" alt="Landing page separator">
+                            <img class="activetabline" src="<%= asset_path('landing-page-active-tab-line-1.png') %>" alt="Landing page active tab line 1">
+                            <div class="newidea">New Idea</div>
+                            <img class="ifedit2199097" src="<%= asset_path('landing-page-ifedit2199097@2x.png') %>" alt="Landing page ifedit2199097@2x">
+                        </div>
+                    </div>
+                    <div class="idea">
+                        <img class="bg" src="<%= asset_path('landing-page-bg-15.png') %>" alt="Landing page bg 15">
+                        <img class="arrowpointingtoright" src="<%= asset_path('landing-page-arrow-pointing-to-right-3@2x.png') %>" alt="Landing page arrow pointing to right 3@2x">
+                        <div class="viewdetails">View Details</div>
+                        <div class="loremipsumdolorsi">So we're building a platform that allows people to validate their ideas via their target market, meet cofounders and investors, and take their ideas to the next level. We start by targeting peeople's ideas to their target market so they can provide feedback...</div>
+                        <div class="info">Info:</div>
+                        <div class="header1">
+                            <div class="socialmediaapp">It is too hard for people to take action on their ideas</div>
+                            <img class="oval2" src="<%= asset_path('landing-page-oval-2-3@2x.png') %>" alt="Landing page oval 2 3@2x">
+                            <img class="flash" src="<%= asset_path('landing-page-flash-3@2x.png') %>" alt="Landing page flash 3@2x">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 text-container">
+                <div class="circles">
+                    <div class="rectangle7"></div>
+                    <div class="rectangle71"></div>
+                    <div class="rectangle72"></div>
+                    <div class="rectangle73"></div>
+                    <div class="rectangle74"></div>
+                    <div class="rectangle75"></div>
+                    <div class="rectangle76"></div>
+                    <div class="rectangle77"></div>
+                    <div class="rectangle78"></div>
+                </div>
+                <div class="bg">
+                    <img class="bg1" src="<%= asset_path('landing-page-bg-11@2x.png') %>" alt="Landing page bg 11@2x">
+                </div>
+                <img class="pencil" src="<%= asset_path('landing-page-pencil.png') %>" alt="Landing page pencil">
+                <div class="text">
+                    <div class="a1shareyouridea">
+                        <!-- <span class="span1">1.</span> -->
+                        <span class="span2"> Ideation<br></span>
+                        <!-- <span class="span3">your idea</span> -->
+                    </div>
+                    <div class="loremipsumdolorsi">Good ideas come from identifying something that could be improved. Your perspective is unique and might be what is needed to address a real problem in the world. But how would you know.. </div>
+                </div>
+            </div>
         </div>
-        <div class="circles">
-          <div class="rectangle7"></div>
-          <div class="rectangle71"></div>
-          <div class="rectangle72"></div>
-          <div class="rectangle73"></div>
-          <div class="rectangle74"></div>
-          <div class="rectangle75"></div>
-          <div class="rectangle76"></div>
-          <div class="rectangle77"></div>
-          <div class="rectangle78"></div>
-        </div>
-        <div class="bg">
-          <%= image_tag "landing-page-bg-10@2x.png", class: "bg1" %>
-        </div>
-        <%= image_tag "landing-page-like.png", class: "like" %>
-        <div class="background-image"></div>
-      </div>
     </div>
-    <div class="col-md-5">
-      <div class="right">
-        <div class="message-left" id="message1">
-          <%= image_tag "landing-page-bg-6@2x.png", class: "bg" %>
-          <%= image_tag "landing-page-image@2x.png", class: "image" %>
-          <div class="loremipsumdolorsi">Hey I'm a software engineer and and have been thinking about building something similar to what you described. Dm me!</div>
-        </div>
-        <div class="message-right" id="message2">
-          <div class="image">
-            <div class="mask"></div>
-            <%= image_tag "landing-page-image-1@2x.png", class: "image1" %>
-          </div>
-          <%= image_tag "landing-page-bg-7@2x.png", class: "bg" %>
-          <div class="loremipsumdolorsi">I don't know that there is a big enough market for this to be profitable to be honest. I'd pivot.</div>
-        </div>
-        <div class="message-left" id="message3">
-          <div class="image">
-            <div class="mask"></div>
-            <%= image_tag "landing-page-image-2@2x.png", class: "image1" %>
-          </div>
-          <%= image_tag "landing-page-bg-6@2x.png", class: "bg" %>
-          <div class="loremipsumdolorsi">Please make this happen!!!! </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="incubator">
-      <div class="row">
+    <div class="row feedback">
         <div class="col-md-7">
-          <%= image_tag "landing-page-group.svg" %>
+            <div class="left">
+                <div class="buttoncopy">
+                    <button class="btn btn-default btn-join">Join Our Community</button>
+                </div>
+                <div class="text">
+                    <div class="loremipsumdolorsi">We target your idea to people interested in the idea you're proposing. This includes early-adopters, enthusiasts, investors etc. </div>
+                    <div class="a2getloveandfeed">
+                        <!-- <span class="span1">2.</span> -->
+                        <span class="span2"> Market Validation</span>
+                        <!-- <span class="span3"><br>and feedback</span> -->
+                    </div>
+                </div>
+                <div class="circles">
+                    <div class="rectangle7"></div>
+                    <div class="rectangle71"></div>
+                    <div class="rectangle72"></div>
+                    <div class="rectangle73"></div>
+                    <div class="rectangle74"></div>
+                    <div class="rectangle75"></div>
+                    <div class="rectangle76"></div>
+                    <div class="rectangle77"></div>
+                    <div class="rectangle78"></div>
+                </div>
+                <div class="bg">
+                    <img class="bg1" src="<%= asset_path('landing-page-bg-10@2x.png') %>" alt="Landing page bg 10@2x">
+                </div>
+                <img class="like" src="<%= asset_path('landing-page-like.png') %>" alt="Landing page like">
+                <div class="background-image"></div>
+            </div>
         </div>
         <div class="col-md-5">
-          <div class="right">
-            <div class="text">
-              <!-- STEP 3 COPY GOES BELOW -->
-              <div class="a3accessourincuba">
-                <span class="span1"></span>
-                <span class="span2"> Incubation</span>
-              </div>
-              <div class="loremipsumdolorsi">
-               Based on if it looks like there's a market, we'll connect with domain experts in our network to make a recommendation on the best next steps to accelerate your venture. We'll work with you on the idea and set things up for success. Look out for features like <strong> Spitball campaigns</strong> coming soon.
-              </div>
+            <div class="right">
+                <div class="message-left" id="message1">
+                    <img class="bg" src="<%= asset_path('landing-page-bg-6@2x.png') %>" alt="Landing page bg 6@2x">
+                    <img class="image" src="<%= asset_path('landing-page-image@2x.png') %>" alt="Landing page image@2x">
+                    <div class="loremipsumdolorsi">Hey I'm a software engineer and and have been thinking about building something similar to what you described. Dm me! </div>
+                </div>
+                <div class="message-right" id="message2">
+                    <div class="image">
+                        <div class="mask"></div>
+                        <img class="image1" src="<%= asset_path('landing-page-image-1@2x.png') %>" alt="Landing page image 1@2x">
+                    </div>
+                    <img class="bg" src="<%= asset_path('landing-page-bg-7@2x.png') %>" alt="Landing page bg 7@2x">
+                    <div class="loremipsumdolorsi">I don't know that there is a big enough market for this to be profitable to be honest. I'd pivot.</div>
+                </div>
+                <div class="message-left" id="message3">
+                    <div class="image">
+                        <div class="mask"></div>
+                        <img class="image1" src="<%= asset_path('landing-page-image-2@2x.png') %>" alt="Landing page image 2@2x">
+                    </div>
+                    <img class="bg" src="<%= asset_path('landing-page-bg-6@2x.png') %>" alt="Landing page bg 6@2x">
+                    <div class="loremipsumdolorsi">Please make this happen!!!! </div>
+                </div>
             </div>
-            <div class="circles">
-              <div class="rectangle7"></div>
-              <div class="rectangle71"></div>
-              <div class="rectangle72"></div>
-              <div class="rectangle73"></div>
-              <div class="rectangle74"></div>
-              <div class="rectangle75"></div>
-              <div class="rectangle76"></div>
-              <div class="rectangle77"></div>
-              <div class="rectangle78"></div>
-            </div>
-            <div class="bg">
-              <%= image_tag "landing-page-bg-5@2x.png", class: "bg1"  %>
-            </div>
-            <%= image_tag "landing-page-ifbriefcase3228516.png", class: "ifbriefcase3228516"  %>
-            <div class="background-image"></div>
-          </div>
         </div>
-      </div>
     </div>
-  <div class="row testing">
-      <div class="col-md-5">
-        <div class="left">
-          <div class="buttoncopy">
-            <button class="btn btn-default btn-join">Join Our Community</button>
-          </div>
-          <div class="text">
-            <!-- STEP 4 COPY GOES BELOW -->
-            <div class="loremipsumdolorsi">We launch the results of our incubaion period! This might mean a prototype, a new marketing strategy or even a pop-up shop. We build an MVP with you, and position it for fast growth and success.
- </div>
-            <div class="a2getloveandfeed">
-              <span class="span2"> Testing</span>
-            <!--  <span class="span3"><br>and test it out</span> -->
+    <div class="incubator">
+        <div class="row">
+            <div class="col-md-7">
+                <img src="<%= asset_path('landing-page-group.svg') %>" alt="Landing page group">
             </div>
-          </div>
-          <div class="circles">
-            <div class="rectangle7"></div>
-            <div class="rectangle71"></div>
-            <div class="rectangle72"></div>
-            <div class="rectangle73"></div>
-            <div class="rectangle74"></div>
-            <div class="rectangle75"></div>
-            <div class="rectangle76"></div>
-            <div class="rectangle77"></div>
-            <div class="rectangle78"></div>
-          </div>
-          <div class="bg">
-            <%= image_tag "landing-page-bg-10@2x.png", class: "bg1" %>
-          </div>
-          <%= image_tag "landing-page-flask.png", class: "flask" %>
-          <div class="background-image"></div>
+            <div class="col-md-5">
+                <div class="right">
+                    <div class="text">
+                        <div class="a3accessourincuba">
+                            <!-- <span class="span1">3.</span> -->
+                            <span class="span2"> Incubation</span>
+                            <!-- <span class="span3">our incubator</span> -->
+                        </div>
+                        <div class="loremipsumdolorsi">
+                            Based on if it looks like there's a market, we'll connect with domain experts in our network to make a recommendation on the best next steps to accelerate your venture. We'll work with you on the idea and set things up for success. Look out for features like <strong> Spitball campaigns</strong> coming soon.
+                        </div>
+                    </div>
+                    <div class="circles">
+                        <div class="rectangle7"></div>
+                        <div class="rectangle71"></div>
+                        <div class="rectangle72"></div>
+                        <div class="rectangle73"></div>
+                        <div class="rectangle74"></div>
+                        <div class="rectangle75"></div>
+                        <div class="rectangle76"></div>
+                        <div class="rectangle77"></div>
+                        <div class="rectangle78"></div>
+                    </div>
+                    <div class="bg">
+                        <img class="bg1" src="<%= asset_path('landing-page-bg-5@2x.png') %>" alt="Landing page bg 5@2x">
+                    </div>
+                    <img class="ifbriefcase3228516" src="<%= asset_path('landing-page-ifbriefcase3228516.png') %>" alt="Landing page ifbriefcase3228516">
+                    <div class="background-image"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-7">
-        <div class="right">
-          <%= image_tag "landing-page-right@2x.png", width: "612px" %>
-        </div>
-      </div>
     </div>
-  <div class="call-to-action">
-    <div class="readytostart">Ready to build the future?</div>
-    <div class="loremipsumdolorsi">Join the community to make sure your ideas impact the development of the products you want to use</div>
-    <div class="offset-md-6 form">
-      <div class="row">
-          <input type="text" class="form-control get-started-input" placeholder="My Idea is called…">
-          <button class="btn btn-default btn-get-started">Get Started</button>
-      </div>
-    </div>
-  </div>
-  <div class="trending-ideas">
-    <h1 class="title"><span class="span1">Trending</span><span class="span2"> Ideas</span></h1>
-    <div class="ideas-list">
-      <div class="ideas-item">
-        <div class="item-container">
-          <div class="item-header">
-            <span class="header-image-container">
-              <%= image_tag "flash@3x.png", height: "20px" %>
-            </span>
-            <span class="header-text">
-              <%= @rankedwads.find(1).problem_state %>
-            </span>
-          </div>
-          <div class="item-content">
-            <div class="content-header">
-              Info:
+    <div class="row testing">
+        <div class="col-md-5">
+            <div class="left">
+                <div class="buttoncopy">
+                    <button class="btn btn-default btn-join">Join Our Community</button>
+                </div>
+                <div class="text">
+                    <div class="loremipsumdolorsi">We launch the results of our incubation period! This might mean a prototype, a new marketing strategy or even a pop-up shop. We build an MVP with you, and position it for fast growth and success.</div>
+                    <div class="a2getloveandfeed">
+                        <!-- <span class="span1">4.</span> -->
+                        <span class="span2"> Testing</span>
+                        <!-- <span class="span3"><br>and test it out</span> -->
+                    </div>
+                </div>
+                <div class="circles">
+                    <div class="rectangle7"></div>
+                    <div class="rectangle71"></div>
+                    <div class="rectangle72"></div>
+                    <div class="rectangle73"></div>
+                    <div class="rectangle74"></div>
+                    <div class="rectangle75"></div>
+                    <div class="rectangle76"></div>
+                    <div class="rectangle77"></div>
+                    <div class="rectangle78"></div>
+                </div>
+                <div class="bg">
+                    <img class="bg1" src="<%= asset_path('landing-page-bg-10@2x.png') %>" alt="Landing page bg 10@2x">
+                </div>
+                <img class="flask" src="<%= asset_path('landing-page-flask.png') %>" alt="Landing page flask">
+                <div class="background-image"></div>
             </div>
-            <div class="content-text">
-              <%= @rankedwads.find(1).long_form %>
-            </div>
-          </div>
-          <div class="item-footer">
-            <span class="item-footer-btn">View Details <%= image_tag "landing-page-arrow-pointing-to-right-1.png" %></span>
-          </div>
         </div>
-      </div>
-      <div class="ideas-item">
-        <div class="item-container">
-          <div class="item-header">
-            <span class="header-image-container">
-              <%= image_tag "flash@3x.png", height: "20px" %>
-            </span>
-            <span class="header-text">
-              <%= @rankedwads.find(2).problem_state %>
-            </span>
-          </div>
-          <div class="item-content">
-            <div class="content-text">
-              <%= @rankedwads.find(2).long_form %>
+        <div class="col-md-7">
+            <div class="right">
+                <img width="612px" src="<%= asset_path('landing-page-right@2x.png') %>" alt="Landing page right@2x">
             </div>
-          </div>
-          <div class="item-footer">
-            <span class="item-footer-btn">View Details <%= image_tag "landing-page-arrow-pointing-to-right-1.png" %></span>
-          </div>
         </div>
-      </div>
-      <div class="ideas-item">
-        <div class="item-container">
-          <div class="item-header">
-            <span class="header-image-container">
-              <%= image_tag "flash@3x.png", height: "20px" %>
-            </span>
-            <span class="header-text">
-              <%= @rankedwads.find(3).problem_state %>
-            </span>
-          </div>
-          <div class="item-content">
-            <div class="content-header">
-              Info:
+    </div>
+    <div class="call-to-action">
+        <div class="readytostart">Ready to build the future?</div>
+        <div class="loremipsumdolorsi">Join the community to make sure your ideas impact the development of the products you want to use</div>
+        <div class="offset-md-6 form">
+            <div class="row">
+                <input type="text" class="form-control get-started-input" placeholder="My Idea is called…">
+                <button class="btn btn-default btn-get-started">Get Started</button>
             </div>
-            <div class="content-text">
-             <%= @rankedwads.find(3).long_form %>
+        </div>
+    </div>
+    <div class="trending-ideas">
+        <h1 class="title"><span class="span1">Trending</span><span class="span2"> Ideas</span></h1>
+        <div class="ideas-list">
+            <div class="ideas-item hide-mobile">
+                <div class="item-container">
+                    <div class="item-header">
+          <span class="header-image-container">
+            <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
+          </span>
+                        <span class="header-text">
+            <%= @rankedwads[0].problem_state %>
+          </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="content-header">
+                            Info:
+                        </div>
+                        <div class="content-text">
+                            <%= @rankedwads[0].long_form %>
+                        </div>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-footer-btn">View Details <img src="<%= asset_path('landing-page-arrow-pointing-to-right-1.png') %>" alt="Landing page arrow pointing to right 1"></span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="item-footer">
-            <span class="item-footer-btn">View Details <%= image_tag "landing-page-arrow-pointing-to-right-1.png" %></span>
-          </div>
+            <div class="ideas-item hide-mobile">
+                <div class="item-container">
+                    <div class="item-header">
+          <span class="header-image-container">
+            <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
+          </span>
+                        <span class="header-text">
+            <%= @rankedwads[1].problem_state %>
+          </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="content-header">
+                            Info:
+                        </div>
+                        <div class="content-text">
+                            <%= @rankedwads[1].long_form %>
+                        </div>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-footer-btn">View Details <img src="<%= asset_path('landing-page-arrow-pointing-to-right-1.png') %>" alt="Landing page arrow pointing to right 1"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ideas-item">
+                <div class="item-container">
+                    <div class="item-header">
+          <span class="header-image-container">
+            <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
+          </span>
+                        <span class="header-text">
+            <%= @rankedwads[2].problem_state %>
+          </span>
+                    </div>
+                    <div class="item-content">
+                        <div class="content-header">
+                            Info:
+                        </div>
+                        <div class="content-text">
+                            <%= @rankedwads[0].long_form %>
+                        </div>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-footer-btn">View Details <img src="<%= asset_path('landing-page-arrow-pointing-to-right-1.png') %>" alt="Landing page arrow pointing to right 1"></span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="ideas-btns">
-      <a class="ideas-btn left">
-        <%= image_tag "left-arrow@3x.png", width: "15px" %>&nbsp;&nbsp; Previous
-      </a>
-      <a class="ideas-btn right">
-        Next &nbsp;&nbsp;<%= image_tag "right-arrow@3x.png", width: "15px" %>
-      </a>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="row">
-      <div class="col-md-4">
-        Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp;Terms
-      </div>
-      <div class="col-md-4">
-        © 2018 Spitball. All Rights Reserved.
-      </div>
-      <div class="col-md-4">
-        <div class="socialicons">
-          <%= image_tag "github-character.png", height: "20px" %>
-          <%= image_tag "linkedin.png", height: "20px" %>
-          <%= image_tag "twitter.png", height: "20px" %>
+        <div class="ideas-btns">
+            <a class="ideas-btn left">
+                <img width="15px" src="<%= asset_path('left-arrow@3x.png') %>" alt="Left arrow@3x">&nbsp;&nbsp; Previous
+            </a>
+            <a class="ideas-btn right">
+                Next &nbsp;&nbsp;<img width="15px" src="<%= asset_path('right-arrow@3x.png') %>" alt="Right arrow@3x">
+            </a>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-4">
+                Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp;Terms
+            </div>
+            <div class="col-md-4">
+                © 2018 Spitball. All Rights Reserved.
+            </div>
+            <div class="col-md-4">
+                <div class="socialicons">
+                    <img height="20px" src="<%= asset_path('github-character.png') %>" alt="Github character">
+                    <img height="20px" src="<%= asset_path('linkedin.png') %>" alt="Linkedin">
+                    <img height="20px" src="<%= asset_path('twitter.png') %>" alt="Twitter">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-

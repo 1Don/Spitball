@@ -1,6 +1,6 @@
 <div id="message-view" class="">
 <% @conversations.each do |convo| %>
-  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 ml-5 mb-5">
+  <div id="" class="tabcontent conversations-message w-100 ml-5 mb-5 convo<%= convo.id %>">
     <% convo.messages.each do |message| %>
       <% if message.user != current_user %>
         <div class="small ml-1 w-100 row">
@@ -11,6 +11,7 @@
             <b><%= message.user.name %></b><br>
             <span class="date-text small"><%= message.created_at.strftime("%A at %I:%M %p") %></span><br>
             <%= message.body %>
+            <% if message.document %> <%= message.document %> <% end %>
           </div>
         </div><br>
       <% else %>

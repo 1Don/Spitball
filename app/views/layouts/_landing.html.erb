@@ -20,10 +20,9 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
-    <div class="">
-      <%= content_for?(:sub_layout) ? yield(:sub_layout) : yield %>
-    </div>
+    <%= render 'static_pages/landing_modal' %>
+    <%= content_for?(:sub_layout) ? yield(:sub_layout) : yield %>
 
-    
+
   </body>
 </html>
