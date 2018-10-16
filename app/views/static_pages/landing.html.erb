@@ -189,7 +189,7 @@
                 <div class="right">
                     <div class="text">
                         <div class="a3accessourincuba">
-                            <span class="span1"></span>
+                          <!--  <span class="span1"></span> -->
                             <span class="span2"> Incubation</span>
                         </div>
                         <div class="loremipsumdolorsi">
@@ -278,10 +278,10 @@
                     </div>
                     <div class="item-content">
                         <div class="content-header">
-                            
+
                         </div>
                         <div class="content-text">
-                       <%=  @rankedwads[0].long_form %>
+                       <%=  @rankedwads[0].long_form.truncate(238) %>
                         </div>
                     </div>
                     <div class="item-footer">
@@ -303,7 +303,7 @@
                         <div class="content-header">
                         </div>
                         <div class="content-text">
-                            <%= @rankedwads[1].long_form %>
+                            <%= @rankedwads[1].long_form.truncate(238) %>
                         </div>
                     </div>
                     <div class="item-footer">
@@ -325,7 +325,7 @@
                         <div class="content-header">
                         </div>
                         <div class="content-text">
-                            <%= @rankedwads[2].long_form %>
+                            <%= @rankedwads[2].long_form.truncate(238) %>
                         </div>
                     </div>
                     <div class="item-footer">
