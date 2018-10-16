@@ -273,7 +273,7 @@
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
                         <span class="header-text">
-            <%= @rankedwads[0].problem_state %>
+            <%= @rankedwads[0].problem_state.truncate(50) %>
           </span>
                     </div>
                     <div class="item-content">
@@ -296,7 +296,7 @@
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
                         <span class="header-text">
-            <%= @rankedwads[1].problem_state %>
+            <%= @rankedwads[1].problem_state.truncate(50) %>
           </span>
                     </div>
                     <div class="item-content">
@@ -318,7 +318,7 @@
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
                         <span class="header-text">
-            <%= @rankedwads[2].problem_state %>
+            <%= @rankedwads[2].problem_state.truncate(50) %>
           </span>
                     </div>
                     <div class="item-content">
