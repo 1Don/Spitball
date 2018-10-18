@@ -1,30 +1,3 @@
-function setProfileLinks(id) {
-	var cmts = document.getElementsByClassName("cmt-content");
-	var text;var prefix; var suffix; var name; var linked_name; var comp;
-	var nonos = [",","!","?"];
-	var leng = cmts.length;
-	var i;
-	for (i = 0; i < leng; i++) {
-		text = cmts[i].textContent;
-		prefix = text.substring(0, text.indexOf("@"));
-		name = text.substring(text.indexOf("@"), text.indexOf(" ", prefix.length));
-		comp = name[name.length - 1];
-		//will make DRYer at some point
-		if (comp ==="," || comp ==="!" || comp ==="?" || comp ==="@" || comp ==="#" || comp ==="$" || comp ==="%" || comp ==="^" || comp ==="&" || comp ==="*" || comp ==="(" || comp ===")" || comp ==="-" || comp ==="+" || comp ==="=" || comp ===";" || comp ===":" || comp ==="." || comp ==="<" || comp ===">") {
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + name + suffix;
-		} else if (name[0] != "@") {
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + name + suffix;
-		} else {
-			linked_name = name.link("/users/" + id);// <= this is the link that needs to be defined properly
-			suffix = text.substring(prefix.length + name.length);
-			cmts[i].innerHTML = prefix + linked_name + suffix;
-		};
-	};
-
-}
-
 //Toggles reply tree on and off
 function toggleReply(id) {
 	if ($('#reply-' + id).is(":hidden")){
