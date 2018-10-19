@@ -3,7 +3,7 @@ function sendPost() {
 	$.post('/notifications/mark_as_read')
 }
 var objDiv;
-let new_message;
+var new_message;
 function openConversation(evt, convoId) {
     // Declare all variables
     var i, tabcontent, tablinks;
