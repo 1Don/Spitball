@@ -21,7 +21,7 @@ function openConversation(evt, convoId) {
     }
 
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementsByClassName("convo" + convoId).forEach((item) => item.style.display = "block";)
+    document.getElementsByClassName("convo" + convoId).forEach(function(item){ item.style.display = "block";})
     evt.currentTarget.className += " current_convo";
 
 		history.pushState(null,null, '/conversations/' + convoId);
@@ -30,12 +30,12 @@ function openConversation(evt, convoId) {
 		objDiv = document.getElementById(convoId);
 		objDiv.scrollTop = objDiv.scrollHeight;
 
-		let conversationField = document.getElementById('conversation_id');
+		var conversationField = document.getElementById('conversation_id');
 		conversationField.value = convoId;
 }
 $(document).ready(function(){
 	window.addEventListener("load", function(){
-		let load_screen = document.getElementById("load_screen");
+		var load_screen = document.getElementById("load_screen");
 		document.body.removeChild(load_screen);
 	});
 
@@ -55,38 +55,6 @@ $(document).on('turbolinks:load', function() {
 	        'slow');
 	});
 
-	$('#wad-new-form').hide();
-	if ($(window).width() <= 570 ){
-		$('#nav-menu').hide();
-	}
-	$('#menu-btn').click(function(){
-		if ($('#nav-menu').is(":hidden")){
-			$('#wad-new-form').hide();
-			$('#nav-menu').show()
-		} else {
-			if ($(window).width() > 600 ){
-				$('#nav-menu').show()
-				$('#wad-new-form').hide()
-			} else {
-				$('#wad-new-form').hide()
-				$('#nav-menu').hide()
-			}
-		}
-	});
-	$('#new-wad-btn').click(function(){
-		if ($('#wad-new-form').is(":hidden")){
-			$('#nav-menu').hide();
-			$('#wad-new-form').show()
-		} else {
-			if ($(window).width() > 600 ){
-				$('#nav-menu').hide();
-				$('#wad-new-form').show()
-			} else {
-			$('#wad-new-form').hide()
-			$('#nav-menu').hide()
-			}
-		}
-	});
 })
 
 $(document).on('turbolinks:load', function() {
