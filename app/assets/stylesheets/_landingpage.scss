@@ -264,7 +264,7 @@ html, body {
 }
 /* line 247, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .step1 .ideation .background-image {
-  background-image: url('landing-page-icons-3.png');
+  background:image-url('landing-page-icons-3.png');
   background-repeat: no-repeat;
   opacity: 0.4;
   position: absolute;
@@ -801,7 +801,7 @@ html, body {
 }
 /* line 775, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .feedback .left .background-image {
-  background-image: url('landing-page-icons-2.png');
+  background:image-url('landing-page-icons-2.png');
   background-repeat: no-repeat;
   position: absolute;
   height: 700px;
@@ -1090,7 +1090,7 @@ html, body {
 }
 /* line 1059, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .incubator .background-image {
-  background-image: url('landing-page-icons-1.png');
+  background:image-url('landing-page-icons-1.png');
   background-repeat: no-repeat;
   position: absolute;
   height: 700px;
@@ -1230,7 +1230,7 @@ html, body {
 }
 /* line 1194, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/style.scss */
 .testing .left .background-image {
-  background-image: url('landing-page-icons.png');
+  background:image-url('landing-page-icons.png');
   background-repeat: no-repeat;
   position: absolute;
   height: 750px;
@@ -1616,7 +1616,7 @@ html, body {
 @media (min-width: 300px) and (max-width: 660px) {
     /* line 2, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
     .index-page {
-        background-image: url('background-mobile.png');
+        background:image-url('background-mobile.png');
         background-repeat: no-repeat;
         background-size: 100% 5900px;
     }
@@ -1634,7 +1634,7 @@ html, body {
 
     /* line 17, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
     .navbar-toggler .navbar-toggler-icon {
-        background-image: url('menu.png');
+        background:image-url('menu.png');
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -1684,7 +1684,7 @@ html, body {
     }
     /* line 63, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
     .step1 .ideation .background-image {
-        background-image: url('icon-idea.png');
+        background:image-url('icon-idea.png');
         background-repeat: no-repeat;
         background-size: contain;
         opacity: 1;
@@ -1806,7 +1806,7 @@ html, body {
     }
     /* line 166, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
     .feedback .left .background-image {
-        background-image: url('icon-market-validation.png');
+        background:image-url('icon-market-validation.png');
         background-repeat: no-repeat;
         background-size: 260px 880px;
         opacity: 1;
@@ -1887,7 +1887,7 @@ html, body {
     }
     /* line 238, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
     .incubator .background-image {
-        background-image: url('icon-incubator.png');
+        background:image-url('icon-incubator.png');
         background-repeat: no-repeat;
         background-size: 100% 680px;
         opacity: 1;
@@ -2038,7 +2038,7 @@ html, body {
     }
     /* line 375, /Users/ratnamyadav/upwork/nick_morgan/spitball_app/app/assets/stylesheets/responsive.scss */
     .testing .left .background-image {
-        background-image: url('icon-test.png');
+        background:image-url('icon-test.png');
         background-repeat: no-repeat;
         background-size: 100% 675px;
         opacity: 1;
