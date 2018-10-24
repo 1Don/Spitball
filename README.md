@@ -1,4 +1,4 @@
-Check this app out at https://spitball,io
+Check this app out at https://spitball.io
 
 
 
