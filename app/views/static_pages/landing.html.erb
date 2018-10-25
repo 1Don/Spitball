@@ -18,10 +18,10 @@
                         <span class="nav-link">&nbsp;</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:3000/#">Log in</a>
+                        <a class="nav-link pointer" data-toggle="modal" data-target="#myModal">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:3000/#">Sign up</a>
+                        <a class="nav-link pointer" data-toggle="modal" data-target="#myModal">Sign up</a>
                     </li>
                 </ul>
             </div>
@@ -37,7 +37,7 @@
                             <input type="text" class="form-control get-started-input" placeholder="My Idea is called…">
                         </div> -->
                         <div class="col-md-6">
-                            <button class="btn btn-default btn-get-started">Let's Execute</button>
+                            <button class="btn btn-default btn-get-started" data-toggle="modal" data-target="#myModal">Let's Execute</button>
                         </div>
                     </div>
                 </div>
@@ -49,13 +49,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="next-section">
-                    <div class="howitworks">How it works?</div>
-                    <img class="scrolldown" src="<%= asset_path('landing-page-scroll-down.png') %>" alt="Landing page scroll down">
+                    <div class="howitworks">How it works</div>
+                    <img id="landing-btn" class="scrolldown pointer" src="<%= asset_path('landing-page-scroll-down.png') %>" alt="Landing page scroll down">
                 </div>
             </div>
         </div>
     </div>
-    <div class="step1">
+    <div id="what-we-do" class="step1">
         <div class="row">
             <div class="col-md-12 text-center">
                 <p class="title strong">Spitball is a platform for entrepreneurs, thinkers and enthusiasts to bounce ideas, validate them, and gain access to the networks needed to turn them into the products of tomorrow.</p>
@@ -126,7 +126,7 @@
         <div class="col-md-7">
             <div class="left">
                 <div class="buttoncopy">
-                    <button class="btn btn-default btn-join">Join Our Community</button>
+                    <button class="btn btn-default btn-join pointer" data-toggle="modal" data-target="#myModal">Join Our Community</button>
                 </div>
                 <div class="text">
                     <div class="loremipsumdolorsi">We target your idea to users representative of your target market. This helps you validate your idea, is an opportunity to connect with people who can help develop the product and get to market. </div>
@@ -220,7 +220,7 @@
         <div class="col-md-5">
             <div class="left">
                 <div class="buttoncopy">
-                    <button class="btn btn-default btn-join">Join the Community</button>
+                    <button class="btn btn-default btn-join pointer" data-toggle="modal" data-target="#myModal">Join the Community</button>
                 </div>
                 <div class="text">
                     <div class="loremipsumdolorsi">We launch the results of our incubation period! This might mean a prototype, a new marketing strategy or even a pop-up shop. We build an MVP with you, and position it for fast growth and success.</div>
@@ -259,7 +259,7 @@
         <div class="offset-md-6 form">
             <div class="row">
                 <input type="text" class="form-control get-started-input" placeholder="The world is missing...">
-                <button class="btn btn-default btn-get-started">Get Started</button>
+                <button class="btn btn-default btn-get-started" data-toggle="modal" data-target="#myModal">Get Started</button>
             </div>
         </div>
     </div>
@@ -273,7 +273,7 @@
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
                         <span class="header-text">
-            <%= @rankedwads[0].problem_state.truncate(50) %>
+            <%= @rankedwads[0].problem_state.truncate(25) %>
           </span>
                     </div>
                     <div class="item-content">
@@ -296,7 +296,7 @@
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
                         <span class="header-text">
-            <%= @rankedwads[1].problem_state.truncate(50) %>
+            <%= @rankedwads[1].problem_state.truncate(25) %>
           </span>
                     </div>
                     <div class="item-content">
@@ -318,7 +318,7 @@
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
                         <span class="header-text">
-            <%= @rankedwads[2].problem_state.truncate(50) %>
+            <%= @rankedwads[2].problem_state.truncate(25) %>
           </span>
                     </div>
                     <div class="item-content">
@@ -329,16 +329,16 @@
                         </div>
                     </div>
                     <div class="item-footer">
-                        <span class="item-footer-btn">View Details <img src="<%= asset_path('landing-page-arrow-pointing-to-right-1.png') %>" alt="Landing page arrow pointing to right 1"></span>
+                        <a href="<%= wad_comments_path(@rankedwads[2]) %>"><span class="item-footer-btn">View Details <img src="<%= asset_path('landing-page-arrow-pointing-to-right-1.png') %>" alt="Landing page arrow pointing to right 1"></span></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="ideas-btns">
-            <a class="ideas-btn left">
+            <a class="ideas-btn left pointer">
                 <img width="15px" src="<%= asset_path('left-arrow@3x.png') %>" alt="Left arrow@3x">&nbsp;&nbsp; Previous
             </a>
-            <a class="ideas-btn right">
+            <a class="ideas-btn right pointer">
                 Next &nbsp;&nbsp;<img width="15px" src="<%= asset_path('right-arrow@3x.png') %>" alt="Right arrow@3x">
             </a>
         </div>
@@ -346,7 +346,7 @@
     <div class="footer">
         <div class="row">
             <div class="col-md-4">
-                Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp;Terms
+                Privacy Policy&nbsp;&nbsp;&&nbsp;&nbsp;Terms
             </div>
             <div class="col-md-4">
                 © 2018 Spitball. All Rights Reserved.
