@@ -6,16 +6,16 @@
           <span class="small mb-2"><%= link_to wad.user.name, user_path(wad.user), class: "profile-link" %></span>
       <% end %>
       <div class="col-1 dropdown dropleft d-block d-sm-none float-right">
-        <span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= fa_icon('ellipsis-v') %>
         </span>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
            <span class="dropdown-item"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => wad.user), :method => :post, class: "profile-link" %></span>
           <% end %>
-          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag content", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
+          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
           <% if current_user == wad.user %>
-          <%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_path(wad), method: :delete, remote: true %>
+          <span class="dropdown-item"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(wad), method: :delete, remote: true, class: "profile-link" %></span>
           <% end %>
         </div>
       </div>
@@ -68,9 +68,9 @@
               <%= fa_icon('ellipsis-v') %>
             </span>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag content", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
+              <span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
               <% if current_user == wad.user %>
-              <%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_path(wad), method: :delete, remote: true %>
+              <span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(wad), method: :delete, remote: true, class: "profile-link" %></span>
               <% end %>
               <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
                <span class="dropdown-item profile-link"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => wad.user), :method => :post, class: "profile-link" %></span>
