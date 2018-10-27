@@ -1,7 +1,7 @@
 class WadsController < ApplicationController
 	layout 'wad', only: [:index, :popwads, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social]
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
-	before_action :set_new_wad, only: [:tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social]
+	before_action :set_new_wad, only: [:tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
 	before_action :all_wads
 
 
@@ -13,7 +13,6 @@ class WadsController < ApplicationController
 
     def popwads
 		@wads = Wad.order(cached_votes_total: :desc)
-		@wad = Wad.new
 	end
 
 	def show

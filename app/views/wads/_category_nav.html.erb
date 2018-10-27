@@ -3,11 +3,19 @@
 		<% if @wads.first %>
 			<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
 				<span class="h4 font-weight-light d-none d-sm-block">
-					<% if current_user %> Welcome back, <%= current_user.first_name %>!
-					<% else %> Welcome back!<% end %>
+					<% if current_user %> 
+						Welcome back, <%= current_user.first_name %>!
+					<% else %> 
+						Welcome back!
+					<% end %>
 				</span>
 				<span class="h4 font-weight-light d-block d-sm-none">
 					Hello <%= current_user.first_name %>!
+				</span>
+
+			<% elsif controller_name == 'wads' && action_name == 'popwads' %>
+				<span class="h2 font-weight-light">
+					<%= "Popular Wads" %>
 				</span>
 			<% else %>
 				<span class="h2 font-weight-light">
