@@ -6,37 +6,43 @@ module SidebarHelper
         name: "Popular Wads"
       },
 
-      {
-        link: "/b2b",
-        name: "B2B Tech"
-      },
 
       {
         link: "/tech",
-        name: "Consumer Tech"
+        name: "Technology and Apps"
       },
+
+
+      {
+        link: "/social",
+        name: "Non-profit and Social Entrepreneurship"
+      },
+
+
+
+      {
+        link: "/b2b",
+        name: "Finance and B2B"
+      },
+
 
       {
         link: "/media",
         name: "Media and Entertainment"
       },
+
+      
       
       {
-        link: "/social",
-        name: "Social Entrepreneurship"
+        link: "/gadgets",
+        name: "Hardware and Gadgets"
       },
+      
       {
-        link: "/local",
-        name: "Location Specific"
+        link: "/lifestyle",
+        name: "Event and Lifestyle"
       },
-      {
-        link: "/events",
-        name: "Events"
-      },
-      {
-        link: "/product",
-        name: "Consumer Products"
-      },
+    
       {
         link: "/innovate",
         name: "Avant-garde"

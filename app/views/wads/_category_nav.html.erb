@@ -1,5 +1,5 @@
 <div class="row mb-2">
-	<div class="col-6">
+	<div class="col-12">
 		<% if @wads.first %>
 			<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
 				<span class="h4 font-weight-light d-none d-sm-block">
@@ -15,7 +15,10 @@
 				</span>
 			<% end %>
 		<% else %>
-			NEEDS WADS
+			<div class="h2 text-center font-weight-light pointer" data-toggle='modal' data-target='#myModal'> 
+				Nobody has the vision you have yet. Show them the way..
+			</div>
+			 
 		<% end %>
 	</div>
 </div>

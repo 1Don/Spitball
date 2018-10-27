@@ -1,7 +1,7 @@
 class WadsController < ApplicationController
-	layout 'wad', only: [:index, :popwads, :b2b, :consumertech, :media, :social, :product, :innovate, :events, :local]
+	layout 'wad', only: [:index, :popwads, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social]
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
-	before_action :set_new_wad, only: [:consumertech, :b2b, :media, :innovate, :local, :social, :events, :product]
+	before_action :set_new_wad, only: [:tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social]
 	before_action :all_wads
 
 
@@ -9,12 +9,10 @@ class WadsController < ApplicationController
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
-
     end
 
     def popwads
-		@wads = Wad.all.paginate(page: params[:page], per_page: 20)
-		@rankedwads = Wad.order(cached_votes_total: :desc)
+		@wads = Wad.order(cached_votes_total: :desc)
 		@wad = Wad.new
 	end
 
@@ -107,28 +105,28 @@ class WadsController < ApplicationController
 	end
 
 #category views
-	def consumertech
-		@wads = Wad.where("category like ?", "%Consumer Tech%").paginate(page: params[:page], per_page: 20)
+	def tech
+		@wads = Wad.where("category like ?", "%Technology and Apps%").paginate(page: params[:page], per_page: 20)
 	end
 
 	def b2b
-		@wads = Wad.where("category like ?", "%B2B Tech%").paginate(page: params[:page], per_page: 20)
+		@wads = Wad.where("category like ?", "%Finance and B2B%").paginate(page: params[:page], per_page: 20)
 	end
 
 	def media
 		@wads = Wad.where("category like ?", "%Media and Entertainment%").paginate(page: params[:page], per_page: 20)
 	end
 
+	def gadgets
+		@wads = Wad.where("category like ?", "%Hardware and Gadgets%").paginate(page: params[:page], per_page: 20)
+	end
+
 	def social
-		@wads = Wad.where("category like ?", "%Social Entrepreneurship%").paginate(page: params[:page], per_page: 20)
+		@wads = Wad.where("category like ?", "%Non-profit and Social Entrepreneurship%").paginate(page: params[:page], per_page: 20)
 	end
 
-	def local
-		@wads = Wad.where("category like ?", "%Location Specific%").paginate(page: params[:page], per_page: 20)
-	end
-
-	def product
-		@wads = Wad.where("category like ?", "%Consumer Products%").paginate(page: params[:page], per_page: 20)
+	def lifestyle
+		@wads = Wad.where("category like ?", "%Event and Lifestyle%").paginate(page: params[:page], per_page: 20)
 	end
 
 
@@ -136,9 +134,6 @@ class WadsController < ApplicationController
 		@wads = Wad.where("category like ?", "%Avant-garde%").paginate(page: params[:page], per_page: 20)
 	end
 
-	def events
-		@wads = Wad.where("category like ?", "%Events%").paginate(page: params[:page], per_page: 20)
-	end
 
 private
 
