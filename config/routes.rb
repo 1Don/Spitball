@@ -67,13 +67,12 @@ Rails.application.routes.draw do
 
 
 #Question categories
-  get    '/fundraising',    to:  'discussions#fundraising'
+  get    '/testing',    to:  'discussions#testing'
   get    '/teambuilding',     to:  'discussions#teambuilding'
-  get    '/mentorship',     to:  'discussions#mentorship'
+  get    '/fundraising',     to:  'discussions#fundraising'
   get    '/marketing',     to:  'discussions#marketing'
-  get    '/entityformation',     to:  'discussions#entityformation'
-  get    '/unicorns',     to:  'discussions#unicorns'
-  get    '/random',     to:  'discussions#random'
+  get    '/legal',     to:  'discussions#legal'
+  get    '/industry',     to:  'discussions#industry'
   get    '/other',     to:  'discussions#other'
 
 
