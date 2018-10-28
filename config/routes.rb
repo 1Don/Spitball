@@ -80,14 +80,13 @@ Rails.application.routes.draw do
 
 
 #Wad Categories
-  get    '/tech',    to:  'wads#consumertech'
+  get    '/tech',    to:  'wads#tech'
   get    '/b2b',     to:  'wads#b2b'
-  get    '/product',     to:  'wads#product'
-  get    '/social',     to:  'wads#social'
-  get    '/local',     to:  'wads#local'
-  get    '/events',     to:  'wads#events'
-  get    '/innovate',     to:  'wads#innovate'
   get    '/media',     to:  'wads#media'
+  get    '/gadgets',     to:  'wads#gadgets'
+  get    '/lifestyle',     to:  'wads#lifestyle'
+  get    '/innovate',     to:  'wads#innovate'
+  get    '/social',     to:  'wads#social'
 
   get    '/forum',    to:   'discussions#index'
 
