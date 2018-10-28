@@ -2,7 +2,12 @@ class StaticPagesController < ApplicationController
 layout "_landing", only: [:landing, :home]
 #skip_before_action :home_lock
 
-
+  def beta_email
+    b = BetaInfo.create(title: "email")
+    b.emails << params[:email]
+    b.save
+    flash[:notice] = "Beta Release: 11/13"
+  end
   def home
   end
 

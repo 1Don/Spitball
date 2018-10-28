@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "/auth/twitter/callback" => "twitter#callback"
   get "/auth/twitter/failure" => "twitter#failure"
 
-
+  post "/beta_email" => "static_pages#beta_email"
 
   # Linkedin callbacks
   match '/auth/linkedin/callback', to: 'sessions#create', via: [:get, :post]
