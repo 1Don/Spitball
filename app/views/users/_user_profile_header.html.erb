@@ -7,7 +7,7 @@
             <%= image_tag @user.photo.url(:thumb), class: "rounded-circle profile-img pr-0" %>
           </div>
         </div>
-        <div class="col-5 mt-1 pl-0">
+        <div class="col-4 mt-1 pl-0">
           <div class="small">
             <b>
               <% unless !@user.first_name || !@user.last_name %>
@@ -17,9 +17,9 @@
               <% end %>
             </b>
           </div>
-          <% if @user.occupation %>
-          <div id="occupation-div" class="col-md-3 col-xs-6 small mt-2">
-            <div class="py-1 small text-center">
+          <% if @user.occupation.present? %>
+          <div class="col-md-12 col-xs-6 small pl-0">
+            <div class="small">
               <%= @user.occupation %>
             </div>
           </div>
@@ -27,13 +27,19 @@
         </div>
         <div class="col-5 social-icons ml-2 row">
           <div class="col-4">
-            <%= link_to fa_icon('github-alt'), @user.github %> <span class="small"><%= @user.first_name %></span>
+            <% if @user.github.present? %>
+               <%= link_to fa_icon('github-alt'), @user.github %> <span class="small"><%= @user.first_name %></span>
+            <% end %>
           </div>
           <div class="col-4">
-            <%= link_to fa_icon('linkedin'), @user.linkedin %> <span class="small"><%= @user.first_name %></span>
+            <% if @user.linkedin.present? %>
+                <%= link_to fa_icon('linkedin'), @user.linkedin %> <span class="small"><%= @user.first_name %></span>
+            <% end %>
           </div>
           <div class="col-4">
-            <%= link_to fa_icon('twitter'), @user.twitter %> <span class="small"><%= @user.first_name %></span>
+            <% if @user.twitter.present? %>
+                <%= link_to fa_icon('twitter'), @user.twitter %> <span class="small"><%= @user.first_name %></span>
+            <% end %>
           </div>
         </div>
       </div>
@@ -51,7 +57,7 @@
         </div>
         <% end %>
 
-        <div class="col-md-4 col-xs-12">
+        <div class="col-md-12 col-xs-12">
           <% if @user.location && @user.location != "" %><%= fa_icon('map-pin', class: "non-social-icons align-middle") %><span class="small ml-2"><%= @user.location %></span><% end %>
         </div>
       </div>
