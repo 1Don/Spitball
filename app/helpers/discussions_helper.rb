@@ -10,18 +10,18 @@ module DiscussionsHelper
   	def discussions_bar
 	  	[
 	      {
-	        link: "/fundraising",
-	        name: "Fundraising"
+	        link: "/testing",
+	        name: "Prototyping and Testing"
 	      },
 
 	      {
 	        link: "/teambuilding",
-	        name: "Building A Team"
+	        name: "Teambuilding"
 	      },
 
 	      {
-	        link: "/mentorship",
-	        name: "How To Find A Mentor"
+	        link: "/fundraising",
+	        name: "Fundraising"
 	      },
 
 	      {
@@ -30,16 +30,12 @@ module DiscussionsHelper
 	      },
 	      
 	      {
-	        link: "/entityformation",
-	        name: "Legal Registraion"
+	        link: "/legal",
+	        name: "Legal"
 	      },
 	      {
-	        link: "/unicorns",
-	        name: "How Did That Other Company Do It"
-	      },
-	      {
-	        link: "/random",
-	        name: "Random"
+	        link: "/industry",
+	        name: "Industry Related"
 	      },
 	      {
 	        link: "/other",

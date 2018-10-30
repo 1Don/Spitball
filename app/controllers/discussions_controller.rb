@@ -88,30 +88,26 @@ class DiscussionsController < ApplicationController
 		@discussions = Discussion.where("category like ?", "%Fundraising%").paginate(page: params[:page], per_page: 20)
 	end
 
-	def teambuilding
-		@discussions = Discussion.where("category like ?", "%Building A Team%").paginate(page: params[:page], per_page: 20)
-	end
-
-	def mentorship
-		@discussions = Discussion.where("category like ?", "%How To Find A Mentor%").paginate(page: params[:page], per_page: 20)
+	def testing
+		@discussions = Discussion.where("category like ?", "%Prototyping and Testing%").paginate(page: params[:page], per_page: 20)
 	end
 
 	def marketing
 		@discussions = Discussion.where("category like ?", "%Marketing%").paginate(page: params[:page], per_page: 20)
 	end
 
-	def entityformation
-		@discussions = Discussion.where("category like ?", "%Legal Registration%").paginate(page: params[:page], per_page: 20)
+	def teambuilding
+		@discussions = Discussion.where("category like ?", "%Teambuilding%").paginate(page: params[:page], per_page: 20)
 	end
 
-	def unicorns
-		@discussions = Discussion.where("category like ?", "%How Did That Other Company Do It%").paginate(page: params[:page], per_page: 20)
+	def legal
+		@discussions = Discussion.where("category like ?", "%Legal%").paginate(page: params[:page], per_page: 20)
 	end
 
-
-	def random
-		@discussions = Discussion.where("category like ?", "%Random%").paginate(page: params[:page], per_page: 20)
+	def industry
+		@discussions = Discussion.where("category like ?", "%Industry Related%").paginate(page: params[:page], per_page: 20)
 	end
+
 
 	def other
 		@discussions = Discussion.where("category like ?", "%Other%").paginate(page: params[:page], per_page: 20)
