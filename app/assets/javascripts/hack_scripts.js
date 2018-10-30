@@ -2,9 +2,11 @@
 function sendPost() {
 	$.post('/notifications/mark_as_read')
 }
+
 var objDiv;
 var new_message;
 function openConversation(evt, convoId) {
+		console.log("open convo working 1")
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -14,6 +16,8 @@ function openConversation(evt, convoId) {
         tabcontent[i].style.display = "none";
     }
 
+		console.log("open convo working 2")
+
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
@@ -22,6 +26,7 @@ function openConversation(evt, convoId) {
 
     // Show the current tab, and add an "active" class to the button that opened the tab
 		for (i = 0; i < document.getElementsByClassName("convo-" + convoId); i++){
+			console.log(document.getElementsByClassName("convo-" + convoId)[i])
 			document.getElementsByClassName("convo-" + convoId)[i].style.display = "block";
 		}
     evt.currentTarget.className += " current_convo";
@@ -29,19 +34,12 @@ function openConversation(evt, convoId) {
 		history.pushState(null,null, '/conversations/' + convoId);
 
 
-		objDiv = document.getElementById(convoId);
-		objDiv.scrollTop = objDiv.scrollHeight;
+	//	objDiv = document.getElementById(convoId);
+	//	objDiv.scrollTop = objDiv.scrollHeight;
 
 		var conversationField = document.getElementById('conversation_id');
 		conversationField.value = convoId;
-}
-$(document).ready(function(){
-	window.addEventListener("load", function(){
-		var load_screen = document.getElementById("load_screen");
-		document.body.removeChild(load_screen);
-	});
-
-})
+} 
 
 
 

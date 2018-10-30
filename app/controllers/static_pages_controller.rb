@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 layout "_landing", only: [:landing, :home]
-#skip_before_action :home_lock
+ skip_before_action :home_lock
 
   def beta_email
     b = BetaInfo.create(title: "email")
