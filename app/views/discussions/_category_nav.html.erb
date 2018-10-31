@@ -1,0 +1,33 @@
+<div class="row mb-2">
+	<div class="col-12">
+		<% if @discussions.first %>
+			<% if @discussions.order('created_at DESC') == @all_discussions.order('created_at DESC') %>
+				<span class="h4 font-weight-light d-none d-sm-block">
+					<% if current_user %> 
+						Welcome back, <%= current_user.first_name %>!
+					<% else %> 
+						Welcome back!
+					<% end %>
+				</span>
+				<span class="h4 font-weight-light d-block d-sm-none">
+					Hello <%= current_user.first_name %>!
+				</span>
+
+			<% elsif controller_name == 'discussions' && action_name == 'popdiscussions' %>
+				<span class="h2 font-weight-light">
+					<%= "Popular discussions" %>
+				</span>
+			<% else %>
+				<span class="h2 font-weight-light">
+					<%= @discussions.first.category %>
+				</span>
+			<% end %>
+		<% else %>
+			<div class="h2 text-center font-weight-light pointer" data-toggle='modal' data-target='#myModal'> 
+				Nobody has the vision you have yet. Show them the way..
+			</div>
+			 
+		<% end %>
+	</div>
+</div>
+<%= render 'modal' %>

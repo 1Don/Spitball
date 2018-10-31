@@ -9,6 +9,11 @@ module DiscussionsHelper
 
   	def discussions_bar
 	  	[
+	  	 {
+	        link: "/discussions",
+	        name: "All Questions"
+	      },
+
 	      {
 	        link: "/testing",
 	        name: "Prototyping and Testing"

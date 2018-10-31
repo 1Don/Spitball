@@ -1,5 +1,4 @@
 class AnswersController < ApplicationController
-	layout 'discussion', only: [:index]
 	before_action :find_answers_discussion, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_answer, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :answer_owner, only: [:destroy, :edit, :update]
