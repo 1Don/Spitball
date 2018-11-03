@@ -115,7 +115,11 @@ div.full-height{
 	position: absolute;
 	z-index: -1;
 }
-
+.topright{
+	border-radius: 10px;
+	background-color: rgb(78,228,187);
+	color: white;
+}
 
 //Loading screen
 div#load_screen{

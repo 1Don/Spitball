@@ -11,7 +11,7 @@
 .message-bar{
   position: fixed;
   bottom: 0;
-  height: 20%;
+  height: 10%;
   border: 2px solid;
   border-color: rgb(242,242,242);
   width: 67%;
@@ -25,7 +25,7 @@
 }
 .conversations-message{
   display: flex;
-  height: 500px;
+  height: 90%;
   overflow: auto;
 }
 #message_body{
@@ -60,4 +60,35 @@
 .current_convo{
   border-right: 3px solid;
   border-color: rgb(65,226,183);
+}
+@media (min-width: 300px) and (max-width: 660px) {
+  .message-bar{
+    position: fixed;
+    bottom: 0;
+    height: 10%;
+    border: 2px solid;
+    border-color: rgb(242,242,242);
+    width: 100%;
+    background-color: rgb(242,242,242);
+  }
+  #message_body{
+    resize: none;
+    width: 80%;
+    height: 90%;
+    border-color: rgb(227,226,227);
+  }
+  #message-document{
+    position: absolute;
+    top: 1vh;
+    right: 23vw;
+    z-index: 1;
+  }
+  #message-btn{
+    background-color: rgb(78,228,187);
+    width: 15%;
+    height: 90%;
+  }
+  #message_new{
+    margin-left: 1vw;
+  }
 }

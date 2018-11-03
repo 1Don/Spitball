@@ -1,12 +1,12 @@
 <% content_for :sub_layout do %>
-  <div class="row no-gutters" style="height: 100vh;">
+<div class="row no-gutters" style="height: 100vh;">
     <div class="col-md-2 border-right mt-4">
   	  <%= render "sidebar" %>
     </div>
-  	<div class="col-md-8 col-xs-12 mt-4">
+  	<div class="col-md-8 col-xs-12 mt-5">
     	<%= yield %>
     </div>
-    <div class="col-md-2 border-left mt-4">
+    <div class="col-md-2 border-left mt-4 d-none d-sm-block">
       <%= render 'other_sidebar' %>
     </div>
   </div>

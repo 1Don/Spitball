@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
 
 	def index
+		redirect_to conversations_path
 		@conversation = Conversation.find(params[:conversation_id])
 		@conversations = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).order('updated_at DESC')
 		@convo = (Conversation.where(sender_id: current_user.id). or Conversation.where(recipient_id: current_user.id)).first

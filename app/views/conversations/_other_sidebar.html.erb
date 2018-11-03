@@ -1,10 +1,23 @@
-<div class="no-gutters" style="height: 100%;">
-  <div class="border-bottom small text-center py-3">
+<div class="no-gutters mt-1 d-none d-sm-block" style="height: 100%;">
+  <div class="border-bottom small text-center py-3 d-none d-sm-block">
     <span class="py-3">Previous Attachments</span>
   </div>
+  <div class="border-bottom small text-center d-block d-sm-none">
+    <span class="">Previous Attachments</span>
+  </div>
   <% @conversations.each do |convo| %>
-  <div class="convo<%= convo.id %> tabcontent">
-      <%= convo.id %>
+  <div class="convo-<%= convo.id %> tabcontent">
+    <ul style="list-style-type: none;">
+      <% convo.messages.order("created_at").each do |msg| %>
+        <% if msg.document_content_type != nil %>
+          <li class="small">
+            <a href="<%= msg.document.path %>" download>
+              <%= fa_icon('file') %><span class="small align-top"> <%=  msg.document_file_name %></span>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
   <% end %>
 </div>

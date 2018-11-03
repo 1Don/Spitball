@@ -1,7 +1,7 @@
 <div id="message-view" class="">
 <% @conversations.each do |convo| %>
-  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 ml-5 mb-5 convo-<%= convo.id %>">
-    <% convo.messages.each do |message| %>
+  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 ml-5 convo-<%= convo.id %>">
+    <% convo.messages.order("created_at").each do |message| %>
       <% if message.user != current_user %>
         <div class="small ml-1 w-100 row">
           <div class="col-1">
@@ -11,7 +11,7 @@
             <b><%= message.user.name %></b><br>
             <span class="date-text small"><%= message.created_at.strftime("%A at %I:%M %p") %></span><br>
             <%= message.body %>
-            <% if message.document %> <%= message.document %> <% end %>
+            <% if message.document_content_type != nil %> <a href="<%= message.document %>" download>file</a> <% end %>
           </div>
         </div><br>
       <% else %>
@@ -19,7 +19,11 @@
         <div class="col-9">
           <b class="float-right"><%= message.user.name %></b><br>
           <span class="date-text small float-right"><%= message.created_at.strftime("%A at %I:%M %p") %></span><br>
-          <span class="float-right"><%= message.body %></span>
+          <span class="float-right">
+            <%= message.body %>
+            <% if message.document_content_type != nil %> <a href="<%= message.document %>" download>file</a> <% end %>
+          </span>
+
         </div>
         <div class="col-1">
           <%= image_tag message.user.photo.url(:thumb), class: "circle-larry" %>
@@ -28,7 +32,7 @@
       <% end %>
     <% end %>
     </div>
-<% end %><br><br><br>
+<% end %>
 </div>
 <div class="message-bar">
     <%= render 'conversations/messagebar' %>
