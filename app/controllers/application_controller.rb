@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_omniauth_state
-<<<<<<< HEAD
 #  before_action :home_lock
-=======
-  #before_action :home_lock
->>>>>>> e81223b2a5f198802c64b4e1bd435b519e760779
 
 
   protected
