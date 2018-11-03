@@ -1,5 +1,7 @@
 class DiscussionsController < ApplicationController
-	layout 'discussion', only: [:index, :fundraising, :teambuilding, :mentorship, :marketing, :entityformation, :unicorns, :random, :other]
+	layout 'discussion', only: [:index, :testing, :fundraising, :marketing, :teambuilding, :legal, :industry, :other]
+	before_action :set_new_discusion, only: [:index, :testing, :fundraising, :marketing, :teambuilding, :legal, :industry, :other]
+	before_action :all_discussions
 
 	def index
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
@@ -118,6 +120,15 @@ private
 
 	def discussion_params
 		params.require(:discussion).permit(:content, :category)
+	end
+
+
+	def set_new_discusion
+		@discussion = Discussion.new
+	end
+
+	def all_discussions
+		@all_discussions = Discussion.all
 	end
 
 
