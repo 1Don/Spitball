@@ -37,8 +37,7 @@ function openConversation(evt, convoId) {
 	//	objDiv = document.getElementById(convoId);
 	//	objDiv.scrollTop = objDiv.scrollHeight;
 
-		var conversationField = document.getElementById('conversation_id');
-		conversationField.value = convoId;
+		$('.conversation_id').val(convoId)
 }
 
 

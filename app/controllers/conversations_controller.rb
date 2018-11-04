@@ -55,7 +55,7 @@ class ConversationsController < ApplicationController
 	 else
 	 	if current_user.id == params[:user_id]
 	 		redirect_back
-	 		flash[:notice] = "You can't have a conversation with yourself lolz"
+	 		flash[:notice] = "You can't have a conversation with yourself!"
 	 	else
 	    	@conversation = Conversation.create(sender_id: current_user.id, recipient_id: params[:user_id])
 	    end

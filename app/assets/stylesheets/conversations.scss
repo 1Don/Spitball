@@ -28,7 +28,7 @@
   height: 90%;
   overflow: auto;
 }
-#message_body{
+.message_body{
   resize: none;
   width: 87%;
   height: 90%;
@@ -71,7 +71,7 @@
     width: 100%;
     background-color: rgb(242,242,242);
   }
-  #message_body{
+  .message_body{
     resize: none;
     width: 80%;
     height: 90%;

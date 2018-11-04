@@ -1,17 +1,17 @@
 new_message = `
-<div class="ml-3 mt-1 mb-3 small w-100 row">
+<div class="ml-3 mt-1 small w-100 row">
   <div class="col-9 float-right">
     <b class="float-right"><%= @message.user.name %></b><br>
     <span class="date-text small float-right"><%= @message.created_at.strftime("%A at %I:%M %p") %></span><br>
     <span class="float-right"><%= @message.body %></span>
   </div>
-  <div class="col-1">
+  <div class="col-1 pl-0">
     <%= image_tag @message.user.photo.url(:thumb), class: "circle-larry" %>
   </div>
 </div>
 `
-$("#<%= @message.conversation_id %>").append(new_message)
-$("#message_body").val(null)
+$(".index-<%= @message.conversation_id %>").append(new_message)
+$(".message_body").val(null)
 objDiv = document.getElementById("<%= @message.conversation_id %>");
 objDiv.scrollTop = objDiv.scrollHeight;
 // make this work document.getElementById('message-view').scrollHeight;
