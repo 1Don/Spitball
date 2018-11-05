@@ -6,9 +6,9 @@
 			<div class="col-md-12 col-xs-12  col-sm-12 align-items-center mb-4 row-flex">
 				<%= render 'category_nav' %>
 			</div>
-			<div class="">
+			<div class="mt-3">
 				<% @discussions.each do |discussion| %>
-					<%= render discussion %>
+					<%= render "all_discussions" %>
 				<% end %>
 			</div>
 		</div>

@@ -17,9 +17,13 @@
 				<span class="h2 font-weight-light">
 					<%= "Popular discussions" %>
 				</span>
+			<% elsif controller_name == 'discussions' && action_name == 'index' %>
+				<span class="h2 font-weight-light">
+					<%= "Today's Questions" %>
+				</span>
 			<% else %>
 				<span class="h2 font-weight-light">
-					<%= @discussions.first.category %>
+					<%= @discussions.first.category %> Questions
 				</span>
 			<% end %>
 		<% else %>
