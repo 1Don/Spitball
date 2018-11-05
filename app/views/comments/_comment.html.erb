@@ -27,7 +27,7 @@
 					<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, comment), remote: true, class: "profile-link" %></span>
 					<span class="pointer dropdown-item" id="btn-hide" onclick='execReply("<%= comment.id %>");'>	<%= image_tag('comment-dots-regular.svg', class: "icon-pic") %> Comment</span>
 					<% if current_user == comment.user %>
-					<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_comment_path(@wad, comment), method: :delete, remote: true %>
+					<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: " profile-link pointer") + " Remove Comment", wad_comment_path(@wad, comment), method: :delete, remote: true %></span>
 					<% end %>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 								<% end %>
 								<span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Comment" %></span>
 								<% if current_user == c.user %>
-									<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_comment_path(@wad, c), method: :delete, remote: true %>
+									<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Comment", wad_comment_path(@wad, c), method: :delete, remote: true %></span>
 								<% end %>
 			        </div>
 			      </div>

@@ -15,7 +15,7 @@
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + " Flag content", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
 				<% if current_user == @wad.user %>
-				<%= link_to fa_icon("trash", class: "dropdown-item profile-link pointer"), wad_path(@wad), method: :delete, remote: true, class: "profile-link" %>
+				<span class="dropdown-item "><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(@wad), method: :delete, remote: true, class: "profile-link" %></span>
 				<% end %>
 			</div>
 		</div>

@@ -61,7 +61,7 @@
           <% else %>
             <span class="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "png-icon"), dislike_wad_path(wad), method: :put, remote: true %></span>
           <% end %>
-          <span class="small font-weight-bold" data-check="<%= current_user.liked? wad %>" id="wad-like-<%= wad.id %>"><%= wad.get_upvotes.size %></span><span class="small font-weight-bold"> votes</span>
+          <span class="small font-weight-bold wad-like-<%= wad.id %>" data-check="<%= current_user.liked? wad %>" id="wad-like-<%= wad.id %>"><%= wad.get_upvotes.size %></span><span class="small font-weight-bold"> votes</span>
         </div>
           <div class="col-md-1 dropdown dropleft d-none d-sm-block">
             <span class="pointer float-right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,7 +101,7 @@
           <% else %>
             <span class="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "png-icon"), dislike_wad_path(wad), method: :put, remote: true %></span>
           <% end %>
-          <span class="small font-weight-light" data-check="<%= current_user.liked? wad %>" id="wad-like-<%= wad.id %>"><%= wad.get_upvotes.size %></span><span class="small font-weight-light"> votes</span>
+          <span class="small font-weight-light wad-like-<%= wad.id %>" data-check="<%= current_user.liked? wad %>" id=""><%= wad.get_upvotes.size %></span><span class="small font-weight-light"> votes</span>
         </div>
       </div>
     </div>

@@ -1,18 +1,20 @@
-<% if @incoming.any? %>
-<div class="mt-4">
-  <h6 class="border-bottom ml-3 col-7">Friend Requests</h6>
-  <% @incoming.each do |request| %>
-    <div class="col-9 row no-gutters">
-      <div class="col-9">
-        <%= render 'users/user', user: request.user %>
+<div class="mt-5">
+  <% if @incoming.any? %>
+  <div class="mt-5">
+    <h6 class="border-bottom ml-3 col-7 mt-5">Friend Requests</h6>
+    <% @incoming.each do |request| %>
+      <div class="col-9 mt-2 row no-gutters">
+        <div class="col-9">
+          <%= render 'users/user', user: request.user %>
+        </div>
+        <div class="col-1 card">
+          <%= link_to fa_icon('check', class: "big-check mt-3"),  friend_request_path(friend_id: request.friend_id, user_id: request.user_id, id: request.id), method:"put" %>
+        </div>
       </div>
-      <div class="col-1 card">
-        <%= link_to fa_icon('check', class: "big-check mt-3"),  friend_request_path(friend_id: request.friend_id, user_id: request.user_id, id: request.id), method:"put" %>
-      </div>
-    </div>
 
+    <% end %>
+  </div>
+  <% else %>
+    <p>You don't have any friend requests</p>
   <% end %>
 </div>
-<% else %>
-  <p>You don't have any friend requests</p>
-<% end %>

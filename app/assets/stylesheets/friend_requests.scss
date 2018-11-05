@@ -1,3 +1,8 @@
 .big-check{
   font-size: 70px;
 }
+@media (min-width: 300px) and (max-width: 660px) {
+  .big-check{
+    font-size: 20px;
+  }
+}

@@ -1,8 +1,8 @@
 console.log("downvote script running");
-if ($("#wad-like-<%= @wad.id %>").attr('data-check') == "true"){
+if ($(".wad-like-<%= @wad.id %>").attr('data-check') == "true"){
 	$('.wad-vote-span-<%= @wad.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic"), like_wad_path(@wad), method: :put, remote: true %>');
-	$("#wad-like-<%= @wad.id %>").html((parseInt($("#wad-like-<%= @wad.id %>").html())-1).toString());
-	$("#wad-like-<%= @wad.id %>").attr('data-check', 'false')
+	$(".wad-like-<%= @wad.id %>").html((parseInt($("#wad-like-<%= @wad.id %>").html())-1).toString());
+	$(".wad-like-<%= @wad.id %>").attr('data-check', 'false')
 } else {
 
 }
