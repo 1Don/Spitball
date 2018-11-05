@@ -77,7 +77,7 @@
 								<% end %>
 								<span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Comment" %></span>
 								<% if current_user == c.user %>
-									<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Comment", wad_comment_path(@wad, c), method: :delete, remote: true %></span>
+									<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Comment", wad_comment_path(@wad, c), method: :delete, remote: true %><span class="profile-link"> Remove Comment</span>
 								<% end %>
 			        </div>
 			      </div>
