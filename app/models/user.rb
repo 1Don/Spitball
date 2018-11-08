@@ -1,13 +1,13 @@
 class User < ApplicationRecord
-  has_many :flags
+  has_many :flags, dependent: :destroy
   has_many :identities, dependent: :destroy
-  has_many :conversations
-  has_many :messages, dependent: :destroy
+  has_many :conversations, dependent: :destroy
+  has_many :messages
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
-  has_many :notifications, foreign_key: :recipient_id
+  has_many :friends, through: :friendships, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   acts_as_voter
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :discussions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :collaborations, through: :wads
+  has_many :collaborations, through: :wads, dependent: :destroy
   attr_accessor :remember_token
   after_create :set_default_profile_image, unless: :photo?
   before_save { self.email = email.downcase }
@@ -72,8 +72,8 @@ class User < ApplicationRecord
           user.last_name = auth.info.name.split.last
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
-          unless auth.provider == "linkedin" 
-            user.photo = open(URI.parse(auth.info.image)) 
+          unless auth.provider == "linkedin"
+            user.photo = open(URI.parse(auth.info.image))
           else
             user.occupation = auth.info.description
             user.location = auth.info.location
@@ -119,10 +119,10 @@ class User < ApplicationRecord
     self.friends.all.each do |f|
       if f == user
         return true
-      else 
+      else
         return false
       end
-    end 
+    end
   end
 
   #Sees if user has a conversation with another user

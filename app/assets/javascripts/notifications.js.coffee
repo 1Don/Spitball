@@ -1,9 +1,9 @@
 class Notifications
     constructor: ->
         @notifications = $("[data-behavior='notifications']")
-        @setup() if @notifications.length > 0 
+        @setup() if @notifications.length > 0
 
-    setup: -> 
+    setup: ->
 
         $.ajax(
             url: "/notifications.json"
@@ -12,16 +12,16 @@ class Notifications
             success: @handleSuccess
         )
 
-    handleSuccess: (data) =>  
-       console.log(data) 
+    handleSuccess: (data) =>
+       console.log(data)
        items = $.map data, (notification) ->
             "<a onclick='sendPost()' class='dropdown-item small' href='#{notification.url}'>#{notification.actor} #{notification.action}<br class='d-block d-sm-none'> #{notification.notifiable.type}</a>"
         console.log(items)
 
         $("[data-behavior='notification-items']").prepend(items)
-        if data[4].read == false
-            $('#notification-indic').html("new")  
+        if data[0].read == false
+            $('.notification-indic').html("new")
         else
-            $('#notification-indic').html("")           
+            $('.notification-indic').html("")
 
 $(document).on('turbolinks:load', -> new Notifications)
