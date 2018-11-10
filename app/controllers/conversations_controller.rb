@@ -42,25 +42,30 @@ class ConversationsController < ApplicationController
 	end
 
 	def create
-	 if Conversation.between(current_user.id, params[:user_id]).exists?
-	 	if Conversation.between(current_user.id, params[:user_id]).count > 1
-	 		conversations = Conversation.between(current_user.id, params[:user_id])
-	 		@conversation = conversations.shift
-	 		conversations.each do |c|
-	 			c.destroy
-	 		end
-	 	else
-	    	@conversation = Conversation.between(current_user.id, params[:user_id])
-	   	end
+		unless User.find(params[:user_id]) == current_user || !current_user.friends_with?(User.find(params[:user_id]))
+		 if Conversation.between(current_user.id, params[:user_id]).exists?
+		 	if Conversation.between(current_user.id, params[:user_id]).count > 1
+		 		conversations = Conversation.between(current_user.id, params[:user_id])
+		 		@conversation = conversations.shift
+		 		conversations.each do |c|
+		 			c.destroy
+		 		end
+		 	else
+		    	@conversation = Conversation.between(current_user.id, params[:user_id])
+		   	end
+		 else
+		 	if current_user.id == params[:user_id]
+		 		redirect_back
+		 		flash[:notice] = "You can't have a conversation with yourself!"
+		 	else
+		    	@conversation = Conversation.create(sender_id: current_user.id, recipient_id: params[:user_id])
+		    end
+		 end
+		 redirect_to conversation_messages_path(@conversation)
 	 else
-	 	if current_user.id == params[:user_id]
-	 		redirect_back
-	 		flash[:notice] = "You can't have a conversation with yourself!"
-	 	else
-	    	@conversation = Conversation.create(sender_id: current_user.id, recipient_id: params[:user_id])
-	    end
+		 redirect_back(fallback_location: wads_path)
+		 flash[:notice] = "You must be friends to message this person"
 	 end
-	 redirect_to conversation_messages_path(@conversation)
 	end
 
 	def autocomplete_friends

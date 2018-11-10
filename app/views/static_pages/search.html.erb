@@ -2,7 +2,7 @@
 	<% if @wads.blank? && @discussions.blank? && @users.blank? %>
 		There's no content containing '<%= params[:search] %>' on Spitball.
 	<% end %>
-</div>	
+</div>
 <div class="row mt-2">
 
 	<% if @wads.present? %>
@@ -10,7 +10,7 @@
 			<h4 class="text-center">Wads</h4>
 			<% @wads.each do |wad| %>
 				<%= render wad %>
-			<% end %>			
+			<% end %>
 		</div>
 	<% end %>
 
@@ -18,7 +18,7 @@
 		<div class="col-md-4 col-xs-12">
 			<h4 class="text-center">Users</h4>
 			<% @users.each do |user| %>
-					<%= render user %>
+					<%= render "users/user", user: user%>
 			<% end %>
 		</div>
 	<% end %>

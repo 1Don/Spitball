@@ -3,15 +3,16 @@ class FriendRequestsController < ApplicationController
 
   def create
     friend = User.find(params[:friend_id])
-    @friend_request = current_user.friend_requests.new(friend: friend)
-
-    if @friend_request.save
-      Notification.create(recipient: User.find(params[:friend_id]), actor: current_user, action: "sent you", notifiable: @friend_request)
-      redirect_to friend
-      flash[:notice] = "Request Sent"
-    else
-      redirect_to friend
-      flash[:notice] = "You've already sent a request!"
+    unless friend == current_user
+      @friend_request = current_user.friend_requests.new(friend: friend)
+      if @friend_request.save
+        Notification.create(recipient: User.find(params[:friend_id]), actor: current_user, action: "sent you", notifiable: @friend_request)
+        redirect_to friend
+        flash[:notice] = "Request Sent"
+      else
+        redirect_to friend
+        flash[:notice] = "You've already sent a request!"
+      end
     end
   end
 
@@ -27,6 +28,7 @@ class FriendRequestsController < ApplicationController
 
   def update
   @friend_request.accept
+  Notification.find_by(actor: @friend_request.user, notifiable_type: "FriendRequest").destroy
   redirect_to @friend_request.user
   flash[:notice] = "You're now connected"
   end
