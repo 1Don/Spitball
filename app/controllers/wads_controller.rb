@@ -125,7 +125,7 @@ class WadsController < ApplicationController
 	end
 
 	def lifestyle
-		@wads = Wad.where("category like ?", "%Event and Lifestyle%").paginate(page: params[:page], per_page: 20)
+		@wads = Wad.where("category like ?", "%Events and Lifestyle%").paginate(page: params[:page], per_page: 20)
 	end
 
 

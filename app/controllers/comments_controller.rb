@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
 	before_action :find_wad_owner, only: [:index]
+	layout 'wad', only: [:index]
+
 
 	def create
 		if params[:comment][:parent_id].to_i > 0
