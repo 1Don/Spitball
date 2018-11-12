@@ -71,7 +71,7 @@
 			        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, c), remote: true, class: "profile-link" %></span>
 								<% if current_user.voted_down_on?(c) || !current_user.voted_for?(c) %>
-									<span class="dropdown-item d-inline pr-0" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span><span class="small d-inline like-<%= c.id %>" id=""><%= c.get_upvotes.count %></span>
+									<span class="dropdown-item d-inline pr-0" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span><span class="small d-inline like-<%= c.id %>" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span>
 								<% else %>
 									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.svg', class: "icon-pic"), wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %></span><span class="small like-<%= c.id %>" id=""><%= c.get_upvotes.count %></span>
 								<% end %>

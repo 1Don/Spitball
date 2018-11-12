@@ -13,7 +13,7 @@
           <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
            <span class="dropdown-item"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => wad.user), :method => :post, class: "profile-link" %></span>
           <% end %>
-          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
+          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer"), flag_wad_path(wad), remote: true, class: "profile-link" %><span>Flag Wad</span></span>
           <% if current_user == wad.user %>
           <span class="dropdown-item"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(wad), method: :delete, remote: true, class: "profile-link" %></span>
           <% end %>

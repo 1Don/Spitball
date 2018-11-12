@@ -1,16 +1,21 @@
-<div class="row col-11 mx-auto px-2">
-	<div class="col-md-8 mt-5">
+<div class="row col-12 mx-auto px-2">
+	<div class="col-md-2 mt-5 d-none d-sm-block">
+		<%= render 'wads/sidebar' %>
+	</div>
+	<div class="col-md-7 mt-5">
 		<%= render 'wads/panel' %>
 		<div class="mt-4">
 			<div id="" class="mb-3">
-				<div class=" mb-3">
-				  <%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline col-12 mx-auto' }, remote: true do |f| %>
-				    <%= f.hidden_field :wad_id %>
-
-				    <%= f.text_area :content, class: 'form-control col-12 mx-auto mr-2 comment-text', placeholder: 'What are your thoughts on this idea?' %>
-
-				    <%= f.submit 'Comment', class: 'comment-btn mx-auto mt-3 mb-2 pointer', disable_with: 'Sending' %>
-				  <% end %>
+				<div class="row">
+					<div class="col-9">
+						<%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline' }, remote: true do |f| %>
+							<%= f.hidden_field :wad_id %>
+				    	<%= f.text_area :content, class: 'form-control comment-text w-100', placeholder: 'What are your thoughts on this idea?' %>
+					</div>
+					<div class="col-3">
+				    	<%= f.submit 'Comment', class: 'comment-btn pointer', disable_with: 'Sending' %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 			<% if @wad.comments.exists? %>
@@ -21,8 +26,8 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
-		<h5 class="mt-2 text-center"> Related Wads</h5>
+	<div class="col-md-3">
+		<h6 class="mt-5 mb-2 text-center"> Related Wads</h6>
 		<%= render 'wads/side_wad' %>
 	</div>
 </div>
