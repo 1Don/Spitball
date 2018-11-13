@@ -6,7 +6,7 @@
 			</div>
 		</div>
 
-		<div onclick='execReply("<%= comment.id %>");' class="col-8 small  py-2">
+		<div onclick='execReply("<%= comment.id %>");' class="col-7 small  py-2">
 			<div class="small mb-1 mt-1">
 				<% if comment.user.occupation.present? %>
 					<%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %>
@@ -18,7 +18,7 @@
 				<%= comment.content %>
 			</div>
 		</div>
-		<div class="col-2 row pr-0">
+		<div class="col-3 row">
 			<div class="col-1 dropdown px-0">
 				<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<%= fa_icon('ellipsis-v') %>
@@ -31,7 +31,7 @@
 					<% end %>
 				</div>
 			</div>
-			<div class="small">
+			<div class="small ml-1">
 				<% if current_user.voted_down_on?(comment) || !current_user.voted_for?(comment) %>
 					<span class="" id="vote-span-<%= comment.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), wad_comment_like_path(comment.wad, comment), method: :put, remote: true, class: "profile-link" %></span><span class="small like-<%= comment.id %>" id="like-<%= comment.id %>"><%= comment.get_upvotes.count %></span>
 				<% else %>
