@@ -1,17 +1,20 @@
 $(document).on('turbolinks:load', function() {
-	var fullRequest = $.ajax({
-		url: "/friends.json",
-		type: "GET",
-		dataType: "JSON",
-		success: function(data){
-			console.log(data)
-			const names_Arr = []
-			for (x in data){
-				names_Arr.push(data[x].name)
+	var current_url = window.location.pathname;
+	if (current_url == /conversations) {
+		var fullRequest = $.ajax({
+			url: "/friends.json",
+			type: "GET",
+			dataType: "JSON",
+			success: function(data){
+				console.log(data)
+				const names_Arr = []
+				for (x in data){
+					names_Arr.push(data[x].name)
+				}
+				autoCompleter(names_Arr)
 			}
-			autoCompleter(names_Arr)
-		}
-	})
+		})
+	}
 	var autoCompleter  = function(friendsList) {
 		$("#autocomplete_friends").autocomplete({
 			source: friendsList,
