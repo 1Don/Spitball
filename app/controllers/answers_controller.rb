@@ -23,6 +23,7 @@ class AnswersController < ApplicationController
 	end
 
 	def index
+		redirect_to discussions_path
 		@discussion = Discussion.find(params[:discussion_id])
 		@answers = @discussion.answers.all
 		@answer = Answer.new(parent_id: params[:parent_id], discussion_id: params[:discussion_id])
@@ -31,8 +32,8 @@ class AnswersController < ApplicationController
 				@solution = ans
 			else
 				@solution = nil
-			end 
-		end 
+			end
+		end
 		@replies = @answers.hash_tree
 	end
 
@@ -78,10 +79,10 @@ class AnswersController < ApplicationController
 			@discussion = @answer.discussion
 			@answer.upvote_by current_user
 			current_user.update_attributes(points: current_user.points + 5)
-	  		@answer.user.update_attributes(points: @answer.user.points + 10) 
+	  		@answer.user.update_attributes(points: @answer.user.points + 10)
 	  		if @answer.get_upvotes.size % 5 == 0
 				@comment.user.update_attributes(points: @answer.user.points + 100)
-			end 
+			end
 		end
 	end
 	def downvote
@@ -90,7 +91,7 @@ class AnswersController < ApplicationController
 			@discussion = @answer.discussion
 			@answer.downvote_by current_user
 			current_user.update_attributes(points: current_user.points - 5)
-	  		@answer.user.update_attributes(points: @answer.user.points - 10) 
+	  		@answer.user.update_attributes(points: @answer.user.points - 10)
 		end
 	end
 	def solved
@@ -108,6 +109,7 @@ class AnswersController < ApplicationController
 
 private
 
+
 	def answer_params
 		params.require(:answer).permit(:content, :discussion_id, :user_id, :parent_id)
 	end
@@ -121,5 +123,3 @@ private
 	end
 
 end
-
-

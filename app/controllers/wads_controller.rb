@@ -29,7 +29,7 @@ class WadsController < ApplicationController
     		current_user.update_attributes(points: current_user.points + 50)
    			 redirect_to @wad
 		else
-			flash[:error] = 'Error try again'
+			flash[:error] = 'Please fill in all fields properly'
 			redirect_back(fallback_location: wads_path)
 		end
 	end

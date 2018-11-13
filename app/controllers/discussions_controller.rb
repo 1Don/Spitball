@@ -5,6 +5,7 @@ class DiscussionsController < ApplicationController
 
 	def index
 			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
+			redirect_to wads_path
 	end
 
 	def show
@@ -49,8 +50,8 @@ class DiscussionsController < ApplicationController
 		@discussion = Discussion.find(params[:id])
 	  	@discussion.upvote_by current_user
 	  	current_user.update_attributes(points: current_user.points + 5)
-	  	@discussion.user.update_attributes(points: @discussion.user.points + 10)  
-	  	
+	  	@discussion.user.update_attributes(points: @discussion.user.points + 10)
+
 	  	if @discussion.get_upvotes.size % 5 == 0
 				@discussion.user.update_attributes(points: @discussion.user.points + 100)
 		end
@@ -60,8 +61,8 @@ class DiscussionsController < ApplicationController
 		@discussion = Discussion.find(params[:id])
 	  	@discussion.downvote_by current_user
 	  	current_user.update_attributes(points: current_user.points - 5)
-	  	@discussion.user.update_attributes(points: @discussion.user.points - 10)  
-	end	
+	  	@discussion.user.update_attributes(points: @discussion.user.points - 10)
+	end
 
 
 	def solved
