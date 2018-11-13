@@ -4,7 +4,7 @@ layout "_landing", only: [:landing, :home]
 
   def beta_email
     b = BetaInfo.create(title: "email")
-    b.emails << params[:email]
+    b.emails << params[:emails]
     b.save
     flash[:notice] = "Beta Release: 11/13"
   end
