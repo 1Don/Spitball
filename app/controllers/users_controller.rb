@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @friends = current_user.friends.all
     @user = User.find(params[:id])
     @wads = Wad.all
-    @conversation = Conversation.between(current_user.id, @user.id).first
+    @conversation = Conversation.between(current_user.id, @user.id)[0]
     @likes = []
     Wad.all.each do |wad|
       if @user.liked? wad

@@ -16,4 +16,13 @@ $(document).on('turbolinks:load', function() {
       $("#docuz").slideToggle()
     }
   })
+  
+  var convo_id = getUrlParam('conversation_id', 'Empty')
+
+  if (convo_id != "Empty"){
+    $(".convo-" + convo_id).click()
+  } else {
+    $("#defaultOpen").click()
+  }
+  $("#conversation-id-field").val($('#defaultOpen').attr('value'))
 })

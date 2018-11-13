@@ -1,6 +1,6 @@
 <% @wads.each do |wad| %>
 	<%= link_to wad_comments_path(wad), class: "profile-link" do %>
-		<div class="col-12 small mb-1 card" style="border-radius: 15px;">
+		<div class="col-12 small mb-3" style="border-radius: 15px;">
 			<div class="row small">
 				<div class="col-3 pr-0 pl-0">
           <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
