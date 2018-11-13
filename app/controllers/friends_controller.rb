@@ -1,7 +1,9 @@
 class FriendsController < ApplicationController
 
   def index
-    if current_user
+    if !current_user
+      redirect_to root_path
+    else
   	   @friends = current_user.friends
     end
   end

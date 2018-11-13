@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function() {
-	var current_url = window.location.pathname;
-	if (current_url == "/conversations") {
+
 		var fullRequest = $.ajax({
 			url: "/friends.json",
 			type: "GET",
@@ -14,8 +13,8 @@ $(document).on('turbolinks:load', function() {
 				autoCompleter(names_Arr)
 			}
 		})
-	}
-	var autoCompleter  = function(friendsList) {
+
+	var autoCompleter = function(friendsList) {
 		$("#autocomplete_friends").autocomplete({
 			source: friendsList,
 			message: {
