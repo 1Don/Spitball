@@ -20,6 +20,7 @@ class WadsController < ApplicationController
 	end
 
 	def new
+		redirect_to wads_path
 		@wad = Wad.new
 	end
 
