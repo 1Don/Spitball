@@ -5,6 +5,8 @@
   <div class="border-bottom small text-center d-block d-sm-none">
     <span class="">Previous Attachments</span>
   </div>
+  Will be available for Beta(11/20)
+  <% if false %>
   <% @conversations.each do |convo| %>
   <div class="convo-<%= convo.id %> tabcontent">
     <ul style="list-style-type: none;">
@@ -20,4 +22,6 @@
     </ul>
   </div>
   <% end %>
+  <% end %>
+
 </div>

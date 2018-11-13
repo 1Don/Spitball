@@ -41,7 +41,7 @@
 					    <div class="row">
 					      <div class="form-group col-12 pl-4 d-none d-sm-block d-md-block">
 					        <%# place holder for actual erb %>
-				        <span class="small pl-2">By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a></span>
+				        <% unless current_user %><span class="small pl-2">By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a></span><% end %>
 					      </div>
 					    </div>
 					  </div>
@@ -140,7 +140,7 @@
 
 				    <div class="row">
 				      <div class="form-group col-12 pl-4">
-				        <span class="small pl-2">By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a></span>
+				        <% unless current_user %><span class="small pl-2">By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a></span><% end %>
 				      </div>
 				    </div>
 				  </div>
@@ -196,7 +196,7 @@
 					 	<div class="row">
 							<div class="form-group col-12 text-center">
 								<%= f.submit class: "Spitballbutton" %>
-								<%= link_to "Sign up with google", google_session_path %>
+								<% unless current_user %><%= link_to "Sign up with google", google_session_path %><% end %>
 							</div>
 						</div>
 
