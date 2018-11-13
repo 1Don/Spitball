@@ -263,6 +263,7 @@
             </div>
         </div>
     </div>
+    <% unless @rankedwads.empty? %>
     <div class="trending-ideas">
         <h1 class="title"><span class="span1">Trending</span><span class="span2"> Ideas</span></h1>
         <div class="ideas-list">
@@ -272,7 +273,7 @@
           <span class="header-image-container">
             <img height="20px" src="<%= asset_path('flash@3x.png') %>" alt="Flash@3x">
           </span>
-                        <span class="header-text">
+          <span class="header-text">
             <%= @rankedwads[0].problem_state.truncate(25) %>
           </span>
                     </div>
@@ -343,6 +344,7 @@
             </a>
         </div>
     </div>
+    <% end %>
     <div class="footer">
         <div class="row">
             <div class="col-md-4">
