@@ -14,6 +14,10 @@ layout "_landing", only: [:landing, :home]
   def help
   end
 
+  def notifications
+    @notifications = Notification.where(recipient_id: current_user.id)
+  end
+
   def terms
   end
 

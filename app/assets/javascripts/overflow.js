@@ -3,5 +3,5 @@ $(document).on('turbolinks:load', function() {
 	$('#disc_nav_btn').click(function(){
 		$('#disc_nav_menu').slideToggle()
 	})
-	document.getElementById("defaultOpen").click()
+	 $('.reply-hide-area').hide()
 })
