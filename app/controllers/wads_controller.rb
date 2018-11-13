@@ -30,7 +30,7 @@ class WadsController < ApplicationController
    			 redirect_to @wad
 		else
 			flash[:error] = 'Error try again'
-			render 'new'
+			redirect_back(fallback_location: wads_path)
 		end
 	end
 
