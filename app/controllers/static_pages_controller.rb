@@ -8,10 +8,15 @@ layout "_landing", only: [:landing, :home]
     b.save
     flash[:notice] = "Beta Release: 11/13"
   end
+
+  def help
+  end
+
   def home
   end
 
-  def help
+  def about
+    redirect_to wads_path
   end
 
   def notifications

@@ -11,17 +11,17 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://spitball.io">About us</a>
-                    </li>
+                  <!--  <li class="nav-item">
+                        <a class="nav-link" href="/about">About us</a>
+                    </li> -->
                     <li class="nav-item hide-mobile">
                         <span class="nav-link">&nbsp;</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pointer" data-toggle="modal" data-target="#myModal">Log in</a>
+                        <a class="nav-link pointer" data-toggle="modal" data-target="#myModal">Join in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pointer" data-toggle="modal" data-target="#myModal">Sign up</a>
+                        <span class="nav-link">&nbsp;</span>
                     </li>
                 </ul>
             </div>
@@ -263,7 +263,7 @@
             </div>
         </div>
     </div>
-    <% unless @rankedwads.empty? %>
+    <% unless !@rankedwads[2] %>
     <div class="trending-ideas">
         <h1 class="title"><span class="span1">Trending</span><span class="span2"> Ideas</span></h1>
         <div class="ideas-list">

@@ -7,7 +7,7 @@
   </div>
   <div class="small float-right">
     <div class="mr-1 my-3">
-      <b><%= link_to "View Details" + " ", wad_path(wad), class: "profile-link" %></b><%= link_to fa_icon('arrow-right'), wad_path(wad), class: "profile-link" %>
+      <b><%= link_to "View Details" + " ", wad_path(wad), class: "profile-link" %></b><%= link_to fa_icon('arrow-right'), wad_path(wad), class: "profile-link", data: { turbolinks: false } %>
     </div>
   </div>
 </div>

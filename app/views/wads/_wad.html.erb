@@ -23,7 +23,7 @@
 
   <div class="row">
     <div class="col-md-2 h-25 mx-auto">
-        <%= link_to wad_comments_path(wad) do %>
+        <%= link_to wad_comments_path(wad), data: { turbolinks: false } do %>
             <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
               <%= image_tag "#{wad.category}.png", class: 'img-fluid rounded mx-auto mt-4 pr-0 d-none d-md-block', style: "width: 50px;" %>
               <%= image_tag "#{wad.category}.png", style: "width:200px;", class: 'img-fluid rounded mx-auto mt-2 mb-1 d-block d-sm-none' %>

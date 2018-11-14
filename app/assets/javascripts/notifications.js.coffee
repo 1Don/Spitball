@@ -15,7 +15,7 @@ class Notifications
     handleSuccess: (data) =>
        console.log(data)
        items = $.map data, (notification) ->
-            "<a onclick='sendPost()' class='dropdown-item small' href='#{notification.url}'>#{notification.actor} #{notification.action}<br class='d-block d-sm-none'> #{notification.notifiable.type}</a>"
+            "<a onclick='sendPost()' class='dropdown-item small' href='#{notification.url}', data-turbolinks='false'>#{notification.actor} #{notification.action}<br class='d-block d-sm-none'> #{notification.notifiable.type}</a>"
         console.log(items)
 
         $("[data-behavior='notification-items']").prepend(items)
