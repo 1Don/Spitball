@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :require_login
 	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]

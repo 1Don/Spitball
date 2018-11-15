@@ -1,4 +1,5 @@
 class FriendRequestsController < ApplicationController
+   before_action :require_login
    before_action :set_friend_request, except: [:index, :create]
 
   def create
