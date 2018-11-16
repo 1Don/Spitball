@@ -6,7 +6,7 @@ new_message = `
     <span class="float-right"><%= @message.body %></span>
   </div>
   <div class="col-1 pl-0">
-    <%= image_tag @message.user.photo.url(:thumb), class: "circle-larry" %>
+    <%= image_tag @message.user.photo, class: "circle-larry" %>
   </div>
 </div>
 `

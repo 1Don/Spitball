@@ -3,10 +3,10 @@
 		<div class="col-12 small mb-3" style="border-radius: 15px;">
 			<div class="row small">
 				<div class="col-3 pr-0 pl-0">
-          <% if wad.image.url(:medium) == "/images/medium/missing.png"  %>
+          <% if !wad.image.attached?  %>
             <%= image_tag "#{wad.category}.png", class: 'img-fluid side-wad-pic rounded' %>
           <% else %>
-            <%= image_tag wad.image.url(:medium), class: 'img-fluid border border-light rounded-circle' %>
+            <%= image_tag wad.image, class: 'img-fluid border border-light rounded-circle' %>
           <% end %>
 				</div>
 				<div class="col-9 mt-2">
