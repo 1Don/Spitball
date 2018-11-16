@@ -34,13 +34,13 @@ class SessionsController < ApplicationController
           # account. But we found the identity and the user associated with it 
           # is the current user. So the identity is already associated with 
           # this user. So let's display an error message.
-          redirect_to wads_path, notice: "Already linked that account!"
+          redirect_to wads_path
         else
           # The identity is not associated with the current_user so lets 
           # associate the identity
           @identity.user = current_user
           @identity.save
-          redirect_to wads_path, notice: "Successfully linked that account!"
+          redirect_to wads_path
         end
       else
         if @identity.user.present?
@@ -48,7 +48,7 @@ class SessionsController < ApplicationController
           # just log them in here
           current_user = @identity.user
           log_in @identity.user
-          redirect_to wads_path, notice: "Signed in!"
+          redirect_to wads_path
         else
           # No user associated with the identity so we need to create a new one
           @identity.user = user = User.sign_up_from_omniauth(request.env['omniauth.auth'])
