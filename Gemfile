@@ -19,7 +19,6 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'closure_tree'
-gem 'paperclip', '~> 6.0'
 gem 'font-awesome-rails', '~> 4.7.0.0'
 gem 'city-state'
 gem 'pg',  '0.18.4'
@@ -30,6 +29,9 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
 gem 'jquery-ui-rails'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+gem 'activestorage', '~> 0.1'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

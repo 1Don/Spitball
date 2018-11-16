@@ -39,12 +39,10 @@ function openConversation(evt, convoId) {
 
 		// Show the current tab, and add an "active" class to the button that opened the tab
 		for (i = 0; i < document.getElementsByClassName("convo-" + convoId).length; i++){
-			console.log(document.getElementsByClassName("convo-" + convoId)[i])
 			document.getElementsByClassName("convo-" + convoId)[i].style.display = "block";
 		}
-		evt.currentTarget.className += " current_convo";
 
-		history.pushState(null,null, '/conversations/' + convoId);
+		evt.currentTarget.className += " current_convo";
 
 
 	//	objDiv = document.getElementById(convoId);
