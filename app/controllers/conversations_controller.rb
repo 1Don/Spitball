@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+	before_action :require_login
 	layout 'conversation', only: [:index]
 
 	def index

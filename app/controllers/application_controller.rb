@@ -13,8 +13,19 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def require_login
+    unless current_user
+      redirect_to root_path
+    end
+  end
+
   #protect_from_forgery with: :exception
   include SessionsHelper
   include WadsAndCommentsHelper
   include AnswersHelper
+
+
+
 end
+
+

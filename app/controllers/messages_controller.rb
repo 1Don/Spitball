@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+	before_action :require_login
 	layout "message", only:[:index]
 
  before_action :find_conversation, only: [:new, :create]

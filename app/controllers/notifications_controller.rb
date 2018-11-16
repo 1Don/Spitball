@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+	before_action :require_login
 
 	def index
 		@notifications = Notification.where(recipient: current_user).last(5).reverse
