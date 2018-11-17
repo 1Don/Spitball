@@ -36,12 +36,12 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-2 col-xs-4">
-	            <% if @wad.image.url(:medium) == "/images/medium/missing.png"  %>
+	            <% if !@wad.image.attached?  %>
 	              <%= image_tag "#{@wad.category}.png", class: 'img-fluid rounded d-none d-sm-block' %>
 	              <%= image_tag "#{@wad.category}.png", style: "width: 200px;" , class: 'img-fluid rounded mx-auto d-block d-sm-none' %>
 	            <% else %>
-	              <%= image_tag @wad.image.url(:medium), class: 'd-none d-sm-block img-fluid border border-light rounded-circle' %>
-	              <%= image_tag @wad.image.url(:medium), class: 'd-block d-sm-none mx-auto img-fluid border border-light rounded-circle' %>
+	              <%= image_tag @wad.image.attached?, class: 'd-none d-sm-block img-fluid border border-light rounded-circle' %>
+	              <%= image_tag @wad.image.attached?, class: 'd-block d-sm-none mx-auto img-fluid border border-light rounded-circle' %>
 	            <% end %>
 			</div>
 

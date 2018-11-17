@@ -2,7 +2,7 @@
   <div class="list-group-item">
     <div class="row">
       <div class="col-3">
-        <%= image_tag user.photo.url(:thumb), class: 'img-fluid' %>
+        <% unless !user.photo.attached? %><%= image_tag user.photo, class: 'img-fluid' %><% end %>
       </div>
 <%= link_to user, class: "profile-link"  do %>
       <div class="col-9">
