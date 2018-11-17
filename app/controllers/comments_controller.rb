@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
 		@comments = @wad.comments.all
 		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 		@replies = @comments.hash_tree
-		@photo_path = current_user.photo(:thumb)
+		@photo_path = current_user.photo
 		@wads = Wad.where(category: @wad.category).order('created_at DESC').reject { |w| w == @wad }
 		if @wads.empty?
 			@wads = Wad.all.order('created_at DESC').reject { |w| w == @wad }

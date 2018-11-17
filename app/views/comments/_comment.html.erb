@@ -2,7 +2,7 @@
 	<div id="cmt-<%= comment.id %>" class="row">
 		<div  onclick='execReply("<%= comment.id %>");' class="col-2 ml-3 py-2">
 			<div class="mt-1">
-				<%= link_to image_tag(comment.user.photo, class: "rounded-circle w-50"), user_path(comment.user) %>
+				<% unless !comment.user.photo.attached? %><%= link_to image_tag(comment.user.photo, class: "rounded-circle w-50"), user_path(comment.user) %><% else %><%= fa_icon('user 2x', class: "ml-3") %><% end %>
 			</div>
 		</div>
 

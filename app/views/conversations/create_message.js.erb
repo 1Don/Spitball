@@ -6,7 +6,7 @@ new_message = `
     <span class="float-right"><%= @message.body %></span>
   </div>
   <div class="col-1 pl-0">
-    <% unless !@message.user.photo.attached?<%= image_tag @message.user.photo, class: "circle-larry" %>
+    <% unless !@message.user.photo.attached? %><%= image_tag @message.user.photo, class: "circle-larry" %><% end %>
   </div>
 </div>
 `
