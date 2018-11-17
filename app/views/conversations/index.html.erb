@@ -5,7 +5,7 @@
       <% if message.user != current_user %>
         <div class="small ml-1 w-100 row col-12">
           <div class="col-1 mr-4">
-            <%= image_tag message.user.photo.url(:thumb), class: "circle-larry" %>
+            <%= image_tag message.user.photo, class: "circle-larry" %>
           </div>
           <div class="col-9">
             <b><%= message.user.name %></b><br>
@@ -24,7 +24,7 @@
 
         </div>
         <div class="col-1 pl-0">
-          <%= image_tag message.user.photo.url(:thumb), class: "circle-larry" %>
+          <%= image_tag message.user.photo, class: "circle-larry" %>
         </div>
       </div><br><br><br>
       <% end %>

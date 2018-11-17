@@ -1,4 +1,4 @@
-<div class="row">	
+<div class="row">
 	<div class="col-12 col-md-12 mt-3">
 		<%= render 'wads/panel' %>
 
@@ -33,7 +33,7 @@
 					<% @comment.children.map do |comment| %>
 						<div class="row">
 							<div class="col-3 border-right text-center">
-								<%= image_tag comment.user.photo(:thumb), class: "w-75" %>
+								<%= image_tag comment.user.photo, class: "w-75" %>
 							</div>
 
 							<div class="col-7 small">
