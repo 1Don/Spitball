@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem 'rails',        '5.1.4'
+gem 'rails',        '5.2'
 gem 'bcrypt',         '3.1.11'
 gem 'faker',          '1.7.3'
 gem 'will_paginate',           '3.1.6'
@@ -30,8 +30,9 @@ gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
 gem 'jquery-ui-rails'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
-gem 'activestorage', '~> 0.1'
+gem 'activestorage', '5.2.0'
 gem "aws-sdk-s3", require: false
+
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
