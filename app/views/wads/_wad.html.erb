@@ -77,7 +77,7 @@
               <% end %>
               <% unless wad.user == current_user %>
                 <% if Conversation.between(current_user.id, wad.user.id)[0] %>
-                   <span class="dropdown-item profile-link"><%= link_to fa_icon("envelope", class: "profile-link  ") + " Send message", conversation_path(conversation_id: Conversation.between(current_user.id, wad.user.id)[0]), class: "profile-link" %></span>
+                   <span class="dropdown-item profile-link"><%= link_to fa_icon("envelope", class: "profile-link  ") + " Send message", conversations_path(conversation_id: Conversation.between(current_user.id, wad.user.id)[0]), class: "profile-link" %></span>
                 <% else %>
                    <span class="dropdown-item profile-link"><%= link_to fa_icon("envelope", class: "profile-link") + " Send message", conversations_path(:user_id => wad.user.id), :method => :post, class: "profile-link" %></span>
                 <% end %>
