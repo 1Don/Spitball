@@ -1,5 +1,5 @@
 json.array! @notifications do |notification|
-	json.actor notification.actor.name
+	json.actor notification.actor.name unless !notification.actor.name
 	json.action notification.action
 	json.read notification.read
 	if notification.notifiable_type == "Wad"
