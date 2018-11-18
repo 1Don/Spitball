@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :collaborations, through: :wads, dependent: :destroy
   attr_accessor :remember_token
-  after_create :set_default_profile_image, unless: :photo?
+#  after_create :set_default_profile_image, unless: :photo?
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

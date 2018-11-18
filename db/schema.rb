@@ -159,10 +159,6 @@ ActiveRecord::Schema.define(version: 2018_11_18_000120) do
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "document_file_name"
-    t.string "document_content_type"
-    t.bigint "document_file_size"
-    t.datetime "document_updated_at"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -184,10 +180,6 @@ ActiveRecord::Schema.define(version: 2018_11_18_000120) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
     t.string "occupation"
     t.string "location"
     t.string "twitter"
@@ -226,10 +218,6 @@ ActiveRecord::Schema.define(version: 2018_11_18_000120) do
     t.text "problem_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "cached_votes_total", default: 0
     t.integer "cached_votes_score", default: 0
     t.integer "cached_votes_up", default: 0
