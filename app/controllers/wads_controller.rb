@@ -36,6 +36,14 @@ class WadsController < ApplicationController
 		end
 	end
 
+	def add_link
+		@wad = Wad.find(params[:id])
+		if current_user = @wad.user
+			@wad.link = params[:link]
+			@wad.save
+		end
+		redirect_back(fallback_location: wads_path)
+	end
 
 	def edit
 	end

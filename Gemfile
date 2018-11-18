@@ -33,7 +33,6 @@ gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'activestorage', '5.2.0'
 gem "aws-sdk-s3", require: false
 
-
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
 end

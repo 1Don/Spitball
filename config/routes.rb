@@ -128,6 +128,7 @@ Rails.application.routes.draw do
 
   resources :wads do
     member do
+        post "/add_link", to: "wads#add_link"
         get "flag", to: "wads#flag"
         delete "unflag", to: "wads#unflag"
         put "like", to: "wads#upvote"

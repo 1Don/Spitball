@@ -3,6 +3,16 @@ if ($(".wad-like-<%= @wad.id %>").attr('data-check') == "true"){
 	$('.wad-vote-span-<%= @wad.id %>').html('<%= link_to image_tag("thumbs-up-regular.svg", class: "icon-pic"), like_wad_path(@wad), method: :put, remote: true %>');
 	$(".wad-like-<%= @wad.id %>").html((parseInt($("#wad-like-<%= @wad.id %>").html())-1).toString());
 	$(".wad-like-<%= @wad.id %>").attr('data-check', 'false')
-} else {
-
+} else if ($(".wad-like-<%= @wad.id %>").attr('data-check') == "panel"){
+	var like_html = `
+		<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
+			<button type="button" name="button" class="comment-btn pointer br-5">
+				Like!
+				<span>
+					<%= @wad.get_upvotes.count %>
+				</span>
+			</button>
+		<% end %>
+	`
+	$(".wad-like-<%= @wad.id %>").html(like_html)
 }

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
-  before_action :require_login
+  before_action :require_login, only: [:edit, :update, :new]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.photo.attach(params[:user][:photo])
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
       log_in @user
@@ -74,7 +75,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :first_name, :last_name, :github, :occupation,
         :twitter, :linkedin, :password_confirmation, :photo, :location)
     end
-
     # Before filters
 
     # Confirms a logged-in user.

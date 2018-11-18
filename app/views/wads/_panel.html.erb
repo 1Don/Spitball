@@ -52,4 +52,49 @@
 			</div>
 		</div>
 	</div>
+	<div class="container mb-1">
+		<div class="row">
+			<div class="col-1 ml-3">
+				<% if current_user == @wad.user %>
+					<span id="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
+				<% else %>
+					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
+				<% end %>
+			</div>
+			<div class="col-6">
+				<% if current_user == @wad.user %>
+					<form method="POST" action="/wads/<%= @wad.id %>/add_link">
+						<input id="link-field" name="link" placeholder="<%= @wad.link %>" class="br-5"/>
+					</form>
+				<% end %>
+			</div>
+			<div class="col-1">
+				<button type="button" name="button" data-toggle="modal" data-target="#myModal" class="br-5 pointer">
+					<%= fa_icon('comment') %>
+				</button>
+			</div>
+			<div class="col-3 wad-like-<%= @wad.id %>" data-check="panel">
+				<% if !current_user.liked? @wad %>
+					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
+					<button type="button" name="button" class="comment-btn pointer br-5">
+						Like!
+						<span>
+							<%= @wad.get_upvotes.count %>
+						</span>
+					</button>
+					<% end %>
+				<% else %>
+					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
+					<button type="button" name="button" class="comment-btn pointer br-5">
+						Like!
+						<span>
+							<%= @wad.get_upvotes.count %>
+						</span>
+					</button>
+					<% end %>
+				<% end %>
+			</div>
+
+		</div>
+	</div>
 </div>
