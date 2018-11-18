@@ -19,10 +19,9 @@ $(document).on('turbolinks:load', function() {
 
   var convo_id = getUrlParam('conversation_id', 'Empty')
 
-
   if (convo_id != "Empty"){
-    $("#convo-" + convo_id).click()
-    $("#mini-convo-" + convo_id).click()
+    $("#convo-" + convo_id)[0].click()
+    $("#mini-convo-" + convo_id)[0].click()
     $(".conversation_id").val(convo_id)
     console.log(convo_id);
     $('div[data-id=' + convo_id + ']').addClass(" current_convo")

@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', function() {
 			type: "GET",
 			dataType: "JSON",
 			success: function(data){
-				console.log(data)
 				const names_Arr = []
 				for (x in data){
 					names_Arr.push(data[x].name)
