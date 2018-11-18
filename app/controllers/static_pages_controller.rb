@@ -27,7 +27,11 @@ layout "_landing", only: [:landing, :home]
   end
 
   def landing
-    @rankedwads = Wad.order(cached_votes_total: :desc)
+    if current_user
+      redirect_to wads_path
+    else
+      @rankedwads = Wad.order(cached_votes_total: :desc)
+    end
   end
 
   def search
