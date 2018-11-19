@@ -1,12 +1,12 @@
 <div class="pointer">
 	<div id="cmt-<%= comment.id %>" class="row">
-		<div  onclick='execReply("<%= comment.id %>");' class="col-2 ml-3 py-2">
+		<div onclick='execReply("<%= comment.id %>");' class="col-2 ml-3 py-2">
 			<div class="mt-1">
 				<% unless !comment.user.photo.attached? %><%= link_to image_tag(comment.user.photo, class: "rounded-circle w-50"), user_path(comment.user) %><% else %><%= fa_icon('user 2x', class: "ml-3") %><% end %>
 			</div>
 		</div>
 
-		<div onclick='execReply("<%= comment.id %>");' class="col-7 small  py-2">
+		<div onclick='execReply("<%= comment.id %>");' class="col-7 small py-2 bg-danger">
 			<div class="small mb-1 mt-1" style="">
 				<% if comment.user.occupation.present? %>
 					<h5><%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %></h5>
@@ -18,7 +18,7 @@
 				<%= simple_format(comment.content) %>
 			</div>
 		</div>
-		<div class="col-3 row">
+		<div class="col-3 row ">
 			<div class="col-1 dropdown px-0">
 				<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<%= fa_icon('ellipsis-v') %>
@@ -39,9 +39,12 @@
 				<% end %>
 			</div>
 		</div>
+		<% if comment.children.exists? %>
+				See replies
+		<% end %>
 	</div>
 
-	<div class="row no-gutters ">
+	<div class="row no-gutters">
 		<div id="reply-<%= comment.id %>" class="reply-hide-area col-12">
 			<div id="cmt-form-<%= comment.id %>" class="text-center">
 				<%= render 'form' %>

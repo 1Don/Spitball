@@ -1,15 +1,15 @@
 
+<%= link_to user, class: "profile-link"  do %>
   <div class="list-group-item">
     <div class="row">
       <div class="col-3">
         <% unless !user.photo.attached? %><%= image_tag user.photo, class: 'img-fluid' %><% end %>
       </div>
-<%= link_to user, class: "profile-link"  do %>
       <div class="col-9">
         <p><%= user.name %></p>
         <div class="row small">
           <div class="col-12">
-            <% unless current_user.friends_with?(user) || current_user == user%>
+            <% unless current_user.friends_with?(user) || current_user == user %>
               <%= link_to fa_icon('users', class: "non-social-icons align-middle"), friend_requests_path(:friend_id => user), :method => :post %><span class="small ml-2">Add <%= user.name %> as a friend!</span>
             <% end %>
           </div>
