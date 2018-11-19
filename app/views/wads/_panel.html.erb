@@ -6,7 +6,7 @@
 		<% end %>
 		<div class="col-1 dropdown dropleft float-right ">
 			<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= fa_icon('ellipsis-v 2x') %>
+				<%= fa_icon('ellipsis-v') %>
 			</span>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + " Flag content", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
@@ -17,7 +17,7 @@
 		</div>
 		<div class="col-1 dropdown dropright float-right mr-4">
 			<span class="pointer" id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= fa_icon('share-alt 2x') %>
+				<%= fa_icon('share-alt') %>
 			</span>
 
 			<div class="dropdown-menu" aria-labelledby="shareDropdown">
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 	<div class="container mb-1 d-block d-sm-none">
-		<div class="row">
+		<div class="row no-gutters">
 			<div class="col-1 ml-3">
 				<% if current_user == @wad.user %>
 					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
@@ -108,12 +108,12 @@
 					</form>
 				<% end %>
 			</div>
-			<div class="col-1 mr-2">
+			<div class="col-1">
 				<button type="button" name="button" data-toggle="modal" data-target="#myModal" class="br-5 pointer">
 					<%= fa_icon('comment') %>
 				</button>
 			</div>
-			<div class="col-5 wad-like-<%= @wad.id %>" data-check="panel">
+			<div class="col-4 ml-2 wad-like-<%= @wad.id %>" data-check="panel">
 				<% if !current_user.liked? @wad %>
 					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
