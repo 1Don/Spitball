@@ -92,9 +92,9 @@
 			</div>
 		</div>
 	</div>
-	<div class="container mb-1 d-block d-sm-none px-0">
-		<div class="row no-gutters px-0">
-			<div class="col-1 ml-3">
+	<div class="container mb-1 d-block d-sm-none">
+		<div class="row no-gutters">
+			<div class="col-1">
 				<% if current_user == @wad.user %>
 					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
 				<% elsif !@wad.link.nil? %>
@@ -113,7 +113,10 @@
 					<%= fa_icon('comment') %>
 				</button>
 			</div>
-			<div class="col-4 ml-1 wad-like-<%= @wad.id %>" data-check="panel">
+			<div class="col-1">
+
+			</div>
+			<div class="col-4 wad-like-<%= @wad.id %>" data-check="panel">
 				<% if !current_user.liked? @wad %>
 					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
