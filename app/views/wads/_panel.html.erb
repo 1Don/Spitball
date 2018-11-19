@@ -126,8 +126,10 @@
 				<% else %>
 					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
-						<%= fa_icon('caret-up') %> upvote
-						<span>
+						<span class="small">
+							<%= fa_icon('caret-up', class: "") %> upvote
+						</span>
+						<span class="small">
 							<%= @wad.get_upvotes.count %>
 						</span>
 					</button>
