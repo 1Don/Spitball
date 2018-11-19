@@ -7,7 +7,7 @@ if ($(".wad-like-<%= @wad.id %>").attr('data-check') == "true"){
 	var like_html = `
 		<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
 			<button type="button" name="button" class="comment-btn pointer br-5">
-				Like!
+				<%= fa_icon('caret-up') %> upvote 
 				<span>
 					<%= @wad.get_upvotes.count %>
 				</span>

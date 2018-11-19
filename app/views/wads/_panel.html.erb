@@ -1,16 +1,12 @@
 <div class="card mb-3 panel-div" style="border-radius: 10px;">
 	<div class="card-header">
-		<% if @wad.user.occupation.present? %>
-				<%= link_to @wad.user.name + " · " + @wad.user.occupation, user_path(@wad.user), class: "profile-link small float-left" %>
-		<% else %>
-				<%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link small float-left" %>
-		<% end %>
+		<%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link small float-left" %>
 		<% unless @wad.user == current_user || @wad.user.friends_with?(current_user) %>
 		 <span class="dropdown-item"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => @wad.user), :method => :post, class: "profile-link" %></span>
 		<% end %>
 		<div class="col-1 dropdown dropleft float-right ">
 			<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= fa_icon('ellipsis-v') %>
+				<%= fa_icon('ellipsis-v 2x') %>
 			</span>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + " Flag content", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
@@ -19,9 +15,9 @@
 				<% end %>
 			</div>
 		</div>
-		<div class="col-1 dropdown dropright float-right">
+		<div class="col-1 dropdown dropright float-right mr-4">
 			<span class="pointer" id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= fa_icon('share-alt') %>
+				<%= fa_icon('share-alt 2x') %>
 			</span>
 
 			<div class="dropdown-menu" aria-labelledby="shareDropdown">
@@ -52,11 +48,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="container mb-1">
+	<div class="container mb-1 d-none d-sm-block">
 		<div class="row">
 			<div class="col-1 ml-3">
 				<% if current_user == @wad.user %>
-					<span id="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
+					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
 				<% elsif !@wad.link.nil? %>
 					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
 				<% end %>
@@ -64,7 +60,7 @@
 			<div class="col-6">
 				<% if current_user == @wad.user %>
 					<form method="POST" action="/wads/<%= @wad.id %>/add_link">
-						<input id="link-field" name="link" placeholder="<%= @wad.link %>" class="br-5"/>
+						<input name="link" placeholder="<%= @wad.link %>" class="br-5 link-field"/>
 					</form>
 				<% end %>
 			</div>
@@ -77,7 +73,7 @@
 				<% if !current_user.liked? @wad %>
 					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
-						Like!
+						<%= fa_icon('caret-up') %> upvote
 						<span>
 							<%= @wad.get_upvotes.count %>
 						</span>
@@ -86,7 +82,7 @@
 				<% else %>
 					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
-						Like!
+						<%= fa_icon('caret-up') %> upvote
 						<span>
 							<%= @wad.get_upvotes.count %>
 						</span>
@@ -94,7 +90,50 @@
 					<% end %>
 				<% end %>
 			</div>
-
+		</div>
+	</div>
+	<div class="container mb-1 d-block d-sm-none">
+		<div class="row">
+			<div class="col-1 ml-3">
+				<% if current_user == @wad.user %>
+					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
+				<% elsif !@wad.link.nil? %>
+					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
+				<% end %>
+			</div>
+			<div class="col-4">
+				<% if current_user == @wad.user %>
+					<form method="POST" action="/wads/<%= @wad.id %>/add_link">
+						<input name="link" placeholder="<%= @wad.link %>" class="br-5 link-field w-100"/>
+					</form>
+				<% end %>
+			</div>
+			<div class="col-1 mr-2">
+				<button type="button" name="button" data-toggle="modal" data-target="#myModal" class="br-5 pointer">
+					<%= fa_icon('comment') %>
+				</button>
+			</div>
+			<div class="col-5 wad-like-<%= @wad.id %>" data-check="panel">
+				<% if !current_user.liked? @wad %>
+					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
+					<button type="button" name="button" class="comment-btn pointer br-5">
+						<%= fa_icon('caret-up') %> upvote
+						<span>
+							<%= @wad.get_upvotes.count %>
+						</span>
+					</button>
+					<% end %>
+				<% else %>
+					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
+					<button type="button" name="button" class="comment-btn pointer br-5">
+						<%= fa_icon('caret-up') %> upvote
+						<span>
+							<%= @wad.get_upvotes.count %>
+						</span>
+					</button>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
