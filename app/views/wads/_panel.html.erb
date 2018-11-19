@@ -53,7 +53,7 @@
 			<div class="col-1 ml-3">
 				<% if current_user == @wad.user %>
 					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
-				<% elsif !@wad.link.nil? %>
+				<% elsif !@wad.link.nil? || @wad.link != "" %>
 					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
 				<% end %>
 			</div>
