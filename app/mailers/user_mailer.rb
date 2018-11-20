@@ -4,12 +4,12 @@ class UserMailer < ApplicationMailer
 	def welcome_email(user)
 		if user
 			@user = user
-		    @url  = 'http://spitball.io/login'
-		    mail(to: @user.email, subject: 'Welcome to Spitball!')
+		    @url  = 'http://spitball.io'
+		    mail(to: @user.email, subject: 'Thanks for joining the Spitball alpha!')
 		else
 		    @user = params[:user]
-		    @url  = 'http://spitball.io/login'
-		    mail(to: @user.email, subject: 'Welcome to Spitball!')
+		    @url  = 'http://spitball.io'
+		    mail(to: @user.email, subject: 'Thanks for joining the Spitball alpha!')
 		end
  	end
 end

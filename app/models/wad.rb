@@ -6,7 +6,7 @@ class Wad < ApplicationRecord
   validates :user_id, presence: true
   validates :category, presence: true
   validates :long_form, presence: true, length: { maximum: 5000 }
-  validates :problem_state, presence: true, length: { maximum: 75 }
+  validates :problem_state, presence: true, length: { maximum: 100 }
   has_many :users, through: :comments
   has_many :collaborations
   has_many :users, through: :collaborations

@@ -13,7 +13,7 @@ class WadsController < ApplicationController
     end
 
     def popwads
-		@wads = Wad.order(cached_votes_total: :desc)
+		@wads = Wad.order(cached_votes_up: :desc)
 	end
 
 	def show
@@ -31,7 +31,7 @@ class WadsController < ApplicationController
     		current_user.update_attributes(points: current_user.points + 50)
    			 redirect_to @wad
 		else
-			flash[:error] = 'Please fill in all fields properly'
+			flash[:error] = @wad.errors.full_messages
 			redirect_back(fallback_location: wads_path)
 		end
 	end
