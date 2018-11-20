@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :collaborations, through: :wads, dependent: :destroy
   attr_accessor :remember_token
-#  after_create :set_default_profile_image, unless: :photo?
+  after_create :set_default_profile_image, unless: :has_attachment?
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -55,6 +55,14 @@ class User < ApplicationRecord
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def has_attachment?
+    if self.photo.attached?
+      return true
+    else
+      return false
+    end
   end
 
   # Sign up from oauth function
