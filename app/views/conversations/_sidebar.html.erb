@@ -19,7 +19,7 @@
   </div>
   <div class="d-none d-sm-block">
     <% @conversations.each do |conversation| %>
-      <div data-id="<%= conversation.id %>"  id="convo-<%= conversation.id %>" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id%>">
+      <div data-id="<%= conversation.id %>"  id="convo-<%= conversation.id %>" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id%> main-convo">
         <span class="ml-5 pointer small">
           <% if conversation.sender_id == current_user.id %>
             <%= User.find(conversation.recipient_id).name %>

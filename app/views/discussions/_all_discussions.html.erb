@@ -1,31 +1,35 @@
 <% @discussions.each do |discussion| %>
-	<% if discussion.parent_id.nil? && discussion.resolved == false %>
-		<div onmouseover='$(".hidden_discussion_<%= discussion.id %>_icon").show()' onmouseleave='$(".hidden_discussion_<%= discussion.id %>_icon").hide()' class="list-group-item"> 					
-		  <div class="row">
-			 <%= link_to discussion_answers_path(discussion), class: 'profile-link' do %>
-		  	 <div class="col-xs-12 col-md-12 mb-4 small">
-				<%= discussion.content  %>
-			 </div>
-	<% end %>
-
-			 <div class="actions col-3 small">	
-			 		    <%= link_to fa_icon('flag', class: "mr-3 hidden_icon profile-link hidden_discussion_" + discussion.id.to_s + "_icon"), flag_discussion_path(discussion), remote: true %>		 	
-						<% if current_user.voted_down_on? discussion %>
-						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_discussion_path(discussion), method: :put, remote: true %></span>
-						<% elsif !current_user.voted_for? discussion %>
-						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_discussion_path(discussion), method: :put, remote: true %></span>
-						<% else %>
-						 <span id="discussion-vote-span-<%= discussion.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), dislike_discussion_path(discussion), method: :put, remote: true %></span>
+		<div class="card mb-2">
+			<div class="my-1 col-12 small border-bottom">
+				<div class="d-inline">
+				<%= link_to discussion.user.name, discussion.user, class: "profile-link" %> asks...
+				</div>
+				<div class="float-right d-inline">
+					options
+				</div>
+			</div>
+			<div onclick="execReply('<%= discussion.id%>')" class="">
+				<div class="col-12 my-2 text-center">
+					<em>"<%= discussion.title %>"</em>
+				</div>
+			</div>
+			<div id="reply-<%=discussion.id%>" class="reply-hide-area">
+				<div onclick="execReply('<%= discussion.id%>')" class="text-center col-12">
+					<% if discussion.content %><%= discussion.content %><% end %>
+				</div>
+				<div class="col-12">
+					<div class="">
+						<%= render 'answers/form', discussion: discussion %>
+					</div>
+					<div id="new_answer-<%= discussion.id %>" class="">
+					<!--Where new answers go -->
+					</div>
+					<div class="">
+						<% discussion.answers.each do |answer| %>
+							<%= render 'discussions/answer', answer: answer %>
 						<% end %>
-				        <% if current_user == discussion.user %>
-				          <span id="trash-<%= discussion.id %>" class="trash "><%= link_to fa_icon("trash", class: "mb-3 profile-link pr-3"), discussion_path(discussion), method: :delete, remote: true%></span>
-				        <% end %>						
-       			 <span data-check="<%= current_user.liked? discussion %>" id="discussion-like-<%= discussion.id %>"><%= discussion.get_upvotes.size %></span>
-
-			 </div>
-
-		  </div>
+					</div>
+				</div>
+			</div>
 		</div>
-	<% end %>
 <% end %>
-

@@ -5,13 +5,17 @@ class DiscussionsController < ApplicationController
 	before_action :all_discussions
 
 	def index
-			@discussions = Discussion.all.paginate(page: params[:page], per_page: 20)
-			redirect_to wads_path
+			@discussions = Discussion.all
+	end
+
+	def create_answer
+		@discussion = Discussion.find(params[:discussion_id])
+		@answer = current_user.answers.create(content: params[:content], discussion_id: @discussion.id)
+		@answer.save
 	end
 
 	def show
-			@all_discussions = Discussion.all
-			@discussion = Discussion.find(params[:id])
+			redirect_to discussions_path
 	end
 
 	def new
@@ -121,7 +125,7 @@ class DiscussionsController < ApplicationController
 private
 
 	def discussion_params
-		params.require(:discussion).permit(:content, :category)
+		params.require(:discussion).permit(:content, :category, :title)
 	end
 
 

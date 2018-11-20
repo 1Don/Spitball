@@ -5,6 +5,7 @@ class AnswersController < ApplicationController
 	before_action :answer_owner, only: [:destroy, :edit, :update]
 
 	def create
+		@discussion = Discussion.find(params[:discussion_id])
 		if params[:answer][:parent_id].to_i > 0
 	    	parent = Answer.find_by_id(params[:answer].delete(:parent_id))
 	    	@answer = parent.children.build(answer_params)
@@ -25,17 +26,6 @@ class AnswersController < ApplicationController
 
 	def index
 		redirect_to discussions_path
-		@discussion = Discussion.find(params[:discussion_id])
-		@answers = @discussion.answers.all
-		@answer = Answer.new(parent_id: params[:parent_id], discussion_id: params[:discussion_id])
-		@answers.each do |ans|
-			if ans.solution
-				@solution = ans
-			else
-				@solution = nil
-			end
-		end
-		@replies = @answers.hash_tree
 	end
 
 
@@ -44,7 +34,6 @@ class AnswersController < ApplicationController
 	end
 
 	def show
-		@answer = @answers.find_by(params[:id])
 	end
 
 

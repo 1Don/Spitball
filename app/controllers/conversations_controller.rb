@@ -37,7 +37,7 @@ class ConversationsController < ApplicationController
 		@message.conversation_id = @conversation.id
 		@message.save!
 		respond_to do |format|
-			format.html { redirect_back(fallback_location: conversations_path) }
+			format.html { redirect_to conversations_path(conversation_id: @conversation.id) }
 			format.js	{render 'create_message'}
 		end
 	end
@@ -52,7 +52,7 @@ class ConversationsController < ApplicationController
 		 			c.destroy
 		 		end
 		 	else
-		    	@conversation = Conversation.between(current_user.id, params[:user_id])
+		    	@conversation = Conversation.between(current_user.id, params[:user_id])[0]
 		   	end
 		 else
 		 	if current_user.id == params[:user_id]

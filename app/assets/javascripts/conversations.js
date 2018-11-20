@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function() {
     console.log("Prelist");
     console.log($('div[data-id=' + convo_id + ']').attr("class"));
   } else {
-    $("#defaultOpen").click()
+    $(".main-convo")[0].click()
     $(".conversation_id").val($('#defaultOpen').attr('value'))
     console.log("empty - " + $('#defaultOpen').attr('value'));
   }

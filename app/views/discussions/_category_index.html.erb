@@ -1,16 +1,10 @@
 <div class="mt-4">
-	<div class="row">
-
-		<%# The display for all wads%>
-		<div class="col-xs-12 col-md-12 mb-5">
-			<div class="col-md-12 col-xs-12  col-sm-12 align-items-center mb-4 row-flex">
-				<%= render 'category_nav' %>
-			</div>
-			<div class="mt-3">
-				<% @discussions.each do |discussion| %>
-					<%= render "all_discussions" %>
-				<% end %>
-			</div>
+	<div class="mb-5">
+		<div class="align-items-center mb-4 row-flex">
+			<%= render 'category_nav' %>
+		</div>
+		<div class="mt-3">
+			<%= render "all_discussions" %>
 		</div>
 	</div>
 </div>

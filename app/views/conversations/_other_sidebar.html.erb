@@ -5,23 +5,18 @@
   <div class="border-bottom small text-center d-block d-sm-none">
     <span class="">Previous Attachments</span>
   </div>
-  Will be available for Beta(11/20)
-  <% if false %>
   <% @conversations.each do |convo| %>
   <div class="convo-<%= convo.id %> tabcontent">
     <ul style="list-style-type: none;">
       <% convo.messages.order("created_at").each do |msg| %>
-        <% if msg.document_content_type != nil %>
+        <% if msg.document.attached? %>
           <li class="small">
-            <a href="<%= msg.document.path %>" download>
-              <%= fa_icon('file') %><span class="small align-top"> <%=  msg.document_file_name %></span>
-            </a>
+            <%= link_to fa_icon('file') + msg.document.filename, rails_blob_path(msg.document, disposition: "attachment") %>
           </li>
         <% end %>
       <% end %>
     </ul>
   </div>
-  <% end %>
   <% end %>
 
 </div>

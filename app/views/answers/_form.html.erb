@@ -1,28 +1,7 @@
-<%= form_for([@discussion, @answer], remote: true) do |f| %>
-	<div class="ml-5 d-none d-sm-block">
-		<div class="row">
-		      <div class="col-md-10">
-		        <%= f.text_field :content, class: 'form-control form-control-sm form-field' %>
-		        <%= f.hidden_field :discussion_id %>
-		        <%= f.hidden_field :parent_id, class: "hid-field" %>
-		      </div>
-		      <div class="col-md-2">
-		       <%= f.submit 'Reply', class: 'text-center commentBtn btn-sm float-right', id: "btn" %>
-		   	  </div>
-		</div>	      
-	</div>
-<% end %>
-<%= form_for([@discussion, @answer], remote: true) do |f| %>
-	<div class="ml-5 d-block d-sm-none">
-		<div class="row">
-	      <div class="col-xs-9">
-	        <%= f.text_field :content, class: 'form-control form-control-sm form-field' %>
-	        <%= f.hidden_field :discussion_id %>
-	        <%= f.hidden_field :parent_id, class: "hid-field" %>
-	      </div>
-	      <div class="col-xs-3">
-	       <%= f.submit 'Reply', class: 'text-center commentBtn btn-sm float-right', id: "btn" %>
-	   	  </div>
-	   	 </div>	      
-	</div>
-<% end %>
+<div class="border-bottom col-8 mt-2">
+	<form method="POST" action="/create_answer" data-remote="true">
+	  <input id="" placeholder="Have an answer?" name="content" class='form-control form-control-sm form-field comment-reply-form answers-field'>
+	  <input type="hidden" name='discussion_id' id="discussion_id" value="<%= discussion.id %>">
+	  <input type="hidden" name='parent_id' class="hid-field">
+	</form>
+</div>

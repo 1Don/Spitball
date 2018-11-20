@@ -1,4 +1,2 @@
 console.log("upvote script running")
-$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-orange.png", class: "cmt-png-icon"), wad_comment_dislike_path(@wad, @comment), method: :put, remote: true, class: "profile-link" %>')
-
-$(".like-<%= @comment.id %>").html((parseInt($("#like-<%= @comment.id %>").html())+1).toString());
+$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-orange.png", class: "cmt-png-icon"), wad_comment_dislike_path(@wad, @comment), method: :put, remote: true, class: "profile-link" %><span class="small like-<%= @comment.id %>" id=""><%= @comment.get_upvotes.count %></span>')

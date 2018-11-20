@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'dashboard/show'
   get '/dashboard' => 'dashboard#show'
 
-
+  post '/create_answer' => 'discussions#create_answer'
   post '/create_message' => 'conversations#create_message'
   get '/terms', to: 'static_pages#terms'
   get '/autocomplete_friends', to: 'conversations#autocomplete_friends'

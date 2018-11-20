@@ -1,0 +1,33 @@
+<div id="ans-<%= answer.id%>" class="border-bottom">
+  <div class="row">
+    <div class="col-10 mt-2 small">
+      <% if !answer.user.occupation || answer.user.occupation == "" %><%= link_to answer.user.name, user_path(answer.user) %><%= " · "  + answer.user.points.to_s %><% else %><%= link_to answer.user.name , user_path(answer.user) %><%= " · " + answer.user.occupation %><%= " · "  + answer.user.points.to_s %><% end %>
+      <div class="col-12 mt-1">
+        <% if !answer.parent %>
+          <%= link_to answer.content, user_path(answer.user), class: "profile-link" %>
+        <% else %>
+          <%= link_to answer.content, user_path(answer.parent.user), class: "profile-link" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="col-1 dropdown pointer mt-2">
+        <span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= fa_icon('ellipsis-v') %>
+        </span>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", discussion_answer_flag_path(answer.discussion, answer), remote: true, class: "profile-link" %></span>
+          <% if current_user.voted_down_on?(answer) || !current_user.voted_for?(answer) %>
+            <span class="dropdown-item d-inline pr-0" id="vote-span-<%= answer.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), discussion_answer_like_path(answer.discussion, answer), method: :put, remote: true, class: "profile-link" %><span class="small d-inline like-<%= answer.id %>" id="like-<%= answer.id %>"><%= answer.get_upvotes.count %></span></span>
+          <% else %>
+            <span class="dropdown-item" id="vote-span-<%= answer.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "cmt-png-icon"), discussion_answer_dislike_path(answer.discussion, answer), method: :put, remote: true, class: "profile-link" %><span class="small d-inline like-<%= answer.id %>" id=""><%= answer.get_upvotes.count %></span></span>
+          <% end %>
+          <span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= answer.id %>", "<%= answer.id %>", "<%= answer.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Answer" %></span>
+          <% if current_user == answer.user %>
+            <span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Answer", discussion_answer_path(answer.discussion, answer), method: :delete, remote: true, class: "profile-link" %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
