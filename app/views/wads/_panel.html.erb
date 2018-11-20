@@ -53,7 +53,7 @@
 			<div class="col-1 ml-3">
 				<% if current_user == @wad.user %>
 					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
-				<% elsif !@wad.link.nil? || @wad.link != "" %>
+				<% elsif @wad.link.present? %>
 					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
 				<% end %>
 			</div>
@@ -117,7 +117,7 @@
 				<% if !current_user.liked? @wad %>
 					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
-						<%= fa_icon('caret-up') %> upvote
+						<%= fa_icon('caret-up 2x') %> Upvote
 						<span>
 							<%= @wad.get_upvotes.count %>
 						</span>
@@ -127,7 +127,7 @@
 					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
 						<span class="small">
-							<%= fa_icon('caret-up', class: "") %> upvote
+							<%= fa_icon('caret-up 2x', class: "") %> Upvote
 						</span>
 						<span class="small">
 							<%= @wad.get_upvotes.count %>

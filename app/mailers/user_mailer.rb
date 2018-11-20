@@ -5,11 +5,11 @@ class UserMailer < ApplicationMailer
 		if user
 			@user = user
 		    @url  = 'http://spitball.io'
-		    mail(to: @user.email, subject: 'Thanks for joining!')
+		    mail(to: @user.email, subject: 'Thanks for joining the Spitball alpha!')
 		else
 		    @user = params[:user]
 		    @url  = 'http://spitball.io'
-		    mail(to: @user.email, subject: 'Thanks for joining!')
+		    mail(to: @user.email, subject: 'Thanks for joining the Spitball alpha!')
 		end
  	end
 end
