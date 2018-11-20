@@ -13,7 +13,7 @@ class WadsController < ApplicationController
     end
 
     def popwads
-		@wads = Wad.order(cached_votes_total: :desc)
+		@wads = Wad.order(cached_votes_up: :desc)
 	end
 
 	def show
