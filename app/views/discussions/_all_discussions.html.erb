@@ -1,22 +1,21 @@
 <% @discussions.each do |discussion| %>
 		<div class="card mb-2">
-			<div class="my-1 col-12 small border-bottom">
-				<div class="d-inline">
-				<%= link_to discussion.user.name, discussion.user, class: "profile-link" %> asks...
-				</div>
-				<div class="float-right d-inline">
-					options
+			<div class="col-12 small border-bottom" style="background-color: rgb(247,247,247);">
+				<div class="d-inline my-1">
+					<%= link_to discussion.user.first_name, discussion.user, class: "profile-link" %> asks...
 				</div>
 			</div>
-			<div onclick="execReply('<%= discussion.id%>')" class="">
-				<div class="col-12 my-2 text-center">
-					<em>"<%= discussion.title %>"</em>
+			<div onclick="execReply('<%= discussion.id%>')" class="pointer">
+				<div class="col-12 my-2">
+					<b><%= discussion.title %>?</b>
 				</div>
-			</div>
-			<div id="reply-<%=discussion.id%>" class="reply-hide-area">
-				<div onclick="execReply('<%= discussion.id%>')" class="text-center col-12">
+				<div class="col-12">
 					<% if discussion.content %><%= discussion.content %><% end %>
 				</div>
+			</div>
+
+
+			<div id="reply-<%=discussion.id%>" class="reply-hide-area">
 				<div class="col-12">
 					<div class="">
 						<%= render 'answers/form', discussion: discussion %>

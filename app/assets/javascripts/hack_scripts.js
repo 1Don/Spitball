@@ -55,11 +55,11 @@ function openConversation(evt, convoId) {
 //Hacks for landing page scroll
 
 $(document).on('turbolinks:load', function() {
-  $('.reply-hide-area').hide()
 	//Scrolls from landing button to about
 	$("#landing-btn").click(function() {
 	    $('html,body').animate({
 	        scrollTop: $("#what-we-do").offset().top},
 	        'slow');
 	});
+	  $('.reply-hide-area').hide()
 })

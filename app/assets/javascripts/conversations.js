@@ -23,14 +23,11 @@ $(document).on('turbolinks:load', function() {
     $("#convo-" + convo_id)[0].click()
     $("#mini-convo-" + convo_id)[0].click()
     $(".conversation_id").val(convo_id)
-    console.log(convo_id);
     $('div[data-id=' + convo_id + ']').addClass(" current_convo")
-    console.log("Prelist");
-    console.log($('div[data-id=' + convo_id + ']').attr("class"));
   } else {
-    $(".main-convo")[0].click()
-    $(".conversation_id").val($('#defaultOpen').attr('value'))
-    console.log("empty - " + $('#defaultOpen').attr('value'));
+    if ($(".main-convo")[0]){
+      $(".main-convo")[0].click()
+    }
   }
 
 })
