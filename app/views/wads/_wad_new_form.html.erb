@@ -20,12 +20,12 @@
 </div>
 
   <div class="form-group text-center">
-    <%= f.label :problem_state, "Call to Action/Problem Statement" %><span data-toggle="tooltip" data-placement="right" title="Here is where you should set the frame for your idea. Generally speaking, ventures are concieved and executed as a means of solving problems. What is the problem you're seeking to solve? "class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
+    <%= f.label :problem_state, "Call to Action/Problem Statement" %><span data-toggle="tooltip" data-placement="right" title="Frame you idea in terms of the problem it is solving, or the process/product it is improving."class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
     <%= f.text_field :problem_state, class: 'form-control form-control-sm', id: "focus-field"  %>
   </div>
 
   <div class="form-group text-center">
-    <%= f.label :long_form, "The Pitch" %><span data-toggle="tooltip" data-placement="right" title="This is where you should really think out your idea. What is the target demographic it's going to serve, how will it serve them? Consider how your idea is different than other similar products currently on the market and why someone would pick yours over competitors." class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
+    <%= f.label :long_form, "The Pitch" %><span data-toggle="tooltip" data-placement="right" title="Get into a little detail about your solution. What is the target demographic it's going to serve? How will it serve them? Consider how your idea is different than other similar products currently on the market and why someone would pick the product of your idea over an existing product." class="pl-1 question-marker-ps"><%= fa_icon('question') %></span>
     <%= f.text_area :long_form, class: 'form-control form-control-sm', style: "resize: none;", :rows => 8 %>
   </div>
   <div class="row mx-auto">
