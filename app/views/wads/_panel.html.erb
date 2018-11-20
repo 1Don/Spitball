@@ -53,7 +53,7 @@
 			<div class="col-1 ml-3">
 				<% if current_user == @wad.user %>
 					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
-				<% elsif !@wad.link.nil? %>
+				<% elsif !@wad.link.nil? || @wad.link != "" %>
 					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
 				<% end %>
 			</div>
@@ -93,27 +93,30 @@
 		</div>
 	</div>
 	<div class="container mb-1 d-block d-sm-none">
-		<div class="row">
-			<div class="col-1 ml-3">
+		<div class="row no-gutters">
+			<div class="col-1">
 				<% if current_user == @wad.user %>
 					<span class="external-link"><%= fa_icon('external-link', class: "pointer") %></span>
 				<% elsif !@wad.link.nil? %>
 					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
 				<% end %>
 			</div>
-			<div class="col-4">
+			<div class="col-5">
 				<% if current_user == @wad.user %>
 					<form method="POST" action="/wads/<%= @wad.id %>/add_link">
 						<input name="link" placeholder="<%= @wad.link %>" class="br-5 link-field w-100"/>
 					</form>
 				<% end %>
 			</div>
-			<div class="col-1 mr-2">
+			<div class="col-1 ">
 				<button type="button" name="button" data-toggle="modal" data-target="#myModal" class="br-5 pointer">
 					<%= fa_icon('comment') %>
 				</button>
 			</div>
-			<div class="col-5 wad-like-<%= @wad.id %>" data-check="panel">
+			<div class="col-1">
+
+			</div>
+			<div class="col-4 wad-like-<%= @wad.id %>" data-check="panel">
 				<% if !current_user.liked? @wad %>
 					<%= link_to like_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
@@ -126,8 +129,10 @@
 				<% else %>
 					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
 					<button type="button" name="button" class="comment-btn pointer br-5">
-						<%= fa_icon('caret-up') %> upvote
-						<span>
+						<span class="small">
+							<%= fa_icon('caret-up', class: "") %> upvote
+						</span>
+						<span class="small">
 							<%= @wad.get_upvotes.count %>
 						</span>
 					</button>
