@@ -3,7 +3,7 @@
   <div class="list-group-item">
     <div class="row">
       <div class="col-3">
-        <% unless !user.photo.attached? %><%= image_tag user.photo, class: 'img-fluid' %><% end %>
+        <% unless !user.photo.attached? %><%= image_tag user.photo, class: 'img-fluid img-circular' %><% end %>
       </div>
       <div class="col-9">
         <p><%= user.name %></p>
