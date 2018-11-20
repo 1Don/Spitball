@@ -6,10 +6,10 @@
 			</div>
 		</div>
 
-		<div onclick='execReply("<%= comment.id %>");' class="col-7 small py-2 bg-danger">
+		<div onclick='execReply("<%= comment.id %>");' class="col-7 small py-2">
 			<div class="small mb-1 mt-1" style="">
 				<% if comment.user.occupation.present? %>
-					<h5><%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %></h5>
+					<h7><%= comment.user.first_name + " " + comment.user.last_name + " · " + comment.user.occupation %></h7>
 				<% else %>
 					<%= comment.user.first_name + " " + comment.user.last_name %>
 				<% end %>
