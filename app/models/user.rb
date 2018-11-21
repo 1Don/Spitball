@@ -79,7 +79,6 @@ class User < ApplicationRecord
           user.last_name = auth.info.name.split.last
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
-          user.giveAvatar
           unless auth.provider == "linkedin"
             user.photo.attach(io: open(auth.info.image), filename: user.name, content_type: open(auth.info.image).content_type)
           else
