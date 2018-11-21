@@ -4,6 +4,11 @@
 				<div class="d-inline my-1">
 					<%= link_to discussion.user.first_name, discussion.user, class: "profile-link" %> asks...
 				</div>
+				<div class="float-right d-inline">
+					<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          <%= fa_icon('ellipsis-v') %>
+			        </span>
+				</div>
 			</div>
 			<div onclick="execReply('<%= discussion.id%>')" class="pointer">
 				<div class="col-12 my-2">
