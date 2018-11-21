@@ -100,6 +100,14 @@ class User < ApplicationRecord
     current_user.friends.destroy(friend)
   end
 
+  def giveAvatar
+    img = Avatarly.generate_avatar(self.name, size: 300, format: "jpg")
+    File.open(Rails.root.join('public', 'assets', 'images', self.name + ".jpg"), "w+") do |f|
+      f.binmode
+      f.write img
+    end
+  end
+
   def set_default_profile_image
     file = Tempfile.new([self.first_name, ".jpg"])
     file.binmode
