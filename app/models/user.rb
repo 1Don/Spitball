@@ -82,6 +82,9 @@ class User < ApplicationRecord
           user.giveAvatar
           unless auth.provider == "linkedin"
             user.photo.attach(io: open(auth.info.image), filename: user.name, content_type: open(auth.info.image).content_type)
+          else
+            user.giveAvatar
+            user.photo.attach(io: File.open(Rails.root.join('storage', 'temp_images', @user.name + ".jpg")), filename: @user.name, content_type: "image/jpg")
           end
           user.occupation = auth.info.description
           user.location = auth.info.location

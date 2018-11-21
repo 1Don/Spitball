@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if !params[:user][:photo]
+    if !params[:user][:photo] || !@user.photo.attached?
       @user.giveAvatar
       @user.photo.attach(io: File.open(Rails.root.join('storage', 'temp_images', @user.name + ".jpg")), filename: @user.name, content_type: "image/jpg")
     end
