@@ -1,7 +1,9 @@
 <% discussions_bar.each do |element| %>
-	<a class="list-group-item list-group-item-action" href="<%= element[:link] %>">
-	  <%= element[:name] %>
-	</a>
+	<div data-turbolinks="false">
+		<a class="list-group-item list-group-item-action" href="<%= element[:link] %>">
+		  <%= element[:name] %>
+		</a>
+	</div>
 <% end %>
 
 

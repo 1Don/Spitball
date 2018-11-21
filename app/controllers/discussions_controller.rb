@@ -5,7 +5,7 @@ class DiscussionsController < ApplicationController
 	before_action :all_discussions
 
 	def index
-			@discussions = Discussion.all
+			@discussions = Discussion.all.order('created_at DESC')
 	end
 
 	def create_answer
