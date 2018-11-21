@@ -4,5 +4,5 @@ class Answer < ApplicationRecord
   belongs_to :discussion
   belongs_to :user
   has_many :flags, dependent: :destroy
-  validates :content, presence: true, length: { maximum: 200 }
+  validates :content, presence: true, length: { maximum: 1000 }
 end
