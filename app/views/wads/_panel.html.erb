@@ -1,9 +1,6 @@
 <div class="card mb-3 panel-div" style="border-radius: 10px;">
 	<div class="card-header">
 		<%= link_to @wad.user.name, user_path(@wad.user), class: "profile-link small float-left" %>
-		<% unless @wad.user == current_user || @wad.user.friends_with?(current_user) %>
-		 <span class="dropdown-item"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => @wad.user), :method => :post, class: "profile-link" %></span>
-		<% end %>
 		<div class="col-1 dropdown dropleft float-right ">
 			<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= fa_icon('ellipsis-v') %>
