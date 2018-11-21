@@ -1,7 +1,7 @@
 <div class="border-top">
 	<% sidebar_elements.each do |element| %>
 		<div id="<%= element %>" onclick="clickChild()" class="thick-border py-2">
-			<a class="text-70 profile-link ml-3 sidebar-text" href="<%= element[:link] %>">
+			<a class="text-70 profile-link ml-3 sidebar-text" href="<%= element[:link] %>" data-turbolinks=“false”>
 			  <%= element[:name] %>
 			</a>
 		</div>
