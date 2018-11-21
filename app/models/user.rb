@@ -102,7 +102,7 @@ class User < ApplicationRecord
 
   def giveAvatar
     img = Avatarly.generate_avatar(self.name, size: 300, format: "jpg")
-    File.open(Rails.root.join('public', 'assets', 'images', self.name + ".jpg"), "w+") do |f|
+    File.open(Rails.root.join('storage', 'temp_images', self.name + ".jpg"), "w+") do |f|
       f.binmode
       f.write img
     end
