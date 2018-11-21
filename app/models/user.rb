@@ -80,7 +80,8 @@ class User < ApplicationRecord
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
           unless auth.provider == "linkedin"
-            user.photo = open(URI.parse(auth.info.image))
+            user.giveAvatar
+            user.photo.attach(io: File.open(Rails.root.join('storage', 'temp_images', user.name + ".jpg")), filename: user.name, content_type: "image/jpg")
           else
             user.occupation = auth.info.description
             user.location = auth.info.location
