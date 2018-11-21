@@ -79,13 +79,11 @@ class User < ApplicationRecord
           user.last_name = auth.info.name.split.last
           user.password = user.password_confirmation = SecureRandom.hex(20)
           user.oauth_token = auth.credentials.token
-          unless auth.provider == "linkedin"
-            user.photo = open(URI.parse(auth.info.image))
-          else
-            user.occupation = auth.info.description
-            user.location = auth.info.location
-          end
-           user.save!
+          user.giveAvatar
+          user.photo.attach(io: File.open(Rails.root.join('storage', 'temp_images', user.name + ".jpg")), filename: user.name, content_type: "image/jpg")
+          user.occupation = auth.info.description
+          user.location = auth.info.location
+          user.save!
         end
     end
   end
@@ -100,11 +98,18 @@ class User < ApplicationRecord
     current_user.friends.destroy(friend)
   end
 
-  def giveAvatar
+  def giveAvatar(image = false)
     img = Avatarly.generate_avatar(self.name, size: 300, format: "jpg")
-    File.open(Rails.root.join('public', 'assets', 'images', self.name + ".jpg"), "w+") do |f|
-      f.binmode
-      f.write img
+    if image
+      File.open(Rails.root.join('storage', 'temp_images', self.name + ".jpg"), "w+") do |f|
+        f.binmode
+        f.write image
+      end
+    else
+      File.open(Rails.root.join('storage', 'temp_images', self.name + ".jpg"), "w+") do |f|
+        f.binmode
+        f.write img
+      end
     end
   end
 

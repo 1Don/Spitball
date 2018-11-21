@@ -1,7 +1,11 @@
 <div id="ans-<%= answer.id%>" class="border-bottom">
   <div class="row">
     <div class="col-10 mt-2 small">
-      <% if !answer.user.occupation || answer.user.occupation == "" %><%= link_to answer.user.name, user_path(answer.user) %><%= " · "  + answer.user.points.to_s %><% else %><%= link_to answer.user.name , user_path(answer.user) %><%= " · " + answer.user.occupation %><%= " · "  + answer.user.points.to_s %><% end %>
+      <% if !answer.user.occupation.present? %>
+        <%= link_to answer.user.name, user_path(answer.user) %>
+      <% else %>
+       <%= link_to answer.user.name , user_path(answer.user) %><%= " · " + answer.user.occupation %>
+      <% end %>
       <div class="col-12 mt-1">
         <% if !answer.parent %>
           <%= link_to answer.content, user_path(answer.user), class: "profile-link" %>

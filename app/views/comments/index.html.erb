@@ -1,5 +1,5 @@
 <div class="row col-12 mx-auto px-2">
-	<div class="col-md-2 mt-5 d-none d-sm-block">
+	<div class="col-md-2 mt-5 d-none d-sm-block text-left">
 		<%= render 'wads/sidebar' %>
 	</div>
 	<div class="col-md-7 mt-5">
@@ -12,7 +12,7 @@
 						<%= f.text_area :content, class: 'form-control comment-text w-100', placeholder: 'What are your thoughts on this idea?' %>
 				</div>
 				<div class="col-2 pl-0">
-						<%= f.submit 'Reply', class: 'comment-btn pointer br-5', disable_with: 'Sending' %>
+						<%= f.submit 'Post Reply', class: 'comment-btn-2 pointer br-5', disable_with: 'Sending' %>
 					<% end %>
 				</div>
 			</div>
