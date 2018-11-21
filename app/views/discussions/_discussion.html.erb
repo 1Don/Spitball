@@ -1,12 +1,12 @@
-<%= link_to discussion_answers_path(discussion) do %>
+<%= link_to discussion_answers_path(discussion), class: "profile-link" do %>
 <div class="list-group-item">
   <div class="row">
     <div class="col-9">
       <div>
-        <h5><%= discussion.user.name %> says,<br></h5>
+        <h5><%= discussion.user.name %> asks,,<br></h5>
       </div>
       <div class="">
-		    <%= discussion.content %>
+		    <%= discussion.title %>
 	    </div>
     </div>
 		<div class="col-3 text-center">

@@ -27,7 +27,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.photo.attach(params[:user][:photo])
+    @user.giveAvatar
+    @user.photo.attach(io: File.open(Rails.root.join('public', 'assets', 'images', @user.name + ".jpg")), filename: @user.name, content_type: "image/jpg")
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
       log_in @user

@@ -59,6 +59,7 @@ class WadsController < ApplicationController
 
 	def destroy
 			if current_user == @wad.user
+				@wad.image.purge
 				@wad.destroy
 				current_user.update_attributes(points: current_user.points - 50)
 				redirect_to wads_path

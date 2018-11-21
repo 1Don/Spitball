@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :collaborations, through: :wads, dependent: :destroy
   attr_accessor :remember_token
-#  after_create :set_default_profile_image, unless: :photo?
+  after_create :set_default_profile_image, unless: :has_attachment?
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -57,6 +57,14 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def has_attachment?
+    if self.photo.attached?
+      return true
+    else
+      return false
+    end
+  end
+
   # Sign up from oauth function
   def self.sign_up_from_omniauth(auth)
     if User.find_by(email: auth.info.email)
@@ -90,6 +98,14 @@ class User < ApplicationRecord
   #gets rid of friend
   def remove_friend(friend)
     current_user.friends.destroy(friend)
+  end
+
+  def giveAvatar
+    img = Avatarly.generate_avatar(self.name, size: 300, format: "jpg")
+    File.open(Rails.root.join('public', 'assets', 'images', self.name + ".jpg"), "w+") do |f|
+      f.binmode
+      f.write img
+    end
   end
 
   def set_default_profile_image

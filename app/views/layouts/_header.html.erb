@@ -37,7 +37,7 @@
 
       <li class="dropdown mr-5 mt-1 d-none d-sm-block">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <% unless !current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><% end %><span class="ml-1 header-font"><%= current_user.name %></span>
+            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><% end %><span class="ml-1 header-font"><%= current_user.name %></span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right">
@@ -75,7 +75,7 @@
           </div>
           <div class="col-4 dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <% unless !current_user.photo.attached? %><span id="" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle w-25", id: "user-photo" %></span><% end %>
+              <% if current_user.photo.attached? %><span id="" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle w-25", id: "user-photo" %></span><% end %>
             </a>
             <div class="dropdown-menu dropdown-menu-right small">
               <%= link_to "Profile", current_user, class: 'dropdown-item' %>
