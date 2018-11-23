@@ -5,8 +5,6 @@ class WadsController < ApplicationController
 	before_action :all_wads
 	before_action :require_login
 
-
-
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new

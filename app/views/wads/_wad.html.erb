@@ -38,7 +38,7 @@
       <%= link_to wad_comments_path(wad), data: { turbolinks: false }, class: "profile-link" do %>
           <h6 class="mt-3 d-none d-md-block"><%= wad.problem_state %></h6>
           <h6 class="mt-1 text-center d-block d-sm-none col-12"><%= wad.problem_state %></h6>
-          <p class="small d-none d-md-block"><%= wad.long_form.truncate(280) %></p>
+          <p class="small d-none d-md-block pr-2"><%= wad.long_form.truncate(280) %></p>
           <p class="text-center small d-block d-sm-none col-12"><%= wad.long_form.truncate(280) %></p>
       <% end %>
     </div>

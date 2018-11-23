@@ -1,0 +1,15 @@
+#user_background_pic{
+  background:image-url('background.png');
+}
+ .placeHolder::-webkit-input-placeholder{
+  opacity: 0.3;
+}
+ .placeHolder:-ms-input-placeholder {
+  opacity: 0.3;
+}
+ .placeHolder::-moz-placeholder {
+  opacity: 0.3;
+}
+ .placeHolder:-o-input-placeholder {
+  opacity: 0.3;
+}

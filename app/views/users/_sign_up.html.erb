@@ -1,213 +1,137 @@
 <%= form_for @user, html: { multipart: true } do |f| %>
-<div class="mt-3 row">
-
-			<div class="col-8">
-					<div class="col-md-10 mx-auto mt-5 h-100 pl-5 d-none d-sm-block d-md-block">
-					  <h6 class="text-center mt-3">Profile Info</h6>
-					   <div class="mt-4">
-
-					      <div class="row">
-					       <div class="form-group col-4">
-					        <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control' %>
-					       </div>
-
-					       <div class="form-group col-8">
-					        <%= f.text_field :last_name, placeholder: "Last Name",class: 'form-control' %>
-					       </div>
-					     </div>
-
-					     <div class="row">
-					      <div class="form-group col-5">
-					        <%= f.text_field :name, placeholder: "Username",class: 'form-control' %>
-					      </div>
-
-					      <div class="form-group col-7">
-					        <%= f.email_field :email, placeholder: "Email",class: 'form-control' %>
-					      </div>
-					     </div>
-
-					    <div class="row">
-					      <div class="form-group col-12">
-					        <%= f.password_field :password, placeholder: "Password",class: 'form-control' %>
-					      </div>
-					    </div>
-
-					    <div class="row">
-					      <div class="form-group col-12">
-					        <%= f.password_field :password_confirmation, placeholder: "Confirm",class: 'form-control' %>
-					      </div>
-					    </div>
-
-					    <div class="row">
-					      <div class="form-group col-12 pl-4 d-none d-sm-block d-md-block">
-					        <%# place holder for actual erb %>
-				        <% unless current_user %><span class="small pl-2">By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a></span><% end %>
-					      </div>
-					    </div>
-					  </div>
+<div class="row">
+	<div class="col-md-7 col-xs-12">
+			<h5 class="col-12 border-bottom mb-4 mt-2 py-2">
+				<span class="">Primary Info (Required)</span>
+			</h5>
+		   <div class="col-12 ">
+		     <div class="row">
+		       <div class="form-group col-4">
+		        <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		       </div>
+		       <div class="form-group col-8">
+		        <%= f.text_field :last_name, placeholder: "Last Name",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		       </div>
+		     </div>
+		    <div class="row">
+		      <div class="form-group col-5">
+		        <%= f.text_field :name, placeholder: "Username",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		      <div class="form-group col-7">
+		        <%= f.email_field :email, placeholder: "Email",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="form-group col-12">
+		        <%= f.password_field :password, placeholder: "Password",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="form-group col-12">
+		        <%= f.password_field :password_confirmation, placeholder: "Confirm",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		    </div>
+		  </div>
+			<h5 class="col-12 border-bottom my-4 py-2">
+				<span>Other Info (Optional)</span>
+			</h5>
+			<div class="col-12">
+		      <div class="">
+	           <div class="form-group">
+	            <%= f.text_field :occupation, placeholder: "Occupation", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+	          </div>
+	           <div class="form-group">
+	            <%= f.text_field :location, placeholder: "Location", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+	          </div>
+	          <div class="form-group">
+	            <%= f.text_field :interests, placeholder: "Interests seperated by (', ')", multiple: true, class: 'form-control comment-reply-form border-bottom placeHolder'%>
+	          </div>
+	           <div class="form-group">
+	              <%= f.text_field :twitter, placeholder: "Twitter Link", class: 'form-control d-inline-block comment-reply-form border-bottom placeHolder' %>
+	          </div>
+	          <div class="form-group">
+	            <%= f.text_field :github, placeholder: "GitHub Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+	          </div>
+						<div class="form-group">
+							<%= f.text_field :linkedin, placeholder: "LinkedIn Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+						</div>
+						<div class="row">
+							<% unless current_user %>
+								<div class="form-group col-7 d-none d-sm-block d-md-block">
+									<span class="small pl-2">
+										By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a>
+									</span>
+								</div>
+							<% else %>
+								<%= link_to user_path(@user), method: :delete, data: {confirm: "You sure? Gunna miss out a ton of cool stuuuuff!"}, class: "profile-link text-white pointer" do %>
+									<div class="delete-div col-2 text-center ml-3">
+										DELETE
+									</div>
+								<% end %>
+							<% end %>
+						</div>
+		      </div>
+					<div class="mx-auto form-group col-8 text-center">
+						<%= f.submit class: "Spitballbutton" %>
 					</div>
+		 	</div>
+		</div>
+	<div class="col-4 ml-5">
+		<div class="mt-3">
+			<div class="card mb-2">
+				<div class="border-bottom text-center">
+					<%= @user.first_name + " " + @user.last_name %>
+				</div>
+				<div>
+					<% if @user.photo.attached? %><%= image_tag @user.photo, class: "w-100 h-100" %><% end %>
+				</div>
 			</div>
-
-
-			<div class="col-4">
-					 <div class="col-md-10 mx-auto mt-5 h-100 d-none d-sm-block d-md-block">
-					    <h5 class="text-center mt-3 small font-italic">(Optional)</h5>
-					      <div class="mt-4">
-					        <div class="row">
-					           <div class="form-group col-12">
-					            <%= f.text_field :occupation, placeholder: "Occupation", class: 'form-control' %>
-					          </div>
-					        </div>
-					        <div class="row">
-					           <div class="form-group col-12">
-					            <%= f.text_field :location, placeholder: "Location", class: 'form-control' %>
-					          </div>
-					        </div>
-					        <div class="row">
-					          <div class="form-group col-12">
-					            <%= f.text_field :interests, placeholder: "Interests seperated by (', ')", multiple: true, class: 'form-control'%>
-					          </div>
-					        </div>
-					        <div class="row">
-					           <div class="form-group col-6">
-					              <%= f.text_field :twitter, placeholder: "Twitter Link", class: 'form-control d-inline-block' %>
-					          </div>
-					          <div class="form-group col-6">
-					            <%= f.text_field :github, placeholder: "GitHub Link", class: 'form-control' %>
-					          </div>
-					        </div>
-					        <div class="row">
-					          <div class="form-group col-7">
-					            <%= f.text_field :linkedin, placeholder: "LinkedIn Link", class: 'form-control' %>
-					          </div>
-					          <div class="form-group col-5">
-					            <%= f.file_field :photo, class: 'form-control-file' %>
-					          </div>
-					        </div>
-					      </div>
-					 </div>
+			<div class="form-group col-8 upload-div text-center mx-auto">
+				<span class="small fileName"><%= f.label :photo, fa_icon('upload') + " Upload Photo", class: "mx-auto pointer mt-2 placeHolder" %></span>
+				<%= f.file_field :photo, class: 'form-control-file inputfile' %>
 			</div>
+			<div class="col-12 mt-5">
+				<h5 class="border-bottom col-12">
+					Subscriptions
+				</h5>
+			</div>
+			<div class="row mt-4">
+				<div class="col-2">
+					<label class="switch">
+					  <input type="checkbox">
+					  <span class="slider round"></span>
+					</label>
+				</div>
+				<div class="col-1">
 
-</div>
+				</div>
+				<div class="col-9 small">
+					<div class="">
+						<p class="mt-2">
+							Subscribe to Emailed Notifications
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col-2">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="col-1">
 
-<div class="row d-none d-sm-block">
-	<div class="ml-4 form-group col-8 text-center">
-		<%= f.submit class: "Spitballbutton" %>
+				</div>
+				<div class="col-9 small">
+					<div class="">
+						<p class="mt-2">
+							Join SpitballClub<sup>TM</sup>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <% end %>
-
-
-<%# BELOW IS THE VIEW FOR SMALL VIEWPORTS %>
-<%= form_for @user, html: { multipart: true } do |f| %>
-<div class="mt-3 d-block d-sm-none">
-		<div class="col-xs-12">
-				<div class="col-xs-10 mx-auto mt-5  h-100">
-				  <h6 class="text-center mt-3">Profile Info</h6>
-				    <div class="mt-4">
-
-				     <div class="row">
-				       <div class="form-group col-4">
-				        <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control' %>
-				       </div>
-
-				       <div class="form-group col-8">
-				        <%= f.text_field :last_name, placeholder: "Last Name",class: 'form-control' %>
-				       </div>
-				     </div>
-
-				     <div class="row">
-				      <div class="form-group col-5">
-				        <%= f.text_field :name, placeholder: "Username",class: 'form-control' %>
-				      </div>
-
-				      <div class="form-group col-7">
-				        <%= f.email_field :email, placeholder: "Email",class: 'form-control' %>
-				      </div>
-				     </div>
-
-				    <div class="row">
-				      <div class="form-group col-12">
-				        <%= f.password_field :password, placeholder: "Password",class: 'form-control' %>
-				      </div>
-				    </div>
-
-				    <div class="row">
-				      <div class="form-group col-12">
-				        <%= f.password_field :password_confirmation, placeholder: "Confirm",class: 'form-control' %>
-				      </div>
-				    </div>
-
-				    <div class="row">
-				      <div class="form-group col-12 pl-4">
-				        <% unless current_user %><span class="small pl-2">By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a></span><% end %>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-		</div>
-
-
-		<div class="col-xs-12">
-
-				 <div class="col-md-10 mx-auto mt-5 h-100">
-
-				    <h5 class="text-center mt-3 small font-italic">(Optional)</h5>
-				      <div class="mt-4">
-
-				        <div class="row">
-				           <div class="form-group col-12">
-				            <%= f.text_field :occupation, placeholder: "Occupation", class: 'form-control' %>
-				          </div>
-				        </div>
-
-				        <div class="row">
-				           <div class="form-group col-12">
-				            <%= f.text_field :location, placeholder: "Location", class: 'form-control' %>
-				          </div>
-				        </div>
-
-				        <div class="row">
-				          <div class="form-group col-12">
-				            <%= f.text_field :interests, placeholder: "Interests seperated by (', ')", multiple: true, class: 'form-control'%>
-				          </div>
-				        </div>
-
-				        <div class="row">
-				           <div class="form-group col-6">
-				              <%= f.text_field :twitter, placeholder: "Twitter Handle", class: 'form-control d-inline-block' %>
-				          </div>
-
-				          <div class="form-group col-6">
-				            <%= f.text_field :github, placeholder: "GitHub Username", class: 'form-control' %>
-				          </div>
-				        </div>
-
-				        <div class="row">
-				          <div class="form-group col-7">
-				            <%= f.text_field :linkedin, placeholder: "LinkedIn Profile Link", class: 'form-control' %>
-				          </div>
-
-				          <div class="form-group col-5">
-				            <%= f.file_field :photo, class: 'form-control-file' %>
-				          </div>
-				        </div>
-
-					 	<div class="row">
-							<div class="form-group col-12 text-center">
-								<%= f.submit class: "Spitballbutton" %>
-								<% unless current_user %><%= link_to "Sign up with google", google_session_path %><% end %>
-							</div>
-						</div>
-
-
-
-
-				      </div>
-				 </div>
-		</div>
-
-
-<% end %>
-
-</div>
