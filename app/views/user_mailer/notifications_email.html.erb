@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div class="col-12">
+      <h4>Hi <%= @user.name %>,</h4>
+      <p>Here are this week's updates:</p>
+      <ul style="list-style-type: none;">
+        <% @notifications.each do |notif|  %>
+          <% if notif.notifiable_type == "Wad" %>
+            <li>New comment on your <%= notif.notifiable_type %></li>
+          <% elsif notif.notifiable_type == "FriendRequest" %>
+            <li>You've recieved a new friends request from <%= notif.actor.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p><%= link_to "Sign in ", "https://spitball.io", class: "profile-link" %>and catch up on your progress!</p><br>
+      <p>Love,</p>
+      <p>The Spitball Team</p>
+    </div>
+  </body>
+</html>

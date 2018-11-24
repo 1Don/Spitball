@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
 
 	def index
 		@notifications = Notification.where(recipient: current_user).last(5).reverse
+		@index_notifications = Notification.where(recipient: current_user).reverse
 	end
 
 	def mark_as_read

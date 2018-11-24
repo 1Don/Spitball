@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if User.find(params[:id]) == current_user || current_user.admin?
+    if current_user.admin? #|| User.find(params[:id]) == current_user
       User.find(params[:id]).photo.purge
       User.find(params[:id]).destroy
       flash[:success] = "User deleted"
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :first_name, :last_name, :github, :occupation,
-        :twitter, :linkedin, :password_confirmation, :photo, :location)
+        :twitter, :linkedin, :password_confirmation, :photo, :location, :email_notif_subscribe)
     end
     # Before filters
 

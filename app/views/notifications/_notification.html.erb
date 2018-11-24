@@ -1,0 +1,28 @@
+<div class="container">
+  <% case notification.notifiable_type
+    when "Wad" %>
+    <div class="card col-md-4 col-xs-12 bg-lightgray">
+
+      <%= link_to wad_comments_path(notification.notifiable), class: "profile-link pl-1 py-3 " do %>
+            <%= notification.actor.name %> <%= notification.action %> on your <%= notification.notifiable_type %>
+      <% end %>
+    </div>
+
+    <% when "Discussion" %>
+    <div class="card col-md-4 col-xs-12 bg-lightgray">
+
+      <%= link_to discussions_path(discussion_id: notification.notifiable.id), class: "profile-link pl-1 py-3" do %>
+            <%= notification.actor.name %> <%= notification.action %> your <%= notification.notifiable_type %>
+      <% end %>
+    </div>
+
+    <% when "FriendRequest" %>
+    <div class="card col-md-4 col-xs-12 bg-lightgray">
+
+      <%= link_to friend_requests_path , class: "profile-link pl-1 py-3" do %>
+            <%= notification.actor.name %> <%= notification.action %> a <%= notification.notifiable_type %>
+      <% end %>
+    </div>
+
+    <% end %>
+</div>

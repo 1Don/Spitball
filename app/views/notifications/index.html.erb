@@ -1,0 +1,13 @@
+<div class="col-12">
+  <div class="mb-3">
+    <h4>
+      Notifications
+    </h4>
+  </div>
+  <div class="">
+    <h6 class="ml-5">RECENT</h6>
+    <% @index_notifications.each do |notif| %>
+      <%= render 'notification', notification: notif %>
+    <% end %>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_000822) do
+ActiveRecord::Schema.define(version: 2018_11_24_185905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,8 @@ ActiveRecord::Schema.define(version: 2018_11_21_000822) do
     t.string "action"
     t.integer "notifiable_id"
     t.string "notifiable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -194,6 +196,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_000822) do
     t.string "uid"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.boolean "email_notif_subscribe", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

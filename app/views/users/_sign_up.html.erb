@@ -63,20 +63,21 @@
 									</span>
 								</div>
 							<% else %>
-								<%= link_to user_path(@user), method: :delete, data: {confirm: "You sure? Gunna miss out a ton of cool stuuuuff!"}, class: "profile-link text-white pointer" do %>
-									<div class="delete-div col-2 text-center ml-3">
+								<%#= link_to user_path(@user), method: :delete, data: {confirm: "You sure? Gunna miss out a ton of cool stuuuuff!"}, class: "profile-link text-white pointer" do %>
+								<!--	<div class="delete-div col-2 text-center ml-3">
 										DELETE
 									</div>
-								<% end %>
+								<%# end %> -->
 							<% end %>
 						</div>
 		      </div>
-					<div class="mx-auto form-group col-8 text-center">
+					<div class="mx-auto form-group col-8 text-center d-none d-sm-block">
 						<%= f.submit class: "Spitballbutton" %>
 					</div>
 		 	</div>
 		</div>
-	<div class="col-4 ml-5">
+<% if current_user %>
+	<div class="col-md-4 col-xs-8 ml-md-5">
 		<div class="mt-3">
 			<div class="card mb-2">
 				<div class="border-bottom text-center">
@@ -95,43 +96,49 @@
 					Subscriptions
 				</h5>
 			</div>
-			<div class="row mt-4">
-				<div class="col-2">
-					<label class="switch">
-					  <input type="checkbox">
-					  <span class="slider round"></span>
-					</label>
-				</div>
-				<div class="col-1">
-
-				</div>
-				<div class="col-9 small">
-					<div class="">
-						<p class="mt-2">
-							Subscribe to Emailed Notifications
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-4">
-				<div class="col-2">
-					<label class="switch">
-						<input type="checkbox">
+			<div class="col-12">
+				<div class="row mt-4">
+					<div class="col-2">
+						<%= f.label :email_notif_subscribe, class: "switch" do %>
+						<%= f.check_box :email_notif_subscribe %>
 						<span class="slider round"></span>
-					</label>
-				</div>
-				<div class="col-1">
+						<% end %>
+					</div>
+					<div class="col-1">
 
-				</div>
-				<div class="col-9 small">
-					<div class="">
-						<p class="mt-2">
-							Join SpitballClub<sup>TM</sup>
-						</p>
+					</div>
+					<div class="col-9 small">
+						<div class="">
+							<p class="mt-2">
+								Subscribe to Emailed Notifications
+							</p>
+						</div>
 					</div>
 				</div>
+				<!-- <div class="row mt-4">
+					<div class="col-2">
+						<label class="switch">
+							<input name="SpitballClub" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+					<div class="col-1">
+
+					</div>
+					<div class="col-9 small">
+						<div class="">
+							<p class="mt-2">
+								Join SpitballClub<sup>TM</sup>
+							</p>
+						</div>
+					</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
+	<div class="mx-auto form-group col-8 text-center d-block d-sm-none">
+		<%= f.submit class: "Spitballbutton" %>
+	</div>
 </div>
+<% end %>
 <% end %>

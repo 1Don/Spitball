@@ -25,12 +25,12 @@
            <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle") %><sup id="" class="notification-indic"></sup></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
-          <div class="text-center profile-link border-top"><%= link_to "see all", "#" %></div>
+          <div class="text-center profile-link border-top"><%= link_to "see all", "/notifications", onclick: "sendPost()" %></div>
         </div>
       </li>
 
       <li class="nav-item forum-border mr-3 d-none d-sm-block mt-2 ml-3">
-        <%= link_to discussions_path, class: 'nav-link' do %>
+        <%= link_to discussions_path, class: 'nav-link', data: {turbolinks: false} do %>
           <span class="header-font px-2 align-top"><%= fa_icon("comments", class: "mr-1 align-top") + " "%>Community Forum</span>
         <% end %>
       </li>
@@ -53,7 +53,7 @@
 
           <% else %>
       <li class="nav-item">
-        <%= link_to "Log in", new_user_path, class: 'nav-link' %>
+        <%= link_to "Log in", login_path, class: 'nav-link d-none d-sm-block' %>
       </li>
 
       <% end %>
@@ -65,11 +65,11 @@
                <span class="bell-size"><%= fa_icon("bell") %><sup id="" class="notification-indic"></sup></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
-              <div class="text-center profile-link"><%= link_to "see all", "#" %></div>
+              <div class="text-center profile-link"><%= link_to "see all", "/notifications", onclick: "sendPost()" %></div>
             </div>
           </div>
           <div class="col-6 text-center display-orange">
-            <%= link_to discussions_path, class: 'nav-link'  do%>
+            <%= link_to discussions_path, class: 'nav-link', data: {turbolinks: false}  do%>
               <span class=""><%= fa_icon("comments", class: "mr-1 small") %> Forum</span>
             <% end %>
           </div>
@@ -90,7 +90,7 @@
           </div>
           <% else %>
           <div>
-              <%= link_to "Log in", new_user_path, class: 'nav-link' %>
+              <%= link_to "Log in", login_path, class: 'nav-link d-block d-sm-none' %>
           </div>
         </div>
       </li>

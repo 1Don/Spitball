@@ -95,13 +95,22 @@ div.full-height{
 .comment-btn{
 	font-size: 0.8rem;
   color: #ffffff;
-  background-color: rgb(255,115,33);
+  background-color: rgb(255,145,42);
   display: inline-block;
   letter-spacing: 1px;
 	height: 100%;
 	width: 95%;
 }
-
+.comment-btn-alt{
+	font-size: 0.8rem;
+  color:  rgb(255,145,42);
+  background-color: #ffffff;
+	border: 1px solid  rgb(255,145,42);
+  display: inline-block;
+  letter-spacing: 1px;
+	height: 100%;
+	width: 95%;
+}
 .comment-btn-2{
 	font-size: 0.8rem;
   color: #ffffff;
@@ -111,6 +120,7 @@ div.full-height{
 	height: 100%;
 	width: 95%;
 }
+
 .wad-shadow{
 	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15) !important;
 }

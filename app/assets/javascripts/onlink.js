@@ -3,4 +3,5 @@ $(document).on('turbolinks:load', function(){
   $('.external-link').on('click', function(){
     $('.link-field').slideToggle()
   })
+  $('#defaultOpen')[0].click()
 })
