@@ -80,7 +80,7 @@
 								<% else %>
 									<span class="dropdown-item" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "cmt-png-icon"), wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %><span class="small like-<%= c.id %>" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span></span>
 								<% end %>
-								<span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Comment" %></span>
+								<span class="profile-link child-cmt pointer dropdown-item" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'><%= image_tag('comment-dots-regular.svg', class: "icon-pic") + " Reply" %></span>
 								<% if current_user == c.user %>
 									<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_comment_path(@wad, c), method: :delete, remote: true %><span class="profile-link"> Remove Comment</span>
 								<% end %>
