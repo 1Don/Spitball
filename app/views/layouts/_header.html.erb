@@ -7,7 +7,7 @@
     </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-    <span class="navbar-toggler-icon"></span>
+    <span class=""><%= fa_icon('bars 2x', class: 'text-white') %></span>
   </button>
 
   <div id="navbar" class="collapse navbar-collapse">
@@ -61,7 +61,7 @@
       <li class="d-block d-sm-none mt-3">
         <div class="row">
           <div class="col-2 text-center text-white">
-            <a id="notificationsDD" href="#" class="nav-link mr-3" data-toggle="dropdown">
+            <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
                <span class="bell-size"><%= fa_icon("bell") %><sup id="" class="notification-indic"></sup></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
@@ -77,7 +77,7 @@
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
               <% if current_user.photo.attached? %><span id="" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle w-25", id: "user-photo" %></span><% end %>
             </a>
-            <div class="dropdown-menu dropdown-menu-right small">
+            <div class="dropdown-menu dropdown-menu-left mr-5 small">
               <%= link_to "Profile", current_user, class: 'dropdown-item' %>
               <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
               <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>

@@ -17,7 +17,7 @@
     <div class="col-1">
       <div class="col-1 dropdown pointer mt-2">
         <span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= fa_icon('ellipsis-v') %>
+          <%= fa_icon('ellipsis-v', class: "icon-text") %>
         </span>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", discussion_answer_flag_path(answer.discussion, answer), remote: true, class: "profile-link" %></span>

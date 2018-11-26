@@ -26,7 +26,7 @@
 		<div class="col-3 row ">
 			<div class="col-1 dropdown px-0">
 				<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<%= fa_icon('ellipsis-v') %>
+					<%= fa_icon('ellipsis-v', class: "icon-text") %>
 				</span>
 				<div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
 					<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, comment), remote: true, class: "profile-link" %></span>
@@ -71,7 +71,7 @@
 					<div class="mt-3 col-1">
 						<div class="col-1 dropdown pointer">
 			        <span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          <%= fa_icon('ellipsis-v') %>
+			          <%= fa_icon('ellipsis-v', class: "icon-text") %>
 			        </span>
 			        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			          <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, c), remote: true, class: "profile-link" %></span>
