@@ -1,4 +1,4 @@
-<div class="no-gutters" style="height: 100%;">
+<div class="no-gutters">
   <div class="border" style="background-color: rgb(242,242,242);">
     <div class="mx-auto">
       <%= form_tag(autocomplete_friends_path, method: "get", class: "my-1 mx-1 text-center", remote: true) do %>
@@ -19,7 +19,7 @@
   </div>
   <div class="d-none d-sm-block">
     <% @conversations.each do |conversation| %>
-      <div data-id="<%= conversation.id %>"  id="convo-<%= conversation.id %>" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id%> main-convo">
+      <div data-id="<%= conversation.id %>"  id="convo-<%= conversation.id %>" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id %> main-convo">
         <span class="ml-5 pointer small">
           <% if conversation.sender_id == current_user.id %>
             <%= User.find(conversation.recipient_id).name %>
@@ -32,7 +32,7 @@
   </div>
   <div id="convoz" class="accordion">
     <% @conversations.each do |conversation| %>
-      <div data-id="<%= conversation.id %>" id="mini-convo-<%= conversation.id %>" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id%>">
+      <div data-id="<%= conversation.id %>" id="mini-convo-<%= conversation.id %>" value="<%= conversation.id %>" onclick='openConversation(event,"<%= conversation.id %>")' class="border-bottom py-3 w-100 pointer tablinks convo-<%= conversation.id %> little-convo">
         <span  class="ml-5 pointer small">
           <% if conversation.sender_id == current_user.id %>
             <%= User.find(conversation.recipient_id).name %>

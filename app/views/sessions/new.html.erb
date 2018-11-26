@@ -1,34 +1,47 @@
-<% provide(:title, "Log in") %>
-<h1 class="mt-2">Log in</h1>
+<div class="col-12">
+  <% provide(:title, "Log in") %>
+  <h3 class="text-center mb-4">Log in to Spitball</h3>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: sessions_path) do |f| %>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <%= form_for(:session, url: sessions_path) do |f| %>
 
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= f.email_field :email, placeholder: "Email", class: "form-control comment-reply-form border-bottom placeHolder" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= f.password_field :password, placeholder: "Password", class: "form-control comment-reply-form border-bottom placeHolder" %>
+        </div>
 
+        <div>
+          <div class="text-center">
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+              <%= f.check_box :remember_me %>
+              <span>Remember me on this computer</span>
+            <% end %>
+          </div>
+        </div>
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
+        <div class="">
+          <div class="text-center">
+            <%= f.submit "Log in", class: "Spitballbutton" %>
+          </div>
+        </div>
       <% end %>
-
-      <%= f.submit "Log in", class: "Spitballbutton mt-2 ml-5" %>
-    <% end %>
-
-    <div data-toggle="modal" data-target="#myModal" class="border pointer my-2">
-      CONTINUE WITH ANOTHER PROVIDER
+      <div class="row">
+        <div data-toggle="modal" data-target="#myModal" class="border pointer my-2 col-6 text-center br-5">
+          <span class="d-none d-sm-block">Sign in with: <%= fa_icon('twitter') %> | <%= fa_icon('linkedin') %> | <%= fa_icon('google') %></span>
+          <span class="d-block d-sm-none small">Sign in with: <%= fa_icon('twitter') %> | <%= fa_icon('linkedin') %> | <%= fa_icon('google') %></span>
+        </div>
+        <div class="col-6">
+          <p class="mt-2">
+            <span class="d-none d-sm-block">New user? <%= link_to "Sign up now!", new_user_path %></span>
+            <span class="d-block d-sm-none small">New user? <%= link_to "Sign up now!", new_user_path %></span>
+          </p>
+        </div>
+      </div>
     </div>
-
-    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
   </div>
+  <%= render 'static_pages/landing_modal' %>
 </div>
-<%= render 'static_pages/landing_modal' %>

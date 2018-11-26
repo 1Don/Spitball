@@ -27,6 +27,7 @@ $(document).on('turbolinks:load', function() {
   } else {
     if ($(".main-convo")[0]){
       $(".main-convo")[0].click()
+      $(".little-convo")[0].click()
     }
   }
 
