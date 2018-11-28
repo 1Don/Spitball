@@ -8,8 +8,6 @@ class UserMailer < ApplicationMailer
 		sleep(7.days)
 	end
 
-
-
 	def notifications_email(user)
 		@notifications = Notification.where(recipient: user, created_at: 7.days.ago..Time.current).reverse
 		@user = user

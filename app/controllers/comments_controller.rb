@@ -16,7 +16,11 @@ class CommentsController < ApplicationController
 		@comment.user_id = current_user.id
 		if @comment.save
 			unless @comment.user == @wad.user
-				Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
+				if @comment.parent
+					Notification.create(recipient: @comment.parent.user, actor: current_user, action: "replied to", notifiable: @comment.parent)
+				else
+					Notification.create(recipient: @wad.user, actor: current_user, action: "commented", notifiable: @wad)
+				end
 			end
 			current_user.update_attributes(points: current_user.points + 5)
 		end
