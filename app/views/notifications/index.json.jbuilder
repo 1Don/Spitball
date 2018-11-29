@@ -22,5 +22,10 @@ json.array! @notifications do |notification|
 			json.type "your #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
 		end
 		json.url wad_comments_path(notification.notifiable.wad)
+	elsif notification.notifiable_type == "Message"
+		json.notifiable do
+			json.type "a #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
+		end
+		json.url conversations_path(conversation_id: notification.notifiable.conversation.id)
 	end
 end

@@ -4,7 +4,7 @@
     <div class="card col-md-4 col-xs-12 bg-lightgray">
 
       <%= link_to wad_comments_path(notification.notifiable), class: "profile-link pl-1 py-3 " do %>
-            <%= notification.actor.name %> <%= notification.action %> on your <%= notification.notifiable_type %>
+            <%= notification.actor.name %> <%= notification.action %> on your <%= notification.notifiable_type.downcase %>
       <% end %>
     </div>
 
@@ -12,7 +12,7 @@
     <div class="card col-md-4 col-xs-12 bg-lightgray">
 
       <%= link_to discussions_path(discussion_id: notification.notifiable.id), class: "profile-link pl-1 py-3" do %>
-            <%= notification.actor.name %> <%= notification.action %> your <%= notification.notifiable_type %>
+            <%= notification.actor.name %> <%= notification.action %> your question
       <% end %>
     </div>
 
@@ -21,6 +21,22 @@
 
       <%= link_to friend_requests_path , class: "profile-link pl-1 py-3" do %>
             <%= notification.actor.name %> <%= notification.action %> a <%= notification.notifiable_type %>
+      <% end %>
+    </div>
+
+    <% when "Message" %>
+    <div class="card col-md-4 col-xs-12 bg-lightgray">
+
+      <%= link_to conversations_path(conversation_id: notification.notifiable.conversation.id) , class: "profile-link pl-1 py-3" do %>
+            <%= notification.actor.name %> <%= notification.action %> a <%= notification.notifiable_type.downcase %>
+      <% end %>
+    </div>
+
+    <% when "Comment" %>
+    <div class="card col-md-4 col-xs-12 bg-lightgray">
+
+      <%= link_to wad_comments_path(notification.notifiable.wad), class: "profile-link pl-1 py-3" do %>
+            <%= notification.actor.name %> <%= notification.action %> your <%= notification.notifiable_type.downcase %>
       <% end %>
     </div>
 

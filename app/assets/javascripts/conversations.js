@@ -18,8 +18,8 @@ $(document).on('turbolinks:load', function() {
   })
 
   var convo_id = getUrlParam('conversation_id', 'Empty')
-
   if (convo_id != "Empty"){
+    console.log("works");
     $("#convo-" + convo_id)[0].click()
     $("#mini-convo-" + convo_id)[0].click()
     $(".conversation_id").val(convo_id)
@@ -27,7 +27,10 @@ $(document).on('turbolinks:load', function() {
   } else {
     if ($(".main-convo")[0]){
       $(".main-convo")[0].click()
+      $(".main-convo")[0].addClass(" current_convo")
+      console.log("works");
       $(".little-convo")[0].click()
+      $(".little-convo")[0].addClass(" current_convo")
     }
   }
 

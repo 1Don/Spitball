@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12 mt-5">
   <% provide(:title, "Log in") %>
   <h3 class="text-center mb-4">Log in to Spitball</h3>
 
@@ -29,13 +29,13 @@
           </div>
         </div>
       <% end %>
-      <div class="row">
-        <div data-toggle="modal" data-target="#myModal" class="border pointer my-2 col-6 text-center br-5">
+      <div class="row mt-3">
+        <div data-toggle="modal" data-target="#myModal" class="border-right pointer my-2 col-6 text-center br-5">
           <span class="d-none d-sm-block">Sign in with: <%= fa_icon('twitter') %> | <%= fa_icon('linkedin') %> | <%= fa_icon('google') %></span>
           <span class="d-block d-sm-none small">Sign in with: <%= fa_icon('twitter') %> | <%= fa_icon('linkedin') %> | <%= fa_icon('google') %></span>
         </div>
         <div class="col-6">
-          <p class="mt-2">
+          <p class="mt-2 text-center">
             <span class="d-none d-sm-block">New user? <%= link_to "Sign up now!", new_user_path %></span>
             <span class="d-block d-sm-none small">New user? <%= link_to "Sign up now!", new_user_path %></span>
           </p>

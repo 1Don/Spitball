@@ -12,6 +12,9 @@ class DiscussionsController < ApplicationController
 		@discussion = Discussion.find(params[:discussion_id])
 		@answer = current_user.answers.create(content: params[:content], discussion_id: @discussion.id)
 		@answer.save
+		unless @discussion.user == current_user
+			Notification.create(recipient: @discussion.user, actor: current_user, action: "answered", notifiable: @discussion)
+		end
 	end
 
 	def show
