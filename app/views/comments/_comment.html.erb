@@ -15,7 +15,7 @@
 				<% end %>
 			</div>
 			<div class="">
-				<%= simple_format(comment.content) %>
+				<%= simple_format(comment.content).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
 			</div>
 			<div class="float-right">
 				<% if comment.children.exists? %>
