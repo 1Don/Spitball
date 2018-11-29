@@ -83,9 +83,8 @@
               <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
               <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
                 <div class="dropdown-divider">
-
                 </div>
-                   <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
+              <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </div>
           <% else %>
@@ -95,10 +94,12 @@
         </div>
       </li>
       <% end %>
-      <% sidebar_elements.each do |element| %>
-        <li class="d-md-none nav-item float-right align-right">
-          <%= link_to element[:name], element[:link], class: 'nav-link' %>
-        </li>
+      <% if logged_in? %>
+        <% sidebar_elements.each do |element| %>
+          <li class="d-md-none nav-item float-right align-right">
+            <%= link_to element[:name], element[:link], class: 'nav-link' %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

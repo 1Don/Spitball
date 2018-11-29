@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function(){
       var fileName = input.files[0].name
       alert(fileName + " has been added to your message.");
     }
-    document.getElementById('message_document').addEventListener('change', alertFileAdded)
+    if (document.getElementById('message_document')){document.getElementById('message_document').addEventListener('change', alertFileAdded)}
     var fileInputField = document.getElementsByClassName('inputfile')
     for (var i = 0; i < fileInputField.length; i++) {
       console.log(fileInputField[i]);
