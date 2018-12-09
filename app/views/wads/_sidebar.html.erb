@@ -1,9 +1,13 @@
-<div class="border-top">
-	<% sidebar_elements.each do |element| %>
-		<div id="<%= element %>" onclick="clickChild()" class="thick-border py-2" data-turbolinks="false">
-			<a class="text-70 profile-link ml-3 sidebar-text" href="<%= element[:link] %>">
-			  <%= element[:name] %>
-			</a>
-		</div>
-	<% end %>
+<div class="col-12 mt-5">
+	<div class="">
+		<% sidebar_elements.each do |element| %>
+			<%= link_to element[:link], class: "text-70 profile-link mb-5 sidebar-text bg-danger", onmouseover: "document.getElementById('#{element[:name]}').style.display = 'block'", onmouseout: "document.getElementById('#{element[:name]}').style.display = 'none'" do %>
+				<div id="<%= element %>" onclick="clickChild()" class="py-2 sidebar-div" data-turbolinks="false">
+					<div class="ml-3">
+					  <%= element[:name] %><% if element[:name] == 'Events' %> and Lifestyles<% end %><% unless element[:name] == 'Popular Wads' %><%= image_tag "#{element[:name]}.png", class: "float-right mr-1 sidebar-pic", id: element[:name], style: "width: 15px;" %><% else %><% end %>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 </div>

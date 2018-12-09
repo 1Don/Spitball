@@ -3,5 +3,12 @@ $(document).on('turbolinks:load', function(){
   $('.external-link').on('click', function(){
     $('.link-field').slideToggle()
   })
-  if ($('#defaultOpen')[0]){$('#defaultOpen')[0].click()}
+
+  function hideSidePics(){
+    for (var i = 0; i < document.getElementsByClassName('sidebar-pic').length; i++){
+      document.getElementsByClassName('sidebar-pic')[i].style.display = 'none'
+    }
+  }
+  hideSidePics()
+
 })
