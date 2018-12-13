@@ -1,20 +1,24 @@
 <% content_for :sub_layout do %>
 <div class="row">
-	<div class="col-md-2 d-none d-sm-block mt-4 px-0">
+	<div class="col-md-2 d-none d-sm-block mt-2 px-0">
 		<%= render 'wads/sidebar' %>
 	</div>
-	<div class="px-0 col-md-7 col-xs-12 mt-5">
+	<div class="px-0 col-md-7 col-xs-12 mt-3">
 		<%= yield %>
 	</div>
-	<div class="col-md-3 d-none d-sm-block mt-5">
+	<div class="col-md-3 d-none d-sm-block mt-3">
 		<%= render 'wads/news&notifications' %>
 	</div>
 </div>
 <div class="pop bottom-right mr-4 mb-4">
-	<button class="circular-btn pointer" type='button' data-toggle='modal' data-target='#myModal'>
+	<button class="circular-btn pointer" type='button' data-toggle='modal' data-target='#wtModal'>
 		<%= fa_icon('plus-square 2x') %><!---make this slide on mouseover/hover --->
 	</button>
 </div>
+<% if @time_now - @session_created_at < 10 %>
+	<button id="walkthrough" type="button" class="d-none" data-toggle="modal" data-target="#wtModal"></button>
+	<%= render 'layouts/walkthrough' %>
+<% end %>
 <% end %>
 
 <%= render template: 'layouts/application' %>

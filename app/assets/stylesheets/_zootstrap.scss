@@ -121,11 +121,8 @@ div.full-height{
 	width: 95%;
 }
 
-.wad-shadow{
-	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
 .wad-shadow:hover{
-	box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.15) !important;
+	background-color: rgb(244,248,250);
 }
 .comment-text{
 	resize:none;
@@ -226,4 +223,10 @@ input:checked + .slider:before {
 .sidebar-div:hover{
 	border-radius: 0px 20px 20px 0px;
 	background-color: lightgrey;
+}
+
+
+// walkthrough Modal
+.wt-modal{
+	
 }

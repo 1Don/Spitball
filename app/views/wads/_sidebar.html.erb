@@ -4,7 +4,7 @@
 			<%= link_to element[:link], class: "text-70 profile-link mb-5 sidebar-text bg-danger", onmouseover: "document.getElementById('#{element[:name]}').style.display = 'block'", onmouseout: "document.getElementById('#{element[:name]}').style.display = 'none'" do %>
 				<div id="<%= element %>" onclick="clickChild()" class="py-2 sidebar-div" data-turbolinks="false">
 					<div class="ml-3">
-					  <%= element[:name] %><% if element[:name] == 'Events' %> and Lifestyles<% end %><% unless element[:name] == 'Popular Wads' %><%= image_tag "#{element[:name]}.png", class: "float-right mr-1 sidebar-pic", id: element[:name], style: "width: 15px;" %><% else %><% end %>
+					  <%= element[:name] %><% if element[:name] == 'Events' %> and Lifestyles<% end %><% unless element[:name] == 'Popular Wads' %><%= image_tag "#{element[:name]}.png", class: "float-right mr-1 sidebar-pic", id: element[:name], style: "width: 15px;" %><% else %><%= fa_icon('fire', class: "float-right mr-1 sidebar-pic", id: element[:name], style: "width: 15px;") %><% end %>
 					</div>
 				</div>
 			<% end %>

@@ -11,4 +11,7 @@ $(document).on('turbolinks:load', function(){
   }
   hideSidePics()
 
+  if ($('#walkthrough')[0]){
+    $('#walkthrough')[0].click()
+  }
 })
