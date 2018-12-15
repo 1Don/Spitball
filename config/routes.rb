@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+  get 'password_resets/edit'
 #Auth0 routes
  #get 'dashboard/show'
   #get '/dashboard' => 'dashboard#show'
@@ -110,6 +112,8 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+
 
   resources :discussions do
     member do
