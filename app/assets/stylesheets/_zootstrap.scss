@@ -223,10 +223,13 @@ input:checked + .slider:before {
 .sidebar-div:hover{
 	border-radius: 0px 20px 20px 0px;
 	background-color: lightgrey;
+	color: black;
 }
 
-
+.dull-text{
+	color: grey;
+}
 // walkthrough Modal
 .wt-modal{
-	
+
 }
