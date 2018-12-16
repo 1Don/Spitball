@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :collaborations, through: :wads, dependent: :destroy
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :reset_token
   after_create :set_default_profile_image, unless: :has_attachment?
   before_save { self.email = email.downcase }
   validates :first_name,  presence: true, length: { maximum: 50 }
