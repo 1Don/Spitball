@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :collaborations, through: :wads, dependent: :destroy
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :reset_token
   after_create :set_default_profile_image, unless: :has_attachment?
   before_save { self.email = email.downcase }
   validates :first_name,  presence: true, length: { maximum: 50 }
@@ -94,6 +94,19 @@ class User < ApplicationRecord
     end
   end
 
+
+# Sets the password reset attributes.
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+# Sends password reset email.
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+  
   #Controls the search feature
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
@@ -151,6 +164,17 @@ class User < ApplicationRecord
     end
   end
 
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # Sends password reset email.
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
   #Sees if user has a conversation with another user
   def conversation_with?(user)
     if Conversation.between(self.id, user.id).exists?
@@ -158,6 +182,11 @@ class User < ApplicationRecord
     else
       return false
     end
+  end
+
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 
   private

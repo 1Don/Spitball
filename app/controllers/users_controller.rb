@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver_now
       log_in @user
       flash[:success] = "Welcome to Our Beta!"
-      redirect_to @user
+      redirect_to "/wads"
     else
       render 'new'
     end
