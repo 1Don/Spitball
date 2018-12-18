@@ -8,8 +8,8 @@ class WadsController < ApplicationController
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
-		@session_created_at = session[:created_at].to_i
-		@time_now = Time.now.to_i
+		@session_created_at =0 #session[:created_at].to_i
+		@time_now =100000 #Time.now.to_i
   end
 
   def popwads
