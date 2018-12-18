@@ -120,9 +120,14 @@ div.full-height{
 	height: 100%;
 	width: 95%;
 }
-
+.news-item{
+	font-size: 15px;
+}
+.news-item:hover{
+	background-color: lightgrey;
+}
 .wad-shadow:hover{
-	background-color: rgb(244,248,250);
+	background-color: #F8F8F8;
 }
 .comment-text{
 	resize:none;
@@ -219,7 +224,9 @@ input:checked + .slider:before {
 .icon-text{
 	font-size: 20px;
 }
-
+.sidebar-text{
+	font-size: 10px;
+}
 .sidebar-div:hover{
 	border-radius: 0px 20px 20px 0px;
 	background-color: lightgrey;
