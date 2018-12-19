@@ -27,7 +27,7 @@ module SidebarHelper
 
 
       {
-        title: "Finance and B2B",
+        title: "Finance & B2B",
         link: "/b2b",
         name: "Finance and B2B",
         icon: "briefcase 2x"

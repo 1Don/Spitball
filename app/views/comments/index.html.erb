@@ -1,8 +1,5 @@
 <div class="row col-12">
-	<div class="col-md-3 d-none d-sm-block mt-5">
-		<%= render 'wads/sidebar' %>
-	</div>
-	<div class="col-md-6 mt-5">
+	<div class="">
 		<%= render 'wads/panel' %>
 		<div id="" class="mb-3">
 			<div class="row">
@@ -24,15 +21,6 @@
 				</div>
 			<% end %>
 		</div>
-	</div>
-
-	<div class="col-md-3 mt-5">
-		<div class="">
-			<h6 class="text-center">Meet <%= @wad.user.name %>:</h6>
-			<%= render "users/user", user: @wad.user %>
-		</div>
-		<h6 class="mt-5 mb-2 text-center"> Related Wads</h6>
-		<%= render 'wads/side_wad' %>
 	</div>
 </div>
 <div id="fb-root"></div>

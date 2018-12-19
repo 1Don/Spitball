@@ -1,0 +1,21 @@
+<% content_for :sub_layout do %>
+<div class="row col-12 mt-5">
+  <div class="col-md-2 d-none d-sm-block pl-0">
+    <%= render 'wads/sidebar' %>
+  </div>
+  <div class="px-0 col-md-7 col-xs-12 border-right border-left">
+    <%= yield %>
+  </div>
+  <div class="col-md-3 d-none d-sm-block">
+    <h6 class="mt-5 mb-2 text-center"> Related Wads</h6>
+		<%= render 'wads/side_wad' %>
+    <div class="border-top mt-3 small">
+      <div class="small text-center">
+        © 2018 Spitball. All Rights Reserved.
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

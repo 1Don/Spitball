@@ -1,21 +1,23 @@
 <% content_for :sub_layout do %>
 <div class="container">
-	<div class="row">
-		<div class="col-1">
-
-		</div>
-		<div class="col-md-2 d-none d-sm-block px-0 border-right">
+	<div class="row col-12 mt-5">
+		<div class="col-md-2 d-none d-sm-block pl-0">
 			<%= render 'wads/sidebar' %>
 		</div>
-		<div class="px-0 col-md-6 col-xs-12 ">
+		<div class="px-0 col-md-7 col-xs-12 border-right border-left">
 			<%= yield %>
 		</div>
-		<div class="col-md-3 d-none d-sm-block border-left">
+		<div class="col-md-3 d-none d-sm-block">
 			<%= render 'wads/news&notifications' %>
+			<div class="border-top mt-3 small">
+				<div class="small text-center">
+					© 2018 Spitball. All Rights Reserved.
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="pop bottom-right mr-4 mb-4">
-		<button class="circular-btn pointer" type='button' data-toggle='modal' data-target='#wtModal'>
+		<button class="circular-btn pointer" type='button' data-toggle='modal' data-target='#myModal'>
 			<%= fa_icon('plus-square 2x') %><!---make this slide on mouseover/hover --->
 		</button>
 	</div>

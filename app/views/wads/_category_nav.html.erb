@@ -2,19 +2,19 @@
 	<div class="col-12">
 		<% if @wads.first %>
 			<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
-				<span class="h4 font-weight-light d-none d-sm-block">
+				<span class="h5 d-none d-sm-block">
 						What people want to build today
 				</span>
-				<span class="h4 font-weight-light d-block d-sm-none">
+				<span class="h5 font-weight-light d-block d-sm-none">
 					Hello <%= current_user.first_name %>!
 				</span>
 
 			<% elsif controller_name == 'wads' && action_name == 'popwads' %>
-				<span class="h2 font-weight-light">
+				<span class="h5">
 					<%= "Popular Wads" %>
 				</span>
 			<% else %>
-				<span class="h2 font-weight-light">
+				<span class="h5">
 					<%= @wads.first.category %>
 				</span>
 			<% end %>

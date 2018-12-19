@@ -22,43 +22,46 @@
     </div>
 <%= link_to wad_comments_path(wad), class: "profile-link", data: { turbolinks: false } do %>
   <div class="row">
-    <div class="col-md-3 h-25 mx-auto">
-            <% if !wad.image.attached?  %>
-              <%= image_tag "#{wad.category}.png", class: 'img-fluid rounded mx-auto mt-4 pr-0 d-none d-md-block', style: "width: 100px;" %>
-              <%= image_tag "#{wad.category}.png", style: "width:200px;", class: 'img-fluid rounded mx-auto mt-2 mb-1 d-block d-sm-none' %>
-            <% else %>
-              <%= image_tag wad.image, class: 'img-fluid border border-light mt-4 d-none d-md-block mx-auto pr-0', style: "width: 100px; height: 100px; border-radius: 7px; border: solid grey;" %>
-              <%= image_tag wad.image, class: 'img-fluid border mx-auto border-light mt-4 d-block d-sm-none', style: "width: 300px; height: 300px; border-radius: 5px; border: solid grey;" %>
-            <% end %>
+    <div class="col-md-3 h-25 mx-auto pr-0">
+        <% if !wad.image.attached?  %>
+          <%= image_tag "#{wad.category}.png", class: 'img-fluid rounded mx-auto mt-4 pr-0 d-none d-md-block', style: "width: 100px;" %>
+          <%= image_tag "#{wad.category}.png", style: "width:200px;", class: 'img-fluid rounded mx-auto mt-2 mb-1 d-block d-sm-none' %>
+        <% else %>
+          <%= image_tag wad.image, class: 'img-fluid border border-light mt-4 d-none d-md-block mx-auto pr-0', style: "width: 100px; height: 100px; border-radius: 7px; border: solid grey;" %>
+          <%= image_tag wad.image, class: 'img-fluid border mx-auto border-light mt-4 d-block d-sm-none', style: "width: 300px; height: 300px; border-radius: 5px; border: solid grey;" %>
+        <% end %>
     </div>
-
-    <div class="col-md-9 mt-1">
-          <h6 class="mt-3 d-none d-md-block"><%= wad.problem_state %></h6>
+    <div class="col-md-9 pl-0 mt-1">
+      <%= link_to wad_comments_path(wad), class: "profile-link", data: { turbolinks: false } do %>
+          <h6 class="mt-3 d-none d-md-block wad-text-prob"><%= wad.problem_state %></h6>
           <h6 class="mt-1 text-center d-block d-sm-none col-12"><%= wad.problem_state %></h6>
-          <p class="small d-none d-md-block pr-2"><%= wad.long_form.truncate(280) %></p>
+          <p class="small d-none d-md-block wad-text-long"><%= wad.long_form.truncate(280) %></p>
           <p class="text-center small d-block d-sm-none col-12"><%= wad.long_form.truncate(280) %></p>
+      <% end %>
     </div>
   </div>
 <% end %>
     <div class="d-none d-sm-block">
      <div class="row mb-2">
-      <div class="col-md-3 d-none d-md-block text-center">
-        <span class="small"><%= link_to "@" + wad.user.name, user_path(wad.user), class: "profile-link orange-text small", style: "" %></span>
-      </div>
       <%= link_to wad_comments_path(wad), class: "profile-link col-6", data: { turbolinks: false } do %>
         <div class="col-md-6">
 
         </div>
       <% end %>
-      <div class="col-md-3 row no-gutters">
-        <div class="col-4 small">
+      <div class="col-md-6 row no-gutters">
+        <%= link_to wad_comments_path(wad), class: "profile-link col-6", data: { turbolinks: false } do %>
+          <div class="col-6">
+
+          </div>
+        <% end %>
+        <div class="col-2 small">
           <%= link_to wad_comments_path(wad), data: { turbolinks: false }, class: "profile-link" do %>
             <span><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
             <span class="small font-weight-bold"><%= wad.comments.count %></span>
           <% end %>
         </div>
         <%# current way to display upvotes %>
-        <div class="col-4 small">
+        <div class="col-2 small">
           <% if current_user.voted_down_on?(wad) || !current_user.voted_for?(wad)%>
             <span class="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_wad_path(wad), method: :put, remote: true %></span>
           <% else %>
@@ -92,7 +95,7 @@
     </div>
     <div class="d-block d-sm-none">
       <div class="row col-12 ml-4 mb-2">
-        <div class="col-6  small">
+        <div class="col-6 small">
           <%= link_to wad_comments_path(wad), data: { turbolinks: false }, class: "profile-link" do %>
             <span><%= image_tag('comment-dots-regular.svg', class: "icon-pic") %></span>
             <span class="small font-weight-light"><%= wad.comments.count %><span class="small align-middle"> comments</span></span>

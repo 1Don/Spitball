@@ -1,8 +1,8 @@
-<div class="col-12">
+<div class="">
 	<div class="">
 		<% sidebar_elements.each do |element| %>
 			<%= link_to element[:link], class: "profile-link sidebar-text" do %>
-				<div id="<%= element %>" onclick="clickChild()" class="sidebar-div ml-3 py-2 mb-2 dull-text" data-turbolinks="false">
+				<div id="<%= element %>" onclick="clickChild()" class="sidebar-div ml-3 px-1 py-2 mb-2 dull-text" data-turbolinks="false">
 					 <span class="d" style=""><%= fa_icon(element[:icon], class: "", id: element[:name]) %></span><span class="d-inline float-right"><%= element[:title] %></span>
 				</div>
 			<% end %>
