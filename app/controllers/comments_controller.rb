@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
 	before_action :comment_owner, only: [:destroy, :edit, :update]
 	before_action :find_wad_owner, only: [:index]
-	
+
 	def create
 		if params[:comment][:parent_id].to_i > 0
 	    	parent = Comment.find_by_id(params[:comment].delete(:parent_id))
@@ -86,14 +86,12 @@ class CommentsController < ApplicationController
 	def upvote
 			@comment = Comment.find(params[:comment_id])
 			@wad = @comment.wad
-		if @comment.user != current_user
 			@comment.upvote_by current_user
 			current_user.update_attributes(points: current_user.points + 5)
 
 			if @comment.get_upvotes.size % 5 == 0
 				@comment.user.update_attributes(points: @comment.user.points + 100)
 			end
-		end
 	end
 
 	def downvote

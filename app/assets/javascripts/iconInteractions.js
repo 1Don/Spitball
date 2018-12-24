@@ -10,15 +10,19 @@ function execReply(id){
 		function toggleReply(id) {
 			if ($('#reply-' + id).is(":hidden")){
 				$('.reply-hide-area').slideUp()
-				$('.see-replies').show()
-				$('#see-replies-' + id).hide()
+				$('.see-replies').html('Show replies <i class="fa fa-caret-down"></i>')
+				$('#see-replies-' + id).html('Close replies <i class="fa fa-caret-up"></i>')
 				$('#reply-' + id).slideToggle()
 			} else {
-				$('#see-replies-' + id).show()
+				$('#see-replies-' + id).html('Show replies <i class="fa fa-caret-down"></i>')
 				$('#reply-' + id).slideUp()
 			}
 		}
 
+}
+
+function focusForm(id){
+	$("#comment-reply-box-" + id).focus()
 }
 
 function secondaryReply(cmt_id, id, name) {

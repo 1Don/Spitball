@@ -47,6 +47,9 @@ div.full-height{
 .icon-pic{
 	width: 18px;
 }
+.sm-icon-pic{
+	width: 12px;
+}
 .icon-pic:hover{
 	color:orange;
 }
@@ -240,4 +243,10 @@ input:checked + .slider:before {
 // walkthrough Modal
 .wt-modal{
 
+}
+.no-resize{
+	resize: none;
+}
+.comment-reply-btn{
+	height: 27px;
 }
