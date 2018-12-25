@@ -1,7 +1,7 @@
 <% content_for :sub_layout do %>
   <div class="container col-12">
-    <div class="ml-5 row">
-      <div class="row col-11 mt-5">
+    <div class="mx-auto">
+      <div class="row mt-md-5 mr-1">
         <div class="col-md-2 d-none d-sm-block pl-0">
           <%= render 'wads/sidebar' %>
         </div>
@@ -9,8 +9,9 @@
           <%= yield %>
         </div>
       </div>
-      <div class="col-3">
-        <%= render 'wads/side_wad' %>
+      <div class="col-md-3 col-xs-12">
+        <h6 class="text-center">Related Wads</h6>
+        <%= render "wads/side_wad" %>
       </div>
     </div>
   </div>

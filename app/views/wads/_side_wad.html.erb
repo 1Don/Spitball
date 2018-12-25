@@ -1,6 +1,6 @@
 <% @wads.each do |wad| %>
 	<%= link_to wad_comments_path(wad), class: "profile-link" do %>
-		<div class="small mb-3" style="border-radius: 15px;">
+		<div class="small ml-2 mb-3" style="border-radius: 15px;">
 			<div class="row small">
 				<div class="col-3 px-0">
           <% if !wad.image.attached?  %>
