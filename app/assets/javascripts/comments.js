@@ -1,19 +1,10 @@
 $(document).ready(function(){
-  $('#parent-cmt-btn').hide()
   $('.options').hide()
-  $('.reply-hide-area').hide()
-  $('.comment-reply-btn').hide()
+  //$('.reply-hide-area').hide()
+  //$('.comment-reply-btn').hide()
 
-  $('#parent-cmt-field').focus(function(){
-    $("#parent-cmt-btn").slideToggle()
-  })
-  $('#parent-cmt-field').focusout(function(){
-    $("#parent-cmt-btn").slideToggle()
-  })
   $('.comment-reply-form').focus(function(){
     $('.comment-reply-btn').show()
   })
-  $('.comment-reply-form').focusout(function(){
-    $('.comment-reply-btn').hide()
-  })
+
 })
