@@ -1,13 +1,13 @@
 <% content_for :sub_layout do %>
-<div class="container">
+<div class="container col-12">
 	<div class="row mt-5">
 		<div class="col-md-2 d-none d-sm-block pl-0">
 			<%= render 'wads/sidebar' %>
 		</div>
-		<div class="px-0 col-md-7 col-xs-12">
+		<div class="px-0 col-md-8 col-xs-12">
 			<%= yield %>
 		</div>
-		<div class="col-md-3 d-none d-sm-block">
+		<div class="col-md-2 d-none d-sm-block">
 			<%= render 'wads/news&notifications' %>
 			<div class="border-top mt-3 small">
 				<div class="small text-center">

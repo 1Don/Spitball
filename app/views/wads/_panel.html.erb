@@ -1,31 +1,41 @@
-<div class="text-white" style="background-color: rgb(0,109,181);">
-	<div class="card-header pb-4">
-		<div class="col-1 dropdown dropleft float-right">
-			<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= fa_icon('ellipsis-h 2x', class: "text-white") %>
-			</span>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + " Flag content", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
-	      <% if current_user == @wad.user %>
-	      <span class="dropdown-item "><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(@wad), method: :delete, remote: true, class: "profile-link" %></span>
-	      <% end %>
+<div class="">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-4 small">
+				<% unless current_user.friends_with?(@wad.user) || current_user == @wad.user %>Meet <%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %>!<% else %> <%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %> <% end %>
+			</div>
+			<div class="col-3">
+
+			</div>
+			<div class="col-5">
+				<div class="col-1 dropdown dropleft float-right">
+					<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<%= fa_icon('ellipsis-h 2x', class: "") %>
+					</span>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<span class="dropdown-item"><%= link_to fa_icon('flag', class: "profile-link pointer") + " Flag content", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
+			      <% if current_user == @wad.user %>
+			      <span class="dropdown-item "><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(@wad), method: :delete, remote: true, class: "profile-link" %></span>
+			      <% end %>
+					</div>
+				</div>
+				<div class="col-1 dropdown dropright float-right mr-3">
+			    <span class="pointer" id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      <%= fa_icon('share-alt', class: "icon-text") %>
+			    </span>
+
+			    <div class="dropdown-menu" aria-labelledby="shareDropdown">
+			      See what your friends think about this idea!
+			      <span class="dropdown-item">
+			        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @wad.user.name %> just had a new <%= @wad.category %> idea. Check it out on Spitball! https://spitball.io<%= root_path(type: "yeo") %>" data-url="<%= root_path %>" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			      </span>
+			      <span class="dropdown-item">
+			        <!-- <div class="fb-share-button" data-href="<%= wad_comments_path(@wad) %>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div> -->
+			      </span>
+			    </div>
+			  </div>
 			</div>
 		</div>
-		<div class="col-1 dropdown dropright float-right mr-3">
-	    <span class="pointer" id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	      <%= fa_icon('share-alt', class: "icon-text") %>
-	    </span>
-
-	    <div class="dropdown-menu" aria-labelledby="shareDropdown">
-	      See what your friends think about this idea!
-	      <span class="dropdown-item">
-	        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= @wad.user.name %> just had a new <%= @wad.category %> idea. Check it out on Spitball! https://spitball.io<%= root_path(type: "yeo") %>" data-url="<%= root_path %>" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	      </span>
-	      <span class="dropdown-item">
-	        <!-- <div class="fb-share-button" data-href="<%= wad_comments_path(@wad) %>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div> -->
-	      </span>
-	    </div>
-	  </div>
 	</div>
 </div>
 <div class="w-100 mb-1 panel-div col-12" style="border-radius: 10px;">
@@ -79,7 +89,7 @@
 					<% end %>
 				<% else %>
 					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
-					<button type="button" name="button" class="comment-btn pointer br-5">
+					<button type="button" name="button" class="comment-btn-ori pointer br-5">
 						<span class="small">
 							<%= fa_icon('caret-up 2x') %> Upvote
 						</span>
@@ -121,7 +131,7 @@
 					<% end %>
 				<% else %>
 					<%= link_to dislike_wad_path(@wad), method: :put, remote: true do %>
-					<button type="button" name="button" class="comment-btn pointer br-5">
+					<button type="button" name="button" class="comment-btn-ori pointer br-5">
 						<span class="small">
 							<%= fa_icon('caret-up 2x', class: "") %> Upvote
 						</span>

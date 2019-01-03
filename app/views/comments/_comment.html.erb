@@ -43,14 +43,17 @@
 				<% end %>
 				<div class="col-1">
 				</div>
-				<div class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>"); setTimeout(focusForm("<%= comment.id %>"), 3000)'>	<%= image_tag('comment-dots-regular.svg', class: "sm-icon-pic") %></div>
+				<div class="pointer" id="btn-hide" onclick='execReply("<%= comment.id %>")'>	<%= image_tag('comment-dots-regular.svg', class: "sm-icon-pic") %></div>
 			</div>
 		</div>
+	</div>
+	<div id="cmt-form-<%= comment.id %>" class="text-center cmt-forms col-12">
+		<%= render 'form', comment: comment %>
 	</div>
 	<div class="row ml-1">
 		<div class="col-1">
 		</div>
-		<div class="small col-9" onclick='execReply("<%= comment.id %>");'>
+		<div class="small col-9" onclick='seeReply("<%= comment.id %>");'>
 			<% if comment.children.exists? %>
 					<span id="see-replies-<%= comment.id %>" class="see-replies small pointer">Show replies <%= fa_icon('caret-down')%></span>
 			<% end %>
@@ -58,10 +61,6 @@
 	</div>
 	<div class="row no-gutters">
 		<div id="reply-<%= comment.id %>" class="reply-hide-area col-12">
-			<div id="cmt-form-<%= comment.id %>" class="text-center">
-				<%= render 'form', comment: comment %>
-			</div>
-
 			<div id="new-cmt-<%= comment.id %>" class="">
 
 			</div>
@@ -92,7 +91,7 @@
 					  </div>
 					</div>
 				</div>
-				<div class="row small ml-2">
+				<div id="cmt-opts-<%= c.id %>" class="row small ml-2">
 					<div class="col-10 row small">
 						<div class="col-2">
 						</div>
@@ -102,6 +101,25 @@
 							<div class="col-2" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "sm-cmt-png-icon"), wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %><span class="small like-<%= c.id %>" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span></div>
 						<% end %>
 						<div class="profile-link child-cmt pointer col-3" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'>REPLY</div>
+					</div>
+				</div>
+				<div id="cmt-form-<%= c.id %>" class="cmt-forms">
+					<div class="">
+						<%= form_for([@wad, @comment], class: "", remote: true) do |f| %>
+							<div class="row">
+								<div class="col-2">
+
+								</div>
+									<div class="col-6">
+											<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "border-bottom comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
+											<%= f.hidden_field :wad_id %>
+											<%= f.hidden_field :parent_id, class: "hid-field" %>
+									</div>
+									<div class="col-3">
+										<%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer w-50', onclick: "$('#cmt-form-#{c.id}').hide()" %>
+									</div>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			<% end %>

@@ -103,6 +103,23 @@ div.full-height{
   letter-spacing: 1px;
 	height: 100%;
 	width: 95%;
+	opacity: 0.5;
+}
+.small-pic{
+	width: 2vw;
+}
+#parent-cmt-btn{
+	opacity: 0.0;
+}
+
+.comment-btn-ori{
+	font-size: 0.8rem;
+	color: #ffffff;
+	background-color: rgb(255,145,42);
+	display: inline-block;
+	letter-spacing: 1px;
+	height: 100%;
+	width: 95%;
 }
 .comment-btn-alt{
 	font-size: 0.8rem;
@@ -130,7 +147,7 @@ div.full-height{
 	background-color: lightgrey;
 }
 .wad-shadow:hover{
-	background-color: #F8F8F8;
+	background-color: rgb(244,248,250);
 }
 .comment-text{
 	resize:none;

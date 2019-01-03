@@ -2,12 +2,17 @@
 	<%= form_for([@wad, @comment], class: "", remote: true) do |f| %>
 		<div class="row comment-reply-form">
 		      <div class="col-8 ml-5">
-		        <%= f.text_area :content, placeholder: "Leave a comment...", id: "comment-reply-box-#{comment.id}", class: 'border-bottom comment-reply-form form-control form-field autoExpand no-resize', rows: "1" %>
+		        <%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{comment.id}", class: "border-bottom comment-reply-form form-control form-field-#{comment.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{comment.id}')" %>
 		        <%= f.hidden_field :wad_id %>
 		        <%= f.hidden_field :parent_id, class: "hid-field" %>
 		      </div>
-		      <div class="col-3 ">
-		        <%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer' %>
+		      <div class="col-3 small">
+						<div class="">
+		        	<%= f.submit 'Comment', id: "comment-btn-#{comment.id}", class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer', onclick: '$(".cancel-btn").hide(); $(".comment-reply-btn").css("opacity", "0.5")' %>
+						</div>
+						<div class="text-muted pointer cancel-btn">
+							CANCEL
+						</div>
 		   	  </div>
 		</div>
 	<% end %>
