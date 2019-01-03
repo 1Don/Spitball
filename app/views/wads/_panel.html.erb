@@ -2,7 +2,11 @@
 	<div class="card-header">
 		<div class="row">
 			<div class="col-4 small">
-				<% unless current_user.friends_with?(@wad.user) || current_user == @wad.user %>Meet <%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %>!<% else %> <%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %> <% end %>
+				<% unless current_user.friends_with?(@wad.user) || current_user == @wad.user %>
+					Meet <%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %>!
+				<% else %>
+					<%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %>
+				<% end %>
 			</div>
 			<div class="col-3">
 
