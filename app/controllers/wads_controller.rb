@@ -4,12 +4,11 @@ class WadsController < ApplicationController
 	before_action :set_new_wad, only: [:tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
 	before_action :all_wads
 	before_action :require_login
+	before_action :session_info, only: [:index, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
 
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
-		@session_created_at = session[:created_at].to_i
-		@time_now = Time.now.to_i
   end
 
   def popwads
@@ -159,4 +158,8 @@ private
 		@all_wads = Wad.all
 	end
 
+	def session_info
+		@session_created_at = session[:created_at].to_i
+		@time_now = Time.now.to_i
+	end
 end

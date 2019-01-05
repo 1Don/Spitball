@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	layout 'comment', only: [:index]
 	before_action :require_login
 	before_action :find_comments_wad, only: [:index, :create, :new, :edit, :update, :destroy, :find_comment]
 	before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner, :comment_params]
@@ -85,14 +86,12 @@ class CommentsController < ApplicationController
 	def upvote
 			@comment = Comment.find(params[:comment_id])
 			@wad = @comment.wad
-		if @comment.user != current_user
 			@comment.upvote_by current_user
 			current_user.update_attributes(points: current_user.points + 5)
 
 			if @comment.get_upvotes.size % 5 == 0
 				@comment.user.update_attributes(points: @comment.user.points + 100)
 			end
-		end
 	end
 
 	def downvote

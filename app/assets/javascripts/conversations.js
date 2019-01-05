@@ -27,10 +27,9 @@ $(document).on('turbolinks:load', function() {
   } else {
     if ($(".main-convo")[0]){
       $(".main-convo")[0].click()
-      $(".main-convo")[0].addClass(" current_convo")
-      console.log("works");
+    }
+    if ($(".little-convo")[0]){
       $(".little-convo")[0].click()
-      $(".little-convo")[0].addClass(" current_convo")
     }
   }
 

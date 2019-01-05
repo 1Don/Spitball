@@ -1,38 +1,31 @@
-<div class="row col-12 mx-auto px-2">
-	<div class="col-md-2 d-none d-sm-block text-left mt-5">
-		<%= render 'wads/sidebar' %>
-	</div>
-	<div class="col-md-7 mt-5">
+<div class="row">
+	<div class="">
 		<%= render 'wads/panel' %>
-		<div id="" class="mb-3">
-			<div class="row">
-				<div class="col-10 pr-0">
+		<div id="" class="mt-5 border-top border-bottom">
+			<div class="row mx-1 my-2">
+				<div class="col-1">
+					<%= image_tag(current_user.photo, class: "rounded-circle w-100 pr-0") %>
+				</div>
+				<div class="col-9 pr-0">
 					<%= form_for [@wad, @wad.comments.build], html: { class: 'form-inline' }, remote: true do |f| %>
 						<%= f.hidden_field :wad_id %>
-						<%= f.text_area :content, class: 'form-control comment-text w-100', placeholder: 'What are your thoughts on this idea?' %>
+						<%= f.text_area :content, id: "parent-cmt-field", class: 'form-control comment-text w-100 comment-reply-form autoExpand', placeholder: 'What are your thoughts on this idea?', onkeyup: "activeBox(0, true)" %>
 				</div>
-				<div class="col-2 pl-0">
-						<%= f.submit 'Post Reply', class: 'comment-btn-2 pointer br-5', disable_with: 'Sending' %>
+				<div class="col-2">
+						<%= f.submit "POST", id: "parent-cmt-btn", class: 'comment-btn-2 pointer br-5 w-100', disable_with: 'Sending' %>
 					<% end %>
 				</div>
 			</div>
 		</div>
-		<div class="mt-4">
+		<div class="ml-md-5 mt-3">
 			<% if @wad.comments.exists? %>
-				<div id="daddy-comment-div" class="card border-bottom-0">
+				<div id="daddy-comment-div" class=" border-bottom-0">
+					<div id="new-parent" class="">
+					</div>
 					<%= comments_tree_for @replies %>
 				</div>
 			<% end %>
 		</div>
-	</div>
-
-	<div class="col-md-3 mt-5">
-		<div class="">
-			<h6 class="text-center">Meet <%= @wad.user.name %>:</h6>
-			<%= render "users/user", user: @wad.user %>
-		</div>
-		<h6 class="mt-5 mb-2 text-center"> Related Wads</h6>
-		<%= render 'wads/side_wad' %>
 	</div>
 </div>
 <div id="fb-root"></div>
