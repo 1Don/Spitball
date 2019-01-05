@@ -1,6 +1,11 @@
 if (<%= @comment.root.id %> == <%= @comment.id %>){
 	window.location.reload();
 } else {
+	if (document.getElementById("see-reply-<%= @comment.parent_id %>") == null){
+		$("#see-replies-holder-<%= @comment.parent_id %>").html(`
+				<span id="see-replies-<%= @comment.parent_id %>" class="see-replies small pointer">Show replies <%= fa_icon('caret-down')%></span>
+			`)
+	}
 	const nameAndContent =`<div id="cmt-<%= @comment.id %>" class="small col-10 mx-auto row" onmouseover='$("#options-<%= @comment.id %>").show()' onmouseleave='$("#options-<%= @comment.id %>").hide()'>
 		<div class="col-10 mt-2 mb-1 small">
 			<% if !@comment.user.occupation || @comment.user.occupation == "" %><%= link_to @comment.user.name, user_path(@comment.user) %><%= " · "  + @comment.user.points.to_s %><% else %><%= link_to @comment.user.name , user_path(@comment.user) %><%= " · " + @comment.user.occupation %><%= " · "  + @comment.user.points.to_s %><% end %>
@@ -38,6 +43,7 @@ if (<%= @comment.root.id %> == <%= @comment.id %>){
 			<div class="profile-link child-cmt pointer col-3" onclick='secondaryReply("<%= @comment.id %>", "<%= @comment.id %>", "<%= @comment.user.name %>");'>REPLY</div>
 		</div>
 	</div>`;
+	console.log("workig");
 	$('#new-cmt-<%= @comment.root.id %>').prepend(nameAndContent);
 	$('.form-field').val("");
 	$('.hid-field').attr('value', "<%= @comment.root.id %>");

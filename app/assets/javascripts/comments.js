@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('.options').hide()
-  $('.reply-hide-area').hide()
+  //$('.reply-hide-area').hide()
   $('.cmt-forms').hide()
 
   $('.cancel-btn').click(function(){

@@ -53,7 +53,7 @@
 	<div class="row ml-1">
 		<div class="col-1">
 		</div>
-		<div class="small col-9" onclick='seeReply("<%= comment.id %>");'>
+		<div id="see-replies-holder-<%= comment.id %>" class="small col-9" onclick='seeReply("<%= comment.id %>");'>
 			<% if comment.children.exists? %>
 					<span id="see-replies-<%= comment.id %>" class="see-replies small pointer">Show replies <%= fa_icon('caret-down')%></span>
 			<% end %>
