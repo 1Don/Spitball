@@ -1,10 +1,52 @@
-<%= form_for @user, html: { multipart: true } do |f| %>
-<div class="row">
+<% unless current_user %>
+<h5 class="text-center mt-5">
+			Create an account with
+</h5>
+	<div class="row mt-3 mb-5">
+						<div class="col">
+							<%= link_to google_session_path do %>
+						      <div class="btn btn-block btn-social btn-google" style="color:white">
+								  <span class="fa fa-google"></span> Google
+							  </div>
+							<% end %>
+						</div>
+
+
+				      	<div class="col">
+						   <%= link_to linkedin_session_path do %>
+						      <div class="btn btn-block btn-social btn-linkedin" style="color:white">
+								  <span class="fa fa-linkedin"></span> LinkedIn
+							  </div>
+							<% end %>
+						</div>
+
+						<div class="col">
+							<%= link_to twitter_session_path do %>
+								<div class="btn btn-block btn-social btn-twitter" style="color:white">
+									<span class="fa fa-twitter"></span> Twitter
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+	</div>
+<% end %>
+
+
+
+<div class="h5 text-center mt-3">
+			Or Create a Spitball Account
+</div>
+	<%= form_for @user, html: { multipart: true } do |f| %>
+<div class="row mt-3">
 	<div class="col-md-7 col-xs-12">
+
 			<h5 class="col-12 border-bottom mb-4 mt-2 py-2">
 				<span class="">Primary Info (Required)</span>
 			</h5>
-		   <div class="col-12 ">
+
+		<div class="col-12">
+
 		     <div class="row">
 		       <div class="form-group col-4">
 		        <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control comment-reply-form border-bottom placeHolder' %>
@@ -13,6 +55,7 @@
 		        <%= f.text_field :last_name, placeholder: "Last Name",class: 'form-control comment-reply-form border-bottom placeHolder' %>
 		       </div>
 		     </div>
+
 		    <div class="row">
 		      <div class="form-group col-5">
 		        <%= f.text_field :name, placeholder: "Username",class: 'form-control comment-reply-form border-bottom placeHolder' %>
@@ -21,22 +64,31 @@
 		        <%= f.email_field :email, placeholder: "Email",class: 'form-control comment-reply-form border-bottom placeHolder' %>
 		      </div>
 		    </div>
+
 		    <div class="row">
 		      <div class="form-group col-12">
 		        <%= f.password_field :password, placeholder: "Password",class: 'form-control comment-reply-form border-bottom placeHolder' %>
 		      </div>
 		    </div>
+
 		    <div class="row">
 		      <div class="form-group col-12">
-		        <%= f.password_field :password_confirmation, placeholder: "Confirm",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		        <%= f.password_field :password_confirmation, placeholder: "Confirm Password",class: 'form-control comment-reply-form border-bottom placeHolder' %>
 		      </div>
 		    </div>
-		  </div>
-			<h5 class="col-12 border-bottom my-4 py-2">
+
+		</div>
+	</div>
+
+	<div class="col-md-5">
+
+			<h5 class="col-12 border-bottom mb-4 mt-2 py-2">
 				<span>Other Info (Optional)</span>
 			</h5>
+
+
 			<div class="col-12">
-		      <div class="">
+		 
 	           <div class="form-group">
 	            <%= f.text_field :occupation, placeholder: "Occupation", class: 'form-control comment-reply-form border-bottom placeHolder' %>
 	          </div>
@@ -52,17 +104,17 @@
 	          <div class="form-group">
 	            <%= f.text_field :github, placeholder: "GitHub Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>
 	          </div>
-						<div class="form-group">
-							<%= f.text_field :linkedin, placeholder: "LinkedIn Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>
-						</div>
+				<div class="form-group">
+					<%= f.text_field :linkedin, placeholder: "LinkedIn Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>		</div>
+	</div>
 						<div class="row">
 							<% unless current_user %>
-								<div class="form-group col-7 d-none d-sm-block d-md-block">
+								<div class="form-group col-8 text-center d-none d-sm-block d-md-block">
 									<span class="small pl-2">
-										By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a>
+										
 									</span>
 								</div>
-							<% else %>
+							<%# else %>
 								<%#= link_to user_path(@user), method: :delete, data: {confirm: "You sure? Gunna miss out a ton of cool stuuuuff!"}, class: "profile-link text-white pointer" do %>
 								<!--	<div class="delete-div col-2 text-center ml-3">
 										DELETE
@@ -70,12 +122,16 @@
 								<%# end %> -->
 							<% end %>
 						</div>
-		      </div>
-					<div class="mx-auto form-group col-8 text-center d-none d-sm-block">
-						<%= f.submit class: "Spitballbutton" %>
-					</div>
-		 	</div>
-		</div>
+						      </div>
+									<div class="mx-auto form-group col-8 text-center d-none d-sm-block">
+										By signing up, you agree to the <a href="/terms">Terms & Services Agreement</a><br>
+										<%= f.submit class: "Spitballbutton" %>
+									</div>
+						 	</div>
+						</div>
+
+
+
 <% if current_user %>
 	<div class="col-md-4 col-xs-8 ml-md-5">
 		<div class="mt-3">
@@ -142,3 +198,6 @@
 	</div>
 </div>
 <% end %>
+
+
+
