@@ -10,11 +10,11 @@
 				</span>
 
 			<% elsif controller_name == 'wads' && action_name == 'popwads' %>
-				<span class="h2 font-weight-light">
+				<span class="h4 font-weight-light">
 					<%= "Popular Wads" %>
 				</span>
 			<% else %>
-				<span class="h2 font-weight-light">
+				<span class="h4 font-weight-light">
 					<%= @wads.first.category %>
 				</span>
 			<% end %>

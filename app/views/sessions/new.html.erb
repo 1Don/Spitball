@@ -1,6 +1,39 @@
 <div class="col-12 mt-5">
   <% provide(:title, "Log in") %>
-  <h3 class="text-center mb-4">Log in to Spitball</h3>
+
+  <h5 class="text-center mt-5">
+      Log in with
+</h5>
+  <div class="row mt-3 mb-5">
+            <div class="col">
+              <%= link_to google_session_path do %>
+                  <div class="btn btn-block btn-social btn-google" style="color:white">
+                  <span class="fa fa-google"></span> Google
+                </div>
+              <% end %>
+            </div>
+
+
+                <div class="col">
+               <%= link_to linkedin_session_path do %>
+                  <div class="btn btn-block btn-social btn-linkedin" style="color:white">
+                  <span class="fa fa-linkedin"></span> LinkedIn
+                </div>
+              <% end %>
+            </div>
+
+            <div class="col">
+              <%= link_to twitter_session_path do %>
+                <div class="btn btn-block btn-social btn-twitter" style="color:white">
+                  <span class="fa fa-twitter"></span> Twitter
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <p class="text-center mb-4">or log in with your Spitball Account (Don't have an Account? <%= link_to "Sign up now!)", new_user_path %></span></p> 
 
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -26,23 +59,7 @@
           <div class="text-center">
             <%= f.submit "Log in", class: "Spitballbutton" %>
           </div>
-
-     
-
-       
       <% end %>
-      <div class="row mt-3">
-        <div data-toggle="modal" data-target="#myModal" class="border-right pointer my-2 col-6 text-center br-5">
-          <span class="d-none d-sm-block">Sign in with: <%= fa_icon('twitter') %> | <%= fa_icon('linkedin') %> | <%= fa_icon('google') %></span>
-          <span class="d-block d-sm-none small">Sign in with: <%= fa_icon('twitter') %> | <%= fa_icon('linkedin') %> | <%= fa_icon('google') %></span>
-        </div>
-        <div class="col-6">
-          <p class="mt-2 text-center">
-            <span class="d-none d-sm-block">New user? <%= link_to "Sign up now!", new_user_path %></span>
-            <span class="d-block d-sm-none small">New user? <%= link_to "Sign up now!", new_user_path %></span>
-          </p>
-        </div>
-      </div>
     </div>
   </div>
   <%= render 'static_pages/landing_modal' %>

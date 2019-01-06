@@ -8,6 +8,7 @@ class PasswordResetsController < ApplicationController
 
 	    def create
 		 @user = User.find_by(email: params[:password_reset][:email].downcase)
+		 unless @user.provider? == true
 		    if @user
 		      @user.create_reset_digest
 		      @user.send_password_reset_email
@@ -17,6 +18,11 @@ class PasswordResetsController < ApplicationController
 		      flash.now[:danger] = "Email address not found"
 		      render 'new'
 		    end
+		 else
+		 	flash[:info] = "You used #{@user.provider} to sign up. Just use that provider again to log in!"
+		 	redirect_to "/login"
+		 end
+
 	  end
 
 	  def edit

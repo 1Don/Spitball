@@ -1,3 +1,145 @@
 <% provide(:title, "Edit user") %>
 <%= render 'shared/error_messages' %>
-<%= render 'sign_up' %>
+<%= form_for @user, html: { multipart: true } do |f| %>
+<div class="row">
+	<div class="col-md-7 col-xs-12">
+			<h5 class="col-12 border-bottom mb-4 mt-2 py-2">
+				<span class="">Primary Info (Required)</span>
+			</h5>
+		   <div class="col-12 ">
+		     <div class="row">
+		       <div class="form-group col-4">
+		        <%= f.text_field :first_name, placeholder: "First Name", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		       </div>
+		       <div class="form-group col-8">
+		        <%= f.text_field :last_name, placeholder: "Last Name",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		       </div>
+		     </div>
+		    <div class="row">
+		      <div class="form-group col-5">
+		        <%= f.text_field :name, placeholder: "Username",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		      <div class="form-group col-7">
+		        <%= f.email_field :email, placeholder: "Email",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="form-group col-12">
+		        <%= f.password_field :password, placeholder: "Password",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="form-group col-12">
+		        <%= f.password_field :password_confirmation, placeholder: "Confirm",class: 'form-control comment-reply-form border-bottom placeHolder' %>
+		      </div>
+		    </div>
+		  </div>
+			<h5 class="col-12 border-bottom my-4 py-2">
+				<span>Other Info (Optional)</span>
+			</h5>
+			<div class="col-12">
+		      <div class="">
+	           <div class="form-group">
+	            <%= f.text_field :occupation, placeholder: "Occupation", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+	          </div>
+	           <div class="form-group">
+	            <%= f.text_field :location, placeholder: "Location", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+	          </div>
+	          <div class="form-group">
+	            <%= f.text_field :interests, placeholder: "Interests seperated by (', ')", multiple: true, class: 'form-control comment-reply-form border-bottom placeHolder'%>
+	          </div>
+	           <div class="form-group">
+	              <%= f.text_field :twitter, placeholder: "Twitter Link", class: 'form-control d-inline-block comment-reply-form border-bottom placeHolder' %>
+	          </div>
+	          <div class="form-group">
+	            <%= f.text_field :github, placeholder: "GitHub Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+	          </div>
+						<div class="form-group">
+							<%= f.text_field :linkedin, placeholder: "LinkedIn Link", class: 'form-control comment-reply-form border-bottom placeHolder' %>
+						</div>
+						<div class="row">
+							<% unless current_user %>
+								<div class="form-group col-7 d-none d-sm-block d-md-block">
+									<span class="small pl-2">
+										By signing up, I Consent to the <a href="/terms">Terms & Services Agreement</a>
+									</span>
+								</div>
+							<% else %>
+								<%#= link_to user_path(@user), method: :delete, data: {confirm: "You sure? Gunna miss out a ton of cool stuuuuff!"}, class: "profile-link text-white pointer" do %>
+								<!--	<div class="delete-div col-2 text-center ml-3">
+										DELETE
+									</div>
+								<%# end %> -->
+							<% end %>
+						</div>
+		      </div>
+					<div class="mx-auto form-group col-8 text-center d-none d-sm-block">
+						<%= f.submit class: "Spitballbutton" %>
+					</div>
+		 	</div>
+		</div>
+<% if current_user %>
+	<div class="col-md-4 col-xs-8 ml-md-5">
+		<div class="mt-3">
+			<div class="card mb-2">
+				<div class="border-bottom text-center">
+					<%= current_user.first_name + " " + current_user.last_name %>
+				</div>
+				<div>
+					<% if current_user.photo.attached? %><%= image_tag current_user.photo, class: "w-100 h-100" %><% end %>
+				</div>
+			</div>
+			<div class="form-group col-8 upload-div text-center mx-auto">
+				<span class="small fileName"><%= f.label :photo, fa_icon('upload') + " Upload Photo", class: "mx-auto pointer mt-2 placeHolder" %></span>
+				<%= f.file_field :photo, class: 'form-control-file inputfile' %>
+			</div>
+			<div class="col-12 mt-5">
+				<h5 class="border-bottom col-12">
+					Subscriptions
+				</h5>
+			</div>
+			<div class="col-12">
+				<div class="row mt-4">
+					<div class="col-2">
+						<%= f.label :email_notif_subscribe, class: "switch" do %>
+						<%= f.check_box :email_notif_subscribe %>
+						<span class="slider round"></span>
+						<% end %>
+					</div>
+					<div class="col-1">
+
+					</div>
+					<div class="col-9 small">
+						<div class="">
+							<p class="mt-2">
+								Subscribe to Emailed Notifications
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="row mt-4">
+					<div class="col-2">
+						<label class="switch">
+							<input name="SpitballClub" type="checkbox">
+							<span class="slider round"></span>
+						</label>
+					</div>
+					<div class="col-1">
+					</div>
+					<div class="col-9 small">
+						<div class="">
+							<p class="mt-2">
+								Join SpitballClub<sup>TM</sup>
+							</p>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<div class="mx-auto form-group col-8 text-center d-block d-sm-none">
+		<%= f.submit class: "Spitballbutton" %>
+	</div>
+</div>
+<% end %>
