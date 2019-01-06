@@ -159,10 +159,7 @@ private
 	def all_wads
 		@all_wads = Wad.all
 	end
-<<<<<<< HEAD
-=======
 
->>>>>>> d5fafa50d14746ffb3861345090807fa720bf736
 	def session_info
 		@session_created_at = session[:created_at].to_i
 		@time_now = Time.now.to_i
