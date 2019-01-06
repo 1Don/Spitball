@@ -17,20 +17,22 @@
     <meta name="twitter:card" content="summary" />
     </head>
 
-  <body class="<%= params[:controller] %> <%= params[:action] %>" style="background-color: #FAFAFA;height:100%;">
-    <div class=""><%= render 'layouts/header' %></div>
-
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <div class="">
-          <%= message %>
-        </div>
-      </div>
-    <% end %>
-
-    <div class="container-fluid px-0" style="height:100%">
-      <%= content_for?(:sub_layout) ? yield(:sub_layout) : yield %>
+  <body class="<%= params[:controller] %> <%= params[:action] %>" style="background-color: #FAFAFA;">
+    <div class="">
+      <%= render 'layouts/header' %>
     </div>
+
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+      <div class="">
+        <%= message %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <%= content_for?(:sub_layout) ? yield(:sub_layout) : yield %>
+
 
   <%#  <%= debug(params) if Rails.env.development? %>
 

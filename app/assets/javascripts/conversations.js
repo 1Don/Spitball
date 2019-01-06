@@ -1,4 +1,11 @@
 $(document).on('turbolinks:load', function() {
+  function tweakHeight(){
+    var heightNumber = document.body.offsetHeight - document.getElementById('header').offsetHeight;
+    document.getElementById('convo-display-container').style.height = heightNumber.toString() + "px";
+    console.log("height tweaked");
+  }
+  if (document.getElementById('convo-display-container')){tweakHeight()};
+
   $(".accordion").hide()
   $("#convo-btn").click(function(){
     if ($("#convoz").is(":visible")){
@@ -19,7 +26,6 @@ $(document).on('turbolinks:load', function() {
 
   var convo_id = getUrlParam('conversation_id', 'Empty')
   if (convo_id != "Empty"){
-    console.log("works");
     $("#convo-" + convo_id)[0].click()
     $("#mini-convo-" + convo_id)[0].click()
     $(".conversation_id").val(convo_id)
