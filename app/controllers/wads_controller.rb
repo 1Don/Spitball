@@ -6,7 +6,6 @@ class WadsController < ApplicationController
 	before_action :require_login
 	before_action :session_info, only: [:index, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
 
-
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
 	 	@wad = Wad.new
