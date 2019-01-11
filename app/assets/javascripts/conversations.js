@@ -6,6 +6,7 @@ $(document).on('turbolinks:load', function() {
   }
   if (document.getElementById('convo-display-container')){tweakHeight()};
 
+
   $(".accordion").hide()
   $("#convo-btn").click(function(){
     if ($("#convoz").is(":visible")){
@@ -24,6 +25,10 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
+  $('.message_document').change(function(){
+    alert('Your file has been attached!')
+  });
+
   var convo_id = getUrlParam('conversation_id', 'Empty')
   if (convo_id != "Empty"){
     $("#convo-" + convo_id)[0].click()
@@ -32,10 +37,13 @@ $(document).on('turbolinks:load', function() {
     $('div[data-id=' + convo_id + ']').addClass(" current_convo")
   } else {
     if ($(".main-convo")[0]){
-      $(".main-convo")[0].click()
+      $(".main-convo")[0].click();
+      document.getElementById($('.main-convo')[0].getAttribute('value')).scrollTop = document.getElementById($('.main-convo')[0].getAttribute('value')).scrollHeight;
+      $(".main-convo")[0].addClass(" current_convo");
     }
     if ($(".little-convo")[0]){
       $(".little-convo")[0].click()
+      document.getElementById($('.main-convo').attr('value')).scrollTop = document.getElementById($('.main-convo').attr('value')).scrollHeight;
     }
   }
 

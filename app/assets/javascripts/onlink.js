@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', function(){
+  if (document.getElementById('defaultOpen')){
+    document.getElementById('defaultOpen').click();
+  }
   $('.link-field').hide()
   $('.external-link').on('click', function(){
     $('.link-field').slideToggle()

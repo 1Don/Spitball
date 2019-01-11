@@ -1,6 +1,6 @@
 <div id="message-view" class="">
 <% @conversations.each do |convo| %>
-  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 index-<%= convo.id %> convo-<%= convo.id %> bg-danger">
+  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 index-<%= convo.id %> convo-<%= convo.id %>">
     <% convo.messages.order("created_at").each do |message| %>
       <% if message.user != current_user %>
         <div class="small ml-1 w-100 row col-12">

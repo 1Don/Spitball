@@ -171,6 +171,14 @@ div.full-height{
 	position: absolute;
 	z-index: -1;
 }
+.messagefile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
 .topright{
 	border-radius: 10px;
 	background-color: rgb(78,228,187);

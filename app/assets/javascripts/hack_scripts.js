@@ -40,13 +40,18 @@ function openConversation(evt, convoId) {
 		// Show the current tab, and add an "active" class to the button that opened the tab
 		for (i = 0; i < document.getElementsByClassName("convo-" + convoId).length; i++){
 			document.getElementsByClassName("convo-" + convoId)[i].style.display = "block";
+			document.getElementsByClassName("convo-" + convoId)[i].scrollTop = document.getElementsByClassName("convo-" + convoId)[i].scrollHeight;
 		}
-
 		evt.currentTarget.className += " current_convo";
 
 
-	//	objDiv = document.getElementById(convoId);
-	//	objDiv.scrollTop = objDiv.scrollHeight;
+
+		/*
+    if (document.getElementsByClassName('message_document')){
+      for (var i = 0; i < document.getElementsByClassName('message_document').length; i++){
+        document.getElementsByClassName('message_document')[i].addEventListener('change', alertFileAdded)
+      }
+    } */
 
 		$('.conversation_id').val(convoId)
 }
