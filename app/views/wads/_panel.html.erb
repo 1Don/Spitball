@@ -56,9 +56,9 @@
 			</div>
 			<div class="col-md-10">
 				<div class="mx-auto">
-		        <h6 class="mt-3 d-none d-md-block wad-text-prob"><%= @wad.problem_state %></h6>
-		        <h6 class="mt-1 text-center d-block d-sm-none wad-text-prob"><%= @wad.problem_state %></h6>
-		        <p class="d-block d-sm-none wad-text-long"><%= simple_format(@wad.long_form).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %></p>
+		        <h6 class="mt-3 d-none d-md-block"><%= @wad.problem_state %></h6>
+		        <h6 class="mt-1 text-center d-block d-sm-none"><%= @wad.problem_state %></h6>
+		        <p class="d-block d-sm-none"><%= simple_format(@wad.long_form).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %></p>
 				</div>
 			</div>
 		</div>
