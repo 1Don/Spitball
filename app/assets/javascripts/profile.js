@@ -1,6 +1,6 @@
 function openContent(evt, contentName) {
     // Declare all variables
-    
+
 
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");

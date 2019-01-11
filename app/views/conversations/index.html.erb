@@ -16,18 +16,21 @@
       <% else %>
       <div class="ml-5 small w-100 row float-right">
         <div class="col-9">
-          <b class="float-right"><%= message.user.name %></b><br>
-          <span class="date-text small float-right"><%= message.created_at.strftime("%A at %I:%M %p") %></span><br>
+          <b class="float-right">
+            <%= message.user.name %>
+          </b><br>
+          <span class="date-text small float-right">
+            <%= message.created_at.strftime("%A at %I:%M %p") %>
+          </span><br>
           <span class="float-right">
             <%= message.body %>
           </span>
-
         </div>
         <div class="col-1 pl-0">
           <% unless !message.user.photo.attached? %><%= image_tag message.user.photo, class: "circle-larry" %><% end %>
         </div>
-      </div><br><br><br>
-      <% end %>
+      </div>
+      <% end %><br><br><br>
     <% end %>
     </div>
 <% end %>

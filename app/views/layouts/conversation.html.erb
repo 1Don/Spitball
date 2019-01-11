@@ -1,20 +1,19 @@
-<% content_for :sub_layout do %>
-
-<div class="row no-gutters" style="height: 100vh; background-color: white;">
-    <div class="col-md-2 border-right">
+<div class="">
+  <% content_for :sub_layout do %>
+  <div id="convo-display-container" class="row no-gutters" style=" background-color: white;">
+    <div class="col-md-2">
   	  <%= render "sidebar" %>
       <div id="docuz" class="accordion">
         <%= render "other_sidebar" %>
       </div>
     </div>
-  	<div class="col-md-8 col-xs-12">
+  	<div id="convo-transcript" class="col-md-8 col-xs-12 border-left border-right">
     	<%= yield %>
     </div>
-    <div class="col-md-2 border-left d-none d-sm-block">
+    <div class="col-md-2 d-none d-sm-block">
       <%= render 'other_sidebar' %>
     </div>
   </div>
-  
-<% end %>
-
+  <% end %>
+</div>
 <%= render template: 'layouts/application' %>
