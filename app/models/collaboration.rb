@@ -1,4 +1,4 @@
 class Collaboration < ApplicationRecord
 	belongs_to :wad
-	belongs_to :users
+	belongs_to :user
 end

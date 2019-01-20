@@ -11,8 +11,6 @@
         <% @notifications.each do |notif|  %>
           <% if notif.notifiable_type == "Wad" %>
             <li>New comment on your <%= notif.notifiable_type %></li>
-          <% elsif notif.notifiable_type == "FriendRequest" %>
-            <li>You've recieved a new friends request from <%= notif.actor.name %></li>
           <% end %>
         <% end %>
       </ul>

@@ -12,11 +12,6 @@ json.array! @notifications do |notification|
 			json.type "your #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
 		end
 		json.url discussion_answers_path(notification.notifiable, anchor: dom_id(notification.notifiable))
-	elsif notification.notifiable_type == "FriendRequest"
-		json.notifiable do
-			json.type "a #{notification.notifiable.class.to_s.underscore.humanize.downcase}"
-		end
-		json.url friend_requests_path
 	elsif notification.notifiable_type == "Comment"
 		json.notifiable do
 			json.type "your #{notification.notifiable.class.to_s.underscore.humanize.downcase}"

@@ -1,4 +1,5 @@
 class Wad < ApplicationRecord
+  has_one :collaboration
   has_one_attached :image
   acts_as_votable
   belongs_to :user

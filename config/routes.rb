@@ -47,12 +47,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions, only: [:create, :destroy]
 
-  #friendship routes
 
-  resources :friend_requests
-  get 'friendships/create'
-
-  get 'friendships/destroy'
 
   get 'sessions/new'
 
@@ -77,7 +72,9 @@ Rails.application.routes.draw do
   get    '/industry',     to:  'discussions#industry'
   get    '/other',     to:  'discussions#other'
 
-
+#Collaboration Routing
+  post '/collaboration_requests', to: 'collaboration_requests#create'
+  get '/collaboration_requests', to: 'collaboration_requests#index'
 
 
 #Wad Categories
@@ -104,12 +101,6 @@ Rails.application.routes.draw do
     resources :messages
    end
 
-  resources :friends
-  resources :notifications do
-    collection do
-      post :mark_as_read
-    end
-  end
 
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]

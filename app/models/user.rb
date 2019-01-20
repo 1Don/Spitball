@@ -1,12 +1,11 @@
 class User < ApplicationRecord
+  has_and_belongs_to_many :collaborations
+  has_many :collaborations
+  has_many :collaboration_requests
   has_many :flags, dependent: :destroy
   has_many :identities, dependent: :destroy
   has_many :conversations, dependent: :destroy
   has_many :messages
-  has_many :friend_requests, dependent: :destroy
-  has_many :pending_friends, through: :friend_requests, source: :friend
-  has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_one_attached :photo
   acts_as_voter
@@ -106,15 +105,10 @@ class User < ApplicationRecord
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
   end
-  
+
   #Controls the search feature
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
-  end
-
-  #gets rid of friend
-  def remove_friend(friend)
-    current_user.friends.destroy(friend)
   end
 
   def giveAvatar(image = false)
@@ -150,17 +144,6 @@ class User < ApplicationRecord
   def flagged?(object)
     object.flags.each do |flag|
       return flag.user == self ? true : false
-    end
-  end
-
-  #Sees if user has a friendship with another user
-  def friends_with?(user)
-    self.friends.all.each do |f|
-      if f == user
-        return true
-      else
-        return false
-      end
     end
   end
 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: MyString
+  giver: 1
+  doer: 1
+  deadline: MyString
+  notes: MyText
+  priority: MyString
+
+two:
+  task: MyString
+  giver: 1
+  doer: 1
+  deadline: MyString
+  notes: MyText
+  priority: MyString

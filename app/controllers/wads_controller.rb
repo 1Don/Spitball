@@ -30,7 +30,10 @@ class WadsController < ApplicationController
 		@wad = current_user.wads.build(wad_params)
 		if @wad.save
     		current_user.update_attributes(points: current_user.points + 50)
-   			 redirect_to @wad
+				@collaboration = current_user.collaborations.build(user_id: current_user.id, wad_id: @wad.id)
+				@collaboration.founders << current_user.id
+				@collaboration.save
+   			redirect_to @wad
 		else
 			flash[:error] = @wad.errors.full_messages
 			redirect_back(fallback_location: wads_path)

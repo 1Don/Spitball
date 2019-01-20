@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @friends = current_user.friends.all
     @user = User.find(params[:id])
     @wads = Wad.all
     @conversation = Conversation.between(current_user.id, @user.id)[0]

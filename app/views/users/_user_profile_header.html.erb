@@ -52,9 +52,6 @@
             <%= link_to fa_icon("envelope", class: "non-social-icons align-middle"), conversations_path(user_id: @user.id), :method => :post %><span class="small ml-2">message <%= @user.name %></span>
           <% end %>
         </div>
-        <div class="col-md-4 col-xs-12">
-          <%= link_to fa_icon('users', class: "non-social-icons align-middle"), friend_requests_path(:friend_id => @user), :method => :post %><span class="small ml-2"><%= @user.name %>'s friends</span>
-        </div>
         <% end %>
 
         <div class="col-md-12 col-xs-12">

@@ -131,6 +131,10 @@ div.full-height{
   letter-spacing: 1px;
 	height: 100%;
 	width: 95%;
+	&:hover{
+		background-color: rgb(255,145,42);
+		color: #ffffff;
+	}
 }
 .comment-btn-2{
 	font-size: 0.8rem;

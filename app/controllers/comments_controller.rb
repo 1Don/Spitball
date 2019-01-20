@@ -34,7 +34,9 @@ class CommentsController < ApplicationController
 	end
 
 	def index
+		@collaboration_request = CollaborationRequest.new
 		@wad = Wad.find(params[:wad_id])
+		@collaboration = @wad.collaboration
 		@comments = @wad.comments.all
 		@comment = Comment.new(parent_id: params[:parent_id], wad_id: params[:wad_id])
 		@replies = @comments.hash_tree

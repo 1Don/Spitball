@@ -2,11 +2,7 @@
 	<div class="card-header">
 		<div class="row">
 			<div class="col-4 small">
-				<% unless current_user.friends_with?(@wad.user) || current_user == @wad.user %>
-					Meet <%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %>!
-				<% else %>
 					<%= image_tag @wad.user.photo, class: "rounded-circle small-pic pr-0" %> <%= @wad.user.first_name + " " + @wad.user.last_name %>
-				<% end %>
 			</div>
 			<div class="col-3">
 
@@ -23,7 +19,7 @@
 			      <% end %>
 					</div>
 				</div>
-				<div class="col-1 dropdown dropright float-right mr-3">
+				<div class="col-1 dropdown dropleft float-right mr-3">
 			    <span class="pointer" id="shareDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			      <%= fa_icon('share-alt', class: "icon-text") %>
 			    </span>
@@ -72,12 +68,17 @@
 					<span id=""><%=link_to fa_icon('external-link', class: "pointer"), @wad.link, target: "_blank" %></span>
 				<% end %>
 			</div>
-			<div class="col-6">
+			<div class="col-4">
 				<% if current_user == @wad.user %>
 					<form method="POST" action="/wads/<%= @wad.id %>/add_link">
 						<span class="link-field"><input name="link" placeholder="<%= @wad.link %>" class="br-5"/><span data-toggle="tooltip" data-placement="right" title="Add a URL if you've started prototyping (press ENTER when finished)." class="question-marker-ps ml-1"><%= fa_icon('question') %></span></span>
 					</form>
 				<% end %>
+			</div>
+			<div class="col-2">
+				<button type="button" class="btn comment-btn-alt" data-toggle="modal" data-target="#applicationModal">
+  				Apply!
+				</button>
 			</div>
 			<div class="col-4 wad-like-<%= @wad.id %>" data-check="panel">
 				<% if !current_user.liked? @wad %>

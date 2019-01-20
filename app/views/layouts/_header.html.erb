@@ -43,10 +43,13 @@
           <div class="dropdown-menu dropdown-menu-right">
             <%= link_to "Profile", current_user, class: 'dropdown-item' %>
             <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
+            <div class="dropdown-divider">
+            </div>
             <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
-            <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
-              <div class="dropdown-divider">
-              </div>
+            <%= link_to "WorkSpace", "#", class: 'dropdown-item' %>
+            <%= link_to "FAQ", "#", class: 'dropdown-item' %>
+            <div class="dropdown-divider">
+            </div>
             <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
           </div>
       </li>
@@ -81,7 +84,7 @@
               <%= link_to "Profile", current_user, class: 'dropdown-item' %>
               <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
               <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
-              <%= link_to "Friend Requests", friend_requests_path, class: 'dropdown-item' %>
+              <%= link_to "WorkSpace", "#", class: 'dropdown-item' %>
                 <div class="dropdown-divider">
                 </div>
               <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
