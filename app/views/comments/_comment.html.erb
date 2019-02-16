@@ -68,12 +68,16 @@
 			<% comment.descendants.each do |c| %>
 				<div id="cmt-<%= c.id %>" class="small col-10 mx-auto row" onmouseover='$("#options-<%= c.id %>").show()' onmouseleave='$("#options-<%= c.id %>").hide()'>
 					<div class="col-10 mt-2 mb-1 small">
-						<% if !c.user.occupation || c.user.occupation == "" %><%= link_to c.user.name, user_path(c.user) %><%= " · "  + c.user.points.to_s %><% else %><%= link_to c.user.name , user_path(c.user) %><%= " · " + c.user.occupation %><%= " · "  + c.user.points.to_s %><% end %>
+						<% if !c.user.occupation || c.user.occupation == "" %>
+							<%= link_to c.user.name, user_path(c.user) %><%= " · "  + c.user.points.to_s %>
+						<% else %>
+							<%= link_to c.user.name , user_path(c.user) %><%= " · " + c.user.occupation %><%= " · "  + c.user.points.to_s %>
+						<% end %>
 						<div class="col-12 mt-1">
 							<% if c.parent == comment %>
-								<%= link_to c.content, user_path(c.user), class: "profile-link" %>
+								<%= link_to simple_format(c.content), user_path(c.user), class: "profile-link" %>
 							<% else %>
-								<%= link_to c.content, user_path(c.parent.user), class: "profile-link" %>
+								<%= link_to simple_format(c.content), user_path(c.parent.user), class: "profile-link" %>
 							<% end %>
 						</div>
 					</div>
@@ -91,6 +95,8 @@
 					  </div>
 					</div>
 				</div>
+
+
 				<div id="cmt-opts-<%= c.id %>" class="row small ml-2">
 					<div class="col-10 row small">
 						<div class="col-2">
