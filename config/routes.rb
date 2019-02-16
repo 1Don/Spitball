@@ -128,7 +128,7 @@ Rails.application.routes.draw do
         delete "unflag", to: "wads#unflag"
         put "like", to: "wads#upvote"
         put "dislike", to: "wads#downvote"
-        post '/collab', to: 'wads#join'
+        get '/collaboration', to: "collaborations#collaboration"
     end
       resources :comments do
         get "flag", to: "comments#flag"

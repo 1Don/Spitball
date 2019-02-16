@@ -1,3 +1,34 @@
+//Category Styles
+.techCategory{
+  background-color: rgb(249,234,192);
+  color: rgb(255,153,13);
+}
+.socialCategory{
+  background-color: #DDB9FF;
+  color: #A545FF;
+}
+.financeCategory{
+  background-color: rgb(209,255,214);
+  color: rgb(80,175,12);
+}
+.mediaCategory{
+  background-color: rgb(255,210,193);
+  color: rgb(235,14,43);
+}
+.gadgetCategory{
+  background-color: rgb(190,222,249);
+  color: rgb(47,129,209);
+}
+.eventCategory{
+  background-color: rgb(249,234,192);
+  color: rgb(255,153,13);
+}
+.avantCategory{
+  background-color: rgb(255,210,193);
+  color: rgb(235,14,43);
+}
+
+
 .wad-link {
   color: $body-color;
 
@@ -5,6 +36,13 @@
     text-decoration: none;
     color: $body-color;
   }
+}
+.likeBtn{
+  background-image: linear-gradient(to right, rgb(27,119,201), rgb(0,184,237));
+}
+.wad-ellipsis{
+  font-size: 25px;
+  color: #C1C1C1;
 }
 .orange-text{
   color: #f58524;

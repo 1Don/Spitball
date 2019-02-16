@@ -9,7 +9,7 @@
         <%= form_for @collaboration_request do |f|  %>
           <div class="">
             <div class="">
-              <%= f.text_area :body, class: "message_body text-center" %>
+              <%= f.text_area :body, class: "message_body" %>
               <%= f.hidden_field :collaboration_id, value: @collaboration.id %>
               <%= f.submit "Apply" %>
             </div>

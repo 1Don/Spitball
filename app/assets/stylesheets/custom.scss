@@ -80,8 +80,9 @@ p {
 /* header */
 
 #logo {
+  display: none;
   float: left;
-  height: 50%;
+  height: 30%;
   padding-top: 9px;
 }
 
@@ -553,5 +554,3 @@ h5 {
 .push-right{
   padding-left:50px
 }
-
-

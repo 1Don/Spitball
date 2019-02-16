@@ -1,9 +1,9 @@
 #search-form-field{
-  border-radius: 25px;
-  background-image: url();
+   padding: 10px;
+   width: 96%;
 }
 .bell{
-  font-size: 20px;
+  font-size: 25px;
 }
 .header-font{
   font-size: 12px;
@@ -13,4 +13,16 @@
   border-radius: 5px;
   border-color: white;
   max-height: 40px;
+}
+.logo{
+  width: 90%;
+}
+.createBtn{
+  background-color: rgb(255,166,76);
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  &:focus{
+    outline: none;
+  }
 }

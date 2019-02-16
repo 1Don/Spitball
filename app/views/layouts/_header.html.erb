@@ -1,43 +1,50 @@
-<nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #2570B1;">
-  <%= link_to image_tag("Spitball-Logo---Transparent-White-Logo-.png"), wads_path, class: 'ml-5 navbar-brand', id: "logo", data: { turbolinks: false } %>
-    <div class="d-none d-sm-block d-md-block">
+<nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: white;">
+<div class="row col-9">
+  <div class="col-1">
+
+  </div>
+  <div class="col-2 pl-0 ">
+      <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
+  </div>
+
+  <div class="d-none d-sm-block d-md-block col-9">
+    <div class="w-100 ml-4">
       <%= form_tag search_path, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :search, params[:search], placeholder: " Search...", class: 'form-control form-control-sm mr-sm-1', id: 'search-form-field' %>
+        <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm', id: 'search-form-field' %>
       <% end %>
     </div>
-
+  </div>
+</div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-    <span class=""><%= fa_icon('bars 2x', class: 'text-white') %></span>
+    <span class=""><%= fa_icon('bars 2x', class: 'text-black') %></span>
   </button>
 
-  <div id="navbar" class="collapse navbar-collapse" style="background-color: #2570B1;">
-
+  <div id="navbar" class="collapse navbar-collapse col-3" style="background-color: white;">
     <ul id="navbar-elements" class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
 
       <li class="nav-item dropdown d-block d-sm-none mt-3 d-inline">
         <%= form_tag search_path, method: :get, class: 'form-inline col-xs-9' do %>
-          <%= text_field_tag :search, params[:search], placeholder: " Search...", class: 'form-control form-control-sm mr-sm-1', id: 'search-form-field' %>
+          <%= text_field_tag :search, params[:search], placeholder: " Search...", class: 'form-control form-control-sm mr-sm-1 w-100', id: 'search-form-field' %>
         <% end %>
       </li>
-      <li class="nav-item dropdown d-none d-sm-block" data-behavior='notifications' data-behavior="notifications-link">
-        <a id="notificationsDD" href="#" class="nav-link mr-3" data-toggle="dropdown">
-           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle") %><sup id="" class="notification-indic"></sup></span>
+      <li class="nav-item d-none d-sm-block">
+        <button class="createBtn text-white small mt-2 pointer" type="button" name="button"  data-toggle='modal' data-target='#myModal'>
+          <%= fa_icon('plus') + " " %> CREATE
+        </button>
+      </li>
+      <li class="nav-item dropdown d-none d-sm-block col-3 pl-0 align-top" data-behavior='notifications' data-behavior="notifications-link">
+        <a id="notificationsDD" href="#" class="nav-link pr-2 pl-0" data-toggle="dropdown">
+           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %><sup id="" class="notification-indic"></sup></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
-          <div class="text-center profile-link border-top"><%= link_to "see all", "/notifications", onclick: "sendPost()" %></div>
+          <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
         </div>
       </li>
 
-      <li class="nav-item forum-border mr-3 d-none d-sm-block mt-2 ml-3">
-        <%= link_to discussions_path, class: 'nav-link', data: {turbolinks: false} do %>
-          <span class="header-font px-2 align-top"><%= fa_icon("comments", class: "mr-1 align-top") + " "%>Community Forum</span>
-        <% end %>
-      </li>
-
-      <li class="dropdown mr-5 mt-1 d-none d-sm-block">
+      <li class="dropdown mr-3 mt-1 d-none d-sm-block">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:30px;" %></span><% end %><span class="ml-1 header-font"><%= current_user.name %></span>
+            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %><span class="ml-1 header-font text-dark"><%= fa_icon('caret-down') %></span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right">
@@ -63,7 +70,7 @@
       <% if logged_in? %>
       <li class="d-block d-sm-none mt-3">
         <div class="row">
-          <div class="col-2 text-center text-white">
+          <div class="col-2 text-center">
             <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
                <span class="bell-size"><%= fa_icon("bell") %><sup id="" class="notification-indic"></sup></span>
             </a>

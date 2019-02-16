@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_050123) do
+ActiveRecord::Schema.define(version: 2019_01_30_211542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(version: 2019_01_19_050123) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "buckets", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "collaboration_id"
+  end
+
   create_table "collaboration_requests", force: :cascade do |t|
     t.text "body"
     t.integer "collaboration_id"
@@ -94,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_050123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
+    t.integer "task_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -194,6 +202,8 @@ ActiveRecord::Schema.define(version: 2019_01_19_050123) do
     t.string "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "collaboration_id"
+    t.integer "bucket_id"
   end
 
   create_table "users", force: :cascade do |t|
