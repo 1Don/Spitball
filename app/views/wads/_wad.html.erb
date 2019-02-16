@@ -1,4 +1,4 @@
-<div class="card wad-shadow mb-2"  style="border-radius: 10px; border-width: thin;">
+<div class="border-bottom"  style="border-width: thin;">
     <div class="card-header col-md-5 text-center d-block d-sm-none float-left">
       <% if wad.user.occupation.present? %>
           <span class="small mb-2"><%= link_to wad.user.name + " · " + wad.user.occupation, user_path(wad.user), class: "profile-link" %></span>
@@ -17,25 +17,87 @@
         </div>
       </div>
     </div>
-<%= link_to wad_comments_path(wad), class: "profile-link", data: { turbolinks: false } do %>
+
   <div class="row">
-    <div class="col-md-3 mx-auto pr-0">
-        <% if !wad.image.attached?  %>
-          <%= image_tag "#{wad.category}.png", class: 'img-fluid rounded mx-auto mt-4 pr-0 d-none d-md-block', style: "width: 100px;" %>
-          <%= image_tag "#{wad.category}.png", style: "width:200px;", class: 'img-fluid rounded mx-auto mt-2 mb-1 d-block d-sm-none' %>
-        <% else %>
-          <%= image_tag wad.image, class: 'img-fluid border border-light mt-4 d-none d-md-block mx-auto pr-0', style: "width: 100px; height: 100px; border-radius: 7px; border: solid grey;" %>
-          <%= image_tag wad.image, class: 'img-fluid border mx-auto border-light mt-4 d-block d-sm-none', style: "width: 300px; height: 300px; border-radius: 5px; border: solid grey;" %>
-        <% end %>
+    <div class="col-md-8 ml-md-3 py-3 pl-4">
+      <%= link_to wad_comments_path(wad), class: "profile-link", data: { turbolinks: false } do %>
+      <% case wad.category
+      when "Technology and Apps" %><span class="small mt-5 techCategory px-3 py-1 br-5">TECH & APPS</span>
+        <% when "Non-profit and Social Entrepreneurship" %><span class="small mt-5 socialCategory px-3 py-1 br-5">NON-PROFIT</span>
+        <% when "Finance and B2B" %><span class="small mt-5 financeCategory px-3 py-1 br-5">FINANCE</span>
+        <% when "Media and Entertainment" %><span class="small mt-5 mediaCategory px-3 py-1 br-5">MEDIA</span>
+        <% when "Hardware and Gadgets" %><span class="small mt-5 gadgetCategory px-3 py-1 br-5">GADGETS</span>
+        <% when "Events and Lifestyle" %><span class="small mt-5 eventCategory px-3 py-1 br-5">LIFESTYLE</span>
+        <% when "Avant-garde" %><span class="small mt-5 avantCategory px-3 py-1 br-5">AVANTE-GARDE</span>
+      <% end %>
+        <h6 class="mt-3 d-none d-md-block d-inline"><%= wad.problem_state %></h6>
+        <h6 class="mt-1 text-center d-block d-sm-none col-12"><%= wad.problem_state %></h6>
+        <p class="small d-none d-md-block"><%= wad.long_form.truncate(280) %></p>
+        <p class="text-center small d-block d-sm-none col-12"><%= wad.long_form.truncate(280) %></p>
+      <% end %>
     </div>
-    <div class="col-md-9 pl-0 mt-1">
-          <h6 class="mt-3 d-none d-md-block"><%= wad.problem_state %></h6>
-          <h6 class="mt-1 text-center d-block d-sm-none col-12"><%= wad.problem_state %></h6>
-          <p class="small d-none d-md-block"><%= wad.long_form.truncate(280) %></p>
-          <p class="text-center small d-block d-sm-none col-12"><%= wad.long_form.truncate(280) %></p>
+    <div class="col-md-3 ml-md-4">
+      <div class="float-right mt-3 w-100">
+        <div class="row">
+          <div class="col-8">
+
+          </div>
+          <div class="col-2 dropdown">
+            <span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= fa_icon('ellipsis-h', class: "wad-ellipsis pointer", id: "") %>
+            </span>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
+              <% if current_user == wad.user %>
+              <span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(wad), method: :delete, remote: true, class: "profile-link" %></span>
+              <% end %>
+              <% unless wad.user == current_user || wad.user.friends_with?(current_user) %>
+               <span class="dropdown-item profile-link"><%= link_to fa_icon("user-plus", class: "profile-link") + " Add friend!", friend_requests_path(:friend_id => wad.user), :method => :post, class: "profile-link" %></span>
+              <% end %>
+              <% unless wad.user == current_user %>
+                <% if Conversation.between(current_user.id, wad.user.id)[0] %>
+                   <span class="dropdown-item profile-link"><%= link_to fa_icon("envelope", class: "profile-link  ") + " Send message", conversations_path(conversation_id: Conversation.between(current_user.id, wad.user.id)[0]), class: "profile-link" %></span>
+                <% else %>
+                   <span class="dropdown-item profile-link"><%= link_to fa_icon("envelope", class: "profile-link") + " Send message", conversations_path(:user_id => wad.user.id), :method => :post, class: "profile-link" %></span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+            <div class="row">
+              <div class="col-2">
+                <%= fa_icon('thumbs-up') %>
+              </div>
+              <div class="col-8">
+                <div class="small float-right mt-1">
+                  <%= wad.get_upvotes.size %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 mb-3">
+          <%= link_to wad_comments_path(wad, wad.comments), class: "profile-link" do %>
+            <div class="border border-dark p-2 br-5 pointer">
+              <div class="row">
+                <div class="col-2">
+                  <%= fa_icon('comment') %>
+                </div>
+                <div class="col-8 small">
+                  <div class="small float-right mt-1">
+                    <%= wad.comments.count.to_s  + " " + "COMMENTS" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-<% end %>
+<!--
     <div class="d-none d-sm-block">
      <div class="row mb-2">
       <%= link_to wad_comments_path(wad), class: "profile-link col-6", data: { turbolinks: false } do %>
@@ -58,7 +120,6 @@
         <%# current way to display upvotes %>
         <div class="col-2 small">
           <% if current_user.voted_down_on?(wad) || !current_user.voted_for?(wad)%>
-            <span class="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "icon-pic"), like_wad_path(wad), method: :put, remote: true %></span>
           <% else %>
             <span class="wad-vote-span-<%= wad.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "png-icon"), dislike_wad_path(wad), method: :put, remote: true %></span>
           <% end %>
@@ -85,6 +146,7 @@
         </div>
       </div>
     </div>
+    -->
     <div class="d-block d-sm-none">
       <div class="row col-12 ml-4 mb-2">
         <div class="col-6 small">

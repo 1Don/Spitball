@@ -1,11 +1,23 @@
-<div class="col-12 mt-5">
-  <h5 class="pl-0 border-bottom col-12">In the News</h5>
-  <div class="small">
-    <div id="news" class="px-1 small">
-      <div class="mb-2">
-        <%= link_to image_tag('forbeslogo.png', class: "small-image") + " The Future Of Work Continues To Be Rewritten", "https://www.forbes.com/sites/cognitiveworld/2018/07/20/the-future-of-work-continues-to-be-rewritten/#2a307085131e", class: "profile-link", target: "_blank" %>
+<div class="mt-4 card border-0 shadow">
+  <div class="col-12 border-bottom mb-2">
+    <h5 class="px-2 py-3">Latest News</h5>
+  </div>
+  <div class="small p-2">
+    <div id="news" class="small">
+      <div class="mb-3">
+        <%= link_to "https://www.forbes.com/sites/cognitiveworld/2018/07/20/the-future-of-work-continues-to-be-rewritten/#2a307085131e", class: "profile-link", target: "_blank" do %>
+          <div class="mb-0">
+            <p><b>The Future Of Work Continues To Be Rewritten</b><br><i>Article by Hessie Jones</i></p>
+            <p>Currently, we live in this world of imbalance. Do you remember when business had a strong influence on how the markets behaved? We've seen...</p>
+          </div>
+          <div class="row mt-0">
+            <div class="col-6">
+              <%= image_tag('forbeslogo.png', class: "small-image") %> <i>forbes.com</i
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="mb-2">
+    <!--  <div class="mb-2">
         <%= link_to image_tag('tc-logo.jpg', class: "small-image") + " The new collaboration economy", "https://techcrunch.com/2016/08/25/the-new-collaboration-economy/", class: "profile-link", target: "_blank" %>
       </div>
       <div class="mb-2">
@@ -13,7 +25,7 @@
       </div>
       <div class="mb-2">
         <%= link_to image_tag('medium-logo.svg', class: "small-image") + " Don’t build a membership site; build membership chatbot instead", "https://medium.com/swlh/dont-build-a-membership-site-build-membership-chatbot-instead-26dd66a4dbf8", class: "profile-link", target: "_blank" %>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>

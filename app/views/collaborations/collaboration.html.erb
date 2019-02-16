@@ -1,0 +1,60 @@
+<div class="row mt-3">
+  <div class="col-2">
+
+  </div>
+  <div class="row col-10">
+    <div class="col-7">
+      <div class="border">
+        <button class="" type="button" name="button">Create Task</button>
+        <button type="button" name="button">Create Bucket</button>
+      </div>
+      <div class="card">
+        <div>
+          <% @collaboration.buckets.each do |bucket| %>
+            <h6><%= bucket.title %></h6>
+            <ol class="list-group" id="">
+            <% bucket.tasks.each do |t| %>
+              <li class="list-group-item br-5 mb-1 taskItem" style="" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="row">
+                  <div class="col-10">
+                    <%= t.notes %>
+                  </div>
+                  <div class="col-2">
+                    <%= image_tag current_user.photo, class: "rounded-circle w-25" %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+            </ol>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="card">
+        <div class="">
+          <h6 id="task-content">Task Title</h6>
+        </div>
+        <div class="row col-12">
+          <div class="col-3">
+            assignee
+          </div>
+          <div class="col-6">
+
+          </div>
+          <div class="col-2">
+            date
+          </div>
+        </div>
+        <div class="border-top">
+          <div class="">
+            <form class="" action="index.html" method="post">
+              <textarea name="name" class="w-100 h-100 br-5" style="resize:none;"></textarea>
+              <button class="btn btn-primary" type="button" name="button"></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
