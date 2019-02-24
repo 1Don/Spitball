@@ -1,8 +1,9 @@
 
 .comment-reply-form{
-	border: none;
+	background-color: rgb(250,251,253);
 	outline: none;
 	box-shadow:none !important;
+	border: 1px solid #FAFAFA;;
 }
 .img-circular{
 	display: block;
@@ -100,11 +101,6 @@ div.full-height{
 	font-size: 0.8rem;
   color: #ffffff;
   background-color: rgb(255,145,42);
-  display: inline-block;
-  letter-spacing: 1px;
-	height: 100%;
-	width: 95%;
-	opacity: 0.5;
 }
 .small-pic{
 	width: 2vw;
@@ -281,6 +277,12 @@ input:checked + .slider:before {
 .no-resize{
 	resize: none;
 }
-.comment-reply-btn{
-	height: 27px;
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }

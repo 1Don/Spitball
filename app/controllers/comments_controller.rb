@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 	 	unless @comment.save
 	  		@error = @comment.errors.full_messages
 	    	render 'new'
-   		end
+   	end
 
 	end
 

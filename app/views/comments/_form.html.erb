@@ -1,19 +1,24 @@
 <div class="mb-4 mt-3 reply-form">
 	<%= form_for([@wad, @comment], class: "", remote: true) do |f| %>
-		<div class="row comment-reply-form">
-		      <div class="col-8 ml-5">
-		        <%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{comment.id}", class: "border-bottom comment-reply-form form-control form-field-#{comment.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{comment.id}')" %>
+		<div class="">
+				<div class="row col-12">
+					<div class="col-1">
+
+					</div>
+		      <div class="col-11">
+		        <%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{comment.id}", class: "comment-reply-form form-control form-field-#{comment.id} autoExpand no-resize form-field border-0 shadow", onkeyup: "activeBox('#{comment.id}')" %>
 		        <%= f.hidden_field :wad_id %>
 		        <%= f.hidden_field :parent_id, class: "hid-field" %>
 		      </div>
-		      <div class="col-3 small">
-						<div class="">
-		        	<%= f.submit 'Comment', id: "comment-btn-#{comment.id}", class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer', onclick: '$(".cancel-btn").hide(); $(".comment-reply-btn").css("opacity", "0.5")' %>
-						</div>
-						<div class="text-muted pointer cancel-btn">
-							CANCEL
-						</div>
-		   	  </div>
+				</div>
+	      <div class="row small pr-0 col-12">
+					<div class="col-9">
+
+					</div>
+					<div class="col-3 pr-0">
+	        	<%= f.submit 'Comment', id: "comment-btn-#{comment.id}", class: 'mt-1 mb-1 comment-btn btn-sm pointer py-2 px-3', onclick: '$(".cancel-btn").hide(); $(".comment-reply-btn").css("opacity", "0.5")' %>
+					</div>
+	   	  </div>
 		</div>
 	<% end %>
 </div>

@@ -1,20 +1,22 @@
 <% content_for :sub_layout do %>
-  <div class="container col-12">
-    <div class="mx-auto">
-      <div class="row mt-md-5 mr-1">
-        <div class="col-md-2 d-none d-sm-block pl-0">
-          <%= render 'wads/sidebar' %>
+    <div class="col-12">
+      <div class="row col-11 mt-md-5 mx-auto">
+        <div class="col-md-2 d-none d-sm-block">
+          <%= link_to wads_path, class: "profile-link" do %><%= fa_icon('arrow-left') %> &nbsp; <span class="font-weight-bold">BACK TO WADS</span> <% end %>
         </div>
-        <div class="col-md-7 col-xs-12 card">
+        <div class="col-md-7 col-xs-12">
           <%= yield %>
         </div>
         <div class="col-md-3 col-xs-12">
-          <h6 class="text-center">Related Wads</h6>
-          <%= render "wads/side_wad" %>
+          <div class="card border-0 shadow-sm">
+            <div class="border-bottom mb-2">
+              <h6 class="text-center p-3 mt-1">Similar Wads</h6>
+            </div>
+              <%= render "wads/side_wad" %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 <% end %>
 
 <%= render template: 'layouts/application' %>

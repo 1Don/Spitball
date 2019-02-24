@@ -1,18 +1,13 @@
-<% @wads.each do |wad| %>
-	<%= link_to wad_comments_path(wad), class: "profile-link" do %>
-		<div class="small ml-2 mb-3" style="border-radius: 15px;">
-			<div class="row small">
-				<div class="col-3 px-0">
-          <% if !wad.image.attached?  %>
-            <%= image_tag "#{wad.category}.png", class: 'img-fluid side-wad-pic rounded' %>
-          <% else %>
-            <%= image_tag wad.image, class: 'img-fluid border border-light',  style: "width: 75px; height: 65px; border-radius: 5px; border: solid grey;" %>
-          <% end %>
-				</div>
-				<div class="col-9 mt-2">
-					<%= wad.long_form.truncate(100) %>
+<div class="">
+	<% @wads.each do |wad| %>
+		<%= link_to wad_comments_path(wad), class: "profile-link" do %>
+			<div class="small mb-3">
+				<div class="small">
+					<div class="col-9 mt-2">
+						<%= wad.long_form.truncate(100) %>
+					</div>
 				</div>
 			</div>
-		</div>
+		<% end %>
 	<% end %>
-<% end %>
+</div>
