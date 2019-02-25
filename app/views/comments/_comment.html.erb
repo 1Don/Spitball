@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<div class="col-9 small">
-			<div class="mb-1 mt-3" style="">
+			<div class="mb-1 mt-4" style="">
 					<h7 style="color: rgb(120,182,75);"><%= comment.user.first_name + " " + comment.user.last_name%></h7>
 			</div>
 			<div class="">
@@ -30,18 +30,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="border">
-				<div class="row col-12 p-2">
-					<div class="col-2">
-						<%= fa_icon('heart') %>
-					</div>
-					<div class="col-5 row">
-						<div class="">
+			<div class="row col-12 p-2 bg-danger border br-5">
+				<div class="col-2">
+					<%= image_tag('heart.svg') %>
+				</div>
+				<div class="col-5 row">
+					<div class="">
 
-						</div>
-						<div>
-							<%= comment.get_upvotes.size %>
-						</div>
+					</div>
+					<div>
+						<%= comment.get_upvotes.size %>
 					</div>
 				</div>
 			</div>
@@ -60,7 +58,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="cmt-form-<%= comment.id %>" class="text-center cmt-forms col-12">
+	<div id="cmt-form-<%= comment.id %>" class="text-center cmt-formsgottachangethisback col-12">
 		<%= render 'form', comment: comment %>
 	</div>
 	<div class="row ml-1">
@@ -73,15 +71,15 @@
 		</div>
 	</div>
 	<div class="row no-gutters">
-		<div id="reply-<%= comment.id %>" class="reply-hide-area col-12">
+		<div id="reply-<%= comment.id %>" class="reply-hide-areagottachangethisback col-12">
 			<div id="new-cmt-<%= comment.id %>" class="">
 
 			</div>
 
 			<% comment.descendants.each do |c| %>
 				<div id="cmt-<%= c.id %>" class="small col-10 mx-auto row" onmouseover='$("#options-<%= c.id %>").show()' onmouseleave='$("#options-<%= c.id %>").hide()'>
-					<div class="col-10 mt-2 mb-1">
-							<%= link_to user_path(c.user), class: "profile-link" do %> <%= image_tag c.user.photo, class: "rounded-circle px-0 childCommentPic" %> <span style="color: rgb(120,182,75);"><%= c.user.name %></span><% end %>
+					<div class="col-10 mb-1">
+							<%= link_to user_path(c.user), class: "profile-link" do %> <%= image_tag c.user.photo, class: "rounded-circle childCommentPic" %> <span style="color: rgb(120,182,75);"><%= c.user.name %></span><% end %>
 						<div class="col-12 mt-1 row">
 							<div class="col-1">
 
