@@ -1,0 +1,20 @@
+<div class="mt-4 card border-0 shadow">
+  <div class="col-12 border-bottom mb-2">
+    <h5 class="px-2 py-3">Community Forum</h5>
+  </div>
+  <div class="small px-3 pt-2">
+    <% @discussions.each do |d| %>
+      <div class="mb-4 col-12">
+        <div>
+          <%= image_tag d.user.photo, class: "rounded-circle discussion-pic" %> &nbsp; <%= d.user.first_name %> &nbsp; <span class="lightgrey-text">posted</span>
+        </div>
+        <div class="py-2">
+          <%= d.title %>
+        </div>
+        <div class="">
+          <%= link_to discussions_path, class: "profile-link" do %><%= image_tag('comments.svg') %> &nbsp; <span class="lightgrey-text"><%= d.answers.count.to_s + " " + "answers" %></span><% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

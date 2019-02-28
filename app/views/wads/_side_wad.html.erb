@@ -1,10 +1,23 @@
-<div class="">
+<div class="mt-2">
 	<% @wads.each do |wad| %>
-		<%= link_to wad_comments_path(wad), class: "profile-link" do %>
+		<%= link_to wad_comments_path(wad), class: "profile-link mb-2", data: { turbolinks: false } do %>
 			<div class="small mb-3">
 				<div class="small">
-					<div class="col-9 mt-2">
-						<%= wad.long_form.truncate(100) %>
+					<div class="col-12">
+						<div class="mb-1">
+							<% case wad.category
+									when "Technology and Apps" %><span class="small techCategory px-3 pt-2 pb-1">TECH & APPS</span>
+								<% when "Non-profit and Social Entrepreneurship" %><span class="small mt-5 socialCategory px-3 py-1 ">NON-PROFIT</span>
+								<% when "Finance and B2B" %><span class="small mt-5 financeCategory px-3 py-1 ">FINANCE</span>
+								<% when "Media and Entertainment" %><span class="small mt-5 mediaCategory px-3 py-1 ">MEDIA</span>
+								<% when "Hardware and Gadgets" %><span class="small mt-5 gadgetCategory px-3 py-1 ">GADGETS</span>
+								<% when "Events and Lifestyle" %><span class="small mt-5 eventCategory px-3 py-1 ">LIFESTYLE</span>
+								<% when "Avant-garde" %><span class="small mt-5 avantCategory px-3 py-1 ">AVANTE-GARDE</span>
+							<% end %>
+						</div>
+						<div class="">
+							<%= wad.long_form.truncate(100) %>
+						</div>
 					</div>
 				</div>
 			</div>

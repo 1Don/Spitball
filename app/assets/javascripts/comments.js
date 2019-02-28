@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  $('.options').hide()
   //$('.reply-hide-area').hide()
   $('.cmt-forms').hide()
 

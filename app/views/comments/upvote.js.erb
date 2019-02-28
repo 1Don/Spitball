@@ -1,2 +1,34 @@
-console.log("upvote script running")
-$('#vote-span-<%= @comment.id %>').html('<%= link_to image_tag("thumbs-up-orange.png", class: "sm-cmt-png-icon"), wad_comment_dislike_path(@wad, @comment), method: :put, remote: true, class: "profile-link" %><span class="small like-<%= @comment.id %>" id=""><%= @comment.get_upvotes.count %></span>')
+console.log("upvote script working")
+if ("<%= @comment.parent_id %>" == ""){
+  var comment_like_html = `
+  <%= link_to wad_comment_dislike_path(@comment.wad, @comment), class: "profile-link", method: :put, remote: true do%>
+    <div class="row p-2 ">
+      <div class="col-2 pl-1 mt-2">
+        <%= image_tag('heart.svg') %>
+      </div>
+      <div class="col-5 small mt-1">
+        <div>
+          <%= @comment.get_upvotes.size %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  `
+} else {
+  var comment_like_html = `
+  <%= link_to wad_comment_dislike_path(@comment.wad, @comment), class: "profile-link", method: :put, remote: true do%>
+    <div class="row p-2 ">
+      <div class="col-2 mt-1">
+        <%= image_tag('heart.svg') %>
+      </div>
+      <div class="col-5 small mt-1">
+        <div>
+          <%= @comment.get_upvotes.size %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  `
+}
+
+$('#comment-like-<%= @comment.id %>').html(comment_like_html)

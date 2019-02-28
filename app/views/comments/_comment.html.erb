@@ -1,5 +1,5 @@
 <div id="cmt-<%= comment.id %>" class="">
-	<div class="row no-gutter mx-auto" onmouseover='$("#options-<%= comment.id %>").show()' onmouseleave='$("#options-<%= comment.id %>").hide()'>
+	<div class="row no-gutter mx-auto">
 		<div onclick='execReply("<%= comment.id %>");' class="col-1 py-2">
 			<div class="mt-3">
 				<% unless !comment.user.photo.attached? %><%= link_to image_tag(comment.user.photo, class: "rounded-circle parentCommentPic"), user_path(comment.user) %><% else %><%= fa_icon('user 2x', class: "pr-0") %><% end %>
@@ -30,19 +30,42 @@
 					</div>
 				</div>
 			</div>
-			<div class="row col-12 p-2 bg-danger border br-5">
-				<div class="col-2">
-					<%= image_tag('heart.svg') %>
-				</div>
-				<div class="col-5 row">
-					<div class="">
 
-					</div>
-					<div>
-						<%= comment.get_upvotes.size %>
-					</div>
+			<div class="row">
+				<div class="col-1">
+
+				</div>
+				<div id="comment-like-<%= comment.id %>" class="col-8 border br-5 pointer">
+					<% if current_user.liked?(comment) %>
+						<%= link_to wad_comment_dislike_path(@wad, comment), class: "profile-link", method: :put, remote: true do%>
+							<div class="row p-2 ">
+								<div class="col-2 pl-1 mt-2">
+									<%= image_tag('heart.svg') %>
+								</div>
+								<div class="col-5 small mt-1">
+									<div>
+										<%= comment.get_upvotes.size %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					<% else %>
+						<%= link_to wad_comment_like_path(@wad, comment), class: "profile-link", method: :put, remote: true do%>
+							<div class="row p-2 ">
+								<div class="col-2 pl-1 mt-2">
+									<%= image_tag('heart-empty.svg') %>
+								</div>
+								<div class="col-5 small mt-1">
+									<div>
+										<%= comment.get_upvotes.size %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
+
 		</div>
 	</div>
 	<div class="row ml-1 mb-2">
@@ -58,7 +81,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="cmt-form-<%= comment.id %>" class="text-center cmt-formsgottachangethisback col-12">
+	<div id="cmt-form-<%= comment.id %>" class="text-center cmt-forms col-12">
 		<%= render 'form', comment: comment %>
 	</div>
 	<div class="row ml-1">
@@ -70,17 +93,17 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="row no-gutters">
-		<div id="reply-<%= comment.id %>" class="reply-hide-areagottachangethisback col-12">
+	<div class="row no-gutters mt-3">
+		<div id="reply-<%= comment.id %>" class="reply-hide-area col-12">
 			<div id="new-cmt-<%= comment.id %>" class="">
 
 			</div>
 
 			<% comment.descendants.each do |c| %>
-				<div id="cmt-<%= c.id %>" class="small col-10 mx-auto row" onmouseover='$("#options-<%= c.id %>").show()' onmouseleave='$("#options-<%= c.id %>").hide()'>
-					<div class="col-10 mb-1">
-							<%= link_to user_path(c.user), class: "profile-link" do %> <%= image_tag c.user.photo, class: "rounded-circle childCommentPic" %> <span style="color: rgb(120,182,75);"><%= c.user.name %></span><% end %>
-						<div class="col-12 mt-1 row">
+				<div id="cmt-<%= c.id %>" class="small col-11 mx-auto row">
+					<div class="col-10">
+							<%= link_to user_path(c.user), class: "profile-link" do %> <%= image_tag c.user.photo, class: "rounded-circle childCommentPic mt-2" %> <span style="color: rgb(120,182,75);"><%= c.user.name %></span><% end %>
+						<div class="col-12 row">
 							<div class="col-1">
 
 							</div>
@@ -93,10 +116,11 @@
 							</div>
 						</div>
 					</div>
-					<div id="options-<%= c.id %>" class="col-1 options mt-3">
-						<div class="col-1 dropdown pointer">
+
+					<div class="col-2 mt-2">
+						<div class="col-1 dropdown pointer ml-5 pl-0 ">
 					    <span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					      <%= fa_icon('ellipsis-v', class: "icon-text text-muted") %>
+					      <%= fa_icon('ellipsis-h', class: "icon-text text-muted") %>
 					    </span>
 					    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					      <span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, c), remote: true, class: "profile-link" %></span>
@@ -105,20 +129,49 @@
 					      <% end %>
 					    </div>
 					  </div>
+						<div id="comment-like-<%= c.id %>" class="px-0 border br-5 pointer">
+							<% if current_user.liked?(c) %>
+								<%= link_to wad_comment_dislike_path(@wad, c), class: "profile-link", method: :put, remote: true do%>
+									<div class="row p-2 ">
+										<div class="col-2 mt-1">
+											<%= image_tag('heart.svg') %>
+										</div>
+										<div class="col-5 small mt-1">
+											<div>
+												<%= c.get_upvotes.size %>
+											</div>
+										</div>
+									</div>
+								<% end %>
+							<% else %>
+								<%= link_to wad_comment_like_path(@wad, c), class: "profile-link", method: :put, remote: true do%>
+									<div class="row p-2">
+										<div class="col-2 mt-1">
+											<%= image_tag('heart-empty.svg') %>
+										</div>
+										<div class="col-5 small mt-1">
+											<div>
+												<%= c.get_upvotes.size %>
+											</div>
+										</div>
+									</div>
+								<% end %>
+							<% end %>
+						</div>
 					</div>
 				</div>
 
 
-				<div id="cmt-opts-<%= c.id %>" class="row small ml-2">
+				<div id="cmt-opts-<%= c.id %>" class="row small ml-2 mb-4">
 					<div class="col-10 row small">
 						<div class="col-2">
 						</div>
-						<% if current_user.voted_down_on?(c) || !current_user.voted_for?(c) %>
-							<div class="d-inline col-2" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-regular.svg', class: "sm-icon-pic"), wad_comment_like_path(c.wad, c), method: :put, remote: true, class: "profile-link" %><span class="small d-inline like-<%= c.id %>" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span></div>
-						<% else %>
-							<div class="col-2" id="vote-span-<%= c.id %>"><%= link_to image_tag('thumbs-up-orange.png', class: "sm-cmt-png-icon"), wad_comment_dislike_path(c.wad, c), method: :put, remote: true, class: "profile-link" %><span class="small like-<%= c.id %>" id="like-<%= c.id %>"><%= c.get_upvotes.count %></span></div>
-						<% end %>
-						<div class="profile-link child-cmt pointer col-3" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'>REPLY</div>
+						<div class="col-2 border-right">
+							<span class=""><%= c.descendants.count %> REPLIES</span>
+						</div>
+						<div class="profile-link child-cmt pointer col-3 ml-2" onclick='secondaryReply("<%= comment.id %>", "<%= c.id %>", "<%= c.user.name %>");'>
+							<span>REPLY</span>
+						</div>
 					</div>
 				</div>
 				<div id="cmt-form-<%= c.id %>" class="cmt-forms">
@@ -129,7 +182,7 @@
 
 								</div>
 									<div class="col-6">
-											<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "border-bottom comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
+											<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
 											<%= f.hidden_field :wad_id %>
 											<%= f.hidden_field :parent_id, class: "hid-field" %>
 									</div>

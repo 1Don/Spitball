@@ -8,6 +8,7 @@ class WadsController < ApplicationController
 
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
+		@discussions = Discussion.last(2)
 	 	@wad = Wad.new
 		@session_created_at =0 #session[:created_at].to_i
 		@time_now =100000 #Time.now.to_i

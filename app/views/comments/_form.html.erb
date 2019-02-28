@@ -6,7 +6,7 @@
 
 					</div>
 		      <div class="col-11">
-		        <%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{comment.id}", class: "comment-reply-form form-control form-field-#{comment.id} autoExpand no-resize form-field border-0 shadow", onkeyup: "activeBox('#{comment.id}')" %>
+		        <%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{comment.id}", class: "comment-reply-form form-control form-field-#{comment.id} autoExpand no-resize form-field", onkeyup: "activeBox('#{comment.id}')" %>
 		        <%= f.hidden_field :wad_id %>
 		        <%= f.hidden_field :parent_id, class: "hid-field" %>
 		      </div>
@@ -15,7 +15,7 @@
 					<div class="col-9">
 
 					</div>
-					<div class="col-3 pr-0">
+					<div class="col-3 pt-1">
 	        	<%= f.submit 'COMMENT', id: "comment-btn-#{comment.id}", class: 'mt-1 mb-1 createBtn text-white btn-sm pointer py-2 px-3', onclick: '$(".cancel-btn").hide(); $(".comment-reply-btn").css("opacity", "0.5")' %>
 					</div>
 	   	  </div>

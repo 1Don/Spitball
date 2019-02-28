@@ -3,16 +3,55 @@
     <h5 class="px-2 py-3">Latest News</h5>
   </div>
   <div class="small px-3 pt-2">
-    <div id="news" class="small">
-      <div class="mb-3">
+    <div class="small">
+      <div class="">
         <%= link_to "https://www.forbes.com/sites/cognitiveworld/2018/07/20/the-future-of-work-continues-to-be-rewritten/#2a307085131e", class: "profile-link", target: "_blank" do %>
           <div class="mb-0">
-            <p><b>The Future Of Work Continues To Be Rewritten</b><br><i>Article by Hessie Jones</i></p>
+            <div class="py-1"><b>The Future Of Work Continues To Be Rewritten</b><br><i>Article by Hessie Jones</i></div>
             <p>Currently, we live in this world of imbalance. Do you remember when business had a strong influence on how the markets behaved? We've seen...</p>
           </div>
-          <div class="row mt-0">
+          <div class="row mt-0 mb-4">
             <div class="col-6">
               <%= image_tag('forbeslogo.png', class: "small-image") %> <i>forbes.com</i
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="">
+        <%= link_to "https://techcrunch.com/2016/08/25/the-new-collaboration-economy/", class: "profile-link", target: "_blank" do %>
+          <div class="mb-0">
+            <div class="py-1"><b>The new collaboration economy</b><br><i>Article by Rod Drury</i></div>
+            <p>Technology is creating a new generation of companies that increasingly choose to collaborate as a coordinated ecosystem...</p>
+          </div>
+          <div class="row mt-0 mb-4">
+            <div class="col-6">
+              <%= image_tag('tc-logo.jpg', class: "small-image") %> <i>techcrunch.com</i
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="">
+        <%= link_to "https://medium.com/swlh/how-to-thrive-in-the-future-job-economy-2b783249004d", class: "profile-link", target: "_blank" do %>
+          <div class="mb-0">
+            <div class="py-1"><b>How to thrive in the future job economy</b><br><i>Article by Michael Burkhardt</i></div>
+            <p>An interview with futurist and New York Times bestselling author Martin Ford on job automation, a general basic income...</p>
+          </div>
+          <div class="row mt-0 mb-4">
+            <div class="col-6">
+              <%= image_tag('medium-logo.svg', class: "small-image") %> <i>medium.com</i
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="">
+        <%= link_to "https://medium.com/swlh/dont-build-a-membership-site-build-membership-chatbot-instead-26dd66a4dbf8", class: "profile-link", target: "_blank" do %>
+          <div class="mb-0">
+            <div class="py-1"><b>Don’t build a membership site; build membership chatbot instead</b><br><i>Article by Yury Smykalov</i></div>
+            <p>Subscription (or membership) is a very popular business model for online businesses today. The core idea...</p>
+          </div>
+          <div class="row mt-0 mb-4">
+            <div class="col-6">
+              <%= image_tag('medium-logo.svg', class: "small-image") %> <i>medium.com</i
             </div>
           </div>
         <% end %>

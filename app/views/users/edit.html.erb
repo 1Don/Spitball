@@ -1,6 +1,6 @@
 <% provide(:title, "Edit user") %>
 <%= render 'shared/error_messages' %>
-<%= form_for @user, html: { multipart: true } do |f| %>
+<%= form_for @user, html: { multipart: true }, class: "col-12" do |f| %>
 <div class="row">
 	<div class="col-md-7 col-xs-12">
 			<h5 class="col-12 border-bottom mb-4 mt-2 py-2">

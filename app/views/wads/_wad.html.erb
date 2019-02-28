@@ -54,29 +54,48 @@
             </div>
           </div>
         </div>
-        <div class="mt-4">
-          <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
-            <div class="row">
-              <div class="col-2">
-                <%= fa_icon('thumbs-up') %>
+        <div id="wad-like-<%= wad.id%>" class="mt-4">
+          <% if current_user.liked?(wad) %>
+            <%= link_to dislike_wad_path(wad), class: "profile-link", method: :put, remote: true do %>
+              <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+                <div class="row">
+                  <div class="col-2">
+                    <%= fa_icon('thumbs-down') %>
+                  </div>
+                  <div class="col-8">
+                    <div class="small float-right mt-1">
+                      <%= wad.get_upvotes.size %>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-8">
-                <div class="small float-right mt-1">
-                  <%= wad.get_upvotes.size %>
+            <% end %>
+          <% else %>
+            <%= link_to like_wad_path(wad), class: "profile-link", method: :put, remote: true do %>
+            <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+              <div class="row">
+                <div class="col-2">
+                  <%= fa_icon('thumbs-up') %>
+                </div>
+                <div class="col-8">
+                  <div class="small float-right mt-1">
+                    <%= wad.get_upvotes.size %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <% end %>
+          <% end %>
         </div>
         <div class="mt-3 mb-3">
           <%= link_to wad_comments_path(wad, wad.comments), class: "profile-link" do %>
             <div class="border border-dark p-2 br-5 pointer">
               <div class="row">
-                <div class="col-2">
-                  <%= fa_icon('comment') %>
+                <div class="col-2 ml-1">
+                  <%= image_tag('comment-heart.svg') %>
                 </div>
                 <div class="col-8 small">
-                  <div class="small  mt-1">
+                  <div class="small float-right mt-1">
                     <span class="small"><%= wad.comments.count.to_s  + " " + "COMMENTS" %></span>
                   </div>
                 </div>
