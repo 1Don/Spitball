@@ -59,7 +59,7 @@
                 <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
                   <div class="row">
                     <div class="col-2">
-                      <%= fa_icon('thumbs-down') %>
+                      <%= fa_icon('thumbs-up') %>
                     </div>
                     <div class="col-8">
                       <div class="small float-right mt-1">
@@ -71,7 +71,7 @@
               <% end %>
             <% else %>
               <%= link_to like_wad_path(wad), class: "profile-link", method: :put, remote: true do %>
-              <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+              <div class="border py-2 px-3 br-5 likeBtn-off pointer">
                 <div class="row">
                   <div class="col-2">
                     <%= fa_icon('thumbs-up') %>
@@ -111,7 +111,7 @@
                   <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
                     <div class="row">
                       <div class="col-2">
-                        <%= fa_icon('thumbs-down') %>
+                        <%= fa_icon('thumbs-up') %>
                       </div>
                       <div class="col-8">
                         <div class="small float-right mt-1">
@@ -123,7 +123,7 @@
                 <% end %>
               <% else %>
                 <%= link_to like_wad_path(wad), class: "profile-link", method: :put, remote: true do %>
-                <div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+                <div class="border py-2 px-3 br-5 likeBtn-off pointer">
                   <div class="row">
                     <div class="col-2">
                       <%= fa_icon('thumbs-up') %>

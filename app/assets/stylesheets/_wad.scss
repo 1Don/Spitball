@@ -40,6 +40,10 @@
 .likeBtn{
   background-image: linear-gradient(to right, rgb(27,119,201), rgb(0,184,237));
 }
+.likeBtn-off{
+  border-color: rgb(27,119,201);
+  color: rgb(27,119,201);
+}
 .wad-ellipsis{
   font-size: 25px;
   color: #C1C1C1;

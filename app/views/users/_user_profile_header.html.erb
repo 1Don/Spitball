@@ -29,17 +29,17 @@
           <div class="col-5 social-icons ml-2 row ">
             <div class="col-4">
               <% if @user.github.present? %>
-                 <%= link_to fa_icon('github-alt', class: "ml-2"), @user.github %> <div class="small"><%= @user.first_name %></div>
+                 <%= link_to fa_icon('github-alt', class: "ml-2"), @user.github, target: "_blank" %>
               <% end %>
             </div>
             <div class="col-4">
               <% if @user.linkedin.present? %>
-                  <%= link_to fa_icon('linkedin', class: "ml-2"), @user.linkedin %> <div class="small"><%= @user.first_name %></div>
+                  <%= link_to fa_icon('linkedin', class: "ml-2"), @user.linkedin, target: "_blank" %>
               <% end %>
             </div>
             <div class="col-4">
               <% if @user.twitter.present? %>
-                  <%= link_to fa_icon('twitter', class: "ml-2"), @user.twitter %> <div class="small"><%= @user.first_name %></div>
+                  <%= link_to fa_icon('twitter', class: "ml-2"), @user.twitter, target: "_blank" %>
               <% end %>
             </div>
           </div>

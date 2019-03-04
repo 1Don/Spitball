@@ -2,13 +2,13 @@ class WadsController < ApplicationController
 	layout 'wad', only: [:index, :popwads, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social]
 	before_action :find_wad, only: [:show, :edit, :update, :destroy, :upvote]
 	before_action :set_new_wad, only: [:tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
+	before_action :set_discussion, only: [:index, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
 	before_action :all_wads
 	before_action :require_login
 	before_action :session_info, only: [:index, :tech, :b2b, :media, :innovate, :gadgets, :lifestyle, :social, :popwads]
 
 	def index
 	 	@wads = Wad.all.order('created_at DESC')
-		@discussions = Discussion.last(2)
 	 	@wad = Wad.new
 		@session_created_at =0 #session[:created_at].to_i
 		@time_now =100000 #Time.now.to_i
@@ -151,6 +151,10 @@ class WadsController < ApplicationController
 
 
 private
+
+	def set_discussion
+		@discussions = Discussion.last(2)
+	end
 
 	def wad_params
 		params.require(:wad).permit(:problem_state, :long_form, :category, :image, :tags)

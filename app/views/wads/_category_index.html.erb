@@ -1,16 +1,6 @@
-<div class="">
-	<div class="row">
-
-		<%# The display for all wads%>
-		<div class="col-xs-12 col-md-12 mb-5">
-			<div class="col-md-12 col-xs-12  col-sm-12 align-items-center mb-2 row-flex">
-				<%= render 'category_nav' %>
-			</div>
-			<div class=" col-12">
-				<% @wads.each do |wad| %>
-					<%= render wad %>
-				<% end %>
-			</div>
-		</div>
-	</div>
+<div class="card mt-4 border-0 shadow col-xs-12">
+	<%= render 'category_nav' %>
+	<% @wads.each do |wad| %>
+		<%= render wad %>
+	<% end %>
 </div>

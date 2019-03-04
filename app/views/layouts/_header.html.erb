@@ -2,12 +2,12 @@
 <div class="col-12 d-none d-sm-block">
   <div class="row col-11 mx-auto px-0">
     <div class="col-md-2 pl-0">
-        <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
+      <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
     </div>
     <div class="d-none d-sm-block d-md-block col-md-7 px-0 mt-1">
-        <%= form_tag search_path, method: :get, class: 'form-inline' do %>
-          <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm search-form-field w-100', id: 'search-form-field' %>
-        <% end %>
+      <%= form_tag search_path, method: :get, class: 'form-inline' do %>
+        <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm search-form-field w-100', id: 'search-form-field' %>
+      <% end %>
     </div>
     <div class="col-3 row pr-0 ml-2">
       <div class="col-4 pl-0 pr-0">
@@ -49,13 +49,21 @@
 </div>
 <div class="d-block d-sm-none col-12">
   <div class="row col-12">
-    <div class="col-6 pl-0">
+    <div class="col-6 pl-0 mt-2">
       <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
     </div>
-    <div class="col-4">
+    <div class="col-2">
 
     </div>
-    <div class="col-2">
+    <div class="dropdown col-2 pl-0" data-behavior='notifications' data-behavior="notifications-link">
+      <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
+         <span class="bell-size"><%= fa_icon("bell", class: "bell  text-dark") %><sup id="" class="notification-indic"></sup></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
+        <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
+      </div>
+    </div>
+    <div class="col-2 pr-0 mt-2">
       <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar">
         <span class=""><%= fa_icon('bars 2x', class: 'text-black') %></span>
       </button>
@@ -63,7 +71,34 @@
   </div>
 </div>
   <div id="navbar" class="collapse navbar-collapse">
-    <div class="d-block d-sm-none mt-3">
+    <div class="d-block d-sm-none mt-3 mb-2">
+      <div class="row">
+        <div class="col-2 dropdown dropright mt-1">
+          <a href="#" class="" data-toggle="dropdown">
+            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= link_to "Profile", current_user, class: 'dropdown-item' %>
+            <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
+            <div class="dropdown-divider">
+            </div>
+            <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
+            <%= link_to "WorkSpace (coming soon)", "#", class: 'dropdown-item' %>
+            <%= link_to "Forum", discussions_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider">
+            </div>
+            <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
+          </div>
+        </div>
+        <div class="col-10">
+          <%= form_tag search_path, method: :get, class: 'form-inline' do %>
+            <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm search-form-field w-100', id: 'search-form-field' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="d-block d-sm-none">
       <% if logged_in? %>
         <% sidebar_elements.each do |element| %>
     			<%= link_to element[:link], class: "profile-link sidebar-text", data: { turbolinks: false } do %>
