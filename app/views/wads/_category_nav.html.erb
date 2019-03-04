@@ -1,20 +1,16 @@
 <div class="border-bottom">
-	<div class="">
+	<div class="py-4">
 		<% if @wads.first %>
 			<% if @wads.order('created_at DESC') == @all_wads.order('created_at DESC') %>
-				<span class="h4 d-none d-sm-block pl-4 py-3">
+				<span class="h4 pl-4 py-3">
 						Wads
 				</span>
-				<span class="h4 d-block d-sm-none">
-					Hello <%= current_user.first_name %>!
-				</span>
-
 			<% elsif controller_name == 'wads' && action_name == 'popwads' %>
-				<span class="h4 font-weight-light">
+				<span class="h4 font-weight-light pl-4 py-3">
 					<%= "Popular Wads" %>
 				</span>
 			<% else %>
-				<span class="h4 font-weight-light">
+				<span class="h4 font-weight-light pl-4 py-3">
 					<%= @wads.first.category %>
 				</span>
 			<% end %>
@@ -26,4 +22,3 @@
 		<% end %>
 	</div>
 </div>
-<%= render 'modal' %>

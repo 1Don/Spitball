@@ -1,10 +1,10 @@
 <% content_for :sub_layout do %>
-    <div class="col-12">
-      <div class="row col-11 mt-md-5 mx-auto">
+    <div class="col-md-12">
+      <div class="row col-md-11 mt-md-5 mx-auto">
         <div class="col-md-2 d-none d-sm-block">
           <%= link_to wads_path, class: "profile-link" do %><%= fa_icon('arrow-left') %> &nbsp; <span class="font-weight-bold">BACK TO WADS</span> <% end %>
         </div>
-        <div class="col-md-7 col-xs-12">
+        <div class="col-md-7 col-xs-12 mb-3">
           <%= yield %>
         </div>
         <div class="col-md-3 col-xs-12">

@@ -1,11 +1,11 @@
-<div class="border-bottom py-3">
+<div class="border-bottom py-3 mt-2">
 	CATEGORIES
 </div>
 <div class="">
 	<div class="">
 		<% sidebar_elements.each do |element| %>
 			<%= link_to element[:link], class: "profile-link sidebar-text", data: { turbolinks: false } do %>
-				<div id="<%= element %>" onclick="clickChild()" class="sidebar-div px-1 py-2 mb-2" data-turbolinks="false">
+				<div id="<%= element %>" class="sidebar-div px-1 py-2 mb-2" data-turbolinks="false">
 					 <span class="sidebarText"><%= element[:title] %></span>
 				</div>
 			<% end %>

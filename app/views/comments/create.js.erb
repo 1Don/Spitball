@@ -1,4 +1,5 @@
-if (<%= @comment.root.id %> == <%= @comment.id %>){
+console.log("<%= @comment.root.id %>" == "<%= @comment.id %>");
+if ("<%= @comment.root.id %>" == "<%= @comment.id %>"){
 	window.location.reload();
 } else {
 	if (document.getElementById("see-reply-<%= @comment.parent_id %>") == null){
@@ -18,7 +19,7 @@ if (<%= @comment.root.id %> == <%= @comment.id %>){
 					<% if @comment.parent == @comment %>
 						<%= link_to simple_format(@comment.content), user_path(@comment.user), class: "profile-link" %>
 					<% else %>
-						<%= link_to simple_format(@comment.content), user_path(@comment.parent.user), class: "profile-link" %>
+						<%= link_to simple_format(@comment.content), user_path(@comment.root.user), class: "profile-link" %>
 					<% end %>
 				</div>
 			</div>

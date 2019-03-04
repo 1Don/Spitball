@@ -1,6 +1,6 @@
 <% content_for :sub_layout do %>
-<div class="col-12">
-	<div class="row col-11 mx-auto">
+<div class="">
+	<div class="row col-md-11 col-xs-12 mx-auto">
 
 		<div class="col-md-2 d-none d-sm-block mt-5">
 			<%= render 'wads/sidebar' %>
@@ -8,12 +8,13 @@
 		<div class="col-md-7 col-xs-12 mt-3">
 			<%= yield %>
 		</div>
-		<div class="col-md-3 d-none d-sm-block mt-3">
+		<div class="col-md-3 d-none d-sm-block mt-4">
 			<%= render 'discussions/wad_panel' %>
 			<%= render 'wads/news&notifications' %>
 		</div>
 	</div>
 </div>
+<%= render 'modal' %>
 
 <%
 =begin %>

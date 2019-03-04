@@ -1,26 +1,80 @@
 <nav id="header" class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: white;">
-<div class="row col-9">
-  <div class="col-1">
+<div class="col-12 d-none d-sm-block">
+  <div class="row col-11 mx-auto px-0">
+    <div class="col-md-2 pl-0">
+        <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
+    </div>
+    <div class="d-none d-sm-block d-md-block col-md-7 px-0 mt-1">
+        <%= form_tag search_path, method: :get, class: 'form-inline' do %>
+          <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm search-form-field w-100', id: 'search-form-field' %>
+        <% end %>
+    </div>
+    <div class="col-3 row pr-0 ml-2">
+      <div class="col-4 pl-0 pr-0">
+        <button class="createBtn text-white small mt-2 pointer" type="button" name="button" data-toggle='modal' data-target='#myModal'>
+          <%= fa_icon('plus') + " " %> CREATE
+        </button>
+      </div>
+      <div class="dropdown col-2 px-4" data-behavior='notifications' data-behavior="notifications-link">
+        <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
+           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %><sup id="" class="notification-indic"></sup></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
+          <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
+        </div>
+      </div>
+      <div class="col-1">
 
-  </div>
-  <div class="col-2 pl-0 ">
-      <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
-  </div>
+      </div>
+      <div class="col-4 mt-2">
+        <a href="#" class="" data-toggle="dropdown">
+          <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %><span class="ml-1 header-font text-dark"><%= fa_icon('caret-down') %></span>
+        </a>
 
-  <div class="d-none d-sm-block d-md-block col-9">
-    <div class="w-100 ml-4">
-      <%= form_tag search_path, method: :get, class: 'form-inline' do %>
-        <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm', id: 'search-form-field' %>
-      <% end %>
+        <div class="dropdown-menu dropdown-menu-right">
+          <%= link_to "Profile", current_user, class: 'dropdown-item' %>
+          <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
+          <div class="dropdown-divider">
+          </div>
+          <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
+          <%= link_to "WorkSpace", "#", class: 'dropdown-item' %>
+          <%= link_to "FAQ", "#", class: 'dropdown-item' %>
+          <div class="dropdown-divider">
+          </div>
+          <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar">
-    <span class=""><%= fa_icon('bars 2x', class: 'text-black') %></span>
-  </button>
+<div class="d-block d-sm-none col-12">
+  <div class="row col-12">
+    <div class="col-6 pl-0">
+      <%= link_to image_tag("logo-black.png", class: "logo"), wads_path, id: "logo", data: { turbolinks: false } %>
+    </div>
+    <div class="col-4">
 
-  <div id="navbar" class="collapse navbar-collapse col-3" style="background-color: white;">
-    <ul id="navbar-elements" class="nav navbar-nav navbar-right ml-auto">
+    </div>
+    <div class="col-2">
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class=""><%= fa_icon('bars 2x', class: 'text-black') %></span>
+      </button>
+    </div>
+  </div>
+</div>
+  <div id="navbar" class="collapse navbar-collapse">
+    <div class="d-block d-sm-none mt-3">
+      <% if logged_in? %>
+        <% sidebar_elements.each do |element| %>
+    			<%= link_to element[:link], class: "profile-link sidebar-text", data: { turbolinks: false } do %>
+    				<div id="<%= element %>" class="sidebar-div px-1 py-2 mb-2" data-turbolinks="false">
+    					 <span class="sidebarText"><%= element[:title] %></span>
+    				</div>
+    			<% end %>
+    		<% end %>
+      <% end %>
+    </div>
+    <!--<ul id="navbar-elements" class="nav navbar-nav navbar-right ml-auto">
       <% if logged_in? %>
 
       <li class="nav-item dropdown d-block d-sm-none mt-3 d-inline">
@@ -28,12 +82,7 @@
           <%= text_field_tag :search, params[:search], placeholder: " Search...", class: 'form-control form-control-sm mr-sm-1 w-100', id: 'search-form-field' %>
         <% end %>
       </li>
-      <li class="nav-item d-none d-sm-block">
-        <button class="createBtn text-white small mt-2 pointer" type="button" name="button" data-toggle='modal' data-target='#myModal'>
-          <%= fa_icon('plus') + " " %> CREATE
-        </button>
-      </li>
-      <li class="nav-item dropdown d-none d-sm-block col-3 pl-0 align-top" data-behavior='notifications' data-behavior="notifications-link">
+      <li class="nav-item dropdown d-none d-sm-block col-3 pl-0 align-top">
         <a id="notificationsDD" href="#" class="nav-link pr-2 pl-0" data-toggle="dropdown">
            <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %><sup id="" class="notification-indic"></sup></span>
         </a>
@@ -111,6 +160,6 @@
           </li>
         <% end %>
       <% end %>
-    </ul>
+    </ul>-->
   </div>
 </nav>

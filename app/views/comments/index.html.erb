@@ -13,14 +13,23 @@
 						<%= f.hidden_field :wad_id %>
 						<%= f.text_area :content, id: "parent-cmt-field", class: 'form-control comment-text w-100 comment-reply-form autoExpand', placeholder: 'What are your thoughts on this idea?', onkeyup: "activeBox(0, true)" %>
 				</div>
-				<div class="row col-12 pr-0">
+				<div class="col-12 d-none d-sm-block">
+					<div class="row">
 					<div class="col-10">
 
 					</div>
-					<div class="col-2 pr-0 py-2 small">
-						<%= f.submit "COMMENT", id: "parent-cmt-bt", class: 'createBtn pointer br-5 w-100 text-white small', disable_with: 'Sending' %>
-						<% end %>
+					<div class="col-2 py-2 small">
+						<div class="">
+							<%= f.submit "COMMENT", id: "parent-cmt-bt", class: 'createBtn pointer br-5 w-100 text-white small', disable_with: 'Sending' %>
+						</div>
 					</div>
+					</div>
+				</div>
+				<div class="d-block d-sm-none col-12">
+					<%= f.submit class: 'createBtn pointer br-5 w-100 text-white small', disable_with: 'Sending' do %>
+						<%= fa_icon('comment') %>
+					<% end %>
+					<% end %>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-<div class="">
+<div class="row">
 	<!--<div class="card-header">
 		<div class="row">
 			<div class="col-4 small">
@@ -37,23 +37,94 @@
 			</div>
 		</div>
 	</div>-->
-	<% case @wad.category
-	when "Technology and Apps" %><span class="small techCategory px-3 pt-2 pb-1">TECH & APPS</span>
-		<% when "Non-profit and Social Entrepreneurship" %><span class="small mt-5 socialCategory px-3 py-1 ">NON-PROFIT</span>
-		<% when "Finance and B2B" %><span class="small mt-5 financeCategory px-3 py-1 ">FINANCE</span>
-		<% when "Media and Entertainment" %><span class="small mt-5 mediaCategory px-3 py-1 ">MEDIA</span>
-		<% when "Hardware and Gadgets" %><span class="small mt-5 gadgetCategory px-3 py-1 ">GADGETS</span>
-		<% when "Events and Lifestyle" %><span class="small mt-5 eventCategory px-3 py-1 ">LIFESTYLE</span>
-		<% when "Avant-garde" %><span class="small mt-5 avantCategory px-3 py-1 ">AVANTE-GARDE</span>
-	<% end %>
+	<div class="col-6">
+		<% case @wad.category
+		when "Technology and Apps" %><span class="small techCategory px-3 pt-2 pb-1">TECH & APPS</span>
+			<% when "Non-profit and Social Entrepreneurship" %><span class="small mt-5 socialCategory px-3 py-1 ">NON-PROFIT</span>
+			<% when "Finance and B2B" %><span class="small mt-5 financeCategory px-3 py-1 ">FINANCE</span>
+			<% when "Media and Entertainment" %><span class="small mt-5 mediaCategory px-3 py-1 ">MEDIA</span>
+			<% when "Hardware and Gadgets" %><span class="small mt-5 gadgetCategory px-3 py-1 ">GADGETS</span>
+			<% when "Events and Lifestyle" %><span class="small mt-5 eventCategory px-3 py-1 ">LIFESTYLE</span>
+			<% when "Avant-garde" %><span class="small mt-5 avantCategory px-3 py-1 ">AVANTE-GARDE</span>
+		<% end %>
+	</div>
+	<div class="col-3">
+
+	</div>
+	<div class="col-2">
+		<div class="col-2 dropdown mt-2">
+			<span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= fa_icon('ellipsis-h', class: "wad-ellipsis pointer", id: "") %>
+			</span>
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+				<span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
+				<% if current_user == @wad.user %>
+				<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(@wad), method: :delete, remote: true, class: "profile-link" %></span>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="border-bottom">
 	<div class="px-3 py-4 row">
 		<div class="col-7 mt-2">
-			<h6 class=" d-none d-md-block"><%= @wad.problem_state %></h6>
+			<h6 class=""><%= @wad.problem_state %></h6>
 		</div>
-		<div class="col-5 row">
-			<div id="wad-like-<%= @wad.id%>" class="col-7">
+		<div class="col-5 d-none d-sm-block">
+			<div class="row">
+				<div class="col-7 wad-like-<%= @wad.id%>">
+					<% if current_user.liked?(@wad) %>
+						<%= link_to dislike_wad_path(@wad), class: "profile-link", method: :put, remote: true do %>
+							<div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+								<div class="row">
+									<div class="col-2">
+										<%= fa_icon('thumbs-down') %>
+									</div>
+									<div class="col-8">
+										<div class="small float-right mt-1">
+											<%= @wad.get_upvotes.size %>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					<% else %>
+						<%= link_to like_wad_path(@wad), class: "profile-link", method: :put, remote: true do %>
+						<div class="border py-2 px-3 br-5 likeBtn text-white pointer">
+							<div class="row">
+								<div class="col-2">
+									<%= fa_icon('thumbs-up') %>
+								</div>
+								<div class="col-8">
+									<div class="small float-right mt-1">
+										<%= @wad.get_upvotes.size %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% end %>
+					<% end %>
+				</div>
+			<div class="col-1">
+
+			</div>
+			<div class="col-1">
+				<div class="col-2 dropdown float-right mt-2">
+					<span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<%= fa_icon('ellipsis-h', class: "wad-ellipsis pointer", id: "") %>
+					</span>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+						<span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
+						<% if current_user == @wad.user %>
+						<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(@wad), method: :delete, remote: true, class: "profile-link" %></span>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="col-5 d-block d-sm-none">
+			<div class="wad-like-<%= @wad.id%> mt-4">
 				<% if current_user.liked?(@wad) %>
 					<%= link_to dislike_wad_path(@wad), class: "profile-link", method: :put, remote: true do %>
 						<div class="border py-2 px-3 br-5 likeBtn text-white pointer">
@@ -86,27 +157,11 @@
 					<% end %>
 				<% end %>
 			</div>
-			<div class="col-1">
-
-			</div>
-			<div class="col-1">
-				<div class="col-2 dropdown float-right mt-2">
-					<span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<%= fa_icon('ellipsis-h', class: "wad-ellipsis pointer", id: "") %>
-					</span>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-						<span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(@wad), remote: true, class: "profile-link" %></span>
-						<% if current_user == @wad.user %>
-						<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer") + " Remove Wad", wad_path(@wad), method: :delete, remote: true, class: "profile-link" %></span>
-						<% end %>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-9 py-3">
+	<div class="col-md-9 py-3">
 		<div class="">
 			<div class="p-3">
 				<%= image_tag @wad.user.photo, class: "rounded-circle", style: "width:40px;" %> &nbsp; &nbsp; <%= @wad.user.first_name + " " + @wad.user.last_name %>
@@ -114,14 +169,13 @@
 			<div class="col-12 ">
 				<div class="small">
 					<div class="mx-auto">
-			        <h6 class="mt-1 text-center d-block d-sm-none"><%= @wad.problem_state %></h6>
-			        <p class="d-block d-sm-none"><%= simple_format(@wad.long_form).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %></p>
+			        <p class="d-block d-sm-none San-Fran space-text"><%= simple_format(@wad.long_form).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-3 border-left px-0">
+	<div class="col-md-3 border-left px-0 d-none d-sm-block">
 		<div class="pt-5 pb-1 col-12">
 			<div class="">
 				<p>
@@ -135,6 +189,22 @@
 		<div class="pl-0 col-12">
 			<div class="application-div py-4 pointer text-center">
 				<div class="" data-toggle='modal' data-target='#applicationModal'>
+					APPLY
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="d-block d-sm-none">
+	<div class="col-12">
+		<div class="row pr-0 border-top">
+			<div class="col-8">
+				<p class="mt-3 small">
+					This idea is pretty cool! I would like to help on this project
+				</p>
+			</div>
+			<div class="col-4 small border-left px-0 text-center">
+				<div class="application-div pointer py-5 px-0 small" data-toggle='modal' data-target='#applicationModal'>
 					APPLY
 				</div>
 			</div>

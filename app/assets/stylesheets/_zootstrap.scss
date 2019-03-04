@@ -1,3 +1,6 @@
+.space-text{
+	line-height: 150%;
+}
 .San-Fran{
 	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -290,4 +293,10 @@ input:checked + .slider:before {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.mobile-bg{
+		background-color: white;
+	}
 }
