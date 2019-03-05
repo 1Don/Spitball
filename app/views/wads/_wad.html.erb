@@ -29,10 +29,12 @@
         <% when "Events and Lifestyle" %><span class="small mt-5 eventCategory px-3 py-1 br-5">LIFESTYLE</span>
         <% when "Avant-garde" %><span class="small mt-5 avantCategory px-3 py-1 br-5">AVANTE-GARDE</span>
       <% end %>
+      <%= link_to wad_comments_path(wad, wad.comments), class: "profile-link" do %>
         <h6 class="mt-3 d-none d-md-block"><%= wad.problem_state %></h6>
         <div class="mt-1 d-block d-sm-none col-12 py-2"><%= wad.problem_state %></div>
         <p class="small d-none d-md-block"><%= wad.long_form.truncate(280) %></p>
         <p class="small d-block d-sm-none col-12"><%= wad.long_form.truncate(280) %></p>
+        <% end %>
     </div>
     <div class="col-md-3 ml-md-4">
       <div class="float-right mt-3 w-100">
@@ -43,7 +45,7 @@
           <div class="col-2 dropdown d-none d-md-block">
             <span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= fa_icon('ellipsis-h', class: "wad-ellipsis pointer", id: "") %>
-            </span>
+            </span> 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
               <% if current_user == wad.user %>
