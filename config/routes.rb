@@ -47,7 +47,8 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions, only: [:create, :destroy]
 
-
+  get '/notifications', to: 'notifications#index'
+  post '/notifications/mark_as_read', to:'notifications#mark_as_read'
 
   get 'sessions/new'
 

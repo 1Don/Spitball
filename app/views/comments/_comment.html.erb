@@ -126,7 +126,7 @@
 			<div class="d-none d-sm-block">
 				<div class="row">
 					<div class="col-2 border-right small">
-						<span class="small pointer" onclick='seeReply("<%= comment.id %>");'><%= comment.descendants.count %> REPLIES</span>
+						<span class="small pointer reply-count" onclick='seeReply("<%= comment.id %>");'><%= comment.descendants.count %> REPLIES</span>
 					</div>
 
 					<div class="col-4 pointer small" id="btn-hide" onclick='execReply("<%= comment.id %>")'>
@@ -137,7 +137,7 @@
 			<div class="d-block d-sm-none">
 				<div class="row">
 					<div class="col-4 border-right small">
-						<span class="small pointer" onclick='seeReply("<%= comment.id %>");'><%= comment.descendants.count %> REPLIES</span>
+						<span class="small pointer reply-count" onclick='seeReply("<%= comment.id %>");'><%= comment.descendants.count %> REPLIES</span>
 					</div>
 
 					<div class="col-6 pointer small" id="btn-hide" onclick='execReply("<%= comment.id %>")'>
@@ -198,10 +198,10 @@
 									</div>
 									<div class="col-1">
 										<div class="col-1 dropdown pointer pl-0 mt-1">
-											<span class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="" id="smalldropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<%= fa_icon('ellipsis-v', class: "icon-text text-muted") %>
 											</span>
-											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<div class="dropdown-menu mr-5" aria-labelledby="smalldropdownMenuButton">
 												<span class="dropdown-item"><%= link_to fa_icon('flag', class: " profile-link pointer") + "  Flag content", wad_comment_flag_path(@wad, c), remote: true, class: "profile-link" %></span>
 												<% if current_user == c.user %>
 													<span class="dropdown-item profile-link"><%= link_to fa_icon("trash", class: "profile-link pointer"), wad_comment_path(@wad, c), method: :delete, remote: true %><span class="profile-link"> Remove Comment</span>
@@ -315,14 +315,14 @@
 								<div class="col-2">
 
 								</div>
-									<div class="col-6">
-											<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
-											<%= f.hidden_field :wad_id %>
-											<%= f.hidden_field :parent_id, class: "hid-field" %>
-									</div>
-									<div class="col-3">
-										<%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer w-50', onclick: "$('#cmt-form-#{c.id}').hide()" %>
-									</div>
+								<div class="col-6">
+										<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
+										<%= f.hidden_field :wad_id %>
+										<%= f.hidden_field :parent_id, class: "hid-field" %>
+								</div>
+								<div class="col-3">
+									<%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer w-50', onclick: "$('#cmt-form-#{c.id}').hide()" %>
+								</div>
 							</div>
 						<% end %>
 					</div>

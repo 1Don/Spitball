@@ -17,7 +17,7 @@
       </div>
       <div class="dropdown col-2 pl-0 ml-3" data-behavior='notifications' data-behavior="notifications-link">
         <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
-           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %><sup id="" class="notification-indic"></sup></span>
+           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %></span><sup id="" class="notification-indic text-dark tiny-icon"></sup>
         </a>
         <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
           <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
@@ -58,7 +58,7 @@
     </div>
     <div class="dropdown col-2 pl-0" data-behavior='notifications' data-behavior="notifications-link">
       <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
-         <span class="bell-size"><%= fa_icon("bell", class: "bell  text-dark") %><sup id="" class="notification-indic"></sup></span>
+         <span class="bell-size"><%= fa_icon("bell", class: "bell  text-dark") %></span><sup id="" class="notification-indic text-dark tiny-icon"></sup>
       </a>
       <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
         <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
