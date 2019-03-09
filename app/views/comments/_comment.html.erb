@@ -7,12 +7,12 @@
 		</div>
 		<div class="col-md-9 col-xs-12 small">
 			<div class="mb-1 mt-4 row px-0 d-none d-sm-block">
-				<h7 style="color: rgb(120,182,75);"><%= comment.user.first_name + " " + comment.user.last_name%></h7>
+				<%= link_to user_path(comment.user), class: "profile-link" do %><h7 style="color: rgb(120,182,75);"><%= comment.user.first_name + " " + comment.user.last_name%></h7><% end %>
 			</div>
 			<div class="d-block d-sm-none">
 				<div class="mb-1 mt-4 row px-0 py-2">
 					<div class="col-6 mt-1">
-						<h7 style="color: rgb(120,182,75);"><%= comment.user.first_name + " " + comment.user.last_name%></h7>
+						<%= link_to user_path(comment.user), class: "profile-link" do %><h7 style="color: rgb(120,182,75);"><%= comment.user.first_name + " " + comment.user.last_name%></h7><% end %>
 					</div>
 					<div class="col-6 row">
 						<div class="col-7 border br-5 pointer comment-like-<%= comment.id %>">
@@ -45,7 +45,7 @@
 							<% end %>
 						</div>
 						<div class="col-3">
-							<div class="col-1 dropdown px-0 mt-1">
+							<div class="col-1 dropdown mt-1">
 								<span class="pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<%= fa_icon('ellipsis-v', class: "icon-text text-muted") %>
 								</span>
@@ -163,7 +163,7 @@
 							<div class="d-block d-sm-none">
 								<div class="row">
 									<div class="col-6">
-										<span class="" style="color: rgb(120,182,75);"><%= c.user.first_name + " " + c.user.last_name %></span>
+										<%= link_to user_path(c.user), class: "profile-link" do %><span class="" style="color: rgb(120,182,75);"><%= c.user.first_name + " " + c.user.last_name %></span><% end %>
 									</div>
 									<div class="col-4">
 										<div class="px-0 border br-5 pointer comment-like-<%= c.id %>">
@@ -311,17 +311,31 @@
 				<div id="cmt-form-<%= c.id %>" class="cmt-forms">
 					<div class="">
 						<%= form_for([@wad, @comment], class: "", remote: true) do |f| %>
-							<div class="row">
-								<div class="col-2">
+							<div class="d-none d-sm-block">
+								<div class="row">
+									<div class="col-2">
 
+									</div>
+									<div class="col-6">
+											<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
+											<%= f.hidden_field :wad_id %>
+											<%= f.hidden_field :parent_id, class: "hid-field" %>
+									</div>
+									<div class="col-3">
+										<%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer w-50', onclick: "$('#cmt-form-#{c.id}').hide()" %>
+									</div>
 								</div>
-								<div class="col-6">
-										<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
-										<%= f.hidden_field :wad_id %>
-										<%= f.hidden_field :parent_id, class: "hid-field" %>
-								</div>
-								<div class="col-3">
-									<%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer w-50', onclick: "$('#cmt-form-#{c.id}').hide()" %>
+							</div>
+							<div class="d-block d-sm-none">
+								<div class="col-10 mx-auto">
+									<div class="">
+											<%= f.text_area :content, placeholder: "Leave a comment...", id: "form-field-#{c.id}", class: "comment-reply-form form-control form-field-#{c.id} autoExpand no-resize form-field", rows: "1", onkeyup: "activeBox('#{c.id}')" %>
+											<%= f.hidden_field :wad_id %>
+											<%= f.hidden_field :parent_id, class: "hid-field" %>
+									</div>
+									<div class="">
+										<%= f.submit 'Comment', class: 'mt-1 mb-1 comment-btn btn-sm comment-reply-btn pointer w-50', onclick: "$('#cmt-form-#{c.id}').hide()" %>
+									</div>
 								</div>
 							</div>
 						<% end %>

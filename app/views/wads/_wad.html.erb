@@ -45,7 +45,7 @@
           <div class="col-2 dropdown d-none d-md-block">
             <span id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= fa_icon('ellipsis-h', class: "wad-ellipsis pointer", id: "") %>
-            </span> 
+            </span>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <span class="dropdown-item profile-link"><%= link_to fa_icon('flag', class: " profile-link pointer") + " Flag Wad", flag_wad_path(wad), remote: true, class: "profile-link" %></span>
               <% if current_user == wad.user %>
@@ -142,14 +142,14 @@
             </div>
             <div class="col-6">
               <%= link_to wad_comments_path(wad, wad.comments), class: "profile-link" do %>
-                <div class="border border-dark p-2 br-5 pointer small">
-                  <div class="row small">
+                <div class="border border-dark br-5 p-1 pointer small">
+                  <div class="row small py-2">
                     <div class="col-2 ml-1">
                       <%= image_tag('comment-heart.svg') %>
                     </div>
                     <div class="col-8 small">
                       <div class="small float-right mt-1">
-                        <span class="small"><%= wad.comments.count.to_s  + " " + "COMMENTS" %></span>
+                        <span class=""><%= wad.comments.count.to_s  + " " + "COMMENTS" %></span>
                       </div>
                     </div>
                   </div>

@@ -7,6 +7,9 @@
 		</div>
 		<div class="col-md-7 col-xs-12 mt-3">
 			<%= yield %>
+			<div class="pop bottom-right circular-btn pointer text-center d-block d-sm-none mr-2 mb-3" data-toggle='modal' data-target='#myModal'>
+				<%= fa_icon('plus 2x', class: "mt-3") %>
+			</div>
 		</div>
 		<div class="col-md-3 d-none d-sm-block mt-4">
 			<%= render 'discussions/wad_panel' %>
@@ -14,11 +17,7 @@
 		</div>
 	</div>
 </div>
-<div class="pop bottom-right circular-btn mr-4 mb-3 pointer d-block d-sm-none" data-toggle='modal' data-target='#myModal'>
-	<div class="text-center mt-4">
-		<%= fa_icon('plus 2x') %>
-	</div>
-</div>
+
 <%= render 'modal' %>
 
 <%

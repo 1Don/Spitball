@@ -5,6 +5,9 @@
 	</div>
 	<div class="col-md-9 col-xs-12">
 		<%= yield %>
+		<div class="pop bottom-right circular-btn pointer text-center d-block d-sm-none mr-2 mb-3" data-toggle='modal' data-target='#myModal'>
+			<%= fa_icon('plus 2x', class: "mt-3") %>
+		</div>
 	</div>
 <!--	<div class="col-md-2 mt-5 d-none d-sm-block">
 		<%#= render 'discussions/news&notifications' %>
