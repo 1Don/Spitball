@@ -1,20 +1,49 @@
 <div id="message-view" class="">
 <% @conversations.each do |convo| %>
-  <div id="<%= convo.id %>" class="tabcontent conversations-message w-100 index-<%= convo.id %> convo-<%= convo.id %>">
+  <div id="<%= convo.id %>" class="tabcontent conversations-message col-12 index-<%= convo.id %> convo-<%= convo.id %> pt-4 pb-2">
     <% convo.messages.order("created_at").each do |message| %>
       <% if message.user != current_user %>
-        <div class="small ml-1 w-100 row col-12">
-          <div class="col-1 mr-4">
-            <% unless !message.user.photo.attached? %><%= image_tag message.user.photo, class: "circle-larry" %><% end %>
-          </div>
-          <div class="col-9">
-            <b><%= message.user.name %></b><br>
-            <span class="date-text small"><%= message.created_at.strftime("%A at %I:%M %p") %></span><br>
-            <%= message.body %>
-          </div>
-        </div><br>
+        <div class="d-none d-sm-block">
+          <div class="small w-100 row col-12 float-left">
+            <div class="col-1">
+              <% unless !message.user.photo.attached? %><%= image_tag message.user.photo, class: "circle-larry" %><% end %>
+            </div>
+            <div class="col-9">
+              <b class="float-left">
+                <%= message.user.name %>
+              </b><br>
+              <span class="date-text small float-left">
+                <%= message.created_at.strftime("%A at %I:%M %p") %>
+              </span><br>
+              <span class="float-left">
+                <%= message.body %>
+              </span>
+            </div>
+          </div><br>
+        </div>
+        <div class="d-block d-sm-none">
+          <div class="small w-100 row col-12 float-left">
+            <div class="col-1">
+              <% unless !message.user.photo.attached? %><%= image_tag message.user.photo, class: "circle-larry" %><% end %>
+            </div>
+            <div class="col-9 ml-4">
+              <b class="float-left">
+                <%= message.user.name %>
+              </b><br>
+              <span class="date-text small float-left">
+                <%= message.created_at.strftime("%A at %I:%M %p") %>
+              </span><br>
+              <span class="float-left">
+                <%= message.body %>
+              </span>
+            </div>
+          </div><br>
+        </div>
       <% else %>
-      <div class="ml-5 small w-100 row float-right">
+      <div class="small w-100 row float-right">
+        <div class="col-2">
+
+        </div>
         <div class="col-9">
           <b class="float-right">
             <%= message.user.name %>
@@ -26,7 +55,7 @@
             <%= message.body %>
           </span>
         </div>
-        <div class="col-1 pl-0">
+        <div class="col-1">
           <% unless !message.user.photo.attached? %><%= image_tag message.user.photo, class: "circle-larry" %><% end %>
         </div>
       </div>

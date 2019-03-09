@@ -1,11 +1,20 @@
 new_message = `
-<div class="ml-3 mt-1 small w-100 row">
-  <div class="col-9 float-right">
-    <b class="float-right"><%= @message.user.name %></b><br>
-    <span class="date-text small float-right"><%= @message.created_at.strftime("%A at %I:%M %p") %></span><br>
-    <span class="float-right"><%= @message.body %></span>
+<div class="ml-5 small w-100 row float-right mb-2">
+  <div class="col-2">
+
   </div>
-  <div class="col-1 pl-0">
+  <div class="col-9">
+    <b class="float-right">
+      <%= @message.user.name %>
+    </b><br>
+    <span class="date-text small float-right">
+      <%= @message.created_at.strftime("%A at %I:%M %p") %>
+    </span><br>
+    <span class="float-right">
+      <%= @message.body %>
+    </span>
+  </div>
+  <div class="col-1">
     <% unless !@message.user.photo.attached? %><%= image_tag @message.user.photo, class: "circle-larry" %><% end %>
   </div>
 </div>
