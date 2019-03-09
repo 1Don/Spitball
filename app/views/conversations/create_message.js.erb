@@ -1,5 +1,5 @@
 new_message = `
-<div class="ml-5 small w-100 row float-right mb-2">
+<div class="small w-100 row float-right mb-2">
   <div class="col-2">
 
   </div>
@@ -14,7 +14,7 @@ new_message = `
       <%= @message.body %>
     </span>
   </div>
-  <div class="col-1">
+  <div class="col-1 pl-0">
     <% unless !@message.user.photo.attached? %><%= image_tag @message.user.photo, class: "circle-larry" %><% end %>
   </div>
 </div>
