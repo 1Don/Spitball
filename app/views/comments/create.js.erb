@@ -68,7 +68,8 @@ if ("<%= @comment.root.id %>" == "<%= @comment.id %>"){
 			</div>
 		</div>
 	</div>`;
-	console.log("workig");
+	console.log("working");
+	$('.reply-count').html(<%= @comment.root.descendants.count %> + " " + "REPLIES");
 	$('#new-cmt-<%= @comment.root.id %>').prepend(nameAndContent);
 	$('.form-field').val("");
 	$('.hid-field').attr('value', "<%= @comment.root.id %>");

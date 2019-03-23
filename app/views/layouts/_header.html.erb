@@ -17,7 +17,7 @@
       </div>
       <div class="dropdown col-2 pl-0 ml-3" data-behavior='notifications' data-behavior="notifications-link">
         <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
-           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %><sup id="" class="notification-indic"></sup></span>
+           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %></span><sup id="" class="notification-indic text-dark tiny-icon"></sup>
         </a>
         <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
           <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
@@ -27,21 +27,23 @@
 
       </div>
       <div class="col-4 mt-2 pl-0">
-        <a href="#" class="" data-toggle="dropdown">
-          <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %><span class="ml-1 header-font text-dark"><%= fa_icon('caret-down') %></span>
-        </a>
+        <% if logged_in? %>
+          <a href="#" class="" data-toggle="dropdown">
+            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %><span class="ml-1 header-font text-dark"><%= fa_icon('caret-down') %></span>
+          </a>
 
-        <div class="dropdown-menu dropdown-menu-right">
-          <%= link_to "Profile", current_user, class: 'dropdown-item', data: { turbolinks: false } %>
-          <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item', data: { turbolinks: false } %>
-          <div class="dropdown-divider">
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= link_to "Profile", current_user, class: 'dropdown-item', data: { turbolinks: false } %>
+            <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item', data: { turbolinks: false } %>
+            <div class="dropdown-divider">
+            </div>
+            <%= link_to "Inbox", conversations_path, class: 'dropdown-item', data: { turbolinks: false } %>
+            <%= link_to "Forum", discussions_path, class: 'dropdown-item', data: { turbolinks: false } %>
+            <div class="dropdown-divider">
+            </div>
+            <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item', data: { turbolinks: false } %>
           </div>
-          <%= link_to "Inbox", conversations_path, class: 'dropdown-item', data: { turbolinks: false } %>
-          <%= link_to "Forum", discussions_path, class: 'dropdown-item', data: { turbolinks: false } %>
-          <div class="dropdown-divider">
-          </div>
-          <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item', data: { turbolinks: false } %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -56,7 +58,7 @@
     </div>
     <div class="dropdown col-2 pl-0" data-behavior='notifications' data-behavior="notifications-link">
       <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
-         <span class="bell-size"><%= fa_icon("bell", class: "bell  text-dark") %><sup id="" class="notification-indic"></sup></span>
+         <span class="bell-size"><%= fa_icon("bell", class: "bell  text-dark") %></span><sup id="" class="notification-indic text-dark tiny-icon"></sup>
       </a>
       <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
         <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
@@ -70,129 +72,42 @@
   </div>
 </div>
   <div id="navbar" class="collapse navbar-collapse">
-    <div class="d-block d-sm-none mt-3 mb-2">
-      <div class="row">
-        <div class="col-2 dropdown dropright mt-1">
-          <a href="#" class="" data-toggle="dropdown">
-            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %>
-          </a>
-
-          <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to "Profile", current_user, class: 'dropdown-item', data: { turbolinks: false } %>
-            <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item', data: { turbolinks: false } %>
-            <div class="dropdown-divider">
-            </div>
-            <%= link_to "Inbox", conversations_path, class: 'dropdown-item', data: { turbolinks: false } %>
-            <%= link_to "Forum", discussions_path, class: 'dropdown-item', data: { turbolinks: false } %>
-            <div class="dropdown-divider">
-            </div>
-            <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item', data: { turbolinks: false } %>
-          </div>
-        </div>
-        <div class="col-10">
-          <%= form_tag search_path, method: :get, class: 'form-inline' do %>
-            <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm search-form-field w-100', id: 'search-form-field' %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="d-block d-sm-none">
-      <% if logged_in? %>
-        <% sidebar_elements.each do |element| %>
-    			<%= link_to element[:link], class: "profile-link sidebar-text", data: { turbolinks: false } do %>
-    				<div id="<%= element %>" class="sidebar-div px-1 py-2 mb-2" data-turbolinks="false">
-    					 <span class="sidebarText"><%= element[:title] %></span>
-    				</div>
-    			<% end %>
-    		<% end %>
-      <% end %>
-    </div>
-    <!--<ul id="navbar-elements" class="nav navbar-nav navbar-right ml-auto">
-      <% if logged_in? %>
-
-      <li class="nav-item dropdown d-block d-sm-none mt-3 d-inline">
-        <%= form_tag search_path, method: :get, class: 'form-inline col-xs-9' do %>
-          <%= text_field_tag :search, params[:search], placeholder: " Search...", class: 'form-control form-control-sm mr-sm-1 w-100', id: 'search-form-field' %>
-        <% end %>
-      </li>
-      <li class="nav-item dropdown d-none d-sm-block col-3 pl-0 align-top">
-        <a id="notificationsDD" href="#" class="nav-link pr-2 pl-0" data-toggle="dropdown">
-           <span class="bell-size"><%= fa_icon("bell", class: "bell align-middle text-dark") %><sup id="" class="notification-indic"></sup></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
-          <div class="text-center profile-link border-top"><%= link_to "/notifications", onclick: "sendPost()", class: "profile-link" do %>click to see more <%= fa_icon('arrow-right') %><%end%></div>
-        </div>
-      </li>
-
-      <li class="dropdown mr-3 mt-1 d-none d-sm-block">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %><span class="ml-1 header-font text-dark"><%= fa_icon('caret-down') %></span>
-          </a>
-
-          <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to "Profile", current_user, class: 'dropdown-item' %>
-            <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
-            <div class="dropdown-divider">
-            </div>
-            <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
-            <%= link_to "WorkSpace", "#", class: 'dropdown-item' %>
-            <%= link_to "FAQ", "#", class: 'dropdown-item' %>
-            <div class="dropdown-divider">
-            </div>
-            <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
-          </div>
-      </li>
-
-          <% else %>
-      <li class="nav-item">
-        <%= link_to "Log in", login_path, class: 'nav-link d-none d-sm-block' %>
-      </li>
-
-      <% end %>
-      <% if logged_in? %>
-      <li class="d-block d-sm-none mt-3">
+    <% if logged_in? %>
+      <div class="d-block d-sm-none mt-3 mb-2">
         <div class="row">
-          <div class="col-2 text-center">
-            <a id="notificationsDD" href="#" class="nav-link" data-toggle="dropdown">
-               <span class="bell-size"><%= fa_icon("bell") %><sup id="" class="notification-indic"></sup></span>
+          <div class="col-2 dropdown dropright mt-1">
+            <a href="#" class="" data-toggle="dropdown">
+              <% if current_user.photo.attached? %><span id="user-photo" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle", style: "width:40px;" %></span><% end %>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" data-behavior="notification-items" aria-labelledby="notificationsDD">
-              <div class="text-center profile-link"><%= link_to "see all", "/notifications", onclick: "sendPost()" %></div>
+
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to "Profile", current_user, class: 'dropdown-item', data: { turbolinks: false } %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item', data: { turbolinks: false } %>
+              <div class="dropdown-divider">
+              </div>
+              <%= link_to "Inbox", conversations_path, class: 'dropdown-item', data: { turbolinks: false } %>
+              <%= link_to "Forum", discussions_path, class: 'dropdown-item', data: { turbolinks: false } %>
+              <div class="dropdown-divider">
+              </div>
+              <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item', data: { turbolinks: false } %>
             </div>
           </div>
-          <div class="col-6 text-center display-orange">
-            <%= link_to discussions_path, class: 'nav-link', data: {turbolinks: false}  do%>
-              <span class=""><%= fa_icon("comments", class: "mr-1 small") %> Forum</span>
+          <div class="col-10">
+            <%= form_tag search_path, method: :get, class: 'form-inline' do %>
+              <%= text_field_tag :search, params[:search], placeholder: " Search", class: 'form-control form-control-sm mr-sm-1 h-100 border-0 shadow-sm search-form-field w-100', id: 'search-form-field' %>
             <% end %>
           </div>
-          <div class="col-4 dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <% if current_user.photo.attached? %><span id="" class="mr-1"><%= image_tag current_user.photo, class: "rounded-circle w-25", id: "user-photo" %></span><% end %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-left mr-5 small">
-              <%= link_to "Profile", current_user, class: 'dropdown-item' %>
-              <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
-              <%= link_to "Inbox", conversations_path, class: 'dropdown-item' %>
-              <%= link_to "WorkSpace", "#", class: 'dropdown-item' %>
-                <div class="dropdown-divider">
-                </div>
-              <%= link_to "Log out", logout_path, method: :delete, class: 'dropdown-item' %>
-            </div>
-          </div>
-          <% else %>
-          <div>
-              <%= link_to "Log in", login_path, class: 'nav-link d-block d-sm-none' %>
-          </div>
         </div>
-      </li>
-      <% end %>
-      <% if logged_in? %>
-        <% sidebar_elements.each do |element| %>
-          <li class="d-md-none nav-item float-right align-right">
-            <%= link_to element[:name], element[:link], class: 'nav-link' %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>-->
+      </div>
+      <div class="d-block d-sm-none">
+          <% sidebar_elements.each do |element| %>
+      			<%= link_to element[:link], class: "profile-link sidebar-text", data: { turbolinks: false } do %>
+      				<div id="<%= element %>" class="sidebar-div px-1 py-2 mb-2" data-turbolinks="false">
+      					 <span class="sidebarText"><%= element[:title] %></span>
+      				</div>
+      			<% end %>
+      		<% end %>
+      </div>
+    <% end %>
   </div>
 </nav>
