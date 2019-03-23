@@ -1,3 +1,4 @@
+require 'csv'
 class User < ApplicationRecord
   has_and_belongs_to_many :collaborations
   has_many :collaborations, through: :wads
@@ -165,6 +166,15 @@ class User < ApplicationRecord
     else
       return false
     end
+  end
+
+  def self.to_csv
+      csv_string = CSV.generate do |csv|
+        csv << User.attribute_names
+        User.find_each do |user|
+          csv << user.attributes.values
+        end
+      end
   end
 
 
