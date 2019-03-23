@@ -1,10 +1,16 @@
 class UsersController < ApplicationController
+  before_action :admin_access, only: [:index]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   #before_action :require_login, only: [:edit, :update, :new]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv }
+    end
   end
 
   def show
@@ -88,6 +94,12 @@ class UsersController < ApplicationController
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
+    end
+
+    def admin_access
+       unless current_user.id == 1 or current_user.id == 3
+        redirect_to wads_path
+       end 
     end
     # Confirms the correct user.
     def correct_user
