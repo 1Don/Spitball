@@ -31,7 +31,6 @@ gem 'omniauth-twitter'
 gem 'jquery-ui-rails'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'activestorage', '5.2.0'
-gem 'webpacker'
 gem "aws-sdk-s3", require: false
 
 group :development, :test do
